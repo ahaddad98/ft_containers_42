@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   test.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/17 18:12:14 by ahaddad          ###   ########.fr       */
+/*   Created: 2021/10/16 16:55:41 by ahaddad           #+#    #+#             */
+/*   Updated: 2021/10/17 15:22:55 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Map/Map.hpp"
-// #include "Vector/Vector.hpp"
-#include "Stack/Stack.hpp"
+#include <iostream>
 #include <vector>
-
-
 int main()
 {
-    std::vector<int> vect;
-    vect.clear();
+    std::cout << "amine haddad is here" << std::endl;
+
+    std::vector<std::string> vect;
+    // vect.
     return 0;
 }
