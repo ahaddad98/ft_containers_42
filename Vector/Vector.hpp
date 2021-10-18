@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/17 18:05:57 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/18 14:17:35 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,17 @@ namespace ft
     class Vector
     {
         private:
-            /* data */
+            
         public:
-        // Vector(int i)
-        // {
-        // }
-        // Vector(int n, int i)
-        // {
-        // }
-        Vector<T>(/* args */)
+        Vector<T>()
         {
         }
-        // Vector<T, i>(/* args */)
-        // {
-        // }
-    
+        Vector<T>(int n)
+        {
+        }
+        Vector<T>(int n, int i)
+        {
+        }
         ~Vector()
         {
         }
