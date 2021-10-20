@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/20 16:09:59 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/20 17:39:35 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ namespace ft
         {
             if (m_Size > m_Capacity)
                 ReAlloc(m_Capacity + m_Capacity /2);
-            m_Data[m_Size] = value;
+            m_Data[m_Size] = std::move(value);
             m_Size++; 
         }
         void PopBack()
@@ -72,6 +72,16 @@ namespace ft
         {
             return m_Size;
         }
+        /*
+        **    When the function parameter type is of the form T&& where T is a
+        **    template parameter, and the function argument is an lvalue of type A,
+        **    the type A& is used for template argument deduction.
+        */
+    //    template<typename... Args>
+    //    T& EmplaceBack(Args&&... ar)
+    //    {
+           
+    //    }
         // ================= operators ========================
         const T& operator[](size_t index) const
         {

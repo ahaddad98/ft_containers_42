@@ -1,0 +1,24 @@
+
+                    emplace_back vs. push_back
+                    
+    push_back: Adds a new element at the end of the container,
+after its current last element. The content of val is copied
+(or moved) to the new element.
+
+    emplace_back: Inserts a new element at the end of the container,
+right after its current last element. This new element is constructed
+in place using args as the arguments for its constructor.
+
+        To be more clear, what will happen if we call push_back?
+
+    A constructor will be called to create a temporary object.
+    A copy of the temporary object will be constructed in the memory for the container.
+Note that the move constructor will be called if exist because the temporary object is an rvalue,
+otherwise the copy constructor should be called.
+    The destructor will be called to destroy the temporary object after copy.
+        As a comparison, emplace_back directly takes constructor arguments for objects to be inserted.
+In other words, the emplacement function avoids constructing and destructing temporary objects.
+It will be much more efficient if developer try to insert large amount of objects or if each object
+is time consuming to create/destroy.
+
+        
