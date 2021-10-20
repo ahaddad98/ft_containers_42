@@ -6,16 +6,19 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:55:41 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/18 20:11:07 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/20 15:57:28 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <memory>
 #include <iostream>
 #include <string>
- 
+#include <vector>
+
+
 int main(){
-  
+
+  std::vector<std::string> vect;  
   std::cout << std::endl;
 
   std::allocator<int> intAlloc; 

@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/20 15:41:30 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/20 16:09:59 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include <iostream>
 #include <string.h>
 #include <stdio.h>
-
-
 
 namespace ft
 {
@@ -30,14 +28,7 @@ namespace ft
         private:
             void ReAlloc(size_t newCapacity)
             {
-                // 1. allocate a new block of memory
-                // 2. copy the old vector in the new one
-                // 3. delete the old block memory
-
-                T *newBlock = new T[newCapacity];
-
-                // le cas ou on veut reduire le dimension du vector
-                
+                T *newBlock = new T[newCapacity]; 
                 if (newCapacity < m_Size)
                     m_Size = newCapacity;
                 
@@ -52,6 +43,7 @@ namespace ft
         {
             ReAlloc(2);
         }
+        // ===================== algorithms for vector ============================
         void PushBack(const T &value)
         {
             if (m_Size > m_Capacity)
@@ -67,11 +59,24 @@ namespace ft
                 m_Data[m_Size].~T(); 
             }  
         }
+        void clear()
+        {
+            for (int i = m_Size - 1; i >= 0; i--)
+            {
+                m_Data[i].~T();
+            }
+            m_Data->~T();
+            m_Size = 0;
+        }
+        size_t Size() const
+        {
+            return m_Size;
+        }
+        // ================= operators ========================
         const T& operator[](size_t index) const
         {
             if (index > m_Size)
             {
-                 //assertiton
             }
             return m_Data[index];
         }
@@ -79,11 +84,7 @@ namespace ft
         {
             return m_Data[index];
         }
-
-        size_t Size() const
-        {
-            return m_Size;
-        }
+        // ==================== constructors and desructor ==========
         Vector<T>(int n)
         {
         }
@@ -92,14 +93,7 @@ namespace ft
         }
         ~Vector()
         {
-            // if (m_Size > 0)
-            //     delete m_Data;
         }
     };
-    
 }
-
-
-
-
 #endif

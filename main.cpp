@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/20 15:42:15 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/20 16:15:39 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 template<typename T>
 
-void printVector(const ft::Vector<T> vect)
+void printVector(const ft::Vector<T>& vect)
 {
     int i = 0;
     while (i <vect.Size())
@@ -35,9 +35,7 @@ int main()
      vector.PushBack("amine1");
      vector.PushBack("amine2");
      vector.PopBack();
-     vector.PopBack();
-     vector.PopBack();
-     vector.PushBack("amine2");
+    //  vector.clear();
     printVector(vector);
     // std::vector<int> vect(10, 0);
     // vect.assign("","");
