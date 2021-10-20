@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/20 16:15:39 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/20 16:30:18 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main()
      vector.PushBack("amine1");
      vector.PushBack("amine2");
      vector.PopBack();
-    //  vector.clear();
+     vector.clear();
     printVector(vector);
     // std::vector<int> vect(10, 0);
     // vect.assign("","");
