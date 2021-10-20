@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/20 15:01:19 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/20 15:41:30 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,14 @@ namespace ft
             m_Data[m_Size] = value;
             m_Size++; 
         }
-
+        void PopBack()
+        {
+            if (m_Size > 0)
+            {
+                m_Size--;
+                m_Data[m_Size].~T(); 
+            }  
+        }
         const T& operator[](size_t index) const
         {
             if (index > m_Size)
@@ -85,6 +92,8 @@ namespace ft
         }
         ~Vector()
         {
+            // if (m_Size > 0)
+            //     delete m_Data;
         }
     };
     

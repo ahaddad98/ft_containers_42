@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/20 15:04:17 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/20 15:42:15 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int main()
      ft::Vector<std::string> vector;
      vector.PushBack("amine");
      vector.PushBack("amine1");
+     vector.PushBack("amine2");
+     vector.PopBack();
+     vector.PopBack();
+     vector.PopBack();
      vector.PushBack("amine2");
     printVector(vector);
     // std::vector<int> vect(10, 0);
