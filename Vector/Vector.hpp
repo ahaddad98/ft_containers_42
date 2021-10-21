@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/21 18:55:16 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/21 19:22:20 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,22 @@ namespace ft
         {
             ReAlloc(2);
         }
+        template <class Category, class R, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&>
+        struct iterator {
+        typedef R         value_type;
+        typedef Distance  difference_type;
+        typedef Pointer   pointer;
+        typedef Reference reference;
+        typedef Category  iterator_category;
+        };
+        class Iterator
+        {
+        private:
+            /* data */
+        public:
+            Iterator(/* args */){};
+            ~Iterator(){};
+        };
         // ===================== Modifiers: ============================
         void PushBack(const T &value)
         {

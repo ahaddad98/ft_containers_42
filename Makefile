@@ -6,7 +6,7 @@
 #    By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 16:13:12 by ahaddad           #+#    #+#              #
-#    Updated: 2021/10/20 16:18:30 by ahaddad          ###   ########.fr        #
+#    Updated: 2021/10/21 19:00:47 by ahaddad          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS = main.cpp \
 			
 HDRS = Vector/Vector.hpp \
 		Stack/Stack.hpp \
-		Map/Map.hpp
+		Map/Map.hpp \
+		Vector/iterator.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 

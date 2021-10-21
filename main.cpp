@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/21 18:50:11 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/21 19:21:56 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ void printVector(const ft::Vector<T>& vect)
 
 int main()
 {
-    std::vector<int>::iterator it;
+    // std::vector<int>::iterator it;
     // it.__i = 13;
-     ft::Vector<std::string> vector;
-     vector.PushBack("amine");
-     vector.PushBack("amine1");
-     vector.PushBack("amine2");
+    ft::Vector<std::string> vector;
+    ft::Vector<int>::Iterator it;
+    vector.PushBack("amine");
+    vector.PushBack("amine1");
+    vector.PushBack("amine2");
     //  vector.PopBack();
     //  vector.clear();
     printVector(vector);
