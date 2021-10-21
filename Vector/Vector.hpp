@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/20 17:39:35 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/21 13:26:23 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,20 @@
 
 namespace ft
 {
+    template<typename Vector>
+    class VectorIterator
+    {
+    private:
+        /* data */
+    public:
+        VectorIterator(/* args */)
+        {
+        }
+        
+        ~VectorIterator()
+        {
+        }
+    };
     template <typename T>
     class Vector
     {
@@ -43,7 +57,7 @@ namespace ft
         {
             ReAlloc(2);
         }
-        // ===================== algorithms for vector ============================
+        // ===================== Modifiers: ============================
         void PushBack(const T &value)
         {
             if (m_Size > m_Capacity)
@@ -68,21 +82,20 @@ namespace ft
             m_Data->~T();
             m_Size = 0;
         }
+        // ============================== Capacity: ========================
         size_t Size() const
         {
             return m_Size;
         }
-        /*
-        **    When the function parameter type is of the form T&& where T is a
-        **    template parameter, and the function argument is an lvalue of type A,
-        **    the type A& is used for template argument deduction.
-        */
-    //    template<typename... Args>
-    //    T& EmplaceBack(Args&&... ar)
-    //    {
-           
-    //    }
-        // ================= operators ========================
+        VectorIterator<T> begin()
+        {
+            return VectorIterator(m_Data);
+        }
+        VectorIterator<T> end()
+        {
+            return VectorIterator(m_Data + m_Size);
+        }
+        // =========================== Element access: ========================
         const T& operator[](size_t index) const
         {
             if (index > m_Size)
