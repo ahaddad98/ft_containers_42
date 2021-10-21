@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/21 13:26:23 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/21 18:55:16 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,10 @@
 #include <iostream>
 #include <string.h>
 #include <stdio.h>
+#include "iterator.hpp"
 
 namespace ft
 {
-    template<typename Vector>
-    class VectorIterator
-    {
-    private:
-        /* data */
-    public:
-        VectorIterator(/* args */)
-        {
-        }
-        
-        ~VectorIterator()
-        {
-        }
-    };
     template <typename T>
     class Vector
     {
@@ -86,14 +73,6 @@ namespace ft
         size_t Size() const
         {
             return m_Size;
-        }
-        VectorIterator<T> begin()
-        {
-            return VectorIterator(m_Data);
-        }
-        VectorIterator<T> end()
-        {
-            return VectorIterator(m_Data + m_Size);
         }
         // =========================== Element access: ========================
         const T& operator[](size_t index) const
