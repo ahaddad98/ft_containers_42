@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/21 19:22:20 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/22 13:43:37 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "iterator.hpp"
-
+#include "iterator_traits.hpp"
 namespace ft
 {
     template <typename T>
@@ -29,12 +29,14 @@ namespace ft
         private:
             void ReAlloc(size_t newCapacity)
             {
+
                 T *newBlock = new T[newCapacity]; 
                 if (newCapacity < m_Size)
                     m_Size = newCapacity;
                 
                 for (size_t i = 0; i < m_Size; i++)
                     newBlock[i] = m_Data[i];
+                std::cout << "im in constructor\n";
                 delete[] m_Data;
                 m_Data = newBlock;
                 m_Capacity = newCapacity;
@@ -42,24 +44,25 @@ namespace ft
         public:
         Vector<T>()
         {
+            // m_Size = m_Data.s
             ReAlloc(2);
         }
-        template <class Category, class R, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&>
-        struct iterator {
-        typedef R         value_type;
-        typedef Distance  difference_type;
-        typedef Pointer   pointer;
-        typedef Reference reference;
-        typedef Category  iterator_category;
-        };
-        class Iterator
-        {
-        private:
-            /* data */
-        public:
-            Iterator(/* args */){};
-            ~Iterator(){};
-        };
+        // template <class Category, class R, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&>
+        // struct iterator {
+        // typedef R         value_type;
+        // typedef Distance  difference_type;
+        // typedef Pointer   pointer;
+        // typedef Reference reference;
+        // typedef Category  iterator_category;
+        // };
+        // class Iterator
+        // {
+        // private:
+        //     /* data */
+        // public:
+        //     Iterator(/* args */){};
+        //     ~Iterator(){};
+        // };
         // ===================== Modifiers: ============================
         void PushBack(const T &value)
         {

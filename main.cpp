@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/21 19:21:56 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/10/22 11:56:03 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int main()
     // std::vector<int>::iterator it;
     // it.__i = 13;
     ft::Vector<std::string> vector;
-    ft::Vector<int>::Iterator it;
+    std::cout << "amine" << std::endl;
+    // ft::Vector<int>::Iterator it;
     vector.PushBack("amine");
     vector.PushBack("amine1");
     vector.PushBack("amine2");
