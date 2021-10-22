@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/22 11:56:03 by amine            ###   ########.fr       */
+/*   Updated: 2021/10/22 14:04:09 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int main()
     ft::Vector<std::string> vector;
     std::cout << "amine" << std::endl;
     // ft::Vector<int>::Iterator it;
-    vector.PushBack("amine");
-    vector.PushBack("amine1");
-    vector.PushBack("amine2");
+    // vector.PushBack("amine");
+    // vector.PushBack("amine1");
+    // vector.PushBack("amine2");
     //  vector.PopBack();
     //  vector.clear();
-    printVector(vector);
+    // printVector(vector);
     // std::vector<int> vect(10, 0);
     // vect.assign("","");
     // std::allocator<int> alloc;
