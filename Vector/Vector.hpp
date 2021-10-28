@@ -6,99 +6,182 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/22 14:04:28 by amine            ###   ########.fr       */
+/*   Updated: 2021/10/28 16:12:01 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
+// #include <iostream>
+#include <cassert>
 #include <iostream>
 #include <string.h>
 #include <stdio.h>
 #include "iterator.hpp"
 #include "iterator_traits.hpp"
+
+class iterator;
+
 namespace ft
 {
     template <typename T>
-    class Vector
+    class vector
     {
-        private:
-            T *m_Data;
-            size_t m_Size;
-            size_t m_Capacity; // how mush memory we will allocated
-        private:
-            void ReAlloc(size_t newCapacity)
-            {
+    public:
+        typedef int size_type;
 
-                T *newBlock = new T[newCapacity]; 
-                if (newCapacity < m_Size)
-                    m_Size = newCapacity;
-                
-                for (size_t i = 0; i < m_Size; i++)
-                    newBlock[i] = m_Data[i];
-                std::cout << "im in constructor\n";
-                delete[] m_Data;
-                m_Data = newBlock;
-                m_Capacity = newCapacity;
-            }
+        class iterator
+        {
         public:
-        Vector<T>()
-        {
-            // m_Size = m_Data.s
-            // ReAlloc(2);
-        }
-        // ===================== Modifiers: ============================
-        void PushBack(const T &value)
-        {
-            if (m_Size > m_Capacity)
-                ReAlloc(m_Capacity + m_Capacity /2);
-            m_Data[m_Size] = std::move(value);
-            m_Size++; 
-        }
-        void PopBack()
-        {
-            if (m_Size > 0)
+            typedef iterator self_type;
+            typedef T value_type;
+            typedef T &reference;
+            typedef T *pointer;
+            typedef std::forward_iterator_tag iterator_category;
+            typedef int difference_type;
+            iterator(pointer ptr) : ptr_(ptr) {}
+            self_type operator++()
             {
-                m_Size--;
-                m_Data[m_Size].~T(); 
-            }  
-        }
-        void clear()
-        {
-            for (int i = m_Size - 1; i >= 0; i--)
-            {
-                m_Data[i].~T();
+                self_type i = *this;
+                ptr_++;
+                return i;
             }
-            m_Data->~T();
-            m_Size = 0;
-        }
-        // ============================== Capacity: ========================
-        size_t Size() const
-        {
-            return m_Size;
-        }
-        // =========================== Element access: ========================
-        const T& operator[](size_t index) const
-        {
-            if (index > m_Size)
+            self_type operator++(int junk)
             {
+                ptr_++;
+                return *this;
             }
-            return m_Data[index];
-        }
-        T& operator[](size_t index)
+            reference operator*() { return *ptr_; }
+            pointer operator->() { return ptr_; }
+            bool operator==(const self_type &rhs) { return ptr_ == rhs.ptr_; }
+            bool operator!=(const self_type &rhs) { return ptr_ != rhs.ptr_; }
+
+        private:
+            pointer ptr_;
+        };
+
+        class const_iterator
         {
-            return m_Data[index];
-        }
-        // ==================== constructors and desructor ==========
-        Vector<T>(int n)
+        public:
+            typedef const_iterator self_type;
+            typedef T value_type;
+            typedef T &reference;
+            typedef T *pointer;
+            typedef int difference_type;
+            typedef std::forward_iterator_tag iterator_category;
+            const_iterator(pointer ptr) : ptr_(ptr) {}
+            self_type operator++()
+            {
+                self_type i = *this;
+                ptr_++;
+                return i;
+            }
+            self_type operator++(int junk)
+            {
+                ptr_++;
+                return *this;
+            }
+            const reference operator*() { return *ptr_; }
+            const pointer operator->() { return ptr_; }
+            bool operator==(const self_type &rhs) { return ptr_ == rhs.ptr_; }
+            bool operator!=(const self_type &rhs) { return ptr_ != rhs.ptr_; }
+
+        private:
+            pointer ptr_;
+        };
+
+        vector(size_type size) : size_(size)
         {
+            data_ = new T[size_];
         }
-        Vector<T>(int n, int i)
+
+        size_type size() const { return size_; }
+
+        T &operator[](size_type index)
         {
+            assert(index < size_);
+            return data_[index];
         }
-        ~Vector()
+
+        const T &operator[](size_type index) const
         {
+            assert(index < size_);
+            return data_[index];
         }
+
+        iterator begin()
+        {
+            return iterator(data_);
+        }
+
+        iterator end()
+        {
+            return iterator(data_ + size_);
+        }
+
+        const_iterator begin() const
+        {
+            return const_iterator(data_);
+        }
+
+        const_iterator end() const
+        {
+            return const_iterator(data_ + size_);
+        }
+
+    private:
+        T *data_;
+        size_type size_;
     };
+    // template <typename T>
+    // class vector
+    // {
+    // public:
+    //     typedef const_iterator self_type;
+    //     typedef T value_type;
+    //     typedef T &reference;
+    //     typedef T *pointer;
+    //     typedef int difference_type;
+    //     typedef std::forward_iterator_tag iterator_category;
+    //     typedef int size_type;
+    //     // typedef iterator<value_type>                 iterator;
+    //     vector(size_type size) : size_(size)
+    //     {
+    //         data_ = new T[size_];
+    //     }
+
+    //     size_type size() const { return size_; }
+
+    //     T &operator[](size_type index)
+    //     {
+    //         assert(index < size_);
+    //         return data_[index];
+    //     }
+
+    //     const T &operator[](size_type index) const
+    //     {
+    //         assert(index < size_);
+    //         return data_[index];
+    //     }
+
+    // iterator begin()
+    // {
+    //     return iterator(data_);
+    // }
+
+    // iterator end()
+    // {
+    //     return iterator(data_ + size_);
+    // }
+
+    // const_iterator begin() const
+    // {
+    //     return const_iterator(data_);
+    // }
+
+    // const_iterator end() const
+    // {
+    //     return const_iterator(data_ + size_);
+    // }
 }
 #endif
