@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/28 18:41:59 by amine            ###   ########.fr       */
+/*   Updated: 2021/10/29 13:31:24 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 int main()
 {
-    ft::vector<std::string> vect(3);
-    vect[0] = "2";
-    vect[1] = "3";
-    vect[2] = "4";
+    ft::vector<int> vect(3);
+    vect[0] = 2;
+    vect[1] = 3;
+    vect[2] = 4;
 
-    for (ft::vector<std::string>::iterator i = vect.begin(); i != vect.end(); i++)
+    for (ft::vector<int>::iterator i = vect.begin(); i != vect.end(); i++)
     {
         std::cout << *i << " ";
     }

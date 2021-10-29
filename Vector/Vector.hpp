@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/28 18:42:36 by amine            ###   ########.fr       */
+/*   Updated: 2021/10/29 18:20:33 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ namespace ft
     public:
         typedef int size_type;
         // create our iterator
-        class iterator
+        class iterator : ft::Iterator_Traits<std::random_access_iterator_tag, T>
         {
         public:
             typedef iterator self_type;
