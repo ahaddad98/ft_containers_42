@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:32:14 by amine             #+#    #+#             */
-/*   Updated: 2021/10/22 13:54:25 by amine            ###   ########.fr       */
+/*   Updated: 2021/10/29 20:45:20 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ public:
     typedef Distance difference_type;
     typedef T value_type;
 };
+
 }
 #endif
