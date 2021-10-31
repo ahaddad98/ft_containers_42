@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/28 16:10:04 by amine            ###   ########.fr       */
+/*   Updated: 2021/10/31 13:06:11 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,68 +18,68 @@
 
 namespace ft
 {
-    // typedef int size_type;
+    typedef int size_type;
 
-    // template <typename T>
-    // class iterator
-    // {
-    // public:
-    //     typedef iterator self_type;
-    //     typedef T value_type;
-    //     typedef T &reference;
-    //     typedef T *pointer;
-    //     typedef std::forward_iterator_tag iterator_category;
-    //     typedef int difference_type;
-    //     iterator(pointer ptr) : ptr_(ptr) {}
-    //     self_type operator++()
-    //     {
-    //         self_type i = *this;
-    //         ptr_++;
-    //         return i;
-    //     }
-    //     self_type operator++(int junk)
-    //     {
-    //         ptr_++;
-    //         return *this;
-    //     }
-    //     reference operator*() { return *ptr_; }
-    //     pointer operator->() { return ptr_; }
-    //     bool operator==(const self_type &rhs) { return ptr_ == rhs.ptr_; }
-    //     bool operator!=(const self_type &rhs) { return ptr_ != rhs.ptr_; }
+    template <typename T>
+    class iterator
+    {
+    public:
+        typedef iterator self_type;
+        typedef T value_type;
+        typedef T &reference;
+        typedef T *pointer;
+        typedef std::forward_iterator_tag iterator_category;
+        typedef int difference_type;
+        iterator(pointer ptr) : ptr_(ptr) {}
+        self_type operator++()
+        {
+            self_type i = *this;
+            ptr_++;
+            return i;
+        }
+        self_type operator++(int junk)
+        {
+            ptr_++;
+            return *this;
+        }
+        reference operator*() { return *ptr_; }
+        pointer operator->() { return ptr_; }
+        bool operator==(const self_type &rhs) { return ptr_ == rhs.ptr_; }
+        bool operator!=(const self_type &rhs) { return ptr_ != rhs.ptr_; }
 
-    // private:
-    //     pointer ptr_;
-    // };
-    // template <typename T>
-    // class const_iterator
-    // {
-    // public:
-    //     typedef const_iterator self_type;
-    //     typedef T value_type;
-    //     typedef T &reference;
-    //     typedef T *pointer;
-    //     typedef int difference_type;
-    //     typedef std::forward_iterator_tag iterator_category;
-    //     const_iterator(pointer ptr) : ptr_(ptr) {}
-    //     self_type operator++()
-    //     {
-    //         self_type i = *this;
-    //         ptr_++;
-    //         return i;
-    //     }
-    //     self_type operator++(int junk)
-    //     {
-    //         ptr_++;
-    //         return *this;
-    //     }
-    //     // const reference operator*() { return *ptr_; }
-    //     const pointer operator->() { return ptr_; }
-    //     bool operator==(const self_type &rhs) { return ptr_ == rhs.ptr_; }
-    //     bool operator!=(const self_type &rhs) { return ptr_ != rhs.ptr_; }
+    private:
+        pointer ptr_;
+    };
+    template <typename T>
+    class const_iterator
+    {
+    public:
+        typedef const_iterator self_type;
+        typedef T value_type;
+        typedef T &reference;
+        typedef T *pointer;
+        typedef int difference_type;
+        typedef std::forward_iterator_tag iterator_category;
+        const_iterator(pointer ptr) : ptr_(ptr) {}
+        self_type operator++()
+        {
+            self_type i = *this;
+            ptr_++;
+            return i;
+        }
+        self_type operator++(int junk)
+        {
+            ptr_++;
+            return *this;
+        }
+        // const reference operator*() { return *ptr_; }
+        const pointer operator->() { return ptr_; }
+        bool operator==(const self_type &rhs) { return ptr_ == rhs.ptr_; }
+        bool operator!=(const self_type &rhs) { return ptr_ != rhs.ptr_; }
 
-    // private:
-    //     pointer ptr_;
-    // };
+    private:
+        pointer ptr_;
+    };
 }
 
 // template <typename T>

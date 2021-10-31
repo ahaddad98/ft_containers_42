@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/29 19:27:33 by amine            ###   ########.fr       */
+/*   Updated: 2021/10/31 13:10:08 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,94 +29,18 @@ namespace ft
     {
     public:
         typedef int size_type;
-        // create our iterator
-        class iterator  : public ft::Iterator_Traits<std::random_access_iterator_tag, T>
-        {
-        public:
-            typedef iterator self_type;
-            typedef T value_type;
-            typedef T &reference;
-            typedef T *pointer;
-            typedef std::forward_iterator_tag iterator_category;
-            typedef int difference_type;
-            iterator(pointer ptr) : ptr_(ptr)
-            {
-            }
-            self_type operator++()
-            {
-                self_type i = *this;
-                ptr_++;
-                return i;
-            }
-            self_type operator++(int junk)
-            {
-                ptr_++;
-                return *this;
-            }
-            reference operator*()
-            {
-                return *ptr_;
-            }
-            pointer operator->()
-            {
-                return ptr_;
-            }
-            bool operator==(const self_type &rhs)
-            {
-                return ptr_ == rhs.ptr_;
-            }
-            bool operator!=(const self_type &rhs)
-            {
-                return ptr_ != rhs.ptr_;
-            }
+        typedef ::iterator self_type;
+        typedef T value_type;
+        typedef T &reference;
+        typedef T *pointer;
+        typedef std::forward_iterator_tag iterator_category;
+        typedef int difference_type;
 
-        private:
-            pointer ptr_;
-        };
-        // create our const iterator
-        class const_iterator : public ft::Iterator_Traits<std::random_access_iterator_tag, T>
-        {
-        public:
-            typedef const_iterator self_type;
-            typedef T value_type;
-            typedef T &reference;
-            typedef T *pointer;
-            typedef int difference_type;
-            typedef std::forward_iterator_tag iterator_category;
-            const_iterator(pointer ptr) : ptr_(ptr)
-            {
-            }
-            self_type operator++()
-            {
-                self_type i = *this;
-                ptr_++;
-                return i;
-            }
-            self_type operator++(int junk)
-            {
-                ptr_++;
-                return *this;
-            }
-            const value_type &operator*()
-            {
-                return *ptr_;
-            }
-            const pointer operator->()
-            {
-                return ptr_;
-            }
-            bool operator==(const self_type &rhs)
-            {
-                return ptr_ == rhs.ptr_;
-            }
-            bool operator!=(const self_type &rhs)
-            {
-                return ptr_ != rhs.ptr_;
-            }
+        // call of iterator class 
+        
+        typedef ft::iterator<value_type> iterator;
+        typedef ft::const_iterator<value_type> const_iterator;
 
-        private:
-            pointer ptr_;
-        };
         // constructors
         vector(size_type size) : size_(size)
         {
