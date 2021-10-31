@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/31 15:10:39 by amine            ###   ########.fr       */
+/*   Updated: 2021/10/31 15:32:08 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ namespace ft
         typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::reference reference;
         typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::difference_type difference_type;
         typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::iterator_categorie iterator_category;
-        
+
         iterator(pointer ptr) : ptr_(ptr)
         {
         }
@@ -104,6 +104,16 @@ namespace ft
 
     private:
         pointer ptr_;
+    };
+    template <typename T>
+    class reverse_iterat : public ft::Iterator_Traits<std::random_access_iterator_tag, T>
+    {
+    public:
+        typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::value_type value_type;
+        typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::Pointer pointer;
+        typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::reference reference;
+        typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::difference_type difference_type;
+        typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::iterator_categorie iterator_category;
     };
 }
 
