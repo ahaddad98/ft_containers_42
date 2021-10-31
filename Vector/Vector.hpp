@@ -6,13 +6,12 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/31 13:10:08 by amine            ###   ########.fr       */
+/*   Updated: 2021/10/31 13:19:35 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
-// #include <iostream>
 #include <cassert>
 #include <iostream>
 #include <string.h>
