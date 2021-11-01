@@ -164,22 +164,30 @@ namespace ft
         // }
         void push_back (const value_type& val)
         {
-            insert(end()-1, val);
+            insert(end() - 1, val);
         }
-        // void pop_back()
-        // {
-        // }
+        void pop_back()
+        {
+
+        }
         iterator insert (iterator position, const value_type& val)
         {
             int i = 0;
             T *m_Data1 = new T[size_ + 1];
             if (size_ == 0)
+            {
                 m_Data1[i] = val;
+                i++;
+            }
             else
             {
                 for (iterator it = begin(); it != end() ;it++)
                 {
-                    std::cout << "im in insert" << std::endl;
+                    // std::cout << "im in insert" << std::endl;
+                    // if (it == (end() - 1))
+                    // {
+                    //     m_Data1[i] = val;
+                    // }
                     if (it == position)
                     {
                         m_Data1[i] = val;
