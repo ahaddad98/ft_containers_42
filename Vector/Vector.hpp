@@ -174,9 +174,7 @@ namespace ft
             int i = 0;
             T *m_Data1 = new T[size_ + 1];
             if (size_ == 0)
-            {
                 m_Data1[i] = val;
-            }
             else
             {
                 for (iterator it = begin(); it != end() ;it++)

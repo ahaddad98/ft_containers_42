@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/01 16:50:12 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/01 17:07:49 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int main()
     }
     // ft::vector<int>::iterator i = vect.begin();
     // std::cout << std::endl;
-    // vect.insert(vect.begin()+2 , 6);
-    // std::cout << "after insert" << std::endl;
-    // for (ft::vector<int>::iterator i = vect.begin(); i != vect.end(); i++)
-    // {
-    //     std::cout << *i << " ";
-    // }
+    vect.insert(vect.begin()+2 , 6);
+    std::cout << "after insert" << std::endl;
+    for (ft::vector<int>::iterator i = vect.begin(); i != vect.end(); i++)
+    {
+        std::cout << *i << " ";
+    }
     return 0;
 }
