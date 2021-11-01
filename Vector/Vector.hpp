@@ -43,6 +43,11 @@ namespace ft
         typedef ft::const_reverse_iterat<value_type> const_reverse_iterator;
 
         // constructors
+        vector() : size_(0)
+        {
+            std::cout << "im in vect defaul constructor" << std::endl;
+            // m_Data = new T[size_];
+        }
         vector(size_type size) : size_(size)
         {
             m_Data = new T[size_];
