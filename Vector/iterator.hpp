@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/01 15:42:44 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/01 16:36:47 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ namespace ft
         }
         self_type operator+(int i)
         {
-            // self_type i = *this;
-            // pointer ptr_1 = new value_type[size_];
-            // pointer ptr_1;
-            // std::cout << "123amine123" << std::endl;
             ptr_ += i;
-            // std::cout <<  *ptr_ << "<=" << std::endl;
+            return *this;
+        }
+        self_type operator-(int i)
+        {
+            ptr_ -= i;
             return *this;
         }
         self_type operator++(int junk)

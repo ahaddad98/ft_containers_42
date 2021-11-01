@@ -162,9 +162,10 @@ namespace ft
         // void assign (size_type n, const value_type& val)
         // {
         // }
-        // void push_back (const value_type& val)
-        // {
-        // }
+        void push_back (const value_type& val)
+        {
+            insert(end()-1, val);
+        }
         // void pop_back()
         // {
         // }
@@ -172,18 +173,27 @@ namespace ft
         {
             int i = 0;
             T *m_Data1 = new T[size_ + 1];
-            for (iterator it = begin(); it != end() ;it++)
+            if (size_ == 0)
             {
-                if (it == position)
+                m_Data1[i] = val;
+            }
+            else
+            {
+                for (iterator it = begin(); it != end() ;it++)
                 {
-                    m_Data1[i] = val;
-                    i++;
-                    m_Data1[i] = *it;
+                    std::cout << "im in insert" << std::endl;
+                    if (it == position)
+                    {
+                        m_Data1[i] = val;
+                        i++;
+                        if(i < (size_ + 1))
+                            m_Data1[i] = *it;
+                        i++;
+                    }
+                    else
+                        m_Data1[i] = *it;
                     i++;
                 }
-                else
-                    m_Data1[i] = *it;
-                i++;
             }
             delete[] m_Data;
             m_Data = new T[size_ + 1];
