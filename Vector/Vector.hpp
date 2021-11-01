@@ -148,10 +148,7 @@ namespace ft
         {
             return const_reverse_iterator(m_Data - 1);
         }
-        //const_reverse_iterator rbegin() const
-        // {
-        // }
-
+        
         // Modifiers:
         // template <class InputIterator>
         // void assign (InputIterator first, InputIterator last)
