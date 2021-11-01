@@ -40,6 +40,7 @@ namespace ft
         typedef ft::iterator<value_type> iterator;
         typedef ft::const_iterator<value_type> const_iterator;
         typedef ft::reverse_iterat<value_type> reverse_iterator;
+        typedef ft::const_reverse_iterat<value_type> const_reverse_iterator;
 
         // constructors
         vector(size_type size) : size_(size)
@@ -129,6 +130,7 @@ namespace ft
 
         const_iterator end() const
         {
+            return cosnt_iterator(m_Data + size_);
         }
         reverse_iterator rbegin()
         {
@@ -137,6 +139,14 @@ namespace ft
         reverse_iterator rend()
         {
             return reverse_iterator(m_Data - 1);
+        }
+        const_reverse_iterator rbegin() const
+        {
+            return const_reverse_iterator(m_Data + size_ - 1);
+        }
+        const_reverse_iterator rend() const
+        {
+            return const_reverse_iterator(m_Data - 1);
         }
         //const_reverse_iterator rbegin() const
         // {
