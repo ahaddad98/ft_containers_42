@@ -163,10 +163,42 @@ namespace ft
         // void pop_back()
         // {
         // }
-        // iterator insert (iterator position, const value_type& val);
-        // void insert (iterator position, size_type n, const value_type& val);
+        iterator insert (iterator position, const value_type& val)
+        {
+            int i = 0;
+            T *m_Data1 = new T[size_ + 1];
+            for (iterator it = begin(); it != end() ;it++)
+            {
+                if (it == position)
+                {
+                    m_Data1[i] = val;
+                    i++;
+                    m_Data1[i] = *it;
+                    i++;
+                }
+                else
+                    m_Data1[i] = *it;
+                i++;
+            }
+            delete[] m_Data;
+            m_Data = new T[size_ + 1];
+            i = 0;
+            while (i < (size_ + 1))
+            {
+                m_Data[i] = m_Data1[i];
+                i++;
+            }
+            size_++;
+            delete[] m_Data1;
+            return end() +1;
+        } 
+        // void insert (iterator position, size_type n, const value_type& val)
+        // {
+        // }
         // template <class InputIterator>
-        // void insert (iterator position, InputIterator first, InputIterator last);
+        // void insert (iterator position, InputIterator first, InputIterator last)
+        // {
+        // }
         // iterator erase(iterator position);
         // iterator erase(iterator first, iterator last);
         // void swap (vector& x)

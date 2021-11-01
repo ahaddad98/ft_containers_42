@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/01 11:21:10 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/01 15:53:09 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,17 @@ int main()
     vect[1] = 3;
     vect[2] = 4;
 
-    for (ft::vector<int>::reverse_iterator i = vect.rbegin(); i != vect.rend(); i++)
+    // for (ft::vector<int>::iterator i = vect.begin(); i != vect.end(); i++)
+    // {
+    //     std::cout << *i << " ";
+    // }
+    // ft::vector<int>::iterator i = vect.begin();
+    std::cout << std::endl;
+    vect.insert(vect.begin()+2 , 6);
+    std::cout << "after insert" << std::endl;
+    for (ft::vector<int>::iterator i = vect.begin(); i != vect.end(); i++)
     {
         std::cout << *i << " ";
     }
-    std::cout << std::endl;
     return 0;
 }
-
-// int main()
-// {
-
-//     return 0;
-// }

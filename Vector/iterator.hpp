@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/01 11:52:01 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/01 15:42:44 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,30 @@ namespace ft
             ptr_++;
             return i;
         }
+        self_type operator--()
+        {
+            self_type i = *this;
+            ptr_--;
+            return i;
+        }
+        self_type operator+(int i)
+        {
+            // self_type i = *this;
+            // pointer ptr_1 = new value_type[size_];
+            // pointer ptr_1;
+            // std::cout << "123amine123" << std::endl;
+            ptr_ += i;
+            // std::cout <<  *ptr_ << "<=" << std::endl;
+            return *this;
+        }
         self_type operator++(int junk)
         {
             ptr_++;
+            return *this;
+        }
+        self_type operator--(int junk)
+        {
+            ptr_--;
             return *this;
         }
         reference operator*()
@@ -61,8 +82,9 @@ namespace ft
             return ptr_ != rhs.ptr_;
         }
 
-    private:
-        pointer ptr_;
+        private:
+            pointer ptr_;
+            size_t size_;
     };
     template <typename T>
     class const_iterator : public ft::Iterator_Traits<std::random_access_iterator_tag, T>
@@ -90,6 +112,7 @@ namespace ft
         }
         reference operator*()
         {
+            // std::cout << "amine123" << std::endl;
             return *ptr_;
         }
         // const reference operator*() { return *ptr_; }
@@ -108,6 +131,7 @@ namespace ft
 
     private:
         pointer ptr_;
+        size_t size_;
     };
     template <typename T>
     class reverse_iterat : public ft::Iterator_Traits<std::random_access_iterator_tag, T>
@@ -196,8 +220,8 @@ namespace ft
         {
             return ptr_ != rhs.ptr_;
         }
-    private:
-        pointer ptr_;
+        private:
+            pointer ptr_;
     };
 }
 
