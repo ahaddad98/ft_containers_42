@@ -178,12 +178,13 @@ namespace ft
             {
                 m_Data1[i] = val;
                 i++;
+                    std::cout << "im in insert" << std::endl;
             }
             else
             {
+                    std::cout << "im in insert" << std::endl;
                 for (iterator it = begin(); it != end() ;it++)
                 {
-                    // std::cout << "im in insert" << std::endl;
                     // if (it == (end() - 1))
                     // {
                     //     m_Data1[i] = val;
@@ -201,7 +202,8 @@ namespace ft
                     i++;
                 }
             }
-            delete[] m_Data;
+            delete m_Data;
+            std::cout << "amine haddad im here" << std::endl;
             m_Data = new T[size_ + 1];
             i = 0;
             while (i < (size_ + 1))
