@@ -175,7 +175,7 @@ namespace ft
             // pointer ptr = this->alloc.allocate(5);
             int i = 0;
             T *m_Data1 = this->alloc.allocate(size_ + 1);
-            std::cout << "im in insert" << std::endl;
+            // std::cout << "im in insert" << std::endl;
             if (size_ == 0)
             {
                 m_Data1[i] = val;
