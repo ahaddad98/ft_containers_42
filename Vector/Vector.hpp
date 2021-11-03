@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/31 13:19:35 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/03 15:34:00 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ class iterator;
 
 namespace ft
 {
-    template <typename T>
+    // template <typename T>
+    template <class T, class Alloc = std::allocator<T> >
     class vector
     {
     public:
@@ -34,9 +35,10 @@ namespace ft
         typedef T *pointer;
         typedef std::forward_iterator_tag iterator_category;
         typedef int difference_type;
+        typedef Alloc allocator_type;
 
-        // call of iterator class 
-        
+        // call of iterator class
+
         typedef ft::iterator<value_type> iterator;
         typedef ft::const_iterator<value_type> const_iterator;
         typedef ft::reverse_iterat<value_type> reverse_iterator;
@@ -153,7 +155,7 @@ namespace ft
         {
             return const_reverse_iterator(m_Data - 1);
         }
-        
+
         // Modifiers:
         // template <class InputIterator>
         // void assign (InputIterator first, InputIterator last)
@@ -162,15 +164,14 @@ namespace ft
         // void assign (size_type n, const value_type& val)
         // {
         // }
-        void push_back (const value_type& val)
+        void push_back(const value_type &val)
         {
-            insert(end() - 1, val);
+            insert(end(), val);
         }
         void pop_back()
         {
-
         }
-        iterator insert (iterator position, const value_type& val)
+        iterator insert(iterator position, const value_type &val)
         {
             int i = 0;
             T *m_Data1 = new T[size_ + 1];
@@ -178,12 +179,12 @@ namespace ft
             {
                 m_Data1[i] = val;
                 i++;
-                    std::cout << "im in insert" << std::endl;
+                std::cout << "im in insert" << std::endl;
             }
             else
             {
-                    std::cout << "im in insert" << std::endl;
-                for (iterator it = begin(); it != end() ;it++)
+                std::cout << "im in insert" << std::endl;
+                for (iterator it = begin(); it != end(); it++)
                 {
                     // if (it == (end() - 1))
                     // {
@@ -193,7 +194,7 @@ namespace ft
                     {
                         m_Data1[i] = val;
                         i++;
-                        if(i < (size_ + 1))
+                        if (i < (size_ + 1))
                             m_Data1[i] = *it;
                         i++;
                     }
@@ -202,7 +203,7 @@ namespace ft
                     i++;
                 }
             }
-            delete m_Data;
+            // delete m_Data;
             std::cout << "amine haddad im here" << std::endl;
             m_Data = new T[size_ + 1];
             i = 0;
@@ -213,8 +214,21 @@ namespace ft
             }
             size_++;
             delete[] m_Data1;
-            return end() +1;
-        } 
+            return end() + 1;
+        }
+        // void insert(iterator position, size_type n, const value_type &val)
+        // {
+            // std::cout << "Sz" << std::endl;
+            // size_type pos = position - begin();
+            // if (_size + n > _capacity)
+            //     reserve(_size + n);
+            // std::memmove(&_container[pos + n], &_container[pos], (_size - pos) * sizeof(value_type));
+            // for (size_type i = pos; i < pos + n; ++i)
+            // {
+            //     _container[i] = val;
+            // }
+            // _size += n;
+        // }
         // void insert (iterator position, size_type n, const value_type& val)
         // {
         // }

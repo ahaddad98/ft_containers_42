@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/01 17:42:19 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/03 14:00:05 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
     ft::vector<int> vect;
     vect.push_back(2);
     vect.push_back(23);
-    // vect.push_back(4);
+    vect.push_back(4);
     // // vect[1] = 3;
     // // vect[2] = 4;
 
