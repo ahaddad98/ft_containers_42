@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/31 13:19:35 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/04 14:08:46 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class iterator;
 
 namespace ft
 {
-    template <class T, class Alloc = std::allocator<T> >
+    template <class T, class Alloc = std::allocator<T>>
     class vector
     {
     public:
@@ -35,8 +35,8 @@ namespace ft
         typedef std::forward_iterator_tag iterator_category;
         typedef int difference_type;
         typedef Alloc alloc_type;
-        // call of iterator class 
-        
+        // call of iterator class
+
         typedef ft::iterator<value_type> iterator;
         typedef ft::const_iterator<value_type> const_iterator;
         typedef ft::reverse_iterat<value_type> reverse_iterator;
@@ -46,11 +46,18 @@ namespace ft
         vector() : size_(0)
         {
             std::cout << "im in vect defaul constructor" << std::endl;
+            
             // m_Data = new T[size_];
         }
         vector(size_type size) : size_(size)
         {
             m_Data = new T[size_];
+        }
+
+        ~vector()
+        {
+            if (size_ > 0)
+                this->alloc.deallocate(m_Data, size_);
         }
 
         // Capacity:
@@ -153,7 +160,7 @@ namespace ft
         {
             return const_reverse_iterator(m_Data - 1);
         }
-        
+
         // Modifiers:
         // template <class InputIterator>
         // void assign (InputIterator first, InputIterator last)
@@ -162,20 +169,17 @@ namespace ft
         // void assign (size_type n, const value_type& val)
         // {
         // }
-        void push_back (const value_type& val)
+        void push_back(const value_type &val)
         {
             insert(end(), val);
         }
         void pop_back()
         {
-
         }
-        iterator insert (iterator position, const value_type& val)
+        iterator insert(iterator position, const value_type &val)
         {
-            // pointer ptr = this->alloc.allocate(5);
             int i = 0;
             T *m_Data1 = this->alloc.allocate(size_ + 1);
-            // std::cout << "im in insert" << std::endl;
             if (size_ == 0)
             {
                 m_Data1[i] = val;
@@ -185,7 +189,7 @@ namespace ft
             {
                 if (position == end())
                 {
-                    for (iterator it = begin(); it != end() ;it++)
+                    for (iterator it = begin(); it != end(); it++)
                     {
                         m_Data1[i] = *it;
                         i++;
@@ -194,13 +198,13 @@ namespace ft
                 }
                 else
                 {
-                    for (iterator it = begin(); it != end() ;it++)
+                    for (iterator it = begin(); it != end(); it++)
                     {
                         if (it == position)
                         {
                             m_Data1[i] = val;
                             i++;
-                            if(i < (size_ + 1))
+                            if (i < (size_ + 1))
                                 m_Data1[i] = *it;
                             i++;
                         }
@@ -210,7 +214,11 @@ namespace ft
                     }
                 }
             }
-            // delete[] m_Data;
+            if (size_ > 0)
+            {
+                this->alloc.destroy(m_Data);
+                this->alloc.deallocate(m_Data, size_);
+            }
             m_Data = this->alloc.allocate(size_ + 1);
             i = 0;
             while (i < (size_ + 1))
@@ -218,10 +226,11 @@ namespace ft
                 m_Data[i] = m_Data1[i];
                 i++;
             }
-            size_++;
-            delete[] m_Data1;
-            return end() +1;
-        } 
+            size_ += 1;
+            this->alloc.destroy(m_Data1);
+            this->alloc.deallocate(m_Data1, size_);
+            return end() + 1;
+        }
         // void insert (iterator position, size_type n, const value_type& val)
         // {
         // }
