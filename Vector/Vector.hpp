@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/04 14:54:16 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/04 21:05:32 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ namespace ft
         typedef ft::const_reverse_iterat<value_type> const_reverse_iterator;
 
         // constructors
-        vector() : size_(0)
+        vector() : size_(0), capacity_(0)
         {
             std::cout << "im in vect defaul constructor" << std::endl;
-            
+
             // m_Data = new T[size_];
         }
         vector(size_type size) : size_(size)
@@ -81,12 +81,12 @@ namespace ft
         }
         bool empty() const
         {
-            // pas encore
+            return (this->size_ == 0);
         }
-        void reserve(size_type n)
-        {
-            // pas encore
-        }
+        // void reserve(size_type n)
+        // {
+        //     // pas encore
+        // }
 
         // Element access:
         T &operator[](size_type index)
@@ -169,24 +169,55 @@ namespace ft
         // void assign (size_type n, const value_type& val)
         // {
         // }
+        void reserve(size_type n)
+        {
+            // if (n > this->max_size())
+            // 	throw std::length_error("trying to reserve with n > max_size");
+            // if (n > this->vec_capacity)
+            // {
+            if (n > this->capacity_)
+            {
+                pointer tmp = this->alloc.allocate(n);
+                size_type i = 0;
+
+                while (i < this->size_)
+                {
+                    this->alloc.construct(&(tmp[i]), this->m_Data[i]);
+                    i++;
+                }
+                this->alloc.destroy(this->m_Data);
+                this->alloc.deallocate(this->m_Data, this->capacity_);
+                this->m_Data = tmp;
+                this->capacity_ = n;
+            }
+        }
         void push_back(const value_type &val)
         {
-            insert(end(), val);
+            // insert(end(), val);
+            (void)val;
+            if (this->size_ >= this->capacity_)
+                ft_reallocate();
+            this->alloc.construct(&(this->m_Data[this->size_]), val);
+            this->size_ = this->size_ + 1;
         }
         void pop_back()
         {
         }
         iterator insert(iterator position, const value_type &val)
         {
-            int i = 0;
-            T *m_Data1 = this->alloc.allocate(size_ + 1);
             if (size_ == 0)
             {
-                m_Data1[i] = val;
-                i++;
+                capacity_ = 1;
+                m_Data = this->alloc.allocate(capacity_);
+                m_Data[size_] = val;
+                size_ += 1;
             }
-            else
+            else if (size_ == capacity_)
             {
+                capacity_ = capacity_ * 2;
+                T *m_Data1 = this->alloc.allocate(capacity_);
+                int i = 0;
+                int tmp_size = size_;
                 if (position == end())
                 {
                     for (iterator it = begin(); it != end(); it++)
@@ -195,45 +226,96 @@ namespace ft
                         i++;
                     }
                     m_Data1[i] = val;
+                    for (int j = 0; j < size_; j++)
+                    {
+                        this->alloc.destroy(m_Data + j);
+                    }
+                    this->alloc.deallocate(m_Data, size_);
+                    size_++;
+                    m_Data = m_Data1;
                 }
                 else
                 {
                     for (iterator it = begin(); it != end(); it++)
                     {
-                        if (it == position)
+                        if (position == begin())
+                        {
+                            std::cout << "im here" << std::endl;
+                            m_Data1[i] = val;
+                            i++;
+                        }
+                        m_Data1[i] = *it;
+                        i++;
+                    }
+                    for (int j = 0; j < size_; j++)
+                    {
+                        this->alloc.destroy(m_Data + j);
+                    }
+                    this->alloc.deallocate(m_Data, size_);
+                    size_++;
+                    m_Data = m_Data1;
+                }
+            }
+            else
+            {
+                T *m_Data1 = this->alloc.allocate(capacity_);
+                int i = 0;
+                if (position == end())
+                {
+                    int tmp_size = size_;
+                    for (iterator it = begin(); it != end(); it++)
+                    {
+                        m_Data1[i] = *it;
+                        i++;
+                    }
+                    m_Data1[i] = val;
+                    for (int j = 0; j < size_; j++)
+                    {
+                        this->alloc.destroy(m_Data + j);
+                    }
+                    this->alloc.deallocate(m_Data, size_);
+                    size_++;
+                    m_Data = m_Data1;
+                }
+                else
+                {
+                    i = 0;
+                    for (iterator it = begin(); it != end(); it++)
+                    {
+                        if (position == it)
                         {
                             m_Data1[i] = val;
                             i++;
-                            if (i < (size_ + 1))
-                                m_Data1[i] = *it;
-                            i++;
                         }
-                        else
-                            m_Data1[i] = *it;
+                        m_Data1[i] = *it;
                         i++;
                     }
+                    for (int j = 0; j < size_; j++)
+                    {
+                        this->alloc.destroy(m_Data + j);
+                    }
+                    this->alloc.deallocate(m_Data, size_);
+                    size_++;
+                    m_Data = m_Data1;
                 }
             }
-            if (size_ > 0)
-            {
-                this->alloc.destroy(m_Data);
-                this->alloc.deallocate(m_Data, size_);
-            }
-            m_Data = this->alloc.allocate(size_ + 1);
-            i = 0;
-            while (i < (size_ + 1))
-            {
-                m_Data[i] = m_Data1[i];
-                i++;
-            }
-            size_ += 1;
-            this->alloc.destroy(m_Data1);
-            this->alloc.deallocate(m_Data1, size_);
             return begin();
         }
-        // void insert (iterator position, size_type n, const value_type& val)
-        // {
-        // }
+        // fill
+        void insert(iterator position, size_type n, const value_type &val)
+        {
+            int i = 0;
+            iterator position_tmp = position;
+            while (i < n)
+            {
+                // std::cout << "====================" << std::endl;
+                // if (position == begin())
+                // std::cout << "==>" << val << std::endl;
+                insert(position, val);
+                position++;
+                i++;
+            }
+        }
         // template <class InputIterator>
         // void insert (iterator position, InputIterator first, InputIterator last)
         // {
@@ -272,11 +354,32 @@ namespace ft
         // template <class T, class Alloc = allocator<T>>
         // class vector; // generic template
         // template <class Alloc>
-        // class vector<bool, Alloc>; // bool specialization
+        // class vector<bool, Alloc>; // bool specialization\
+
+        // utils
+        void ft_reallocate()
+        {
+            if (this->empty())
+            {
+                this->m_Data = this->alloc.allocate(1);
+                this->capacity_ = 1;
+                return;
+            }
+            this->reserve(this->capacity_ * 2);
+        }
+
     private:
         T *m_Data;
         size_type size_;
         alloc_type alloc;
+
+    public:
+        size_type capacity_;
+        // getters
+        // size_type Capac()
+        // {
+        //     return capacity_;
+        // }
     };
 }
 #endif
