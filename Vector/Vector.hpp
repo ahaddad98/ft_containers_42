@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/04 14:08:46 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/04 14:54:16 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,7 @@ namespace ft
             size_ += 1;
             this->alloc.destroy(m_Data1);
             this->alloc.deallocate(m_Data1, size_);
-            return end() + 1;
+            return begin();
         }
         // void insert (iterator position, size_type n, const value_type& val)
         // {
