@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/05 13:06:10 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/05 14:43:25 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,38 @@ int main()
     //         std::cout << "capacity changed: " << sz << '\n';
     //     }
     // }
+    
+    std::cout << "========== ft::vector =======" << std::endl;
+
+    ft::vector<int> vec;
+    vec.push_back(10);
+    vec.push_back(20);
+    vec.push_back(20);
+    vec.push_back(20);
+    vec.push_back(20);
+    vec.push_back(20);
+    vec.resize(50, 100);
+    for (ft::vector<int>::iterator i = vec.begin(); i != vec.end(); i++)
+    {
+        std::cout << *i << " ";
+    }
+    std::cout << std::endl;
+    std::cout << vec.size() << std::endl;
+    std::cout << vec.capacity() << std::endl;
+    
+    
+
+
+    std::cout << "============ std::vector =========" << std::endl;
+
     std::vector<int> vect;
     vect.push_back(10);
     vect.push_back(20);
-    vect.resize(4, 100);
+    vect.push_back(20);
+    vect.push_back(20);
+    vect.push_back(20);
+    vect.push_back(20);
+    vect.resize(50, 100);
     for (std::vector<int>::iterator i = vect.begin(); i != vect.end(); i++)
     {
         std::cout << *i << " ";

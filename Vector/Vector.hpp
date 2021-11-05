@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/05 13:05:08 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/05 14:46:22 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,37 @@ namespace ft
         }
         void resize (size_type n, value_type val = value_type())
         {
+            if (n > size_)
+            {
+                size_type tmp_size = size_;
+                pointer tmp = this->alloc.allocate(n);
+                size_type i = 0;
+
+                while (i < tmp_size)
+                {
+                    tmp[i] = m_Data[i];
+                    i++;
+                }
+                while (tmp_size < n)
+                {
+                    tmp[tmp_size] = val;
+                    tmp_size++;
+                }
+                this->alloc.destroy(this->m_Data);
+                this->alloc.deallocate(this->m_Data, this->capacity_);
+                this->m_Data = tmp;
+                size_ = n;
+                this->capacity_ = n;
+            }
+            else
+            {
+                size_ = n;
+            }
         }
         //
         size_type capacity() const
         {
-            // pas encore
-            return 0;
+            return capacity_;
         }
         bool empty() const
         {
