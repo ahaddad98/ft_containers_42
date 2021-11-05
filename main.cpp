@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/05 20:37:26 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/05 20:50:14 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,15 +147,15 @@ int main()
     
     std::cout << "============ std::vector =========" << std::endl;
     std::vector<int> first1;
-    first1.push_back(10);
-    first1.push_back(20);
-    first1.push_back(20);
-    first1.push_back(20);
-    first1.push_back(20);
-    first1.push_back(20);
-    first1.push_back(20);
-    first1.push_back(20);
-    first1.push_back(20);
+    // first1.push_back(10);
+    // first1.push_back(20);
+    // first1.push_back(20);
+    // first1.push_back(20);
+    // first1.push_back(20);
+    // first1.push_back(20);
+    // first1.push_back(20);
+    // first1.push_back(20);
+    // first1.push_back(20);
     // first1.push_back(20);
     // first1.push_back(20);
     // first1.push_back(20);
