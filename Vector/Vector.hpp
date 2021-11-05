@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/05 15:24:48 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/05 20:28:53 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,13 +208,30 @@ namespace ft
 
 
         // Modifiers:
-        // template <class InputIterator>
-        // void assign (InputIterator first, InputIterator last)
-        // {
-        // }
-        // void assign (size_type n, const value_type& val)
-        // {
-        // }
+        template <class InputIterator>
+        void assign (InputIterator first, InputIterator last)
+        {
+            // if ()
+        }
+        void assign (size_type n, const value_type& val)
+        {
+            if (n > capacity_)
+            {
+                size_ = n;
+                capacity_ =n;
+                reserve(capacity_);
+                int i  = 0;
+                while (i < n)
+                {
+                    m_Data[i] = val;
+                    i++;
+                }
+            }
+            else
+            {
+                
+            }
+        }
         void push_back(const value_type &val)
         {
             // insert(end(), val);
@@ -226,6 +243,7 @@ namespace ft
         }
         void pop_back()
         {
+            
         }
         iterator insert(iterator position, const value_type &val)
         {
@@ -300,7 +318,7 @@ namespace ft
                 position++;
                 i++;
             }
-        }
+        } 
         // template <class InputIterator>
         // void insert (iterator position, InputIterator first, InputIterator last)
         // {
@@ -339,7 +357,7 @@ namespace ft
         // template <class T, class Alloc = allocator<T>>
         // class vector; // generic template
         // template <class Alloc>
-        // class vector<bool, Alloc>; // bool specialization\
+        // class vector<bool, Alloc>; // bool specialization
 
         // utils
         void my_realloc()
