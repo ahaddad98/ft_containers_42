@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/05 14:43:25 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/05 15:22:45 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,22 @@ int main()
     vec.push_back(20);
     vec.push_back(20);
     vec.push_back(20);
-    vec.resize(50, 100);
+    int j = 0;
     for (ft::vector<int>::iterator i = vec.begin(); i != vec.end(); i++)
     {
-        std::cout << *i << " ";
+        
+        vec.at(j) = j;
+        j++;
+    }
+    for (ft::vector<int>::iterator i = vec.begin(); i != vec.end(); i++)
+    {
+        
+        std::cout << *i << std::endl;
+        j++;
     }
     std::cout << std::endl;
-    std::cout << vec.size() << std::endl;
-    std::cout << vec.capacity() << std::endl;
+    // std::cout << vec.size() << std::endl;
+    // std::cout << vec.capacity() << std::endl;
     
     
 
@@ -89,14 +97,20 @@ int main()
     vect.push_back(20);
     vect.push_back(20);
     vect.push_back(20);
-    vect.resize(50, 100);
+    
+    j = 0;
     for (std::vector<int>::iterator i = vect.begin(); i != vect.end(); i++)
     {
-        std::cout << *i << " ";
+        
+        vect.at(j) = j;
+        j++;
+    }
+    for (std::vector<int>::iterator i = vect.begin(); i != vect.end(); i++)
+    {
+        
+        std::cout << *i << std::endl;
+        j++;
     }
     std::cout << std::endl;
-    std::cout << vect.size() << std::endl;
-    std::cout << vect.capacity() << std::endl;
-    
     return 0;
 }

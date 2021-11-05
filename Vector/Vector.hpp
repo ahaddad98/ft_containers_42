@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/05 14:46:22 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/05 15:22:04 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,43 @@ namespace ft
                 this->alloc.deallocate(m_Data, size_);
         }
 
+        // Iterators:
+        iterator begin()
+        {
+            return iterator(m_Data);
+        }
+
+        iterator end()
+        {
+            return iterator(m_Data + size_);
+        }
+
+        const_iterator begin() const
+        {
+            return const_iterator(m_Data);
+        }
+
+        const_iterator end() const
+        {
+            return cosnt_iterator(m_Data + size_);
+        }
+        reverse_iterator rbegin()
+        {
+            return reverse_iterator(m_Data + size_ - 1);
+        }
+        reverse_iterator rend()
+        {
+            return reverse_iterator(m_Data - 1);
+        }
+        const_reverse_iterator rbegin() const
+        {
+            return const_reverse_iterator(m_Data + size_ - 1);
+        }
+        const_reverse_iterator rend() const
+        {
+            return const_reverse_iterator(m_Data - 1);
+        }
+        
         // Capacity:
         size_type size() const
         {
@@ -113,10 +150,24 @@ namespace ft
         {
             return (this->size_ == 0);
         }
-        // void reserve(size_type n)
-        // {
-        //     // pas encore
-        // }
+        void reserve(size_type n)
+        {
+            if (n > this->capacity_)
+            {
+                pointer tmp = this->alloc.allocate(n);
+                size_type i = 0;
+
+                while (i < this->size_)
+                {
+                    this->alloc.construct(&(tmp[i]), this->m_Data[i]);
+                    i++;
+                }
+                this->alloc.destroy(this->m_Data);
+                this->alloc.deallocate(this->m_Data, this->capacity_);
+                this->m_Data = tmp;
+                this->capacity_ = n;
+            }
+        }
 
         // Element access:
         T &operator[](size_type index)
@@ -129,10 +180,10 @@ namespace ft
             assert(index < size_);
             return m_Data[index];
         }
-        // reference at (size_type n)
-        // {
-        //     // pas encore
-        // }
+        reference at (size_type n)
+        {
+            return m_Data[n];
+        }
         // const_reference at (size_type n) const
         // {
         //     // pas encore
@@ -154,42 +205,6 @@ namespace ft
         //     //  pas encore
         // }
 
-        // Iterators:
-        iterator begin()
-        {
-            return iterator(m_Data);
-        }
-
-        iterator end()
-        {
-            return iterator(m_Data + size_);
-        }
-
-        const_iterator begin() const
-        {
-            return const_iterator(m_Data);
-        }
-
-        const_iterator end() const
-        {
-            return cosnt_iterator(m_Data + size_);
-        }
-        reverse_iterator rbegin()
-        {
-            return reverse_iterator(m_Data + size_ - 1);
-        }
-        reverse_iterator rend()
-        {
-            return reverse_iterator(m_Data - 1);
-        }
-        const_reverse_iterator rbegin() const
-        {
-            return const_reverse_iterator(m_Data + size_ - 1);
-        }
-        const_reverse_iterator rend() const
-        {
-            return const_reverse_iterator(m_Data - 1);
-        }
 
         // Modifiers:
         // template <class InputIterator>
@@ -199,28 +214,6 @@ namespace ft
         // void assign (size_type n, const value_type& val)
         // {
         // }
-        void reserve(size_type n)
-        {
-            // if (n > this->max_size())
-            // 	throw std::length_error("trying to reserve with n > max_size");
-            // if (n > this->vec_capacity)
-            // {
-            if (n > this->capacity_)
-            {
-                pointer tmp = this->alloc.allocate(n);
-                size_type i = 0;
-
-                while (i < this->size_)
-                {
-                    this->alloc.construct(&(tmp[i]), this->m_Data[i]);
-                    i++;
-                }
-                this->alloc.destroy(this->m_Data);
-                this->alloc.deallocate(this->m_Data, this->capacity_);
-                this->m_Data = tmp;
-                this->capacity_ = n;
-            }
-        }
         void push_back(const value_type &val)
         {
             // insert(end(), val);
