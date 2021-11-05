@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/05 20:28:53 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/05 20:36:45 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,19 +217,25 @@ namespace ft
         {
             if (n > capacity_)
             {
-                size_ = n;
-                capacity_ =n;
-                reserve(capacity_);
+                reserve(n);
                 int i  = 0;
                 while (i < n)
                 {
                     m_Data[i] = val;
                     i++;
                 }
+                size_ = n;
+                capacity_ =n;
             }
             else
             {
-                
+                size_ = n;
+                int i  = 0;
+                while (i < n)
+                {
+                    m_Data[i] = val;
+                    i++;
+                }
             }
         }
         void push_back(const value_type &val)
