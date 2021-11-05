@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/04 21:05:32 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/05 13:05:08 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class iterator;
 
 namespace ft
 {
-    template <class T, class Alloc = std::allocator<T>>
+    template <class T, class Alloc = std::allocator<T> >
     class vector
     {
     public:
@@ -43,17 +43,23 @@ namespace ft
         typedef ft::const_reverse_iterat<value_type> const_reverse_iterator;
 
         // constructors
-        vector() : size_(0), capacity_(0)
+            // empty container constructor (default constructor)
+        explicit vector (const alloc_type& alloc = alloc_type()) : size_(0), capacity_(0)
         {
-            std::cout << "im in vect defaul constructor" << std::endl;
-
-            // m_Data = new T[size_];
         }
-        vector(size_type size) : size_(size)
+            // (2) fill constructor
+        explicit vector (size_type n, const value_type& val = value_type(), const alloc_type& alloc = alloc_type())
         {
-            m_Data = new T[size_];
         }
-
+            // (3) range constructor
+        template <class InputIterator>
+        vector (InputIterator first, InputIterator last, const alloc_type& alloc = alloc_type())
+        {
+        }
+        vector (const vector& x)
+        {   
+        }
+        // destructor
         ~vector()
         {
             if (size_ > 0)
@@ -67,12 +73,11 @@ namespace ft
         }
         size_type max_size() const
         {
-            // pas encore
-            return 0;
+            return this->alloc.maxsize();
         }
-        // void resize (size_type n, value_type val = value_type())
-        // {
-        // }
+        void resize (size_type n, value_type val = value_type())
+        {
+        }
         //
         size_type capacity() const
         {
@@ -196,7 +201,7 @@ namespace ft
             // insert(end(), val);
             (void)val;
             if (this->size_ >= this->capacity_)
-                ft_reallocate();
+                my_realloc();
             this->alloc.construct(&(this->m_Data[this->size_]), val);
             this->size_ = this->size_ + 1;
         }
@@ -218,24 +223,6 @@ namespace ft
                 T *m_Data1 = this->alloc.allocate(capacity_);
                 int i = 0;
                 int tmp_size = size_;
-                if (position == end())
-                {
-                    for (iterator it = begin(); it != end(); it++)
-                    {
-                        m_Data1[i] = *it;
-                        i++;
-                    }
-                    m_Data1[i] = val;
-                    for (int j = 0; j < size_; j++)
-                    {
-                        this->alloc.destroy(m_Data + j);
-                    }
-                    this->alloc.deallocate(m_Data, size_);
-                    size_++;
-                    m_Data = m_Data1;
-                }
-                else
-                {
                     for (iterator it = begin(); it != end(); it++)
                     {
                         if (position == begin())
@@ -254,31 +241,11 @@ namespace ft
                     this->alloc.deallocate(m_Data, size_);
                     size_++;
                     m_Data = m_Data1;
-                }
             }
             else
             {
                 T *m_Data1 = this->alloc.allocate(capacity_);
                 int i = 0;
-                if (position == end())
-                {
-                    int tmp_size = size_;
-                    for (iterator it = begin(); it != end(); it++)
-                    {
-                        m_Data1[i] = *it;
-                        i++;
-                    }
-                    m_Data1[i] = val;
-                    for (int j = 0; j < size_; j++)
-                    {
-                        this->alloc.destroy(m_Data + j);
-                    }
-                    this->alloc.deallocate(m_Data, size_);
-                    size_++;
-                    m_Data = m_Data1;
-                }
-                else
-                {
                     i = 0;
                     for (iterator it = begin(); it != end(); it++)
                     {
@@ -297,7 +264,6 @@ namespace ft
                     this->alloc.deallocate(m_Data, size_);
                     size_++;
                     m_Data = m_Data1;
-                }
             }
             return begin();
         }
@@ -357,7 +323,7 @@ namespace ft
         // class vector<bool, Alloc>; // bool specialization\
 
         // utils
-        void ft_reallocate()
+        void my_realloc()
         {
             if (this->empty())
             {
@@ -381,5 +347,5 @@ namespace ft
         //     return capacity_;
         // }
     };
-}
+    }
 #endif

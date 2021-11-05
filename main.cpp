@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/04 20:55:51 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/05 13:06:10 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,16 @@
 
 int main()
 {
-    ft::vector<int> vect;
+    // ft::vector<int> vect;
     // vect.push_back(10);
     // vect.push_back(20);
     // vect.push_back(30);
 
+
+    // std::vector<int> first;                                // empty vector of ints
+    // std::vector<int> second (4,100);                       // four ints with value 100
+    // std::vector<int> third (second.begin(),second.end());  // iterating through second
+    // std::vector<int> fourth (third);                       // a copy of third
     // vect.insert(vect.begin(), 2, 3);
     // vect.insert(vect.begin(), 1, 3);
     // vect.insert(vect.begin(), 2, 4);
@@ -41,17 +46,29 @@ int main()
     // {
     //     std::cout << *i << " ";
     // }
-    size_t sz = vect.capacity_;
-    vect.reserve(100);
-    std::cout << "making bar grow:\n";
-    for (int i = 0; i < 100; ++i)
+    // size_t sz = vect.capacity_;
+    // vect.reserve(100);
+    // std::cout << "making bar grow:\n";
+    // for (int i = 0; i < 100; ++i)
+    // {
+    //     vect.push_back(i);
+    //     if (sz != vect.capacity_)
+    //     {
+    //         sz = vect.capacity_;
+    //         std::cout << "capacity changed: " << sz << '\n';
+    //     }
+    // }
+    std::vector<int> vect;
+    vect.push_back(10);
+    vect.push_back(20);
+    vect.resize(4, 100);
+    for (std::vector<int>::iterator i = vect.begin(); i != vect.end(); i++)
     {
-        vect.push_back(i);
-        if (sz != vect.capacity_)
-        {
-            sz = vect.capacity_;
-            std::cout << "capacity changed: " << sz << '\n';
-        }
+        std::cout << *i << " ";
     }
+    std::cout << std::endl;
+    std::cout << vect.size() << std::endl;
+    std::cout << vect.capacity() << std::endl;
+    
     return 0;
 }
