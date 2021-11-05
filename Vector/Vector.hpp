@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/05 15:22:04 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/05 15:24:48 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ namespace ft
         typedef ::iterator self_type;
         typedef T value_type;
         typedef T &reference;
+        typedef T &const_reference;
         typedef T *pointer;
         typedef std::forward_iterator_tag iterator_category;
         typedef int difference_type;
@@ -184,26 +185,26 @@ namespace ft
         {
             return m_Data[n];
         }
-        // const_reference at (size_type n) const
-        // {
-        //     // pas encore
-        // }
-        // reference front()
-        // {
-        //     // pas encore
-        // }
-        // const_reference front() const
-        // {
-        //     // pas encore
-        // }
-        // reference back()
-        // {
-        //     //  pas encore
-        // }
-        // const_reference back() const
-        // {
-        //     //  pas encore
-        // }
+        const_reference at (size_type n) const
+        {
+            return m_Data[n];
+        }
+        reference front()
+        {
+            return m_Data[0];
+        }
+        const_reference front() const
+        {
+            return m_Data[0];
+        }
+        reference back()
+        {
+            return m_Data[size_ -1];
+        }
+        const_reference back() const
+        {
+            return m_Data[size_ -1];
+        }
 
 
         // Modifiers:
