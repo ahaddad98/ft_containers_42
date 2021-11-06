@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/06 16:07:30 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/06 19:00:37 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,22 @@ namespace ft
         bool operator!=(const self_type &rhs)
         {
             return ptr_ != rhs.ptr_;
+        }
+        bool operator>=(const self_type &rhs)
+        {
+            return (ptr_ >= rhs.ptr_);
+        }
+        bool operator<=(const self_type &rhs)
+        {
+            return (ptr_ <= rhs.ptr_);
+        }
+        bool operator>(const self_type &rhs)
+        {
+            return (ptr_ > rhs.ptr_);
+        }
+        bool operator<(const self_type &rhs)
+        {
+            return (ptr_ < rhs.ptr_);
         }
 
         private:
