@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/06 13:02:56 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/06 15:33:23 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,54 +172,54 @@ int main()
 
     // vector assign
 
-    std::cout << "=================== ft::vector ====================" << std::endl;
-    ft::vector<int> first1;
-    ft::vector<int> second1;
-    second1.push_back(10);
-    second1.push_back(10);
-    second1.push_back(10);
-    second1.push_back(10);
-    second1.push_back(10);
-    second1.push_back(10);
-    second1.push_back(10);
-    second1.push_back(10);
+    // std::cout << "=================== ft::vector ====================" << std::endl;
+    // ft::vector<int> first1;
+    // ft::vector<int> second1;
     // second1.push_back(10);
-    // std::vector<int> third;
-    first1.assign (7,100);             // 7 ints with a value of 100
-    ft::vector<int>::iterator it=first1.begin()+1;
-    it=first1.begin()+1;
-    second1.assign (it,first1.end()-1); // the 5 central values of first
-    for (ft::vector<int>::iterator it = second1.begin(); it != second1.end(); it++)
-    {
-        std::cout << *it << std::endl;
-    }
-    std::cout << std::endl;
-    std::cout << "size = " << second1.size() << std::endl;
-    std::cout << "capacity = " << second1.capacity() << std::endl;
-    std::cout << "=================== std::vector ====================" << std::endl;
-    std::vector<int> first;
-    std::vector<int> second;
-    second.push_back(10);
-    second.push_back(10);
-    second.push_back(10);
-    second.push_back(10);
-    second.push_back(10);
-    second.push_back(10);
-    second.push_back(10);
-    second.push_back(10);
+    // second1.push_back(10);
+    // second1.push_back(10);
+    // second1.push_back(10);
+    // second1.push_back(10);
+    // second1.push_back(10);
+    // second1.push_back(10);
+    // second1.push_back(10);
+    // // second1.push_back(10);
+    // // std::vector<int> third;
+    // first1.assign (7,100);             // 7 ints with a value of 100
+    // ft::vector<int>::iterator it=first1.begin()+1;
+    // it=first1.begin()+1;
+    // second1.assign (it,first1.end()-1); // the 5 central values of first
+    // for (ft::vector<int>::iterator it = second1.begin(); it != second1.end(); it++)
+    // {
+    //     std::cout << *it << std::endl;
+    // }
+    // std::cout << std::endl;
+    // std::cout << "size = " << second1.size() << std::endl;
+    // std::cout << "capacity = " << second1.capacity() << std::endl;
+    // std::cout << "=================== std::vector ====================" << std::endl;
+    // std::vector<int> first;
+    // std::vector<int> second;
     // second.push_back(10);
-    // std::vector<int> third;
-    first.assign (7,100);             // 7 ints with a value of 100
-    std::vector<int>::iterator it1;
-    it1=first.begin()+1;
-    second.assign (it1,first.end()-1); // the 5 central values of first
-    for (std::vector<int>::iterator it = second.begin(); it != second.end(); it++)
-    {
-        std::cout << *it << std::endl;
-    }
-    std::cout << std::endl;
-    std::cout << "size = " << second.size() << std::endl;
-    std::cout << "capacity = " << second.capacity() << std::endl;
+    // second.push_back(10);
+    // second.push_back(10);
+    // second.push_back(10);
+    // second.push_back(10);
+    // second.push_back(10);
+    // second.push_back(10);
+    // second.push_back(10);
+    // // second.push_back(10);
+    // // std::vector<int> third;
+    // first.assign (7,100);             // 7 ints with a value of 100
+    // std::vector<int>::iterator it1;
+    // it1=first.begin()+1;
+    // second.assign (it1,first.end()-1); // the 5 central values of first
+    // for (std::vector<int>::iterator it = second.begin(); it != second.end(); it++)
+    // {
+    //     std::cout << *it << std::endl;
+    // }
+    // std::cout << std::endl;
+    // std::cout << "size = " << second.size() << std::endl;
+    // std::cout << "capacity = " << second.capacity() << std::endl;
 
 
     // int myints[] = {1776,7,4};
@@ -228,6 +228,40 @@ int main()
     // std::cout << "Size of first: " << int (first.size()) << '\n';
     // std::cout << "Size of second: " << int (second.size()) << '\n';
     // std::cout << "Size of third: " << int (third.size()) << '\n';
+    // erase vector
+    std::cout << "=================== ft::vector ====================" << std::endl;
+    ft::vector<int> vect;
+    vect.push_back(10);
+    vect.push_back(20);
+    vect.push_back(30);
+    std::cout << "size = " << vect.size() << std::endl;
+    std::cout << "capacity = " << vect.capacity() << std::endl;
+    ft::vector<int>::iterator it = vect.begin();
+    vect.erase(it+2);
+    for (ft::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
+    std::cout << std::endl;
+    std::cout << "size = " << vect.size() << std::endl;
+    std::cout << "capacity = " << vect.capacity() << std::endl;
+    std::cout << "=================== std::vector ====================" << std::endl;
+    std::vector<int> vect1;
+    vect1.push_back(10);
+    vect1.push_back(20);
+    vect1.push_back(30);
+    std::cout << "size = " << vect1.size() << std::endl;
+    std::cout << "capacity = " << vect1.capacity() << std::endl;
+    std::vector<int>::iterator it1 = vect1.begin();
+    vect1.erase(it1 + 2);
+    for (std::vector<int>::iterator it1 = vect1.begin(); it1 != vect1.end(); it1++)
+    {
+        std::cout << *it1 << std::endl;
+    }
+    std::cout << std::endl;
+    std::cout << "size = " << vect1.size() << std::endl;
+    std::cout << "capacity = " << vect1.capacity() << std::endl;
+    
     return 0;
 
 }

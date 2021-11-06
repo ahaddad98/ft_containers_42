@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/06 13:04:03 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/06 15:31:29 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -365,7 +365,27 @@ namespace ft
         }
         iterator erase(iterator position)
         {
-            
+            int j;
+            if (capacity_ > 0)
+            {
+                int i = 0;
+                for (iterator it = begin(); it != end(); it++)
+                {
+                    if (position == it)
+                        break;
+                    i++;
+                    *it++;
+                }
+                j = i;
+                while (i < size_)
+                {
+                    if ((i + 1) < size_)
+                        m_Data[i] = m_Data[i+1];
+                    i++;
+                }
+                size_ -= 1;
+            }
+            return begin()+j;
         }
         iterator erase(iterator first, iterator last)
         {
