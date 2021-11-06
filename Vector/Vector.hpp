@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/05 20:36:45 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/06 13:02:19 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ namespace ft
         // destructor
         ~vector()
         {
-            if (size_ > 0)
-                this->alloc.deallocate(m_Data, size_);
+            // if (size_ > 0)
+                // this->alloc.deallocate(m_Data, size_);
         }
 
         // Iterators:
@@ -164,7 +164,8 @@ namespace ft
                     i++;
                 }
                 this->alloc.destroy(this->m_Data);
-                this->alloc.deallocate(this->m_Data, this->capacity_);
+                if (capacity_ > 0)
+                    this->alloc.deallocate(this->m_Data, this->capacity_);
                 this->m_Data = tmp;
                 this->capacity_ = n;
             }
@@ -211,7 +212,43 @@ namespace ft
         template <class InputIterator>
         void assign (InputIterator first, InputIterator last)
         {
-            // if ()
+            InputIterator it = first;
+            int i = 0;
+            // std::cout << "******************************************" << std::endl;
+            while (it != last)
+            {
+                // std::cout << *it << std::endl;
+                it++;
+                i++;
+            }
+            // std::cout << " i = " << i << std::endl;
+            // std::cout << "******************************************" << std::endl;
+            it = first;
+            assign(i , i);
+            if (i > capacity_)
+            {
+                reserve(i);
+                int j  = 0;
+                while (it != last)
+                {
+                    m_Data[j] = *it;
+                    it++;
+                    j++;
+                }
+                size_ = i;
+                capacity_ =i;
+            }
+            else
+            {
+                size_ = i;
+                int j  = 0;
+                while (it != last)
+                {
+                    m_Data[j] = *it;
+                    it++;
+                    j++;
+                }
+            }
         }
         void assign (size_type n, const value_type& val)
         {

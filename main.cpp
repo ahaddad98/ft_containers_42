@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/05 20:50:14 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/06 13:02:56 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,33 +120,33 @@ int main()
     
     
     
-    std::cout << "============ ft::vector =========" << std::endl;
-    ft::vector<int> first;
-    first.push_back(10);
-    first.push_back(20);
-    first.push_back(20);
-    first.push_back(20);
-    first.push_back(20);
-    first.push_back(20);
-    first.push_back(20);
-    first.push_back(20);
-    first.push_back(20);
+    // std::cout << "============ ft::vector =========" << std::endl;
+    // ft::vector<int> first;
+    // first.push_back(10);
     // first.push_back(20);
     // first.push_back(20);
     // first.push_back(20);
-    first.assign(8,100);
+    // first.push_back(20);
+    // first.push_back(20);
+    // first.push_back(20);
+    // first.push_back(20);
+    // first.push_back(20);
+    // first.push_back(20);
+    // first.push_back(20);
+    // first.push_back(20);
+    // first.assign(8,100);
     // ft::vector<int>::iterator it;
-    for (ft::vector<int>::iterator i = first.begin(); i != first.end(); i++)
-    {
+    // for (ft::vector<int>::iterator i = first.begin(); i != first.end(); i++)
+    // {
         
-        std::cout << *i << std::endl;
-        // j++;
-    }
-    std::cout << "size = " <<  first.size() << std::endl;
-    std::cout << "capacity = " <<first.capacity() << std::endl;
+    //     std::cout << *i << std::endl;
+    //     // j++;
+    // }
+    // std::cout << "size = " <<  first.size() << std::endl;
+    // std::cout << "capacity = " <<first.capacity() << std::endl;
     
-    std::cout << "============ std::vector =========" << std::endl;
-    std::vector<int> first1;
+    // std::cout << "============ std::vector =========" << std::endl;
+    // std::vector<int> first1;
     // first1.push_back(10);
     // first1.push_back(20);
     // first1.push_back(20);
@@ -159,15 +159,75 @@ int main()
     // first1.push_back(20);
     // first1.push_back(20);
     // first1.push_back(20);
-    first1.assign(8,100);
-    std::vector<int>::iterator it;
-    for (std::vector<int>::iterator i = first1.begin(); i != first1.end(); i++)
-    {
+    // first1.assign(8,100);
+    // std::vector<int>::iterator it;
+    // for (std::vector<int>::iterator i = first1.begin(); i != first1.end(); i++)
+    // {
         
-        std::cout << *i << std::endl;
-        // j++;
+    //     std::cout << *i << std::endl;
+    //     // j++;
+    // }
+    // std::cout << "size = " <<  first1.size() << std::endl;
+    // std::cout << "capacity = " <<first1.capacity() << std::endl;
+
+    // vector assign
+
+    std::cout << "=================== ft::vector ====================" << std::endl;
+    ft::vector<int> first1;
+    ft::vector<int> second1;
+    second1.push_back(10);
+    second1.push_back(10);
+    second1.push_back(10);
+    second1.push_back(10);
+    second1.push_back(10);
+    second1.push_back(10);
+    second1.push_back(10);
+    second1.push_back(10);
+    // second1.push_back(10);
+    // std::vector<int> third;
+    first1.assign (7,100);             // 7 ints with a value of 100
+    ft::vector<int>::iterator it=first1.begin()+1;
+    it=first1.begin()+1;
+    second1.assign (it,first1.end()-1); // the 5 central values of first
+    for (ft::vector<int>::iterator it = second1.begin(); it != second1.end(); it++)
+    {
+        std::cout << *it << std::endl;
     }
-    std::cout << "size = " <<  first1.size() << std::endl;
-    std::cout << "capacity = " <<first1.capacity() << std::endl;
+    std::cout << std::endl;
+    std::cout << "size = " << second1.size() << std::endl;
+    std::cout << "capacity = " << second1.capacity() << std::endl;
+    std::cout << "=================== std::vector ====================" << std::endl;
+    std::vector<int> first;
+    std::vector<int> second;
+    second.push_back(10);
+    second.push_back(10);
+    second.push_back(10);
+    second.push_back(10);
+    second.push_back(10);
+    second.push_back(10);
+    second.push_back(10);
+    second.push_back(10);
+    // second.push_back(10);
+    // std::vector<int> third;
+    first.assign (7,100);             // 7 ints with a value of 100
+    std::vector<int>::iterator it1;
+    it1=first.begin()+1;
+    second.assign (it1,first.end()-1); // the 5 central values of first
+    for (std::vector<int>::iterator it = second.begin(); it != second.end(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
+    std::cout << std::endl;
+    std::cout << "size = " << second.size() << std::endl;
+    std::cout << "capacity = " << second.capacity() << std::endl;
+
+
+    // int myints[] = {1776,7,4};
+    // third.assign (myints,myints+3);   // assigning from array.
+
+    // std::cout << "Size of first: " << int (first.size()) << '\n';
+    // std::cout << "Size of second: " << int (second.size()) << '\n';
+    // std::cout << "Size of third: " << int (third.size()) << '\n';
     return 0;
+
 }
