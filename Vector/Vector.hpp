@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/06 15:31:29 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/06 16:06:00 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -389,7 +389,21 @@ namespace ft
         }
         iterator erase(iterator first, iterator last)
         {
-            
+            iterator it = begin();
+            int i  = 0;
+            for (it = begin(); it != end(); it++)
+            {
+                if (it >= first || it <= last)
+                    continue;
+                else
+                {
+                    m_Data[i] = *it;
+                    it++;
+                    i++;
+                }
+            }
+            std::cout << "i = " << std::endl;
+            return last;
         }
         void swap (vector& x)
         {
@@ -397,7 +411,7 @@ namespace ft
         }
         void clear()
         {
-            
+            size_ = 0;
         }
 
         // allocators
