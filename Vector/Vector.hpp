@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/06 13:02:19 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/06 13:04:03 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,22 +354,31 @@ namespace ft
             iterator position_tmp = position;
             while (i < n)
             {
-                // std::cout << "====================" << std::endl;
-                // if (position == begin())
-                // std::cout << "==>" << val << std::endl;
                 insert(position, val);
                 position++;
                 i++;
             }
         } 
-        // template <class InputIterator>
-        // void insert (iterator position, InputIterator first, InputIterator last)
-        // {
-        // }
-        // iterator erase(iterator position);
-        // iterator erase(iterator first, iterator last);
-        // void swap (vector& x)
-        // void clear();
+        template <class InputIterator>
+        void insert (iterator position, InputIterator first, InputIterator last)
+        {
+        }
+        iterator erase(iterator position)
+        {
+            
+        }
+        iterator erase(iterator first, iterator last)
+        {
+            
+        }
+        void swap (vector& x)
+        {
+            
+        }
+        void clear()
+        {
+            
+        }
 
         // allocators
         // allocator_type get_allocator() const
