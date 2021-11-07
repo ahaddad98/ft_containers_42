@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/07 23:06:22 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/07 23:11:59 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ namespace ft
         ~vector()
         {
             if (size_ > 0)
-            this->alloc.deallocate(m_Data, size_);
+                this->alloc.deallocate(m_Data, size_);
         }
 
         // Iterators:
@@ -371,7 +371,7 @@ namespace ft
                 else
                     this->reserve(this->size() + n);
             }
-            position = iterator(this->m_Data+i);
+            position = iterator(this->m_Data + i);
             i = 0;
             while (i < n)
             {
@@ -383,6 +383,17 @@ namespace ft
         template <class InputIterator>
         void insert(iterator position, InputIterator first, InputIterator last)
         {
+            // size_type pos = position - begin();
+            // size_type s = last - first;
+
+            // if (_size + s > _capacity)
+            //     reserve(_size + s);
+            // position = begin() + pos;
+            // for (InputIterator it = first; it != last; ++it)
+            // {
+            //     position = insert(position, *it);
+            //     position++;
+            // }
         }
         iterator erase(iterator position)
         {
