@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/07 14:02:58 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/07 22:01:08 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,51 +300,61 @@ namespace ft
             }
             else if (size_ == capacity_)
             {
-                capacity_ = capacity_ * 2;
-                T *m_Data1 = this->alloc.allocate(capacity_);
-                int i = 0;
-                int tmp_size = size_;
-                for (iterator it = begin(); it != end(); it++)
+                if (position == end())
+                    push_back(val);
+                else
                 {
-                    if (position == begin())
+                    capacity_ = capacity_ * 2;
+                    T *m_Data1 = this->alloc.allocate(capacity_);
+                    int i = 0;
+                    int tmp_size = size_;
+                    for (iterator it = begin(); it != end(); it++)
                     {
-                        std::cout << "im here" << std::endl;
-                        m_Data1[i] = val;
+                        if (position == begin())
+                        {
+                            std::cout << "im here" << std::endl;
+                            m_Data1[i] = val;
+                            i++;
+                        }
+                        m_Data1[i] = *it;
                         i++;
                     }
-                    m_Data1[i] = *it;
-                    i++;
+                    for (int j = 0; j < size_; j++)
+                    {
+                        this->alloc.destroy(m_Data + j);
+                    }
+                    this->alloc.deallocate(m_Data, size_);
+                    size_++;
+                    m_Data = m_Data1;
                 }
-                for (int j = 0; j < size_; j++)
-                {
-                    this->alloc.destroy(m_Data + j);
-                }
-                this->alloc.deallocate(m_Data, size_);
-                size_++;
-                m_Data = m_Data1;
             }
             else
             {
-                T *m_Data1 = this->alloc.allocate(capacity_);
-                int i = 0;
-                i = 0;
-                for (iterator it = begin(); it != end(); it++)
+                if (position == end())
+                    push_back(val);
+                else
                 {
-                    if (position == it)
+                    T *m_Data1 = this->alloc.allocate(capacity_);
+                    int i = 0;
+                    i = 0;
+                    for (iterator it = begin(); it != end(); it++)
                     {
-                        m_Data1[i] = val;
+                        if (position == it)
+                        {
+                            m_Data1[i] = val;
+                            i++;
+                        }
+                        m_Data1[i] = *it;
                         i++;
                     }
-                    m_Data1[i] = *it;
-                    i++;
+                    for (int j = 0; j < size_; j++)
+                    {
+                        this->alloc.destroy(m_Data + j);
+                    }
+                    this->alloc.deallocate(m_Data, size_);
+                    size_++;
+                    m_Data = m_Data1;
                 }
-                for (int j = 0; j < size_; j++)
-                {
-                    this->alloc.destroy(m_Data + j);
-                }
-                this->alloc.deallocate(m_Data, size_);
-                size_++;
-                m_Data = m_Data1;
             }
             return begin();
         }
