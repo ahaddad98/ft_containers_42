@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/06 19:03:35 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/07 13:45:37 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -392,9 +392,9 @@ namespace ft
             iterator it = begin();
             int i  = 0;
             int j = 0;
-            for (it = begin(); it != end(); it++)
+            for (it = begin(); it != end()+1; it++)
             {
-                if (it >= first || it <= last)
+                if (it >= first && it < last)
                 {
                     j++;
                 }
@@ -405,7 +405,6 @@ namespace ft
                 }
             }
             size_ -= j;
-            std::cout << "j = " << j <<std::endl;
             return last;
         }
         void swap (vector& x)

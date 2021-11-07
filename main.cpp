@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/06 19:00:18 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/07 13:52:44 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,7 +274,7 @@ int main()
     std::cout << "size = " << vect.size() << std::endl;
     std::cout << "capacity = " << vect.capacity() << std::endl;
     ft::vector<int>::iterator it = vect.begin();
-    vect.erase(it + 1, vect.end()-1);
+    vect.erase(it + 1, vect.end()-2);
     for (ft::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)
     {
         std::cout << *it << std::endl;
@@ -295,7 +295,7 @@ int main()
     std::cout << "size = " << vect1.size() << std::endl;
     std::cout << "capacity = " << vect1.capacity() << std::endl;
     std::vector<int>::iterator it1 = vect1.begin();
-    vect1.erase(it1 + 1, vect1.end()-1);
+    vect1.erase(it1 + 1, vect1.end()-2);
     for (std::vector<int>::iterator it1 = vect1.begin(); it1 != vect1.end(); it1++)
     {
         std::cout << *it1 << std::endl;
