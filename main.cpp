@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/07 21:53:47 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/07 23:06:06 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,7 +361,7 @@ int main()
     vect.pop_back();
     vect.pop_back();
     vect.pop_back();
-    vect.insert(vect.end(), 5);
+    vect.insert(vect.begin()+1, 10, 5);
     // vect.insert(vect.begin()+2, 5);
     // vect.insert(vect.begin()+2, 5);
     // vect.insert(vect.begin()+2, 5);
@@ -389,7 +389,7 @@ int main()
     vect1.pop_back();
     vect1.pop_back();
     vect1.pop_back();
-    vect1.insert(vect1.end(), 5);
+    vect1.insert(vect1.begin()+1, 10, 5);
     // vect1.insert(vect1.begin()+2, 5);
     // vect1.insert(vect1.begin()+2, 5);
     // vect1.insert(vect1.begin()+2, 5);

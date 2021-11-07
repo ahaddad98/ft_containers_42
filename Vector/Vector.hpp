@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/07 22:01:08 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/07 23:06:22 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ namespace ft
         // destructor
         ~vector()
         {
-            // if (size_ > 0)
-            // this->alloc.deallocate(m_Data, size_);
+            if (size_ > 0)
+            this->alloc.deallocate(m_Data, size_);
         }
 
         // Iterators:
@@ -361,11 +361,21 @@ namespace ft
         // fill
         void insert(iterator position, size_type n, const value_type &val)
         {
-            int i = 0;
-            iterator position_tmp = position;
+            size_type i = 0;
+            while (i < this->size() && &(*position) != &(this->m_Data[i]))
+                i++;
+            if (this->capacity() < this->size() + n)
+            {
+                if (this->size() * 2 >= this->size() + n)
+                    this->reserve(this->size() * 2);
+                else
+                    this->reserve(this->size() + n);
+            }
+            position = iterator(this->m_Data+i);
+            i = 0;
             while (i < n)
             {
-                insert(position, val);
+                position = this->insert(position, val);
                 position++;
                 i++;
             }

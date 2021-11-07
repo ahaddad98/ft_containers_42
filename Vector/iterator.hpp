@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iterator.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/06 19:00:37 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/07 23:01:49 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,18 @@ namespace ft
         typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::iterator_categorie iterator_category;
 
         iterator(pointer ptr) : ptr_(ptr)
+        {
+        }
+        iterator(const iterator &it)
+        {
+            *this = it;
+        }
+        // iterator(pointer p, int crement = 0)
+        // {
+        //     this->ptr_ = p;
+        //     this->size_ = crement;
+        // }
+        ~iterator()
         {
         }
         self_type operator++()
@@ -98,9 +110,9 @@ namespace ft
             return (ptr_ < rhs.ptr_);
         }
 
-        private:
-            pointer ptr_;
-            size_t size_;
+    private:
+        pointer ptr_;
+        size_t size_;
     };
     template <typename T>
     class const_iterator : public ft::Iterator_Traits<std::random_access_iterator_tag, T>
@@ -193,7 +205,6 @@ namespace ft
 
     private:
         pointer ptr_;
-    
     };
     template <typename T>
     class const_reverse_iterat : public ft::Iterator_Traits<std::random_access_iterator_tag, T>
@@ -236,8 +247,9 @@ namespace ft
         {
             return ptr_ != rhs.ptr_;
         }
-        private:
-            pointer ptr_;
+
+    private:
+        pointer ptr_;
     };
 }
 
