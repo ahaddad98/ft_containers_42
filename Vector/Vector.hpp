@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/10 18:24:56 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/10 22:12:24 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,15 +216,11 @@ namespace ft
         {
             InputIterator it = first;
             int i = 0;
-            // std::cout << "******************************************" << std::endl;
             while (it != last)
             {
-                // std::cout << *it << std::endl;
                 it++;
                 i++;
             }
-            // std::cout << " i = " << i << std::endl;
-            // std::cout << "******************************************" << std::endl;
             it = first;
             assign(i, i);
             if (i > capacity_)
@@ -279,7 +275,6 @@ namespace ft
         }
         void push_back(const value_type &val)
         {
-            // insert(end(), val);
             (void)val;
             if (this->size_ >= this->capacity_)
                 my_realloc();
@@ -317,91 +312,7 @@ namespace ft
                     i--;
                 }
                 m_Data[i] = tmp;
-                // T *tmp = this->alloc.allocate(capacity_);
-                // int i = 0;
-                // while (i <= index_to_add)
-                // {
-                //     if (i == index_to_add)
-                //         tmp[i] = m_Data[size_-1];
-                //     else
-                //         tmp[i] = m_Data[i];
-                //     i++;
-                // }
-                // while (i < size_-1)
-                // {
-                //     tmp[i] = m_Data[i];
-                //     i++;
-                // }
-                // for (int j = 0; j < size_; j++)
-                // {
-                //     this->alloc.destroy(m_Data + j);
-                // }
-                // this->alloc.deallocate(m_Data, size_);
-                // m_Data = tmp;
-                // size_++;
-                // while (i < size_+1)
-                // {
-                // }
             }
-            // else if (size_ == capacity_)
-            // {  
-                
-                //     if (position == end())
-                //         push_back(val);
-                //     else
-                //     {
-                //         capacity_ = capacity_ * 2;
-                //         T *m_Data1 = this->alloc.allocate(capacity_);
-                //         int i = 0;
-                //         int tmp_size = size_;
-                //         for (iterator it = begin(); it != end(); it++)
-                //         {
-                //             if (position == begin())
-                //             {
-                //                 std::cout << "im here" << std::endl;
-                //                 m_Data1[i] = val;
-                //                 i++;
-                //             }
-                //             m_Data1[i] = *it;
-                //             i++;
-                //         }
-                //         for (int j = 0; j < size_; j++)
-                //         {
-                //             this->alloc.destroy(m_Data + j);
-                //         }
-                //         this->alloc.deallocate(m_Data, size_);
-                //         size_++;
-                //         m_Data = m_Data1;
-                //     }
-                // }
-                // else
-                // {
-                //     if (position == end())
-                //         push_back(val);
-                //     else
-                //     {
-                //         T *m_Data1 = this->alloc.allocate(capacity_);
-                //         int i = 0;
-                //         i = 0;
-                //         for (iterator it = begin(); it != end(); it++)
-                //         {
-                //             if (position == it)
-                //             {
-                //                 m_Data1[i] = val;
-                //                 i++;
-                //             }
-                //             m_Data1[i] = *it;
-                //             i++;
-                //         }
-                //         for (int j = 0; j < size_; j++)
-                //         {
-                //             this->alloc.destroy(m_Data + j);
-                //         }
-                //         this->alloc.deallocate(m_Data, size_);
-                //         size_++;
-                //         m_Data = m_Data1;
-                //     }
-            // }
             return begin();
         }
         // fill
@@ -410,14 +321,6 @@ namespace ft
             size_type i = 0;
             while (i < this->size() && &(*position) != &(this->m_Data[i]))
                 i++;
-            // if (this->capacity() < this->size() + n)
-            // {
-            //     std::cout << "im here " << std::endl;
-            //     if (this->size() * 2 >= this->size() + n)
-            //         this->reserve(this->size() * 2);
-            //     else
-            //         this->reserve(this->size() + n);
-            // }
             int tmp = i;
                 position = begin()+ tmp;
             i = 0;
@@ -426,7 +329,6 @@ namespace ft
                 position = this->insert(position, val);
                 position = begin()+ tmp;
                 tmp++;
-                // position++;
                 i++;
             }
         }
@@ -547,11 +449,6 @@ namespace ft
 
     public:
         size_type capacity_;
-        // getters
-        // size_type Capac()
-        // {
-        //     return capacity_;
-        // }
     };
 }
 #endif

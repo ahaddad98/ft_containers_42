@@ -6,13 +6,13 @@
 #    By: amine <amine@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 16:13:12 by ahaddad           #+#    #+#              #
-#    Updated: 2021/10/22 13:43:15 by amine            ###   ########.fr        #
+#    Updated: 2021/11/10 22:09:11 by amine            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_container
 
-# FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -std=c++98
 
 SRCS = main.cpp \
 			
