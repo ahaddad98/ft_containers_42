@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/09 23:57:22 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/10 17:38:13 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -355,17 +355,29 @@ int main()
     vect.push_back(60);
     vect.push_back(70);
     vect.push_back(80);
+    vect.push_back(90);
+    vect.push_back(100);
+    vect.push_back(110);
+    vect.push_back(120);
+    vect.push_back(130);
+    vect.push_back(140);
     std::cout << "size = " << vect.size() << std::endl;
     std::cout << "capacity = " << vect.capacity() << std::endl;
     ft::vector<int>::iterator it = vect.begin();
-    vect.pop_back();
-    vect.pop_back();
-    vect.pop_back();
-    vect.pop_back();
-    vect.insert(vect.begin()+1, 10, 5);
+    // vect.pop_back();
+    // vect.pop_back();
+    // vect.pop_back();
+    // vect.pop_back();
     // vect.insert(vect.begin()+2, 5);
     // vect.insert(vect.begin()+2, 5);
     // vect.insert(vect.begin()+2, 5);
+    // vect.insert(vect.begin()+2, 5);
+    // vect.insert(vect.begin()+2, 5);
+    // vect.insert(vect.begin()+2, 5);
+    // vect.insert(vect.begin()+2, 5);
+    // vect.insert(vect.begin()+2, 5);
+    // vect.insert(vect.begin()+2, 5);
+    vect.insert(vect.begin()+2, 5, 5);
     for (ft::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)
     {
         std::cout << *it << std::endl;
@@ -384,14 +396,26 @@ int main()
     vect1.push_back(60);
     vect1.push_back(70);
     vect1.push_back(80);
+    vect1.push_back(90);
+    vect1.push_back(100);
+    vect1.push_back(110);
+    vect1.push_back(120);
+    vect1.push_back(130);
+    vect1.push_back(140);
     std::cout << "size = " << vect1.size() << std::endl;
     std::cout << "capacity = " << vect1.capacity() << std::endl;
     std::vector<int>::iterator it1 = vect1.begin();
-    vect1.pop_back();
-    vect1.pop_back();
-    vect1.pop_back();
-    vect1.pop_back();
-    vect1.insert(vect1.begin()+1, 10, 5);
+    // vect1.pop_back();
+    // vect1.pop_back();
+    // vect1.pop_back();
+    // vect1.pop_back();
+    vect1.insert(vect1.begin()+2, 5, 5);
+    // vect1.insert(vect1.begin()+2, 5);
+    // vect1.insert(vect1.begin()+2, 5);
+    // vect1.insert(vect1.begin()+2, 5);
+    // vect1.insert(vect1.begin()+2, 5);
+    // vect1.insert(vect1.begin()+2, 5);
+    // vect1.insert(vect1.begin()+2, 5);
     // vect1.insert(vect1.begin()+2, 5);
     // vect1.insert(vect1.begin()+2, 5);
     // vect1.insert(vect1.begin()+2, 5);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/10 13:06:01 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/10 18:24:56 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class iterator;
 
 namespace ft
 {
-    template <class T, class Alloc = std::allocator<T>>
+    template <class T, class Alloc = std::allocator<T> >
     class vector
     {
     public:
@@ -135,7 +135,8 @@ namespace ft
                 this->alloc.deallocate(this->m_Data, this->capacity_);
                 this->m_Data = tmp;
                 size_ = n;
-                this->capacity_ = n;
+                if (capacity_ <= n)
+                    this->capacity_ = n;
             }
             else
             {
@@ -167,7 +168,8 @@ namespace ft
                 if (capacity_ > 0)
                     this->alloc.deallocate(this->m_Data, this->capacity_);
                 this->m_Data = tmp;
-                this->capacity_ = n;
+                if (capacity_ <= n)
+                    this->capacity_ = n;
             }
         }
 
@@ -236,7 +238,7 @@ namespace ft
                     j++;
                 }
                 size_ = i;
-                capacity_ = i;
+                capacity_ *= 2;
             }
             else
             {
@@ -262,7 +264,7 @@ namespace ft
                     i++;
                 }
                 size_ = n;
-                capacity_ = n;
+                capacity_ *= 2;
             }
             else
             {
@@ -294,17 +296,55 @@ namespace ft
         {
             if (size_ == 0)
             {
-                capacity_ = 1;
-                m_Data = this->alloc.allocate(capacity_);
-                m_Data[size_] = val;
-                size_ += 1;
+                if (position == begin())
+                    push_back(val);
             }
-            else if (size_ == capacity_)
+            else
             {
-                if (size_ ==  capacity_)
+                int index_to_add = 0;
+                for (iterator it = begin(); it != end() ; it++)
                 {
-                    reserve(capacity_);
+                    if (position == it)
+                        break;
+                    index_to_add++;
                 }
+                push_back(val);
+                int tmp = m_Data[size_-1];
+                int i = size_-1;
+                while (i > index_to_add)
+                {
+                    m_Data[i] = m_Data[i-1];
+                    i--;
+                }
+                m_Data[i] = tmp;
+                // T *tmp = this->alloc.allocate(capacity_);
+                // int i = 0;
+                // while (i <= index_to_add)
+                // {
+                //     if (i == index_to_add)
+                //         tmp[i] = m_Data[size_-1];
+                //     else
+                //         tmp[i] = m_Data[i];
+                //     i++;
+                // }
+                // while (i < size_-1)
+                // {
+                //     tmp[i] = m_Data[i];
+                //     i++;
+                // }
+                // for (int j = 0; j < size_; j++)
+                // {
+                //     this->alloc.destroy(m_Data + j);
+                // }
+                // this->alloc.deallocate(m_Data, size_);
+                // m_Data = tmp;
+                // size_++;
+                // while (i < size_+1)
+                // {
+                // }
+            }
+            // else if (size_ == capacity_)
+            // {  
                 
                 //     if (position == end())
                 //         push_back(val);
@@ -361,7 +401,7 @@ namespace ft
                 //         size_++;
                 //         m_Data = m_Data1;
                 //     }
-            }
+            // }
             return begin();
         }
         // fill
@@ -370,19 +410,23 @@ namespace ft
             size_type i = 0;
             while (i < this->size() && &(*position) != &(this->m_Data[i]))
                 i++;
-            if (this->capacity() < this->size() + n)
-            {
-                if (this->size() * 2 >= this->size() + n)
-                    this->reserve(this->size() * 2);
-                else
-                    this->reserve(this->size() + n);
-            }
-            position = iterator(this->m_Data + i);
+            // if (this->capacity() < this->size() + n)
+            // {
+            //     std::cout << "im here " << std::endl;
+            //     if (this->size() * 2 >= this->size() + n)
+            //         this->reserve(this->size() * 2);
+            //     else
+            //         this->reserve(this->size() + n);
+            // }
+            int tmp = i;
+                position = begin()+ tmp;
             i = 0;
             while (i < n)
             {
                 position = this->insert(position, val);
-                position++;
+                position = begin()+ tmp;
+                tmp++;
+                // position++;
                 i++;
             }
         }
