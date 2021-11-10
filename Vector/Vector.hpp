@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/10 00:02:28 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/10 13:06:01 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ namespace ft
         }
 
         // Element access:
+        
         T &operator[](size_type index)
         {
             assert(index < size_);
