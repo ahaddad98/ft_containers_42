@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/07 23:06:06 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/09 23:57:22 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,6 +354,7 @@ int main()
     vect.push_back(50);
     vect.push_back(60);
     vect.push_back(70);
+    vect.push_back(80);
     std::cout << "size = " << vect.size() << std::endl;
     std::cout << "capacity = " << vect.capacity() << std::endl;
     ft::vector<int>::iterator it = vect.begin();
@@ -382,6 +383,7 @@ int main()
     vect1.push_back(50);
     vect1.push_back(60);
     vect1.push_back(70);
+    vect1.push_back(80);
     std::cout << "size = " << vect1.size() << std::endl;
     std::cout << "capacity = " << vect1.capacity() << std::endl;
     std::vector<int>::iterator it1 = vect1.begin();
