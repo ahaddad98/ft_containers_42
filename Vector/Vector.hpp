@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 22:03:51 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/11 22:12:13 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -461,7 +461,9 @@ namespace ft
     template <class T, class Alloc>
     bool operator!=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
     {
-        
+        if(lhs == rhs)
+            return false;
+        return true;
     }
 
     template <class T, class Alloc>

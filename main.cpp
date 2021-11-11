@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 22:03:12 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/11 22:15:09 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -481,39 +481,75 @@ int main()
     
     // non member funtions
 
+    // std::cout << "=================== ft::vector ====================" << std::endl;
+    // ft::vector<int> my_vect;    
+    // my_vect.push_back(10);
+    // my_vect.push_back(20);
+    // my_vect.push_back(30);
+    // my_vect.push_back(30);
+    // // my_vect.push_back(50);
+    // ft::vector<int> my_vect1;
+    // my_vect1.push_back(10);
+    // my_vect1.push_back(20);
+    // my_vect1.push_back(30);
+    // my_vect1.push_back(30);
+    // my_vect1.push_back(50);
+    // if (my_vect == my_vect1)
+    // {
+    //     std::cout << "the same vectors" << std::endl;
+    // }
+    // std::cout << "=================== std::vector ====================" << std::endl;
+    // std::vector<int> vect;    
+    // vect.push_back(10);
+    // vect.push_back(20);
+    // vect.push_back(30);
+    // vect.push_back(30);
+    // // vect.push_back(50);
+    // std::vector<int> vect1;
+    // vect1.push_back(10);
+    // vect1.push_back(20);
+    // vect1.push_back(30);
+    // vect1.push_back(30);
+    // vect1.push_back(50);
+    // if (vect == vect1)
+    // {
+    //     std::cout << "the same vectors" << std::endl;
+    // }
+    // operator != 
     std::cout << "=================== ft::vector ====================" << std::endl;
     ft::vector<int> my_vect;    
     my_vect.push_back(10);
     my_vect.push_back(20);
     my_vect.push_back(30);
     my_vect.push_back(30);
-    // my_vect.push_back(50);
+    // my_vect.push_back(50); 
     ft::vector<int> my_vect1;
     my_vect1.push_back(10);
     my_vect1.push_back(20);
     my_vect1.push_back(30);
     my_vect1.push_back(30);
     my_vect1.push_back(50);
-    if (my_vect == my_vect1)
+    if (my_vect != my_vect1)
     {
-        std::cout << "the same vectors" << std::endl;
+        std::cout << "not same vectors" << std::endl;
     }
     std::cout << "=================== std::vector ====================" << std::endl;
     std::vector<int> vect;    
     vect.push_back(10);
-    vect.push_back(20);
+    // vect.push_back(20);
     vect.push_back(30);
     vect.push_back(30);
-    // vect.push_back(50);
+    vect.push_back(50);
     std::vector<int> vect1;
     vect1.push_back(10);
     vect1.push_back(20);
     vect1.push_back(30);
     vect1.push_back(30);
     vect1.push_back(50);
-    if (vect == vect1)
+    if (vect != vect1)
     {
-        std::cout << "the same vectors" << std::endl;
+        std::cout << "not same vectors" << std::endl;
     }
+    
     return 0;
 }
