@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 08:56:08 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/11 18:14:29 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -341,11 +341,20 @@ namespace ft
             // if (_size + s > _capacity)
             //     reserve(_size + s);
             // position = begin() + pos;
-            // for (InputIterator it = first; it != last; ++it)
-            // {
-            //     position = insert(position, *it);
-            //     position++;
-            // }
+            int i = 0;
+            while (i < this->size() && &(*position) != &(this->m_Data[i]))
+                i++;
+            int tmp = i;
+            position = begin() + tmp;
+            i = 0;
+            for (InputIterator it = first; it != last; ++it)
+            {
+                std::cout << "amine " << std::endl;
+                insert(position, *it);
+                position = begin() + tmp;
+                tmp++;
+                position++;
+            }
         }
         iterator erase(iterator position)
         {

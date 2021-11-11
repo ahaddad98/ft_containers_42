@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 08:59:54 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/11 18:09:44 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -427,6 +427,21 @@ int main()
     // std::cout << "size = " << vect1.size() << std::endl;
     // std::cout << "capacity = " << vect1.capacity() << std::endl;
     // insert fill from vector to another 
+    std::cout << "=================== ft::vector ====================" << std::endl;
+    ft::vector<int> vec;
+    vec.push_back(10);
+    vec.push_back(20);
+    vec.push_back(30);
+    vec.push_back(40);
+    ft::vector<int> vec21;
+
+    // inserts at the beginning of vec2
+    vec21.insert(vec21.begin(), vec.begin(), vec.end());
+
+    std::cout << "The vector2 elements are: ";
+    for (ft::vector<int>::iterator it = vec21.begin(); it != vec21.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << "=================== std::vector ====================" << std::endl;
     std::vector<int> vec1;
     vec1.push_back(10);
     vec1.push_back(20);
