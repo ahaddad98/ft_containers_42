@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/10 23:08:44 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/11 08:59:54 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -426,6 +426,7 @@ int main()
     // std::cout << std::endl;
     // std::cout << "size = " << vect1.size() << std::endl;
     // std::cout << "capacity = " << vect1.capacity() << std::endl;
+    // insert fill from vector to another 
     std::vector<int> vec1;
     vec1.push_back(10);
     vec1.push_back(20);

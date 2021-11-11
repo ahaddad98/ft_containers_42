@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/10 22:12:24 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/11 08:56:08 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ namespace ft
         }
 
         // Element access:
-        
+
         T &operator[](size_type index)
         {
             assert(index < size_);
@@ -297,18 +297,18 @@ namespace ft
             else
             {
                 int index_to_add = 0;
-                for (iterator it = begin(); it != end() ; it++)
+                for (iterator it = begin(); it != end(); it++)
                 {
                     if (position == it)
                         break;
                     index_to_add++;
                 }
                 push_back(val);
-                int tmp = m_Data[size_-1];
-                int i = size_-1;
+                int tmp = m_Data[size_ - 1];
+                int i = size_ - 1;
                 while (i > index_to_add)
                 {
-                    m_Data[i] = m_Data[i-1];
+                    m_Data[i] = m_Data[i - 1];
                     i--;
                 }
                 m_Data[i] = tmp;
@@ -322,12 +322,12 @@ namespace ft
             while (i < this->size() && &(*position) != &(this->m_Data[i]))
                 i++;
             int tmp = i;
-                position = begin()+ tmp;
+            position = begin() + tmp;
             i = 0;
             while (i < n)
             {
                 position = this->insert(position, val);
-                position = begin()+ tmp;
+                position = begin() + tmp;
                 tmp++;
                 i++;
             }
@@ -393,6 +393,17 @@ namespace ft
         }
         void swap(vector &x)
         {
+            T *m_Data1 = x.m_Data;
+            size_type size1 = x.size_;
+            size_type capacity1 = x.capacity_;
+
+            x.m_Data = this->m_Data;
+            x.capacity_ = this->capacity_;
+            x.size_ = this->size_;
+
+            this->m_Data = m_Data1;
+            this->size_ = size1;
+            this->capacity_ = capacity1;
         }
         void clear()
         {
