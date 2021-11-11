@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 18:20:28 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/11 22:03:12 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -458,25 +458,62 @@ int main()
 
     // clear 
 
+    // std::cout << "=================== ft::vector ====================" << std::endl;
+    // ft::vector<int> vect;
+    // vect.push_back(10);
+    // vect.push_back(20);
+    // vect.push_back(30);
+    // vect.push_back(40);
+    // vect.push_back(50);
+    // vect.clear();
+    // std::cout << "size = " << vect.size() << std::endl;
+    // std::cout << "capacity = " << vect.capacity() << std::endl;
+    // std::cout << "=================== std::vector ====================" << std::endl;
+    // ft::vector<int> vect1;
+    // vect1.push_back(10);
+    // vect1.push_back(20);
+    // vect1.push_back(30);
+    // vect1.push_back(40);
+    // vect1.push_back(50);
+    // vect1.clear();
+    // std::cout << "size = " << vect1.size() << std::endl;
+    // std::cout << "capacity = " << vect1.capacity() << std::endl;
+    
+    // non member funtions
+
     std::cout << "=================== ft::vector ====================" << std::endl;
-    ft::vector<int> vect;
+    ft::vector<int> my_vect;    
+    my_vect.push_back(10);
+    my_vect.push_back(20);
+    my_vect.push_back(30);
+    my_vect.push_back(30);
+    // my_vect.push_back(50);
+    ft::vector<int> my_vect1;
+    my_vect1.push_back(10);
+    my_vect1.push_back(20);
+    my_vect1.push_back(30);
+    my_vect1.push_back(30);
+    my_vect1.push_back(50);
+    if (my_vect == my_vect1)
+    {
+        std::cout << "the same vectors" << std::endl;
+    }
+    std::cout << "=================== std::vector ====================" << std::endl;
+    std::vector<int> vect;    
     vect.push_back(10);
     vect.push_back(20);
     vect.push_back(30);
-    vect.push_back(40);
-    vect.push_back(50);
-    vect.clear();
-    std::cout << "size = " << vect.size() << std::endl;
-    std::cout << "capacity = " << vect.capacity() << std::endl;
-    std::cout << "=================== std::vector ====================" << std::endl;
-    ft::vector<int> vect1;
+    vect.push_back(30);
+    // vect.push_back(50);
+    std::vector<int> vect1;
     vect1.push_back(10);
     vect1.push_back(20);
     vect1.push_back(30);
-    vect1.push_back(40);
+    vect1.push_back(30);
     vect1.push_back(50);
-    vect1.clear();
-    std::cout << "size = " << vect1.size() << std::endl;
-    std::cout << "capacity = " << vect1.capacity() << std::endl;
+    if (vect == vect1)
+    {
+        std::cout << "the same vectors" << std::endl;
+    }
     return 0;
 }

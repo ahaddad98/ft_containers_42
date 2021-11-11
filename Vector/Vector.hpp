@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 18:54:02 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/11 22:03:51 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -419,33 +419,6 @@ namespace ft
             return this->alloc;
         }
 
-        // Non-member function overloads
-        // template <class T, class Alloc>
-        // bool operator==(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs);
-
-        // template <class T, class Alloc>
-        // bool operator!=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs);
-
-        // template <class T, class Alloc>
-        // bool operator<(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs);
-
-        // template <class T, class Alloc>
-        // bool operator<=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs);
-
-        // template <class T, class Alloc>
-        // bool operator>(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs);
-
-        // template <class T, class Alloc>
-        // bool operator>=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs);
-
-        // template <class T, class Alloc>
-        // void swap(vector<T, Alloc> &x, vector<T, Alloc> &y)
-
-        // Template specializations
-        // template <class T, class Alloc = allocator<T>>
-        // class vector; // generic template
-        // template <class Alloc>
-        // class vector<bool, Alloc>; // bool specialization
 
         // utils
         void my_realloc()
@@ -467,5 +440,59 @@ namespace ft
     public:
         size_type capacity_;
     };
+    // Non-member function overloads
+    template <class T, class Alloc>
+    bool operator==(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
+    {
+        if (lhs.size() != rhs.size())
+            return false;
+        if (lhs.capacity() != rhs.capacity())
+            return false;
+        int i = 0;
+        while (i < lhs.size())
+        {
+            if (lhs[i] != rhs[i])
+                return false;
+            i++;
+        }
+        return true;
+    }
+
+    template <class T, class Alloc>
+    bool operator!=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
+    {
+        
+    }
+
+    template <class T, class Alloc>
+    bool operator<(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
+    {
+        
+    }
+
+    template <class T, class Alloc>
+    bool operator<=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
+    {
+        
+    }
+
+    template <class T, class Alloc>
+    bool operator>(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
+    {
+        // ret
+    }
+
+    template <class T, class Alloc>
+    bool operator>=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
+    {
+        
+    }
+
+    template <class T, class Alloc>
+    void swap(vector<T, Alloc> &x, vector<T, Alloc> &y)
+    {
+        x.swap(y);
+    }
+
 }
 #endif
