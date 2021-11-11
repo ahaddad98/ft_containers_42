@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 18:17:50 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/11 18:54:02 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -413,8 +413,11 @@ namespace ft
             this->erase(begin(), end());
         }
 
-        // allocators
-        // allocator_type get_allocator() const
+        //allocators
+        alloc_type get_allocator() const
+        {
+            return this->alloc;
+        }
 
         // Non-member function overloads
         // template <class T, class Alloc>

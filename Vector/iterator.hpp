@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iterator.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/07 23:01:49 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/11 18:27:08 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,6 +246,10 @@ namespace ft
         bool operator!=(const self_type &rhs)
         {
             return ptr_ != rhs.ptr_;
+        }
+        self_type base() const
+        {
+            return *this;
         }
 
     private:
