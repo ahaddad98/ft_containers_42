@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 18:14:29 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/11 18:17:50 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,12 +335,6 @@ namespace ft
         template <class InputIterator>
         void insert(iterator position, InputIterator first, InputIterator last)
         {
-            // size_type pos = position - begin();
-            // size_type s = last - first;
-
-            // if (_size + s > _capacity)
-            //     reserve(_size + s);
-            // position = begin() + pos;
             int i = 0;
             while (i < this->size() && &(*position) != &(this->m_Data[i]))
                 i++;
@@ -416,7 +410,7 @@ namespace ft
         }
         void clear()
         {
-            size_ = 0;
+            this->erase(begin(), end());
         }
 
         // allocators

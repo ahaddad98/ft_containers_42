@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 18:09:44 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/11 18:20:28 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -427,33 +427,56 @@ int main()
     // std::cout << "size = " << vect1.size() << std::endl;
     // std::cout << "capacity = " << vect1.capacity() << std::endl;
     // insert fill from vector to another 
+    // std::cout << "=================== ft::vector ====================" << std::endl;
+    // ft::vector<int> vec;
+    // vec.push_back(10);
+    // vec.push_back(20);
+    // vec.push_back(30);
+    // vec.push_back(40);
+    // ft::vector<int> vec21;
+
+    // // inserts at the beginning of vec2
+    // vec21.insert(vec21.begin(), vec.begin(), vec.end());
+
+    // std::cout << "The vector2 elements are: ";
+    // for (ft::vector<int>::iterator it = vec21.begin(); it != vec21.end(); ++it)
+    //     std::cout << *it << " ";
+    // std::cout << "=================== std::vector ====================" << std::endl;
+    // std::vector<int> vec1;
+    // vec1.push_back(10);
+    // vec1.push_back(20);
+    // vec1.push_back(30);
+    // vec1.push_back(40);
+    // std::vector<int> vec2;
+
+    // // inserts at the beginning of vec2
+    // vec2.insert(vec2.begin(), vec1.begin(), vec1.end());
+
+    // std::cout << "The vector2 elements are: ";
+    // for (std::vector<int>::iterator it = vec2.begin(); it != vec2.end(); ++it)
+    //     std::cout << *it << " ";
+
+    // clear 
+
     std::cout << "=================== ft::vector ====================" << std::endl;
-    ft::vector<int> vec;
-    vec.push_back(10);
-    vec.push_back(20);
-    vec.push_back(30);
-    vec.push_back(40);
-    ft::vector<int> vec21;
-
-    // inserts at the beginning of vec2
-    vec21.insert(vec21.begin(), vec.begin(), vec.end());
-
-    std::cout << "The vector2 elements are: ";
-    for (ft::vector<int>::iterator it = vec21.begin(); it != vec21.end(); ++it)
-        std::cout << *it << " ";
+    ft::vector<int> vect;
+    vect.push_back(10);
+    vect.push_back(20);
+    vect.push_back(30);
+    vect.push_back(40);
+    vect.push_back(50);
+    vect.clear();
+    std::cout << "size = " << vect.size() << std::endl;
+    std::cout << "capacity = " << vect.capacity() << std::endl;
     std::cout << "=================== std::vector ====================" << std::endl;
-    std::vector<int> vec1;
-    vec1.push_back(10);
-    vec1.push_back(20);
-    vec1.push_back(30);
-    vec1.push_back(40);
-    std::vector<int> vec2;
-
-    // inserts at the beginning of vec2
-    vec2.insert(vec2.begin(), vec1.begin(), vec1.end());
-
-    std::cout << "The vector2 elements are: ";
-    for (std::vector<int>::iterator it = vec2.begin(); it != vec2.end(); ++it)
-        std::cout << *it << " ";
+    ft::vector<int> vect1;
+    vect1.push_back(10);
+    vect1.push_back(20);
+    vect1.push_back(30);
+    vect1.push_back(40);
+    vect1.push_back(50);
+    vect1.clear();
+    std::cout << "size = " << vect1.size() << std::endl;
+    std::cout << "capacity = " << vect1.capacity() << std::endl;
     return 0;
 }
