@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 18:27:08 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/12 19:35:46 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,24 @@ namespace ft
         reverse_iterat(pointer ptr) : ptr_(ptr)
         {
         }
+        explicit reverse_iterat (iterator_category it)
+        {
+            
+        }
+        template <class Iter>
+        reverse_iterat (const reverse_iterat<Iter>& rev_it)
+        {
+            
+        }
+        reference operator*()
+        {
+            return *ptr_;
+        }
+        self_type operator+(difference_type n) const
+        {
+            ptr_ += n;
+            return *this;
+        }
         self_type operator++()
         {
             self_type i = *this;
@@ -185,24 +203,50 @@ namespace ft
             ptr_--;
             return *this;
         }
-        reference operator*()
+        self_type& operator+= (difference_type n)
         {
-            return *ptr_;
+            ptr_ += n;
+            return *this;
         }
-        // const reference operator*() { return *ptr_; }
+        self_type operator- (difference_type n) const
+        {
+            ptr_ -= n;
+            return *this;
+        }
+        self_type operator--()
+        {
+            self_type i = *this;
+            ptr_++;
+            return i;
+        }
+        self_type operator--(int junk)
+        {
+            ptr_++;
+            return *this;
+        }
+        self_type& operator-= (difference_type n)
+        {
+            ptr_ -= n;
+            return *this;
+        }
         const pointer operator->()
         {
             return ptr_;
         }
-        bool operator==(const self_type &rhs)
-        {
-            return ptr_ == rhs.ptr_;
+        
+        reference operator*() const 
+        { 
+            return *ptr_;
         }
-        bool operator!=(const self_type &rhs)
+        reference operator[] (difference_type n) const
         {
-            return ptr_ != rhs.ptr_;
+            return ptr_[n];
         }
 
+        pointer base() const
+        {
+            return ptr_;
+        }
     private:
         pointer ptr_;
     };
@@ -219,6 +263,24 @@ namespace ft
         const_reverse_iterat(pointer ptr) : ptr_(ptr)
         {
         }
+        explicit const_reverse_iterat (iterator_category it)
+        {
+            
+        }
+        template <class Iter>
+        const_reverse_iterat (const const_reverse_iterat<Iter>& rev_it)
+        {
+            
+        }
+        reference operator*()
+        {
+            return *ptr_;
+        }
+        self_type operator+(difference_type n) const
+        {
+            ptr_ += n;
+            return *this;
+        }
         self_type operator++()
         {
             self_type i = *this;
@@ -230,31 +292,85 @@ namespace ft
             ptr_--;
             return *this;
         }
-        reference operator*()
+        self_type& operator+= (difference_type n)
         {
-            return *ptr_;
+            ptr_ += n;
+            return *this;
         }
-        // const reference operator*() { return *ptr_; }
+        self_type operator- (difference_type n) const
+        {
+            ptr_ -= n;
+            return *this;
+        }
+        self_type operator--()
+        {
+            self_type i = *this;
+            ptr_++;
+            return i;
+        }
+        self_type operator--(int junk)
+        {
+            ptr_++;
+            return *this;
+        }
+        self_type& operator-= (difference_type n)
+        {
+            ptr_ -= n;
+            return *this;
+        }
         const pointer operator->()
         {
             return ptr_;
         }
-        bool operator==(const self_type &rhs)
-        {
-            return ptr_ == rhs.ptr_;
+        
+        reference operator*() const 
+        { 
+            return *ptr_;
         }
-        bool operator!=(const self_type &rhs)
+        reference operator[] (difference_type n) const
         {
-            return ptr_ != rhs.ptr_;
+            return ptr_[n];
         }
-        self_type base() const
+
+        pointer base() const
         {
-            return *this;
+            return ptr_;
         }
 
     private:
         pointer ptr_;
     };
+    // non membre function
+    template <class Iterator>
+    bool operator== (const reverse_iterat<Iterator>& lhs, const reverse_iterat<Iterator>& rhs)
+    {
+
+    }
+    template <class Iterator>
+    bool operator!= (const reverse_iterat<Iterator>& lhs, const reverse_iterat<Iterator>& rhs)
+    {
+        
+    }
+    template <class Iterator>
+    bool operator<  (const reverse_iterat<Iterator>& lhs, const reverse_iterat<Iterator>& rhs)
+    {
+
+    }
+    template <class Iterator>
+    bool operator<= (const reverse_iterat<Iterator>& lhs,const reverse_iterat<Iterator>& rhs)
+    {
+
+    }
+    template <class Iterator>
+    bool operator>  (const reverse_iterat<Iterator>& lhs, const reverse_iterat<Iterator>& rhs)
+    {
+        
+    }
+    template <class Iterator>
+    bool operator>= (const reverse_iterat<Iterator>& lhs, const reverse_iterat<Iterator>& rhs)
+    {
+        
+    }
 }
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/11 22:15:09 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/12 14:45:45 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -529,7 +529,7 @@ int main()
     my_vect1.push_back(30);
     my_vect1.push_back(30);
     my_vect1.push_back(50);
-    if (my_vect != my_vect1)
+    if (my_vect <=  my_vect1)
     {
         std::cout << "not same vectors" << std::endl;
     }
@@ -546,7 +546,7 @@ int main()
     vect1.push_back(30);
     vect1.push_back(30);
     vect1.push_back(50);
-    if (vect != vect1)
+    if (vect <= vect1)
     {
         std::cout << "not same vectors" << std::endl;
     }
