@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/12 17:05:04 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/12 21:57:49 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ namespace ft
         // empty container constructor (default constructor)
         explicit vector(const alloc_type &alloc = alloc_type()) : size_(0), capacity_(0)
         {
+            this->alloc = alloc;
         }
         // (2) fill constructor
         explicit vector(size_type n, const value_type &val = value_type(), const alloc_type &alloc = alloc_type())
@@ -485,9 +486,7 @@ namespace ft
     template <class T, class Alloc>
     bool operator>(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
     {
-        if (lhs.begin() > rhs.begin())
-            return true;
-        return false;
+        return (lhs.begin() > rhs.begin());
     }
 
     template <class T, class Alloc>

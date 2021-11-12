@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/12 19:35:46 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/12 19:43:16 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -344,32 +344,32 @@ namespace ft
     template <class Iterator>
     bool operator== (const reverse_iterat<Iterator>& lhs, const reverse_iterat<Iterator>& rhs)
     {
-
+        return (lhs.base() == rhs.base());
     }
     template <class Iterator>
     bool operator!= (const reverse_iterat<Iterator>& lhs, const reverse_iterat<Iterator>& rhs)
     {
-        
+        return (lhs.base() != rhs.base());
     }
     template <class Iterator>
     bool operator<  (const reverse_iterat<Iterator>& lhs, const reverse_iterat<Iterator>& rhs)
     {
-
+        return (lhs.base() < rhs.base());
     }
     template <class Iterator>
     bool operator<= (const reverse_iterat<Iterator>& lhs,const reverse_iterat<Iterator>& rhs)
     {
-
+        return (lhs.base() <= rhs.base());
     }
     template <class Iterator>
     bool operator>  (const reverse_iterat<Iterator>& lhs, const reverse_iterat<Iterator>& rhs)
     {
-        
+        return (lhs.base() > rhs.base());
     }
     template <class Iterator>
     bool operator>= (const reverse_iterat<Iterator>& lhs, const reverse_iterat<Iterator>& rhs)
     {
-        
+        return (lhs.base() >= rhs.base());
     }
 }
 
