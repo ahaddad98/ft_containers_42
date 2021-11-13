@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/12 22:06:11 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/13 17:57:20 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,12 +137,10 @@ namespace ft
                 this->m_Data = tmp;
                 size_ = n;
                 if (capacity_ <= n)
-                    this->capacity_ = n;
+                    this->capacity_ *= 2;
             }
             else
-            {
                 size_ = n;
-            }
         }
         //
         size_type capacity() const

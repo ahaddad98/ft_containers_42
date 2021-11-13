@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/13 01:16:27 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/13 17:41:12 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,12 @@ namespace ft
         {
             return (ptr_ < rhs.ptr_);
         }
-        self_type 
+        T &operator[](size_type index)
+        {
+            return ptr_[index];
+        }
     private:
         pointer ptr_;
-        size_t size_;
     };
     template <typename T>
     class const_iterator : public ft::Iterator_Traits<std::random_access_iterator_tag, T>
