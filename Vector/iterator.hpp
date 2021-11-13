@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/12 19:43:16 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/13 01:16:27 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ namespace ft
         typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::difference_type difference_type;
         typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::iterator_categorie iterator_category;
 
+        iterator()
+        {
+        }
         iterator(pointer ptr) : ptr_(ptr)
         {
         }
@@ -37,13 +40,34 @@ namespace ft
         {
             *this = it;
         }
-        // iterator(pointer p, int crement = 0)
-        // {
-        //     this->ptr_ = p;
-        //     this->size_ = crement;
-        // }
+        iterator &operator=(const iterator & src)
+        {
+            this->ptr_ = src.ptr_;
+            return *this;
+        }
         ~iterator()
         {
+        }
+        bool operator==(const self_type &rhs)
+        {
+            return ptr_ == rhs.ptr_;
+        }
+        bool operator!=(const self_type &rhs)
+        {
+            return ptr_ != rhs.ptr_;
+        }
+        reference operator*()
+        {
+            return *ptr_;
+        }
+        pointer operator->()
+        {
+            return ptr_;
+        }
+        
+        reference operator*(pointer src)
+        {
+            return *ptr_ = src;
         }
         self_type operator++()
         {
@@ -77,22 +101,7 @@ namespace ft
             ptr_--;
             return *this;
         }
-        reference operator*()
-        {
-            return *ptr_;
-        }
-        pointer operator->()
-        {
-            return ptr_;
-        }
-        bool operator==(const self_type &rhs)
-        {
-            return ptr_ == rhs.ptr_;
-        }
-        bool operator!=(const self_type &rhs)
-        {
-            return ptr_ != rhs.ptr_;
-        }
+       
         bool operator>=(const self_type &rhs)
         {
             return (ptr_ >= rhs.ptr_);
@@ -109,7 +118,7 @@ namespace ft
         {
             return (ptr_ < rhs.ptr_);
         }
-
+        self_type 
     private:
         pointer ptr_;
         size_t size_;
