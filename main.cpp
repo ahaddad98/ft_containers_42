@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/14 04:48:00 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/14 20:05:38 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -619,18 +619,19 @@ int main()
     //     std::cout << *it << std::endl;
     // }
 
-    ft::vector<int> vect;
-    // int array[] = {1,2, 3, 4, 5 , 6};
-    // vect.assign(&array[0], &array[4]);
-    vect.assign(10, 20);
+    // ft::vector<int> vect;
+    // // int array[] = {1,2, 3, 4, 5 , 6};
+    // // vect.assign(&array[0], &array[4]);
+    // vect.assign(10, 20);
 
-    ft::vector<int>::iterator it = vect.begin();
+    // ft::vector<int>::iterator it = vect.begin();
 
-    for (ft::vector<int>::iterator it = vect.begin() ; it != vect.end(); it++)
-    {
-        std::cout << *it << std::endl;
-    }
+    // for (ft::vector<int>::iterator it = vect.begin() ; it != vect.end(); it++)
+    // {
+    //     std::cout << *it << std::endl;
+    // }
     
-      
+    // stack
+    // ft::Stack a;
     return 0;
 }
