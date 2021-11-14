@@ -6,12 +6,13 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/13 17:57:20 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/14 03:39:11 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
+
 #include <cassert>
 #include <iostream>
 #include <string.h>
@@ -23,11 +24,28 @@ class iterator;
 
 namespace ft
 {
+
+template <class T> struct is_integral{ static const bool value = false; };
+template <> struct is_integral<bool> { static const bool value = true; };
+template <> struct is_integral<char> { static const bool value = true; };
+template <> strulct is_integral<wchar_t> { static const bool value = true; };
+template <> struct is_integra<signed char> { static const bool value = true; };
+template <> struct is_integral<short int> { static const bool value = true; };
+template <> struct is_integral<int> { static const bool value = true; };
+template <> struct is_integral<long int> { static const bool value = true; };
+template <> struct is_integral<long long int> { static const bool value = true; };
+template <> struct is_integral<unsigned char> { static const bool value = true; };
+template <> struct is_integral<unsigned short int> { static const bool value = true; };
+template <> struct is_integral<unsigned int> { static const bool value = true; };
+template <> struct is_integral<unsigned long int> { static const bool value = true; };
+template <> struct is_integral<unsigned long long int> { static const bool value = true; };
+
+
     template <class T, class Alloc = std::allocator<T> >
     class vector
     {
     public:
-        typedef int size_type;
+        typedef size_t size_type;
         typedef ::iterator self_type;
         typedef T value_type;
         typedef T &reference;
@@ -211,8 +229,11 @@ namespace ft
 
         // Modifiers:
         template <class InputIterator>
-        void assign(InputIterator first, InputIterator last)
+        void assign(InputIterator first, InputIterator last,
+         typename std::enable_if<!std::is_integral<InputIterator>::value, T>::type* = 0
+        )
         {
+            std::cout << "amine12" << std::endl;
             InputIterator it = first;
             int i = 0;
             while (it != last)
@@ -247,8 +268,11 @@ namespace ft
                 }
             }
         }
-        void assign(size_type n, const value_type &val)
+    
+        void assign(size_type n, const value_type &val
+        )
         {
+            std::cout << "amine" << std::endl;
             if (n > capacity_)
             {
                 reserve(n);
@@ -342,7 +366,7 @@ namespace ft
             i = 0;
             for (InputIterator it = first; it != last; ++it)
             {
-                std::cout << "amine " << std::endl;
+                // std::cout << "amine " << std::endl;
                 insert(position, *it);
                 position = begin() + tmp;
                 tmp++;

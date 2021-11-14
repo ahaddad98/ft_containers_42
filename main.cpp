@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/13 17:56:58 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/14 04:48:00 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -550,33 +550,87 @@ int main()
     // {
     //     std::cout << "not same vectors" << std::endl;
     // }
-    std::cout << "=================== ft::vector ====================" << std::endl;
+    // resize
+    // std::cout << "=================== ft::vector ====================" << std::endl;
+    // ft::vector<int> vect;
+    // vect.push_back(10);
+    // vect.push_back(20);
+    // vect.push_back(30);
+    // vect.push_back(40);
+    // vect.push_back(50);
+    // vect.resize(10);
+    // for (ft::vector<int>::iterator it = vect.begin() ; it != vect.end(); it++)
+    // {
+    //     std::cout << *it << std::endl;
+    // }
+    // std::cout << "size = " << vect.size() << std::endl;
+    // std::cout << "capacity = " << vect.capacity() << std::endl;
+    // std::cout << "=================== std::vector ====================" << std::endl;
+    // std::vector<int> vect1;
+    // vect1.push_back(10);
+    // vect1.push_back(20);
+    // vect1.push_back(30);
+    // vect1.push_back(40);
+    // vect1.push_back(50);
+    // vect1.resize(10);
+    // for (std::vector<int>::iterator it = vect1.begin() ; it != vect1.end(); it++)
+    // {
+    //     std::cout << *it << std::endl;
+    // }
+    // std::cout << "size = " << vect1.size() << std::endl;
+    // std::cout << "capacity = " << vect1.capacity() << std::endl;
+    // operator [] in iterator
+    // std::cout << "=================== ft::vector ====================" << std::endl;
+    // ft::vector<int> vect;
+    // vect.push_back(10);
+    // vect.push_back(20);
+    // vect.push_back(30);
+    // vect.push_back(40);
+    // vect.push_back(50);
+    // // vect.resize(10);
+    // // ft::vector<int>::reverse_iterator re_it = vect.rbegin();
+    // for (ft::vector<int>::reverse_iterator it = vect.rbegin();  it != vect.rend(); it++)
+    // {
+    //     std::cout << *it << std::endl;
+    // }
+    // std::cout << "size = " << vect.size() << std::endl;
+    // std::cout << "capacity = " << vect.capacity() << std::endl;
+    // std::cout << "=================== std::vector ====================" << std::endl;
+    // std::vector<int> vect1;
+    // vect1.push_back(10);
+    // vect1.push_back(20);
+    // vect1.push_back(30);
+    // vect1.push_back(40);
+    // vect1.push_back(50);
+    // std::vector<int>::iterator re_it1 = vect1.begin();
+    // // vect1.resize(10);
+    // // for (std::vector<int>::iterator it = vect1.begin() ; it != vect1.end(); it++)
+    // // {
+    //     std::cout << re_it1[-1] << std::endl;
+    // // }
+    // std::cout << "size = " << vect1.size() << std::endl;
+    // std::cout << "capacity = " << vect1.capacity() << std::endl;
+    
+    // int array[] = {1,2, 3, 4, 5 , 6};
+    // ft::vector<int> vect;
+    // vect.insert(vect.begin(), array, array + 5);
+    // for (ft::vector<int>::iterator it = vect.begin() ; it != vect.end(); it++)
+    // {
+    //     std::cout << *it << std::endl;
+    // }
+
     ft::vector<int> vect;
-    vect.push_back(10);
-    vect.push_back(20);
-    vect.push_back(30);
-    vect.push_back(40);
-    vect.push_back(50);
-    vect.resize(10);
+    // int array[] = {1,2, 3, 4, 5 , 6};
+    // vect.assign(&array[0], &array[4]);
+    vect.assign(10, 20);
+
+    ft::vector<int>::iterator it = vect.begin();
+
     for (ft::vector<int>::iterator it = vect.begin() ; it != vect.end(); it++)
     {
         std::cout << *it << std::endl;
     }
-    std::cout << "size = " << vect.size() << std::endl;
-    std::cout << "capacity = " << vect.capacity() << std::endl;
-    std::cout << "=================== std::vector ====================" << std::endl;
-    std::vector<int> vect1;
-    vect1.push_back(10);
-    vect1.push_back(20);
-    vect1.push_back(30);
-    vect1.push_back(40);
-    vect1.push_back(50);
-    vect1.resize(10);
-    for (std::vector<int>::iterator it = vect1.begin() ; it != vect1.end(); it++)
-    {
-        std::cout << *it << std::endl;
-    }
-    std::cout << "size = " << vect1.size() << std::endl;
-    std::cout << "capacity = " << vect1.capacity() << std::endl;
+    
+      
     return 0;
 }
