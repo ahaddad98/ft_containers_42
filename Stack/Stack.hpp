@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:44:29 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/14 20:27:11 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/14 21:10:59 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ namespace ft
         }
         size_type size() const
         {
-
+            return stk.size();
         }
         value_type& top()
         {
@@ -58,15 +58,15 @@ namespace ft
         }
         void push (const value_type& val)
         {
-            
+            stk.push_back();
         }
         void pop()
         {
-
+            stk.pop_back();
         }
         
     private:
-        
+        container_type stk;
     };
     template <class T, class Container>
     bool operator== (const stack<T,Container>& lhs, const stack<T,Container>& rhs)

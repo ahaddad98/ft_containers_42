@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/14 20:05:38 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/14 21:24:58 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -554,7 +554,7 @@ int main()
     // std::cout << "=================== ft::vector ====================" << std::endl;
     // ft::vector<int> vect;
     // vect.push_back(10);
-    // vect.push_back(20);
+    // vect .push_back(20);
     // vect.push_back(30);
     // vect.push_back(40);
     // vect.push_back(50);
