@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:44:29 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/14 21:10:59 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/15 21:01:43 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 #include <string.h>
 #include <stdio.h>
 #include <deque>
+#include "../Vector/Vector.hpp"
 namespace ft
 {
-    template <class T, class Container = std::deque<T> >
+    template <class T, class Container = ft::vector<T> >
     class stack
     {
     public:
@@ -31,18 +32,18 @@ namespace ft
         
         explicit stack (const container_type& ctnr = container_type())
         {
-            
+            stk = ctnr;
         }
     
         // destructor
         ~stack()
         {
-            
+            // stk.~();   
         }
         // Member functions
         bool empty() const
         {
-            
+            return (stk.size() == 0);
         }
         size_type size() const
         {
@@ -50,7 +51,6 @@ namespace ft
         }
         value_type& top()
         {
-            
         }
         const value_type& top() const
         {
@@ -58,7 +58,7 @@ namespace ft
         }
         void push (const value_type& val)
         {
-            stk.push_back();
+            stk.push_back(val);
         }
         void pop()
         {

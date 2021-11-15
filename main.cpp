@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/14 21:24:58 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/15 21:04:59 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Stack/Stack.hpp"
 #include <vector>
 #include "Vector/iterator.hpp"
+#include <stack>
 
 int main()
 {
@@ -633,5 +634,66 @@ int main()
     
     // stack
     // ft::Stack a;
+    ft::stack<int> mystack;
+    int sum (0);
+    
+    for (int i=1;i<=11;i++) mystack.push(i);
+    
+    // while (!mystack.empty())
+    // {
+    //     sum += mystack.top();
+    //     mystack.pop();
+    // }
+    
+    std::cout << "total: " << mystack.size() << '\n';
     return 0;
 }
+// Abde1337@!1337
+
+// to test our stack
+
+/* cout<<"Instructions: \n";
+    cout<<"Type add to push onto stack"<<endl;
+    cout<<"Type del to pop from stack"<<endl;
+    cout<<"Type top to check the top element in stack"<<endl;
+    cout<<"Type exit to stop using the stack"<<endl;
+    Stack S;
+    int top;
+    while(1){
+        string instruction;
+        cout<<"Instruction: ";
+        cin>>instruction;
+        if(instruction=="exit"){
+            break;
+        }else if(instruction=="add"){
+            cout<<"Enter the element top be pushed"<<endl;
+            int push; //element to be pushed
+            cin>>push;
+            S.Push(push);
+                cout<<"Element successfully pushed"<<endl;
+                if(S.Top(top)==true){
+                    cout<<"Top Element is:"<<top<<endl;
+                }
+ 
+        }else if(instruction=="del"){
+            if(S.Pop()==true){
+                cout<<"Element was successfully popped"<<endl;
+                if(S.Top(top)==true){
+                    cout<<"Top Element is:"<<top<<endl;
+                }else{
+                    cout<<"Stack is now Empty!"<<endl;
+                }
+            }else{
+                cout<<"ERROR : Stack is empty!"<<endl;
+            }
+        }else if(instruction=="top"){
+                if(S.Top(top)==true){
+                    cout<<"Top Element is:"<<top<<endl;
+                }else{
+                    cout<<"ERROR : Stack is empty!"<<endl;
+                }
+        }else{
+            cout<<"ERROR : Unknown operation! Please try again"<<endl;
+        }
+    }
+    */
