@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/15 21:04:59 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/15 22:05:38 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -634,19 +634,19 @@ int main()
     
     // stack
     // ft::Stack a;
-    ft::stack<int> mystack;
-    int sum (0);
+    // ft::stack<int> mystack;
+    // int sum (0);
     
-    for (int i=1;i<=11;i++) mystack.push(i);
+    // for (int i=1;i<=11;i++) mystack.push(i);
     
     // while (!mystack.empty())
     // {
-    //     sum += mystack.top();
+    //     std::cout <<  mystack.top() << std::endl;
     //     mystack.pop();
     // }
     
-    std::cout << "total: " << mystack.size() << '\n';
-    return 0;
+    // std::cout << "total: " << mystack.size() << '\n';
+    // return 0;
 }
 // Abde1337@!1337
 

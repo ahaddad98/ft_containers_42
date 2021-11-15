@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/14 20:04:20 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/15 22:13:22 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ template <> struct is_integral<unsigned long long int> { static const bool value
         // (2) fill constructor
         explicit vector(size_type n, const value_type &val = value_type(), const alloc_type &alloc = alloc_type())
         {
+            insert(begin(), val, n);
+            this->alloc = alloc;
         }
         // (3) range constructor
         template <class InputIterator>

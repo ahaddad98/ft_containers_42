@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:44:29 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/15 21:01:43 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/15 22:18:31 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include <cassert>
 #include <iostream>
 #include <string.h>
-#include <stdio.h>
-#include <deque>
 #include "../Vector/Vector.hpp"
 namespace ft
 {
@@ -38,9 +36,15 @@ namespace ft
         // destructor
         ~stack()
         {
-            // stk.~();   
+            // if (size() > 0)
+            // {
+            //     // stk.~vector();
+            //     std::cout << "amine haddad" << std::endl;
+            // }
         }
+        
         // Member functions
+
         bool empty() const
         {
             return (stk.size() == 0);
@@ -51,10 +55,11 @@ namespace ft
         }
         value_type& top()
         {
+            return stk[size()-1];
         }
         const value_type& top() const
         {
-            
+            return stk[size()-1];
         }
         void push (const value_type& val)
         {
@@ -71,7 +76,7 @@ namespace ft
     template <class T, class Container>
     bool operator== (const stack<T,Container>& lhs, const stack<T,Container>& rhs)
     {
-
+        return (lhs == rhs);
     }
     template <class T, class Container>
     bool operator!= (const stack<T,Container>& lhs, const stack<T,Container>& rhs)
