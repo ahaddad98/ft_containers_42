@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/15 22:13:22 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/16 18:07:12 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,7 +231,7 @@ template <> struct is_integral<unsigned long long int> { static const bool value
         // Modifiers:
         template <class InputIterator>
         void assign(InputIterator first, InputIterator last,
-         typename std::enable_if<!std::is_integral<InputIterator>::value, T>::type* = 0
+         typename __gnu_cxx::__enable_if<!is_integral<InputIterator>::value, T>::type* = 0
         )
         {
             std::cout << "amine12" << std::endl;
