@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/10/16 15:44:15 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/17 20:50:33 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,14 @@ class Map
 private:
     /* data */
 public:
-    Map(/* args */);
-    ~Map();
+    Map(/* args */)
+    {
+        
+    }
+    ~Map()
+    {
+        
+    }
 };
-
-Map::Map(/* args */)
-{
-}
-
-Map::~Map()
-{
-}
 
 #endif
