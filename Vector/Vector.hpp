@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/16 18:07:12 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/17 20:55:06 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ class iterator;
 namespace ft
 {
 
-template <class T> struct is_integral{ static const bool value = false; };
-template <> struct is_integral<bool> { static const bool value = true; };
-template <> struct is_integral<char> { static const bool value = true; };
-template <> struct is_integral<wchar_t> { static const bool value = true; };
-template <> struct is_integral<signed char> { static const bool value = true; };
-template <> struct is_integral<short int> { static const bool value = true; };
-template <> struct is_integral<int> { static const bool value = true; };
-template <> struct is_integral<long int> { static const bool value = true; };
-template <> struct is_integral<long long int> { static const bool value = true; };
-template <> struct is_integral<unsigned char> { static const bool value = true; };
-template <> struct is_integral<unsigned short int> { static const bool value = true; };
-template <> struct is_integral<unsigned int> { static const bool value = true; };
-template <> struct is_integral<unsigned long int> { static const bool value = true; };
-template <> struct is_integral<unsigned long long int> { static const bool value = true; };
+// template <class T> struct is_integral{ static const bool value = false; };
+// template <> struct is_integral<bool> { static const bool value = true; };
+// template <> struct is_integral<char> { static const bool value = true; };
+// template <> struct is_integral<wchar_t> { static const bool value = true; };
+// template <> struct is_integral<signed char> { static const bool value = true; };
+// template <> struct is_integral<short int> { static const bool value = true; };
+// template <> struct is_integral<int> { static const bool value = true; };
+// template <> struct is_integral<long int> { static const bool value = true; };
+// template <> struct is_integral<long long int> { static const bool value = true; };
+// template <> struct is_integral<unsigned char> { static const bool value = true; };
+// template <> struct is_integral<unsigned short int> { static const bool value = true; };
+// template <> struct is_integral<unsigned int> { static const bool value = true; };
+// template <> struct is_integral<unsigned long int> { static const bool value = true; };
+// template <> struct is_integral<unsigned long long int> { static const bool value = true; };
 
 
     template <class T, class Alloc = std::allocator<T> >
@@ -231,10 +231,10 @@ template <> struct is_integral<unsigned long long int> { static const bool value
         // Modifiers:
         template <class InputIterator>
         void assign(InputIterator first, InputIterator last,
-         typename __gnu_cxx::__enable_if<!is_integral<InputIterator>::value, T>::type* = 0
+        //  typename __gnu_cxx::__enable_if<!is_integral<InputIterator>::value, T>::type* = 0
+         typename std::enable_if<!std::is_integral<InputIterator>::value, T>::type* = 0
         )
         {
-            std::cout << "amine12" << std::endl;
             InputIterator it = first;
             int i = 0;
             while (it != last)
@@ -273,7 +273,6 @@ template <> struct is_integral<unsigned long long int> { static const bool value
         void assign(size_type n, const value_type &val
         )
         {
-            std::cout << "amine" << std::endl;
             if (n > capacity_)
             {
                 reserve(n);
