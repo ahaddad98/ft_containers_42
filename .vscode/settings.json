@@ -62,6 +62,7 @@
         "vector": "cpp",
         "deque": "cpp",
         "stack": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "*.tcc": "cpp"
     }
 }

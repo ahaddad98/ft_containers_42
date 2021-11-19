@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/17 20:55:06 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/18 16:33:18 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,9 +230,9 @@ namespace ft
 
         // Modifiers:
         template <class InputIterator>
-        void assign(InputIterator first, InputIterator last,
+        void assign(InputIterator first, InputIterator last
         //  typename __gnu_cxx::__enable_if<!is_integral<InputIterator>::value, T>::type* = 0
-         typename std::enable_if<!std::is_integral<InputIterator>::value, T>::type* = 0
+        //  typename std::enable_if<!std::is_integral<InputIterator>::value, T>::type* = 0
         )
         {
             InputIterator it = first;
