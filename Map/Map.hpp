@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/19 00:11:22 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/19 15:34:01 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,44 @@ namespace ft
         }
         // Observers:
         key_compare key_comp() const
+        {
+        }
+        // value compare ?? 
+        // value_compare value_comp() const
+        // {
+        // }
+        
+        // operations
+        // iterator find (const key_type& k)
+        // {
+        // }
+        // const_iterator find (const key_type& k) const
+        // {
+        // }
+        size_type count (const key_type& k) const
+        {
+        }
+        // iterator lower_bound (const key_type& k)
+        // {
+        // }
+        // const_iterator lower_bound (const key_type& k) const
+        // {            
+        // }
+        // iterator upper_bound (const key_type& k)
+        // {
+        // }
+        // const_iterator upper_bound (const key_type& k) const
+        // {
+        // }
+        // pair<const_iterator,const_iterator> equal_range (const key_type& k) const
+        // {
+        // }
+        // pair<iterator,iterator>             equal_range (const key_type& k)
+        // {
+        // }
+        
+        // Allocator:
+        allocator_type get_allocator() const
         {
         }
     };
