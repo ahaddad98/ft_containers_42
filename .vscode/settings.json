@@ -63,6 +63,7 @@
         "deque": "cpp",
         "stack": "cpp",
         "bit": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "map": "cpp"
     }
 }

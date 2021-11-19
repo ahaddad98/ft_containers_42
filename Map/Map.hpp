@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/19 15:34:01 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/19 17:16:25 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ namespace ft
 
     class map
     {
-    private:
-        /* data */
     public:
         typedef Key key_type;
         typedef T mapped_type;
@@ -39,7 +37,7 @@ namespace ft
         typedef value_type *pointer;
         typedef const value_type *const_pointer;
         // miss iterator here
-
+        
         typedef std::ptrdiff_t difference_type;
         typedef size_t size_type;
         // constructor
@@ -168,6 +166,10 @@ namespace ft
         allocator_type get_allocator() const
         {
         }
+    private:
+        allocator_type alloc;
+        value_type cc;
+        size_type size_;
     };
 
 }

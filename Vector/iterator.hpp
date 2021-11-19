@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/13 17:41:12 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/19 17:29:51 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 namespace ft
 {
-    typedef int size_type;
+    typedef size_t size_type;
 
     template <typename T>
     class iterator : public ft::Iterator_Traits<std::random_access_iterator_tag, T>
