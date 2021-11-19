@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/19 17:19:29 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/19 17:43:15 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ namespace ft{
     template <class T>
     class iterator
     {
-    private:
-        /* data */
     public:
         iterator(/* args */)
         {   
@@ -27,6 +25,8 @@ namespace ft{
         ~iterator()
         {
         }
+    private:
+        
     };    
 }
 #endif
