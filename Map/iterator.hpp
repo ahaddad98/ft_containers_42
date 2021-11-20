@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iterator.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/19 21:00:03 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/20 17:01:21 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../Vector/iterator_traits.hpp"
 namespace ft
 {
-    template <class T>
+    template <typename T>
     class iterator : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
     {
     public:
@@ -36,6 +36,7 @@ namespace ft
         }
 
     private:
+        pointer ptr_;
     };
 }
 #endif
