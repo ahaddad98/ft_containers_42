@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/20 19:59:04 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/26 16:16:22 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -650,16 +650,20 @@ int main()
     // std::cout << "total: " << mystack.size() << '\n';
     // return 0;
 
-    ft::map<int , char> a;
-    std::map<char , int> my_map;
-    std::map<char , int>::iterator it;
-    my_map.insert (std::pair<char,int>('a',100));
-    for ( it = my_map.begin(); it != my_map.end(); it++)
-    {
-        std::cout << "key = " << it->first << std::endl;   
-        std::cout << "value = " << it->second << std::endl;
-    }
-    
+    // ft::map<int , char> a;
+    // std::map<char , int> my_map;
+    // std::map<char , int>::iterator it;
+    // my_map.insert (std::pair<char,int>('a',100));
+    // for ( it = my_map.begin(); it != my_map.end(); it++)
+    // {
+    //     std::cout << "key = " << it->first << std::endl;   
+    //     std::cout << "value = " << it->second << std::endl;
+    // }
+    std::vector<int> vect;
+    pu
+    // std::vector<int>::iterator it;
+    // it = vect.begin();
+    std::cout << *it << std::endl;
 }
 
 // to test our stack
