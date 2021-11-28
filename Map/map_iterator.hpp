@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterator.hpp                                       :+:      :+:    :+:   */
+/*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/28 13:08:56 by amine            ###   ########.fr       */
+/*   Updated: 2021/11/28 14:36:09 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITERATOR_HPP
-#define ITERATOR_HPP
+#ifndef MAP_ITERATOR_HPP
+#define MAP_ITERATOR_HPP
 #include <iostream>
 #include "../Vector/iterator_traits.hpp"
 namespace ft
@@ -21,39 +21,64 @@ namespace ft
         red,
         black
     };
+
     template <typename T>
     class Red_Blacl_Tree
     {
     private:
-        struct NODE
+        typedef struct s_Node
         {
             colors Color;
-            NODE *left;
-            NODE *right;
-            NODE *parents;
+            s_Node *left;
+            s_Node *right;
+            s_Node *parents;
+        } t_Node;
 
-        } public : Red_Blacl_Tree(/* args */)
+    public:
+        Red_Blacl_Tree(/* args */)
         {
         }
         ~Red_Blacl_Tree()
         {
         }
+        t_Node *min_of_tree()
+        {
+            t_Node *tmp;
+            tmp = this;
+            while (tmp->left)
+                tmp = tmp->left;
+            return tmp;
+        }
+        t_Node *max_of_tree()
+        {
+            t_Node *tmp;
+            tmp = this;
+            while (tmp->right)
+                tmp = tmp->right;
+            return tmp;
+        }
+        t_Node *root_prev()
+        {
+        }
+        t_Node *root_next()
+        {
+        }
     };
     template <typename T>
-    class iterator : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
+    class iterator_map : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
     {
     public:
-        typedef iterator self_type;
+        typedef iterator_map self_type;
         typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::value_type value_type;
         typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::pointer pointer;
         typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::reference reference;
         typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::difference_type difference_type;
         typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::iterator_categorie iterator_category;
 
-        iterator(/* args */)
+        iterator_map(/* args */)
         {
         }
-        ~iterator()
+        ~iterator_map()
         {
         }
 

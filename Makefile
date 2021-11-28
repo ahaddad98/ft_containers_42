@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+         #
+#    By: amine <amine@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 16:13:12 by ahaddad           #+#    #+#              #
-#    Updated: 2021/11/20 15:44:33 by ahaddad          ###   ########.fr        #
+#    Updated: 2021/11/28 13:19:33 by amine            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS = main.cpp \
 			
 HDRS = Vector/Vector.hpp \
 		Stack/Stack.hpp \
+		Map/map_iterator.hpp \
 		Map/Map.hpp \
 		Vector/iterator.hpp \
 		Vector/iterator_traits.hpp \
