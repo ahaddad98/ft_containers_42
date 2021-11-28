@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/26 16:16:22 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/28 13:09:42 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -659,11 +659,10 @@ int main()
     //     std::cout << "key = " << it->first << std::endl;   
     //     std::cout << "value = " << it->second << std::endl;
     // }
-    std::vector<int> vect;
-    pu
+    // std::vector<int> vect;
     // std::vector<int>::iterator it;
     // it = vect.begin();
-    std::cout << *it << std::endl;
+    // std::cout << *it << std::endl;
 }
 
 // to test our stack

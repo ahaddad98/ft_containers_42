@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iterator.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/26 10:00:09 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/11/28 13:08:56 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@
 #include "../Vector/iterator_traits.hpp"
 namespace ft
 {
-    enum colors{red, black};
+    enum colors
+    {
+        red,
+        black
+    };
     template <typename T>
     class Red_Blacl_Tree
     {
@@ -27,16 +31,12 @@ namespace ft
             NODE *left;
             NODE *right;
             NODE *parents;
-            
-        }
-    public:
-        Red_Blacl_Tree(/* args */)
+
+        } public : Red_Blacl_Tree(/* args */)
         {
-            
         }
         ~Red_Blacl_Tree()
         {
-            
         }
     };
     template <typename T>
@@ -52,7 +52,6 @@ namespace ft
 
         iterator(/* args */)
         {
-            
         }
         ~iterator()
         {
