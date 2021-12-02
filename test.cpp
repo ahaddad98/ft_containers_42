@@ -28,13 +28,41 @@ t_Node * create_NODE(std::string str)
     return ret;
 }
 
+t_Node * most_left(t_Node * root)
+{
+    t_Node *tmp;
+
+    if (tmp->left)
+    {
+        tmp = root;
+        while (tmp->left)
+        {
+            tmp = tmp->left;
+        }
+    }
+    return tmp;
+}
+
 void print_tree_in_ordre_travers(t_Node *root)
 {
-    if (root != NULL)
+    t_Node *tmp;
+    tmp = root;
+    if (tmp != NULL)
     {
-        print_tree_in_ordre_travers(root->left);
-        std::cout << root->str << std::endl;
-        print_tree_in_ordre_travers(root->right);
+        tmp = most_left(tmp);
+        while (tmp)
+        {
+            std::cout << tmp->str << std::endl;
+            tmp = tmp->parents;
+            tmp = tmp->right;
+
+            if (!tmp)
+                std::cout << "tmp->str" << std::endl;
+            // tmp = most_left(tmp);
+        }
+        // print_tree_in_ordre_travers(root->left);
+        // std::cout << tmp->str << std::endl;
+        // print_tree_in_ordre_travers(root->right);
     }
 }
 
