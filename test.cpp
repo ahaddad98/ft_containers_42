@@ -98,33 +98,32 @@ void print_tree_in_ordre_travers(t_Node *root)
 
 t_Node *root_prev(t_Node * root)
 {
-    t_Node *tmp1 = root;
+    // t_Node *tmp1 = root;
     if (root->left)
     {
-        tmp1 = most_right(root->left);
+        root = most_right(root->left);
     }
-    else
-    {
-        t_Node *tmp = root->parents;
-        while (tmp && tmp->left == tmp1)
-        {
-            tmp1 = tmp;
-            tmp = tmp->parents;
-        }
-        if (tmp)
-            tmp1 = tmp;
-        else
-            tmp1 = NULL;
-    }
-    return (tmp1);
+    // else
+    // {
+    //     t_Node *tmp = root->parents;
+    //     while (tmp && tmp->left == tmp1)
+    //     {
+    //         tmp1 = tmp;
+    //         tmp = tmp->parents;
+    //     }
+    //     if (tmp)
+    //         tmp1 = tmp;
+    //     else
+    //         tmp1 = NULL;
+    // }
+    return (root);
 }
 t_Node *root_next(t_Node *root)
 {
-    t_Node *next = root;
+    // t_Node *next = root;
     if (root->right != NULL)
     {
-        
-        next = most_left(root->right);
+        root = most_left(root->right);
     }
     // else
     // {
@@ -139,7 +138,7 @@ t_Node *root_next(t_Node *root)
     //     else
     //         next = NULL;
     // }
-    return (next);
+    return (root);
 }
 
 
@@ -169,11 +168,11 @@ int main()
     // tmp5->right = tmp7;
     // tmp5->parents = root;
     t_Node * root = NULL;
+    root = insert(root, "B");
     root = insert(root, "D"); 
     root = insert(root, "J");
     root = insert(root, "A");
     root = insert(root, "R");
-    root = insert(root, "B");
     root = insert(root, "M");
     root = insert(root, "Q");
     root = insert(root, "T");
@@ -183,6 +182,8 @@ int main()
     // std::cout << root->str << std::endl;
     print = root_prev(print);
     std::cout << print->str << std::endl;
+    // print = root_prev(print);
+    // std::cout << print->str << std::endl;
     // print = root_next(print);
     // std::cout << print->str << std::endl;
     // print = root_next(print);
@@ -192,3 +193,8 @@ int main()
     // print_tree_in_ordre_travers(print);
     // while (1);
 }
+// NodePtr y = x->parent;
+// 		while (y != TNULL && x == y->left) {
+// 			x = y;
+// 			y = y->parent;
+// 		}
