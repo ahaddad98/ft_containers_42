@@ -16,29 +16,116 @@ typedef struct s_Node
     s_Node *parents;
 } t_Node;
 
-t_Node * create_NODE(std::string str)
+class test
 {
-    t_Node *ret = new t_Node;
-    ret->str = str;
-    ret->Color  = RED;
-    ret->left = NULL;
-    ret->right = NULL;
-    ret->parents = NULL;
 
-    return ret;
-}
+public:
+        test()
+        {
+            root = new t_Node;
+            root->left = nullptr;
+            root->right = nullptr;
+            root->str = nullptr;
+        }
+        ~test()
+        {
 
-t_Node *insert(t_Node *node, std::string key) 
-{
-    if (node == NULL) 
-        return create_NODE(key);
+        }
+        t_Node * create_NODE(std::string str)
+        {
 
-    if (key < node->str)
-        node->left = insert(node->left, key);
-    else
-        node->right = insert(node->right, key);
-    return node;
-}
+            // std::allocator alloc<t_Node>;
+            t_Node *ret = new t_Node;
+            ret->str = str;
+            ret->Color  = RED;
+            ret->left = nullptr;
+            ret->right = nullptr;
+            ret->parents = nullptr;
+
+            return ret;
+        }
+        t_Node *insert(std::string key) 
+        {
+            t_Node *node;
+            // t_Node *t_NULL  = new t_Node;
+            // t_NULL->Color = BLACK;
+            // t_NULL->right = nullptr;
+            // t_NULL->left = nullptr;
+
+            // t_Node *Tnode = create_NODE(NULL);
+            t_Node *x;
+            t_Node *y;
+            x = this->root;
+            y = nullptr;
+            node  = create_NODE(key);
+                // std::cout << "im here" << std::endl;
+            while (x != NULL)
+            {
+                y = x;
+                // std::cout << "im here1" << std::endl;
+                if (node->str < x->str)
+                    x = x->left;
+                else if (node->str > x->str)
+                    x = x->right;
+                // std::cout << "im here2" << std::endl;
+            }
+            node->parents = y;
+            if (y == NULL)
+                this->root = node;
+            else if (node->str < y->str)
+                y->left = node;
+            else
+                y->right = node;
+            return node;
+        }
+        void print_tree_in_ordre_travers(t_Node *root1)
+        {
+            t_Node *tmp;
+            // tmp = root;
+            // if (tmp != NULL)
+            // {
+            //     tmp = most_left(tmp);
+            //     while (tmp)
+            //     {
+            //         std::cout << tmp->str << std::endl;
+            //         tmp = tmp->parents;
+            //         tmp = tmp->right;
+
+            //         if (!tmp)
+            //             std::cout << "tmp->str" << std::endl;
+            //         // tmp = most_left(tmp);
+            //     }
+            tmp = root1;
+            if (tmp)
+            {
+                std::cout << tmp->str << std::endl;
+                print_tree_in_ordre_travers(tmp->left);
+                print_tree_in_ordre_travers(tmp->right);
+            }
+            // }
+        }
+        t_Node *getroot()
+        {
+            return root;
+        }
+    private:
+        t_Node *root;
+};
+
+
+
+
+// t_Node *insert(t_Node *node, std::string key) 
+// {
+//     if (node == NULL) 
+//         return create_NODE(key);
+//     if (key < node->str)
+//         node->left = insert(node->left, key);
+//     else
+//         node->right = insert(node->right, key);
+
+//     return node;
+// }
 
 t_Node * most_left(t_Node * root)
 {
@@ -89,8 +176,8 @@ void print_tree_in_ordre_travers(t_Node *root)
     tmp = root;
     if (tmp)
     {
-        print_tree_in_ordre_travers(tmp->left);
         std::cout << tmp->str << std::endl;
+        print_tree_in_ordre_travers(tmp->left);
         print_tree_in_ordre_travers(tmp->right);
     }
     // }
@@ -144,6 +231,12 @@ t_Node *root_next(t_Node *root)
 
 int main()
 {
+    test bst;
+    bst.insert("amine");
+    bst.insert("amine3");
+    bst.insert("amine2");
+    bst.insert("amine1");
+    bst.print_tree_in_ordre_travers(bst.getroot());
     // test insert
     // std::string str1 = "A";
     // std::string str2 = "D";
@@ -167,21 +260,21 @@ int main()
     // tmp5->left = tmp6;
     // tmp5->right = tmp7;
     // tmp5->parents = root;
-    t_Node * root = NULL;
-    root = insert(root, "B");
-    root = insert(root, "D"); 
-    root = insert(root, "J");
-    root = insert(root, "A");
-    root = insert(root, "R");
-    root = insert(root, "M");
-    root = insert(root, "Q");
-    root = insert(root, "T");
-    root = insert(root, "Y");
-    root = insert(root, "Z");
-    t_Node *print = root;
+    // t_Node * root = NULL;
+    // root = insert(root, "B");
+    // root = insert(root, "J");
+    // root = insert(root, "A");
+    // root = insert(root, "R");
+    // root = insert(root, "Z");
+    // root = insert(root, "M");
+    // root = insert(root, "Q");
+    // root = insert(root, "T");
+    // root = insert(root, "Y");
+    // root = insert(root, "D"); 
+    // t_Node *print = root;
     // std::cout << root->str << std::endl;
-    print = root_prev(print);
-    std::cout << print->str << std::endl;
+    // print = root_prev(print);
+    // std::cout << print->str << std::endl;
     // print = root_prev(print);
     // std::cout << print->str << std::endl;
     // print = root_next(print);
