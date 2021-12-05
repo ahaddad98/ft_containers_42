@@ -22,10 +22,7 @@ class test
 public:
         test()
         {
-            root = new t_Node;
-            root->left = nullptr;
-            root->right = nullptr;
-            root->str = nullptr;
+            root = nullptr;
         }
         ~test()
         {
@@ -44,7 +41,7 @@ public:
 
             return ret;
         }
-        t_Node *insert(std::string key) 
+        void insert(std::string key) 
         {
             t_Node *node;
             // t_Node *t_NULL  = new t_Node;
@@ -61,11 +58,16 @@ public:
                 // std::cout << "im here" << std::endl;
             while (x != NULL)
             {
+                // std::cout << "amine" << std::endl;
                 y = x;
                 // std::cout << "im here1" << std::endl;
                 if (node->str < x->str)
+                {
+                    std::cout << "node->str = " << node->str << std::endl;
+                    std::cout << "x->str = " << x->str << std::endl;
                     x = x->left;
-                else if (node->str > x->str)
+                }
+                else
                     x = x->right;
                 // std::cout << "im here2" << std::endl;
             }
@@ -76,7 +78,6 @@ public:
                 y->left = node;
             else
                 y->right = node;
-            return node;
         }
         void print_tree_in_ordre_travers(t_Node *root1)
         {
@@ -176,8 +177,8 @@ void print_tree_in_ordre_travers(t_Node *root)
     tmp = root;
     if (tmp)
     {
-        std::cout << tmp->str << std::endl;
         print_tree_in_ordre_travers(tmp->left);
+        std::cout << tmp->str << std::endl;
         print_tree_in_ordre_travers(tmp->right);
     }
     // }
@@ -232,11 +233,11 @@ t_Node *root_next(t_Node *root)
 int main()
 {
     test bst;
-    bst.insert("amine");
-    bst.insert("amine3");
-    bst.insert("amine2");
-    bst.insert("amine1");
-    bst.print_tree_in_ordre_travers(bst.getroot());
+    bst.insert("G");
+    bst.insert("A");
+    bst.insert("Z");
+    bst.insert("L");
+    // bst.print_tree_in_ordre_travers(bst.getroot());
     // test insert
     // std::string str1 = "A";
     // std::string str2 = "D";
