@@ -99,8 +99,8 @@ public:
             tmp = root1;
             if (tmp)
             {
-                std::cout << tmp->str << std::endl;
                 print_tree_in_ordre_travers(tmp->left);
+                std::cout << tmp->str << std::endl;
                 print_tree_in_ordre_travers(tmp->right);
             }
             // }
@@ -233,11 +233,11 @@ t_Node *root_next(t_Node *root)
 int main()
 {
     test bst;
-    bst.insert("G");
-    bst.insert("A");
-    bst.insert("Z");
-    bst.insert("L");
-    // bst.print_tree_in_ordre_travers(bst.getroot());
+    bst.insert("amine");
+    bst.insert("amine5");
+    bst.insert("amine4");
+    bst.insert("amine3");
+    bst.print_tree_in_ordre_travers(bst.getroot());
     // test insert
     // std::string str1 = "A";
     // std::string str2 = "D";
