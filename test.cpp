@@ -85,8 +85,10 @@ public:
                 root_ = root_->right;
             return root_;
         }
-        t_Node *getSuccessor(t_Node *root_)
+        t_Node *getSuccessor(t_Node *root_ = nullptr)
         {
+            if (root_ == nullptr)
+                root_ = this->root;
             t_Node *tmp;
             tmp = root_;
             // if (!tmp->right)
@@ -105,8 +107,10 @@ public:
             }
             return tmp;
         }
-        t_Node *getpredecessor(t_Node *root_)
+        t_Node *getpredecessor(t_Node *root_ = nullptr)
         {
+            if (root_ == nullptr)
+                root_ = this->root;
             // t_Node *tmp;
             // tmp = root_;
             if (root_->left)
@@ -145,14 +149,6 @@ public:
                 print_tree_in_ordre_travers(tmp->right);
             }
             // }
-        }
-        t_Node *getroot()
-        {
-            return root;
-        }
-        void setroot(t_Node *val)
-        {
-            root = val;
         }
     private:
         t_Node *root;
@@ -290,10 +286,6 @@ int main()
     // std::cout << bst.getpredecessor(bst.getroot())->str << std::endl;
     // t_Node * tmp;
     // tmp  =  bst.getSuccessor(bst.getroot());
-    bst.setroot(bst.getSuccessor(bst.getroot()));
-    std::cout << bst.getroot()->str << std::endl;
-    bst.setroot(bst.getSuccessor(bst.getroot()));
-    std::cout << bst.getroot()->str << std::endl;
     // bst.setroot(bst.getSuccessor(bst.getroot()));
     // std::cout << bst.getSuccessor(bst.getroot())->str << std::endl;
     // std::cout << bst.getSuccessor(bst.getroot())->str << std::endl;
