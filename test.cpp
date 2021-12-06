@@ -44,32 +44,18 @@ public:
         void insert(std::string key) 
         {
             t_Node *node;
-            // t_Node *t_NULL  = new t_Node;
-            // t_NULL->Color = BLACK;
-            // t_NULL->right = nullptr;
-            // t_NULL->left = nullptr;
-
-            // t_Node *Tnode = create_NODE(NULL);
             t_Node *x;
             t_Node *y;
             x = this->root;
             y = nullptr;
             node  = create_NODE(key);
-                // std::cout << "im here" << std::endl;
             while (x != NULL)
             {
-                // std::cout << "amine" << std::endl;
                 y = x;
-                // std::cout << "im here1" << std::endl;
                 if (node->str < x->str)
-                {
-                    std::cout << "node->str = " << node->str << std::endl;
-                    std::cout << "x->str = " << x->str << std::endl;
                     x = x->left;
-                }
                 else
                     x = x->right;
-                // std::cout << "im here2" << std::endl;
             }
             node->parents = y;
             if (y == NULL)
@@ -78,6 +64,61 @@ public:
                 y->left = node;
             else
                 y->right = node;
+        }
+        t_Node *get_minimum(t_Node *root_)
+        {
+            t_Node *tmp;
+            tmp = root_;
+            while (tmp->left)
+            {
+                // std::cout << "im in getsec ==> " << root_->str << std::endl; 
+                // std::cout << "im in getmin ==> " << std::endl;
+                tmp = tmp->left;
+            }
+            return tmp;
+        }
+        t_Node *get_maximum(t_Node *root_)
+        {
+            // t_Node *tmp;
+            // tmp = root_;
+            while (root_->right)
+                root_ = root_->right;
+            return root_;
+        }
+        t_Node *getSuccessor(t_Node *root_)
+        {
+            t_Node *tmp;
+            tmp = root_;
+            // if (!tmp->right)
+                // std::cout << "im in getsucc ==> " << std::endl; 
+            if (tmp->right)
+            {
+                tmp = get_minimum(tmp->right);
+                // std::cout << "im in getsucc ==> " << tmp->str << std::endl; 
+            }
+            t_Node *y;
+            y = tmp->parents;
+            while (y != NULL && tmp == y->right)
+            {
+                tmp = y;
+                y = y->parents;
+            }
+            return tmp;
+        }
+        t_Node *getpredecessor(t_Node *root_)
+        {
+            // t_Node *tmp;
+            // tmp = root_;
+            if (root_->left)
+                root_ = get_maximum(root_->left);
+            t_Node *y;
+            y = root_->parents;
+            while (y != NULL && root_ == y->left)
+            {
+                root_ = y;
+                y = y->parents;
+            }
+            return root_;
         }
         void print_tree_in_ordre_travers(t_Node *root1)
         {
@@ -108,6 +149,10 @@ public:
         t_Node *getroot()
         {
             return root;
+        }
+        void setroot(t_Node *val)
+        {
+            root = val;
         }
     private:
         t_Node *root;
@@ -237,7 +282,30 @@ int main()
     bst.insert("amine5");
     bst.insert("amine4");
     bst.insert("amine3");
-    bst.print_tree_in_ordre_travers(bst.getroot());
+    bst.insert("amine2");
+    bst.insert("amine10");
+    bst.insert("amine23");
+    bst.insert("amine35");
+    bst.insert("amine83");
+    // std::cout << bst.getpredecessor(bst.getroot())->str << std::endl;
+    // t_Node * tmp;
+    // tmp  =  bst.getSuccessor(bst.getroot());
+    bst.setroot(bst.getSuccessor(bst.getroot()));
+    std::cout << bst.getroot()->str << std::endl;
+    bst.setroot(bst.getSuccessor(bst.getroot()));
+    std::cout << bst.getroot()->str << std::endl;
+    // bst.setroot(bst.getSuccessor(bst.getroot()));
+    // std::cout << bst.getSuccessor(bst.getroot())->str << std::endl;
+    // std::cout << bst.getSuccessor(bst.getroot())->str << std::endl;
+    // std::cout << tmp->str << std::endl;
+    // std::cout << tmp->right->str << std::endl;
+    // t_Node * tmp1;
+    // tmp1  =  bst.getSuccessor(tmp);
+    // std::cout << tmp1->str << std::endl;
+    // std::cout << bst.getSuccessor(bst.getroot())->str << std::endl;
+    // std::cout << bst.getSuccessor(bst.getroot())->str << std::endl;
+    // std::cout << bst.getSuccessor(bst.getroot())->str << std::endl;
+    // bst.print_tree_in_ordre_travers(bst.getroot());
     // test insert
     // std::string str1 = "A";
     // std::string str2 = "D";
