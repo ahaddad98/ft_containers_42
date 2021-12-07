@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/07 15:22:33 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/07 18:26:11 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -664,6 +664,7 @@ int main()
     // it = vect.begin();
     // std::cout << *it << std::endl;
     ft::map<int , int> mymap;
+    ft::map<int , int>::iterator it;
 }
 
 // to test our stack

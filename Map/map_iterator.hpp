@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/07 16:11:33 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/07 20:29:48 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,16 +181,33 @@ namespace ft
             typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::difference_type difference_type;
             typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::iterator_categorie iterator_category;
 
-            iterator_map() : ptr_(NULL)
+            iterator_map() : ptr_(nullptr)
+            {
+            }
+            iterator_map(t_Node *root) : ptr_(root)
             {
             }
             ~iterator_map()
             {
             }
+            iterator_map & operator=(const iterator_map & src)
+            {
+                this->ptr_ = src.ptr_;
+                this->parents = src.parents;
+                return *this;
+            }
+            self_type operator++()
+            {
+                return getSuccessor(ptr_);
+            }
         private:
             t_Node *ptr_;
             Red_Blacl_Tree *parent;
         };
+        iterator_map  begin()
+        {
+            
+        }
     };
 }
 #endif
