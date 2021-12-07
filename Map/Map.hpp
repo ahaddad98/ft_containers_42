@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/28 13:20:18 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/07 16:15:27 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ namespace ft
         // constructor
         explicit map(const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type())
         {
+            // ft::Red_Blacl_Tree<Key, T ,Compare> *test = new ft::Red_Blacl_Tree<Key, T ,Compare>;
+            test = new ft::Red_Blacl_Tree<Key, T ,Compare>;
+            std::cout << "im here" << std::endl;
+            test->insert(5);
+            test->insert(15);
+            test->insert(25);
+            test->insert(85);
+            test->insert(75);
+            test->insert(65);
+            test->insert(95);
+            test->insert(55);
+            test->print_tree_in_ordre_travers(test->getroot());
         }
         template <class InputIterator>
         map(InputIterator first, InputIterator last,
@@ -170,6 +182,7 @@ namespace ft
         allocator_type alloc;
         value_type cc;
         size_type size_;
+        ft::Red_Blacl_Tree<Key, T ,Compare> *test;
     };
 
 }

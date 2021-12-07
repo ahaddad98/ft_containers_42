@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/28 19:40:06 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/07 16:11:33 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,44 +18,158 @@ namespace ft
 {
     enum colors
     {
-        red,
-        black
+        RED,
+        BLACK
     };
+    typedef struct s_Node
+    {
+        int item;
+        colors Color;
+        s_Node *left;
+        s_Node *right;
+        s_Node *parents;
+    } t_Node;
 
-    template <typename T>
+    template <class Key, typename T, class Compare = std::less<Key> >
     class Red_Blacl_Tree
     {
     private:
-        typedef struct s_Node
-        {
-            colors Color;
-            s_Node *left;
-            s_Node *right;
-            s_Node *parents;
-        } t_Node;
+        t_Node *root;
 
     public:
         Red_Blacl_Tree(/* args */)
         {
+            root = nullptr;
+            // std::cout << "in red black tree constructor" << std::endl;
         }
         ~Red_Blacl_Tree()
         {
         }
-        t_Node *min_of_tree()
+        t_Node * create_NODE(int key)
+        {
+
+            // std::allocator alloc<t_Node>;
+            t_Node *ret = new t_Node;
+            ret->item = key;
+            ret->Color  = RED;
+            ret->left = nullptr;
+            ret->right = nullptr;
+            ret->parents = nullptr;
+
+            return ret;
+        }
+        void insert(int key) 
+        {
+            t_Node *node;
+            t_Node *x;
+            t_Node *y;
+            x = this->root;
+            y = nullptr;
+            node  = create_NODE(key);
+            while (x != NULL)
+            {
+                y = x;
+                if (node->item < x->item)
+                    x = x->left;
+                else
+                    x = x->right;
+            }
+            node->parents = y;
+            if (y == NULL)
+                this->root = node;
+            else if (node->item < y->item)
+                y->left = node;
+            else
+                y->right = node;
+        }
+        t_Node *get_minimum(t_Node *root_)
         {
             t_Node *tmp;
-            tmp = this;
+            tmp = root_;
             while (tmp->left)
+            {
+                // std::cout << "im in getsec ==> " << root_->item << std::endl; 
+                // std::cout << "im in getmin ==> " << std::endl;
                 tmp = tmp->left;
+            }
             return tmp;
         }
-        t_Node *max_of_tree()
+        t_Node *get_maximum(t_Node *root_)
+        {
+            // t_Node *tmp;
+            // tmp = root_;
+            while (root_->right)
+                root_ = root_->right;
+            return root_;
+        }
+        t_Node *getSuccessor(t_Node *root_ = nullptr)
+        {
+            if (root_ == nullptr)
+                root_ = this->root;
+            t_Node *tmp;
+            tmp = root_;
+            // if (!tmp->right)
+                // std::cout << "im in getsucc ==> " << std::endl; 
+            if (tmp->right)
+            {
+                tmp = get_minimum(tmp->right);
+                // std::cout << "im in getsucc ==> " << tmp->item << std::endl; 
+            }
+            t_Node *y;
+            y = tmp->parents;
+            while (y != NULL && tmp == y->right)
+            {
+                tmp = y;
+                y = y->parents;
+            }
+            return tmp;
+        }
+        t_Node *getpredecessor(t_Node *root_ = nullptr)
+        {
+            if (root_ == nullptr)
+                root_ = this->root;
+            // t_Node *tmp;
+            // tmp = root_;
+            if (root_->left)
+                root_ = get_maximum(root_->left);
+            t_Node *y;
+            y = root_->parents;
+            while (y != NULL && root_ == y->left)
+            {
+                root_ = y;
+                y = y->parents;
+            }
+            return root_;
+        }
+        t_Node *getroot()
+        {
+            return root;
+        }
+        void print_tree_in_ordre_travers(t_Node *root1)
         {
             t_Node *tmp;
-            tmp = this;
-            while (tmp->right)
-                tmp = tmp->right;
-            return tmp;
+            // tmp = root;
+            // if (tmp != NULL)
+            // {
+            //     tmp = most_left(tmp);
+            //     while (tmp)
+            //     {
+            //         std::cout << tmp->item << std::endl;
+            //         tmp = tmp->parents;
+            //         tmp = tmp->right;
+
+            //         if (!tmp)
+            //             std::cout << "tmp->str" << std::endl;
+            //         // tmp = most_left(tmp);
+            //     }
+            tmp = root1;
+            if (tmp)
+            {
+                print_tree_in_ordre_travers(tmp->left);
+                std::cout << tmp->item << std::endl;
+                print_tree_in_ordre_travers(tmp->right);
+            }
+            // }
         }
         class iterator_map : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
         {
@@ -73,52 +187,6 @@ namespace ft
             ~iterator_map()
             {
             }
-            t_Node *root_prev() const
-            {
-                const t_Node *tmp1 = this->ptr_;
-                if (ptr_->left)
-                {
-                    tmp1 = ptr_->left->max_of_tree();
-                }
-                else
-                {
-                    t_Node *tmp = this->ptr_->parent;
-                    while (tmp && tmp->left == tmp1)
-                    {
-                        tmp1 = tmp;
-                        tmp = tmp->parent;
-                    }
-                    if (tmp)
-                        tmp1 = tmp;
-                    else
-                        tmp1 = NULL;
-                }
-                return (tmp1);
-            }
-
-            t_Node *root_next() const
-            {
-                t_Node *next = this->ptr_;
-                if (this->ptr_->right != NULL)
-                {
-                    next = ptr_->right->min_of_tree();
-                }
-                else
-                {
-                    t_Node *tmp = this->ptr_->parent;
-                    while (tmp && tmp->right == next)
-                    {
-                        next = tmp;
-                        tmp = tmp->parent;
-                    }
-                    if (tmp)
-                        next = tmp;
-                    else
-                        next = NULL;
-                }
-                return (next);
-            }
-            
         private:
             t_Node *ptr_;
             Red_Blacl_Tree *parent;

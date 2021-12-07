@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/28 13:09:42 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/07 15:22:33 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -663,6 +663,7 @@ int main()
     // std::vector<int>::iterator it;
     // it = vect.begin();
     // std::cout << *it << std::endl;
+    ft::map<int , int> mymap;
 }
 
 // to test our stack
