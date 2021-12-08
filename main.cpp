@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/07 18:26:11 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/08 13:44:55 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -665,6 +665,8 @@ int main()
     // std::cout << *it << std::endl;
     ft::map<int , int> mymap;
     ft::map<int , int>::iterator it;
+    it = mymap.begin();
+    std::cout  << *it << std::endl;
 }
 
 // to test our stack

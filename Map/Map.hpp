@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/07 18:27:24 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/08 13:42:43 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,23 @@ namespace ft
         typedef value_type *pointer;
         typedef const value_type *const_pointer;
         // miss iterator here
-        typedef typename ft::Red_Blacl_Tree<Key, T ,Compare>::iterator_map iterator;
+        typedef typename ft::Red_Blacl_Tree<T ,Compare>::iterator_map iterator;
         typedef std::ptrdiff_t difference_type;
         typedef size_t size_type;
         // constructor
         explicit map(const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type())
         {
             // ft::Red_Blacl_Tree<Key, T ,Compare> *test = new ft::Red_Blacl_Tree<Key, T ,Compare>;
-            test = new ft::Red_Blacl_Tree<Key, T ,Compare>;
-            test->insert(5);
-            test->insert(15);
-            test->insert(25);
-            test->insert(85);
-            test->insert(75);
-            test->insert(65);
-            test->insert(95);
-            test->insert(55);
-            test->print_tree_in_ordre_travers(test->getroot());
+            // mymap = new ft::Red_Blacl_Tree<Key, T ,Compare>;
+            mymap.insert(5);
+            mymap.insert(15);
+            mymap.insert(25);
+            mymap.insert(85);
+            mymap.insert(75);
+            mymap.insert(65);
+            mymap.insert(95);
+            mymap.insert(55);
+            // mymap.print_tree_in_ordre_travers(mymap.getroot());
         }
         template <class InputIterator>
         map(InputIterator first, InputIterator last,
@@ -72,9 +72,10 @@ namespace ft
         }
 
         // iterators;
-        // iterator begin()
-        // {
-        // }
+        iterator begin()
+        {
+            return mymap.begin();
+        }
         // const_iterator begin() const
         // {
         // }
@@ -181,7 +182,7 @@ namespace ft
         allocator_type alloc;
         value_type cc;
         size_type size_;
-        ft::Red_Blacl_Tree<Key, T ,Compare> *test;
+        ft::Red_Blacl_Tree< T ,Compare> mymap;
     };
 
 }
