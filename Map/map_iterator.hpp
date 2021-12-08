@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/08 16:27:34 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/08 21:54:12 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,39 @@ namespace ft
         class Node
         {
         private:
-
         public:
-            t_Node *rt;
-            Node(const T &val)
+            T item;
+            colors Color;
+            Node *left;
+            Node *right;
+            Node *parents;
+            // t_Node *rt;
+            Node(T val)
             {
-                rt = new t_Node;
-                rt->item = val;
-                rt->Color = RED;
-                rt->left = NULL;
-                rt->right = NULL;
-                rt->parents = NULL;
+                // rt = new t_Node;
+                item = val;
+                Color = RED;
+                left = NULL;
+                right = NULL;
+                parents = NULL;
             }
-            t_Node *rightMost()
+            Node(Node const &other)
             {
-                t_Node *tmp = this->rt;
+                this = other;
+            }
+            Node &operator=(Node const &other)
+            {
+                std::cout << "in operator = i node" << std::endl;
+                this->T = other.T;
+                this->Color = other.Color;
+                this->left = other.left;
+                this->right = other.right;
+                this->parents = other.parents;
+                return (*this);
+            }
+            Node *rightMost()
+            {
+                Node *tmp = this;
 
                 while (tmp->right)
                 {
@@ -73,10 +91,10 @@ namespace ft
                 }
                 return (tmp);
             }
-
-            t_Node *leftMost()
+            
+            Node *leftMost()
             {
-                t_Node *tmp = this->rt;
+                Node *tmp = this;
 
                 while (tmp->left)
                 {
@@ -87,10 +105,10 @@ namespace ft
 
             t_Node *getPrevious()
             {
-                t_Node *previous = this->rt;
-                if (rt->left)
+                Node *previous = this;
+                if (this->left)
                 {
-                    previous = rt->left->rightMost();
+                    previous = this->left->rightMost();
                 }
                 else
                 {
@@ -110,10 +128,10 @@ namespace ft
 
             t_Node *getNext() const
             {
-                t_Node *next = this->rt;
-                if (this->rt->right != NULL)
+                t_Node *next = this;
+                if (this->right != NULL)
                 {
-                    next = rt->right->leftMost();
+                    next = right->leftMost();
                 }
                 else
                 {
@@ -134,7 +152,7 @@ namespace ft
 
         Red_Blacl_Tree(/* args */)
         {
-            root = new Node(0);
+            root = NULL;
             // std::cout << "in red black tree constructor" << std::endl;
         }
         ~Red_Blacl_Tree()
@@ -143,15 +161,17 @@ namespace ft
         
         void insert(T key)
         {
-            t_Node *node;
-            t_Node *x;
-            t_Node *y;
-            // if (!this->root->rt)
-            //     std::cout << "im here" << std::endl;
-            
-            x = this->root->rt;
+            Node *node;
+            Node *x;
+            Node *y;
+            if (!this->root)
+            {
+                root = new Node(key);
+            }
+                // std::cout << "im here" << std::endl;
+            x = root;
             y = NULL;
-            node = create_NODE(key);
+            node = new Node(key);
             while (x != NULL)
             {
                 y = x;
@@ -162,7 +182,7 @@ namespace ft
             }
             node->parents = y;
             if (y == NULL)
-                this->root->rt = node;
+                this->root = node;
             else if (node->item < y->item)
                 y->left = node;
             else
@@ -170,70 +190,70 @@ namespace ft
         }
         t_Node *get_minimum(t_Node *root_)
         {
-            t_Node *tmp;
-            tmp = root_;
-            while (tmp->left)
-            {
-                // std::cout << "im in getsec ==> " << root_->item << std::endl;
-                // std::cout << "im in getmin ==> " << std::endl;
-                tmp = tmp->left;
-            }
-            return tmp;
+            // t_Node *tmp;
+            // tmp = root_;
+            // while (tmp->left)
+            // {
+            //     // std::cout << "im in getsec ==> " << root_->item << std::endl;
+            //     // std::cout << "im in getmin ==> " << std::endl;
+            //     tmp = tmp->left;
+            // }
+            // return tmp;
         }
         t_Node *get_maximum(t_Node *root_)
         {
-            t_Node *tmp;
-            // tmp = root_;
-            while (root_->right)
-                root_ = root_->right;
-            return root_;
+            // t_Node *tmp;
+            // // tmp = root_;
+            // while (root_->right)
+            //     root_ = root_->right;
+            // return root_;
         }
         t_Node *getSuccessor(t_Node *root_ = NULL)
         {
-            if (root_ == NULL)
-                root_ = this->root;
-            t_Node *tmp;
-            tmp = root_;
-            // if (!tmp->right)
-            // std::cout << "im in getsucc ==> " << std::endl;
-            if (tmp->right)
-            {
-                tmp = get_minimum(tmp->right);
-                // std::cout << "im in getsucc ==> " << tmp->item << std::endl;
-            }
-            t_Node *y;
-            y = tmp->parents;
-            while (y != NULL && tmp == y->right)
-            {
-                tmp = y;
-                y = y->parents;
-            }
-            return tmp;
-        }
-        t_Node *getpredecessor(t_Node *root_ = NULL)
-        {
-            if (root_ == NULL)
-                root_ = this->root;
+            // if (root_ == NULL)
+            //     root_ = this->root;
             // t_Node *tmp;
             // tmp = root_;
-            if (root_->left)
-                root_ = get_maximum(root_->left);
-            t_Node *y;
-            y = root_->parents;
-            while (y != NULL && root_ == y->left)
-            {
-                root_ = y;
-                y = y->parents;
-            }
-            return root_;
+            // // if (!tmp->right)
+            // // std::cout << "im in getsucc ==> " << std::endl;
+            // if (tmp->right)
+            // {
+            //     tmp = get_minimum(tmp->right);
+            //     // std::cout << "im in getsucc ==> " << tmp->item << std::endl;
+            // }
+            // t_Node *y;
+            // y = tmp->parents;
+            // while (y != NULL && tmp == y->right)
+            // {
+            //     tmp = y;
+            //     y = y->parents;
+            // }
+            // return tmp;
         }
-        t_Node *getroot()
+        // t_Node *getpredecessor(t_Node *root_ = NULL)
+        // {
+        //     if (root_ == NULL)
+        //         root_ = this->root;
+        //     // t_Node *tmp;
+        //     // tmp = root_;
+        //     if (root_->left)
+        //         root_ = get_maximum(root_->left);
+        //     t_Node *y;
+        //     y = root_->parents;
+        //     while (y != NULL && root_ == y->left)
+        //     {
+        //         root_ = y;
+        //         y = y->parents;
+        //     }
+        //     return root_;
+        // }
+        Node *getroot()
         {
             return root;
         }
-        void print_tree_in_ordre_travers(t_Node *root1)
+        void print_tree_in_ordre_travers(Node *root1)
         {
-            t_Node *tmp;
+            Node *tmp;
             // tmp = root;
             // if (tmp != NULL)
             // {
@@ -279,7 +299,7 @@ namespace ft
 
             iterator_map(Node *ptr, Red_Blacl_Tree *_parent)
             {
-                ptr_ = ptr->rt;
+                ptr_ = ptr;
                 this->parent = _parent;
             }
             // } : _ptr(ptr), _parent(parent){};
@@ -292,7 +312,8 @@ namespace ft
 
             reference operator*()
             {
-                return _ptr->rt->item;
+                std::cout << "in operator*" << std::endl;
+                return _ptr->item;
             };
             iterator_map &operator++()
             {
@@ -324,12 +345,12 @@ namespace ft
             // }
 
         private:
-            t_Node *ptr_;
+            Node *ptr_;
             Red_Blacl_Tree *parent;
         };
         iterator_map begin()
         {
-            return (iterator_map(this->root, this));
+            return (iterator_map(root, this));
         }
 
     private:
