@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/08 13:42:43 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/08 16:27:20 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ namespace ft
             mymap.insert(65);
             mymap.insert(95);
             mymap.insert(55);
-            // mymap.print_tree_in_ordre_travers(mymap.getroot());
+            mymap.print_tree_in_ordre_travers(mymap.getroot());
         }
         template <class InputIterator>
         map(InputIterator first, InputIterator last,

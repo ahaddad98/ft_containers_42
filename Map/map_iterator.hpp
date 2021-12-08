@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/08 13:49:28 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/08 16:27:34 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ namespace ft
         } t_Node;
 
     public:
+        t_Node *create_NODE(T key)
+        {
+
+            // std::allocator alloc<t_Node>;
+            t_Node *ret = new t_Node;
+            ret->item = key;
+            ret->Color = RED;
+            ret->left = NULL;
+            ret->right = NULL;
+            ret->parents = NULL;
+
+            return ret;
+        }
         class Node
         {
         private:
@@ -43,11 +56,12 @@ namespace ft
             t_Node *rt;
             Node(const T &val)
             {
+                rt = new t_Node;
                 rt->item = val;
-                rt->color = RED;
+                rt->Color = RED;
                 rt->left = NULL;
                 rt->right = NULL;
-                rt->parent = NULL;
+                rt->parents = NULL;
             }
             t_Node *rightMost()
             {
@@ -120,31 +134,22 @@ namespace ft
 
         Red_Blacl_Tree(/* args */)
         {
-            root = NULL;
+            root = new Node(0);
             // std::cout << "in red black tree constructor" << std::endl;
         }
         ~Red_Blacl_Tree()
         {
         }
-        t_Node *create_NODE(int key)
-        {
-
-            // std::allocator alloc<t_Node>;
-            t_Node *ret = new t_Node;
-            ret->item = key;
-            ret->Color = RED;
-            ret->left = NULL;
-            ret->right = NULL;
-            ret->parents = NULL;
-
-            return ret;
-        }
-        void insert(int key)
+        
+        void insert(T key)
         {
             t_Node *node;
             t_Node *x;
             t_Node *y;
-            x = this->root;
+            // if (!this->root->rt)
+            //     std::cout << "im here" << std::endl;
+            
+            x = this->root->rt;
             y = NULL;
             node = create_NODE(key);
             while (x != NULL)
@@ -157,7 +162,7 @@ namespace ft
             }
             node->parents = y;
             if (y == NULL)
-                this->root = node;
+                this->root->rt = node;
             else if (node->item < y->item)
                 y->left = node;
             else
@@ -177,7 +182,7 @@ namespace ft
         }
         t_Node *get_maximum(t_Node *root_)
         {
-            // t_Node *tmp;
+            t_Node *tmp;
             // tmp = root_;
             while (root_->right)
                 root_ = root_->right;
@@ -272,9 +277,9 @@ namespace ft
             //     *this = it;
             // };
 
-            iterator_map(t_Node *ptr, Red_Blacl_Tree *_parent)
+            iterator_map(Node *ptr, Red_Blacl_Tree *_parent)
             {
-                ptr_ = ptr;
+                ptr_ = ptr->rt;
                 this->parent = _parent;
             }
             // } : _ptr(ptr), _parent(parent){};
@@ -287,7 +292,7 @@ namespace ft
 
             reference operator*()
             {
-                return _ptr->item;
+                return _ptr->rt->item;
             };
             iterator_map &operator++()
             {
@@ -328,7 +333,7 @@ namespace ft
         }
 
     private:
-        t_Node *root;
+        Node *root;
     };
 }
 #endif
