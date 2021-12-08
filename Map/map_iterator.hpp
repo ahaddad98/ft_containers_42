@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/08 21:54:12 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/08 22:14:38 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ namespace ft
             if (!this->root)
             {
                 root = new Node(key);
+                return ;
             }
                 // std::cout << "im here" << std::endl;
             x = root;
