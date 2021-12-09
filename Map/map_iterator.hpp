@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/08 22:14:38 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/09 14:35:54 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,7 +290,7 @@ namespace ft
 
             iterator_map()
             {
-                ptr_ = NULL;
+                _ptr = NULL;
             };
 
             // iterator_map(const iterator_map &it)
@@ -300,8 +300,8 @@ namespace ft
 
             iterator_map(Node *ptr, Red_Blacl_Tree *_parent)
             {
-                ptr_ = ptr;
-                this->parent = _parent;
+                _ptr = ptr;
+                this->_parent = _parent;
             }
             // } : _ptr(ptr), _parent(parent){};
             iterator_map &operator=(iterator_map const &other)
@@ -318,8 +318,8 @@ namespace ft
             };
             iterator_map &operator++()
             {
-                _ptr = (_ptr = _ptr->getNext()) ? _ptr : _parent->_end;
-                return *this;
+                // _ptr = (_ptr = _ptr->getNext()) ? _ptr : _parent->_end;
+                // return *this;
             }
 
         protected:
@@ -345,13 +345,13 @@ namespace ft
             //     return getSuccessor(ptr_);
             // }
 
-        private:
-            Node *ptr_;
-            Red_Blacl_Tree *parent;
+        // private:
+        //     Node *ptr_;
+        //     Red_Blacl_Tree *parent;
         };
         iterator_map begin()
         {
-            return (iterator_map(root, this));
+            return (iterator_map(root->leftMost(), this));
         }
 
     private:

@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/08 21:00:15 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/09 14:36:17 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ namespace ft
         {
             // ft::Red_Blacl_Tree<Key, T ,Compare> *test = new ft::Red_Blacl_Tree<Key, T ,Compare>;
             // mymap = new ft::Red_Blacl_Tree<Key, T ,Compare>;
-            mymap.insert(5);
+            mymap.insert(-5);
             mymap.insert(15);
             mymap.insert(25);
             mymap.insert(85);
