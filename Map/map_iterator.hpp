@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/09 14:35:54 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/09 16:06:22 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,15 @@ namespace ft
             Node *right;
             Node *parents;
             // t_Node *rt;
+            Node()
+            {
+                // rt = new t_Node;
+                // item = val;
+                Color = RED;
+                left = NULL;
+                right = NULL;
+                parents = NULL;
+            }
             Node(T val)
             {
                 // rt = new t_Node;
@@ -67,13 +76,12 @@ namespace ft
                 right = NULL;
                 parents = NULL;
             }
-            Node(Node const &other)
+            Node(Node &other)
             {
                 this = other;
             }
-            Node &operator=(Node const &other)
+            Node &operator=(Node  &other)
             {
-                std::cout << "in operator = i node" << std::endl;
                 this->T = other.T;
                 this->Color = other.Color;
                 this->left = other.left;
@@ -103,7 +111,7 @@ namespace ft
                 return (tmp);
             }
 
-            t_Node *getPrevious()
+            Node *getPrevious()
             {
                 Node *previous = this;
                 if (this->left)
@@ -112,7 +120,7 @@ namespace ft
                 }
                 else
                 {
-                    t_Node *tmp = this->rt->parent;
+                    Node *tmp = this->rt->parent;
                     while (tmp && tmp->left == previous)
                     {
                         previous = tmp;
@@ -126,20 +134,21 @@ namespace ft
                 return (previous);
             }
 
-            t_Node *getNext() const
+            Node *getNext()
             {
-                t_Node *next = this;
+                Node *next;
+                next = this;
                 if (this->right != NULL)
                 {
                     next = right->leftMost();
                 }
                 else
                 {
-                    t_Node *tmp = this->rt->parent;
+                    Node *tmp = this->parents;
                     while (tmp && tmp->right == next)
                     {
                         next = tmp;
-                        tmp = tmp->parent;
+                        tmp = tmp->parents;
                     }
                     if (tmp)
                         next = tmp;
@@ -152,8 +161,8 @@ namespace ft
 
         Red_Blacl_Tree(/* args */)
         {
-            root = NULL;
-            // std::cout << "in red black tree constructor" << std::endl;
+            end_ = new Node();
+            root = end_;
         }
         ~Red_Blacl_Tree()
         {
@@ -169,7 +178,6 @@ namespace ft
                 root = new Node(key);
                 return ;
             }
-                // std::cout << "im here" << std::endl;
             x = root;
             y = NULL;
             node = new Node(key);
@@ -313,13 +321,13 @@ namespace ft
 
             reference operator*()
             {
-                std::cout << "in operator*" << std::endl;
                 return _ptr->item;
             };
-            iterator_map &operator++()
+            iterator_map operator++()
             {
-                // _ptr = (_ptr = _ptr->getNext()) ? _ptr : _parent->_end;
-                // return *this;
+                _ptr = _ptr->getNext();
+                std::cout << "im in ++" << std::endl;
+                return (*this);
             }
 
         protected:
@@ -344,10 +352,6 @@ namespace ft
             // {
             //     return getSuccessor(ptr_);
             // }
-
-        // private:
-        //     Node *ptr_;
-        //     Red_Blacl_Tree *parent;
         };
         iterator_map begin()
         {
@@ -356,6 +360,7 @@ namespace ft
 
     private:
         Node *root;
+        Node *end_;
     };
 }
 #endif
