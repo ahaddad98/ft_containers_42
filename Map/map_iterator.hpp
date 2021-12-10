@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/09 16:06:22 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/09 23:40:21 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,11 +120,11 @@ namespace ft
                 }
                 else
                 {
-                    Node *tmp = this->rt->parent;
+                    Node *tmp = this->parents;
                     while (tmp && tmp->left == previous)
                     {
                         previous = tmp;
-                        tmp = tmp->parent;
+                        tmp = tmp->parents;
                     }
                     if (tmp)
                         previous = tmp;
@@ -173,9 +173,10 @@ namespace ft
             Node *node;
             Node *x;
             Node *y;
-            if (!this->root)
+            if (this->root == end_)
             {
                 root = new Node(key);
+                end_->left = root;
                 return ;
             }
             x = root;
@@ -278,7 +279,7 @@ namespace ft
             //         // tmp = most_left(tmp);
             //     }
             tmp = root1;
-            if (tmp)
+            if (tmp && tmp != end_)
             {
                 print_tree_in_ordre_travers(tmp->left);
                 std::cout << tmp->item << std::endl;
@@ -306,10 +307,21 @@ namespace ft
             //     *this = it;
             // };
 
-            iterator_map(Node *ptr, Red_Blacl_Tree *_parent)
+            iterator_map(Node *ptr/*, Red_Blacl_Tree *_parent*/)
             {
-                _ptr = ptr;
-                this->_parent = _parent;
+                if (ptr != NULL)
+                {
+                    _ptr = ptr;
+                    // _parent = parent;
+                }
+                else
+                {
+                    _ptr = NULL;
+                    // _parent = NULL;
+                }
+                // _ptr = ptr;
+                std::cout << "hnaaaa" << std::endl;
+                // this->_parent = _parent;
             }
             // } : _ptr(ptr), _parent(parent){};
             iterator_map &operator=(iterator_map const &other)
@@ -326,36 +338,42 @@ namespace ft
             iterator_map operator++()
             {
                 _ptr = _ptr->getNext();
-                std::cout << "im in ++" << std::endl;
                 return (*this);
             }
-
+            iterator_map operator++(int n)
+            {
+                _ptr = _ptr->getNext();
+                return (*this);
+            }
+            iterator_map operator--()
+            {
+                if ((_ptr = _ptr->getPrevious()))
+                    std::cout << "im in -- " << std::endl;
+                return (*this);
+            }
+            bool operator==(iterator_map const &other)
+            {
+                return (_ptr == other._ptr);
+            }
+            bool operator!=(iterator_map const &other)
+            {
+                if (other._ptr)
+                    return (_ptr != other._ptr);
+                return true;
+            }
         protected:
             Node *_ptr;
             Red_Blacl_Tree *_parent;
-            // iterator_map() : ptr_(NULL)
-            // {
-            // }
-            // iterator_map(t_Node *root) : ptr_(root)
-            // {
-            // }
-            // ~iterator_map()
-            // {
-            // }
-            // iterator_map &operator=(const iterator_map &src)
-            // {
-            //     this->ptr_ = src.ptr_;
-            //     this->parents = src.parents;
-            //     return *this;
-            // }
-            // self_type operator++()
-            // {
-            //     return getSuccessor(ptr_);
-            // }
         };
         iterator_map begin()
         {
-            return (iterator_map(root->leftMost(), this));
+            return (iterator_map(root->leftMost()/*, this*/));
+        }
+        iterator_map end()
+        {
+            // return (iterator_map(root->rightMost()/*, this*/));
+            std::cout << "im in end" << std::endl;
+            return (iterator_map(end_ /*, this*/));
         }
 
     private:

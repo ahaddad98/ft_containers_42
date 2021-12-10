@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/09 16:06:48 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/09 20:18:05 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -665,10 +665,13 @@ int main()
     // std::cout << *it << std::endl;
     ft::map<int , int> mymap;
     ft::map<int , int>::iterator it;
-    it = mymap.begin();
-    std::cout << "*it = " <<  *it << std::endl;
-    ++it;
-    std::cout << "*it++ = " <<  *it << std::endl;
+    for (it = mymap.begin(); it != mymap.end(); it++)
+    {
+        std::cout << *it << std::endl;
+        // std::cout << "key = " << it->first << std::endl;   
+        // std::cout << "value = " << it->second << std::endl;
+    }
+    
 }
 
 // to test our stack
