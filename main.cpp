@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/09 20:18:05 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/12 19:33:38 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -668,6 +668,7 @@ int main()
     for (it = mymap.begin(); it != mymap.end(); it++)
     {
         std::cout << *it << std::endl;
+        std::cout << "aa" << std::endl;
         // std::cout << "key = " << it->first << std::endl;   
         // std::cout << "value = " << it->second << std::endl;
     }

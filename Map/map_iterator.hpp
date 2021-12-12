@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/09 23:40:21 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/12 19:48:18 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ namespace ft
             {
                 this = other;
             }
-            Node &operator=(Node  &other)
+            Node &operator=(Node &other)
             {
                 this->T = other.T;
                 this->Color = other.Color;
@@ -99,7 +99,7 @@ namespace ft
                 }
                 return (tmp);
             }
-            
+
             Node *leftMost()
             {
                 Node *tmp = this;
@@ -155,19 +155,20 @@ namespace ft
                     else
                         next = NULL;
                 }
+                // std::cout << "hna lakhra wa9ila" << std::endl;
                 return (next);
             }
         };
 
         Red_Blacl_Tree(/* args */)
         {
-            end_ = new Node();
+            end_ = new Node(0);
             root = end_;
         }
         ~Red_Blacl_Tree()
         {
         }
-        
+
         void insert(T key)
         {
             Node *node;
@@ -177,7 +178,7 @@ namespace ft
             {
                 root = new Node(key);
                 end_->left = root;
-                return ;
+                return;
             }
             x = root;
             y = NULL;
@@ -307,18 +308,18 @@ namespace ft
             //     *this = it;
             // };
 
-            iterator_map(Node *ptr/*, Red_Blacl_Tree *_parent*/)
+            iterator_map(Node *ptr, Red_Blacl_Tree *parent)
             {
-                if (ptr != NULL)
-                {
-                    _ptr = ptr;
-                    // _parent = parent;
-                }
-                else
-                {
-                    _ptr = NULL;
-                    // _parent = NULL;
-                }
+                // if (ptr = )
+                // {
+                _ptr = ptr;
+                _parent = parent;
+                // }
+                // else
+                // {
+                //     _ptr = NULL;
+                //     // _parent = NULL;
+                // }
                 // _ptr = ptr;
                 std::cout << "hnaaaa" << std::endl;
                 // this->_parent = _parent;
@@ -327,14 +328,16 @@ namespace ft
             iterator_map &operator=(iterator_map const &other)
             {
                 _ptr = other._ptr;
-                _parent = other._parent;
+                // _parent = other._parent;
                 return (*this);
             }
 
             reference operator*()
             {
+
+                std::cout << "in operstor *" << std::endl;
                 return _ptr->item;
-            };
+            }
             iterator_map operator++()
             {
                 _ptr = _ptr->getNext();
@@ -342,7 +345,10 @@ namespace ft
             }
             iterator_map operator++(int n)
             {
-                _ptr = _ptr->getNext();
+                if (!(_ptr = _ptr->getNext()))
+                    _ptr = _parent->end_;
+                std::cout << "im in ++ " << std::endl;
+
                 return (*this);
             }
             iterator_map operator--()
@@ -358,22 +364,26 @@ namespace ft
             bool operator!=(iterator_map const &other)
             {
                 if (other._ptr)
+                {
+                    std::cout << "hufrjknt" << std::endl;
                     return (_ptr != other._ptr);
-                return true;
+                }
+                return false;
             }
+
         protected:
             Node *_ptr;
             Red_Blacl_Tree *_parent;
         };
         iterator_map begin()
         {
-            return (iterator_map(root->leftMost()/*, this*/));
+            return (iterator_map(root->leftMost(), this));
         }
         iterator_map end()
         {
             // return (iterator_map(root->rightMost()/*, this*/));
-            std::cout << "im in end" << std::endl;
-            return (iterator_map(end_ /*, this*/));
+            // std::cout << "im in end" << std::endl;
+            return (iterator_map(end_, this));
         }
 
     private:
