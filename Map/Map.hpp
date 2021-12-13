@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/13 13:27:00 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/13 15:29:48 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,7 @@ namespace ft
         {
             // ft::Red_Blacl_Tree<Key, T ,Compare> *test = new ft::Red_Blacl_Tree<Key, T ,Compare>;
             // mymap = new ft::Red_Blacl_Tree<Key, T ,Compare>;
-            mymap.insert(-5);
-            mymap.insert(15);
-            mymap.insert(25);
-            mymap.insert(85);
-            mymap.insert(75);
-            mymap.insert(65);
-            mymap.insert(95);
-            mymap.insert(55);
+
             // mymap.print_tree_in_ordre_travers(mymap.getroot());
         }
         template <class InputIterator>
@@ -112,9 +105,10 @@ namespace ft
         // Element access:
         mapped_type &operator[](const key_type &k) {}
         // Modifiers:
-        // pair<iterator, bool> insert(const value_type &val)
-        // {
-        // }
+        std::pair<iterator, bool> insert(const value_type &val)
+        {
+            mymap.insert(val);
+        }
         // iterator insert (iterator position, const value_type& val)
         // {
         // }

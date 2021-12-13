@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/13 13:27:14 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/13 15:28:59 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,10 +162,11 @@ namespace ft
                 return (next);
             }
         };
-
+        typedef size_t size_type;
         Red_Blacl_Tree(/* args */)
         {
             end_ = new Node(0);
+            size_ = 0;
             root = end_;
         }
         ~Red_Blacl_Tree()
@@ -179,9 +180,9 @@ namespace ft
             Node *y;
             if (this->root == end_)
             {
-                std::cout << "in root" << std::endl;
                 root = new Node(key);
                 end_->left = root;
+                size_++;
                 return;
             }
             x = root;
@@ -202,6 +203,7 @@ namespace ft
                 y->left = node;
             else
                 y->right = node;
+            size_++;
         }
         t_Node *get_minimum(t_Node *root_)
         {
@@ -397,10 +399,14 @@ namespace ft
             // std::cout << "im in end" << std::endl;
             return (iterator_map(end_, this));
         }
-
+        size_type size()
+        {
+            return (size_);
+        }
     private:
         Node *root;
         Node *end_;
+        size_type size_;
     };
 }
 #endif
