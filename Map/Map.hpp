@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/13 15:29:48 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/13 19:46:45 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 #define MAP_HPP
 #include <iostream>
 #include "map_iterator.hpp"
+#include "pair.hpp"
 namespace ft
 {
 
     template <class Key,                                            // map::key_type
               class T,                                              // map::mapped_type
               class Compare = std::less<Key>,                       // map::key_compare
-              class Alloc = std::allocator<std::pair<const Key, T> > // map::allocator_type
+              class Alloc = std::allocator<pair<const Key, T> > // map::allocator_type
               >
 
     class map
@@ -28,7 +29,7 @@ namespace ft
     public:
         typedef Key key_type;
         typedef T mapped_type;
-        typedef std::pair<const Key, T> value_type;
+        typedef pair<const Key, T> value_type;
         typedef Compare key_compare;
         // typedef Comp value_compare;
         typedef Alloc allocator_type;
@@ -105,7 +106,7 @@ namespace ft
         // Element access:
         mapped_type &operator[](const key_type &k) {}
         // Modifiers:
-        std::pair<iterator, bool> insert(const value_type &val)
+        pair<iterator, bool> insert(const value_type &val)
         {
             mymap.insert(val);
         }

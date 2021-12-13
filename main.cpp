@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/13 15:30:53 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/13 20:01:52 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <vector>
 #include <stack>
 #include <map>
-
+#include "Map/pair.hpp"
 
 int main()
 {
@@ -664,7 +664,7 @@ int main()
     // it = vect.begin();
     // std::cout << *it << std::endl;
     ft::map<int , int> mymap;
-    mymap.insert(std::pair<int,int>(1,2));
+    mymap.insert(pair<int,int>(1,2));
     // mymap->insert(15);
     // mymap->insert(25);
     // mymap->insert(85);
