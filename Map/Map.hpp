@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/13 19:46:45 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/13 22:10:15 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ namespace ft
         map &operator=(const map &x)
         {
         }
+        
 
         // iterators;
         iterator begin()
@@ -108,7 +109,7 @@ namespace ft
         // Modifiers:
         pair<iterator, bool> insert(const value_type &val)
         {
-            mymap.insert(val);
+            mymap.insert(val.second);
         }
         // iterator insert (iterator position, const value_type& val)
         // {
