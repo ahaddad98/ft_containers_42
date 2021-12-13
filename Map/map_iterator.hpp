@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/12 19:48:18 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/13 13:27:14 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,11 +151,14 @@ namespace ft
                         tmp = tmp->parents;
                     }
                     if (tmp)
+                    {
                         next = tmp;
+                    }
                     else
+                    {
                         next = NULL;
+                    }
                 }
-                // std::cout << "hna lakhra wa9ila" << std::endl;
                 return (next);
             }
         };
@@ -176,6 +179,7 @@ namespace ft
             Node *y;
             if (this->root == end_)
             {
+                std::cout << "in root" << std::endl;
                 root = new Node(key);
                 end_->left = root;
                 return;
@@ -313,6 +317,7 @@ namespace ft
                 // if (ptr = )
                 // {
                 _ptr = ptr;
+                // if (_parent != parent->end_)
                 _parent = parent;
                 // }
                 // else
@@ -321,21 +326,19 @@ namespace ft
                 //     // _parent = NULL;
                 // }
                 // _ptr = ptr;
-                std::cout << "hnaaaa" << std::endl;
+                // std::cout << "hnaaaa" << std::endl;
                 // this->_parent = _parent;
             }
             // } : _ptr(ptr), _parent(parent){};
             iterator_map &operator=(iterator_map const &other)
             {
                 _ptr = other._ptr;
-                // _parent = other._parent;
+                _parent = other._parent;
                 return (*this);
             }
 
             reference operator*()
             {
-
-                std::cout << "in operstor *" << std::endl;
                 return _ptr->item;
             }
             iterator_map operator++()
@@ -345,9 +348,16 @@ namespace ft
             }
             iterator_map operator++(int n)
             {
-                if (!(_ptr = _ptr->getNext()))
+                if (!_ptr->getNext())
+                {
                     _ptr = _parent->end_;
-                std::cout << "im in ++ " << std::endl;
+                }
+                else
+                    _ptr = _ptr->getNext();
+                return (*this);
+                // if (!(_ptr = _ptr->getNext()))
+                //     _ptr = _parent->end_;
+                // std::cout << "im in ++ " << std::endl;
 
                 return (*this);
             }
@@ -359,16 +369,18 @@ namespace ft
             }
             bool operator==(iterator_map const &other)
             {
+                // std::cout << "in operstor ++ int n" << std::endl;
                 return (_ptr == other._ptr);
             }
             bool operator!=(iterator_map const &other)
             {
-                if (other._ptr)
-                {
-                    std::cout << "hufrjknt" << std::endl;
+                // if (other._ptr)
+                // {
+                    // if (!(_ptr != other._ptr))
+                        // std::cout << "in !=" << std::endl;
                     return (_ptr != other._ptr);
-                }
-                return false;
+                // }
+                // return false;
             }
 
         protected:

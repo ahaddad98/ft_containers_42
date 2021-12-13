@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/12 19:33:38 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/13 13:26:28 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -665,10 +665,12 @@ int main()
     // std::cout << *it << std::endl;
     ft::map<int , int> mymap;
     ft::map<int , int>::iterator it;
+    // it = mymap.end();
     for (it = mymap.begin(); it != mymap.end(); it++)
     {
+        // std::cout << "aa" << std::endl;
+        // break ;
         std::cout << *it << std::endl;
-        std::cout << "aa" << std::endl;
         // std::cout << "key = " << it->first << std::endl;   
         // std::cout << "value = " << it->second << std::endl;
     }
