@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 16:49:41 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 18:58:51 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,6 +263,7 @@ namespace ft
             }
             // }
         }
+        
         class iterator_map : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
         {
         public:
@@ -278,29 +279,16 @@ namespace ft
                 _ptr = NULL;
             };
 
-            // iterator_map(const iterator_map &it)
-            // {
-            //     *this = it;
-            // };
+            iterator_map(const iterator_map &it)
+            {
+                *this = it;
+            };
 
             iterator_map(Node *ptr, Red_Blacl_Tree *parent)
             {
-                // if (ptr = )
-                // {
                 _ptr = ptr;
-                // if (_parent != parent->end_)
                 _parent = parent;
-                // }
-                // else
-                // {
-                //     _ptr = NULL;
-                //     // _parent = NULL;
-                // }
-                // _ptr = ptr;
-                // std::cout << "hnaaaa" << std::endl;
-                // this->_parent = _parent;
             }
-            // } : _ptr(ptr), _parent(parent){};
             iterator_map &operator=(iterator_map const &other)
             {
                 _ptr = other._ptr;
@@ -324,16 +312,9 @@ namespace ft
             iterator_map operator++(int n)
             {
                 if (!_ptr->getNext())
-                {
                     _ptr = _parent->end_;
-                }
                 else
                     _ptr = _ptr->getNext();
-                return (*this);
-                // if (!(_ptr = _ptr->getNext()))
-                //     _ptr = _parent->end_;
-                // std::cout << "im in ++ " << std::endl;
-
                 return (*this);
             }
             iterator_map operator--()
@@ -344,18 +325,11 @@ namespace ft
             }
             bool operator==(iterator_map const &other)
             {
-                // std::cout << "in operstor ++ int n" << std::endl;
                 return (_ptr == other._ptr);
             }
             bool operator!=(iterator_map const &other)
             {
-                // if (other._ptr)
-                // {
-                    // if (!(_ptr != other._ptr))
-                        // std::cout << "in !=" << std::endl;
-                    return (_ptr != other._ptr);
-                // }
-                // return false;
+                return (_ptr != other._ptr);
             }
 
         protected:
@@ -368,15 +342,26 @@ namespace ft
         }
         iterator_map end()
         {
-            // return (iterator_map(root->rightMost()/*, this*/));
-            // std::cout << "im in end" << std::endl;
             return (iterator_map(end_, this));
         }
-
+        iterator_map search_tree_in_ordre_travers(T root1)
+        {
+            iterator_map it;
+            for ( it = this->begin(); it != this->end(); it++)
+            {
+                if (root1.first == it->first)
+                {
+                    std::cout << "element exist" << std::endl;
+                    return it;
+                }
+            }
+            return it;
+            
+        }
         pair<iterator_map ,bool> insert(T key)
         {
             pair<iterator_map , bool> mypair;
-            
+            iterator_map it;
             Node *node;
             Node *x;
             Node *y;
@@ -386,6 +371,11 @@ namespace ft
                 end_->left = root;
                 size_++;
                 return mypair;
+            }
+            it = this->search_tree_in_ordre_travers(key);
+            if (it == end())
+            {
+                std::cout << "element not exist" <<  std::endl;
             }
             x = root;
             y = NULL;

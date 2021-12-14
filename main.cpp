@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 16:40:50 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 18:43:19 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -665,6 +665,11 @@ int main()
     // std::cout << *it << std::endl;
     ft::map<int , int> mymap;
     mymap.insert(pair<int,int>(1,2));
+    mymap.insert(pair<int,int>(1,2));
+    mymap.insert(pair<int,int>(12,2));
+    mymap.insert(pair<int,int>(13,2));
+    mymap.insert(pair<int,int>(14,2));
+    mymap.insert(pair<int,int>(15,2));
     // mymap->insert(15);
     // mymap->insert(25);
     // mymap->insert(85);
@@ -672,12 +677,22 @@ int main()
     // mymap->insert(65);
     // mymap->insert(95);
     // mymap->insert(55);
-    ft::map<int , int>::iterator it;
+    // ft::map<int , int>::iterator it;
     // it = mymap.end();
-    for (it = mymap.begin(); it != mymap.end(); it++)
-    {
-        std::cout << it->first << std::endl;
-    }
+    // for (it = mymap.begin(); it != mymap.end(); it++)
+    // {
+    //     std::cout << it->first << std::endl;
+    // }
+    // std::map<int , int> map;
+    // map.insert(std::pair<int , int>(1,1));
+    // map.insert(std::pair<int , int>(1,12));
+    // map.insert(std::pair<int , int>(12,13));
+    // map.insert(std::pair<int , int>(1,14));
+    // std::map<int, int>::iterator it1;
+    // for ( it1 = map.begin(); it1 != map.end(); it1++)
+    // {
+    //     std::cout << it1->first << " ==> " << it1->second <<std::endl;
+    // }
     
 }
 
