@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 18:58:51 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 20:28:35 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -351,7 +351,6 @@ namespace ft
             {
                 if (root1.first == it->first)
                 {
-                    std::cout << "element exist" << std::endl;
                     return it;
                 }
             }
@@ -370,35 +369,36 @@ namespace ft
                 root = new Node(key);
                 end_->left = root;
                 size_++;
-                return mypair;
+                return make_pair(this->begin(), true);
             }
             it = this->search_tree_in_ordre_travers(key);
             if (it == end())
             {
-                std::cout << "element not exist" <<  std::endl;
-            }
-            x = root;
-            y = NULL;
-            node = new Node(key);
-            while (x != NULL)
-            {
-                y = x;
-                if (node->item.first < x->item.first)
-                    x = x->left;
+                x = root;
+                y = NULL;
+                node = new Node(key);
+                while (x != NULL)
+                {
+                    y = x;
+                    if (node->item.first < x->item.first)
+                        x = x->left;
+                    else
+                        x = x->right;
+                }
+                node->parents = y;
+                if (y == NULL)
+                    this->root = node;
+                else if (node->item < y->item)
+                    y->left = node;
                 else
-                    x = x->right;
+                    y->right = node;
+                size_++;
+                it = this->search_tree_in_ordre_travers(key);
+                return make_pair(it , true);
             }
-            node->parents = y;
-            if (y == NULL)
-                this->root = node;
-            else if (node->item < y->item)
-                y->left = node;
-            else
-                y->right = node;
-            size_++;
-            return mypair;
+            return make_pair(it ,false);
         }
-        size_type size()
+        size_type size() const
         {
             return (size_);
         }

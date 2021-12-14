@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 16:39:01 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 20:27:45 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ namespace ft
         }
         size_type size() const
         {
+            return mymap.size();
         }
         size_type max_size() const
         {

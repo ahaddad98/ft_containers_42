@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:21:05 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 15:44:10 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 20:18:08 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ template <class T1, class T2>
             return *this;
         }
     };
+    template <class T1,class T2>
+    pair<T1,T2> make_pair (T1 x, T2 y)
+    {
+        return ( pair<T1,T2>(x,y) );
+    }
     template <class T1, class T2>
     bool operator== (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
     {
