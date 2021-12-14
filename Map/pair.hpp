@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:21:05 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/13 22:07:08 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 15:44:10 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ template <class T1, class T2>
         {
         }
         template<class U, class V>
-        pair (const pair<U,V>& pr)
+        pair (const pair<U,V>& pr) : first(pr.first) , second(pr.second)
         {
-            this = pr;
         }
         pair (const first_type& a, const second_type& b) : first(a), second(b)
         {

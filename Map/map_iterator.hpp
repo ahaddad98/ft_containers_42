@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/13 15:28:59 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 15:38:56 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define MAP_ITERATOR_HPP
 #include <iostream>
 #include "../Vector/iterator_traits.hpp"
+#include "pair.hpp"
 namespace ft
 {
     enum colors
@@ -173,38 +174,6 @@ namespace ft
         {
         }
 
-        void insert(T key)
-        {
-            Node *node;
-            Node *x;
-            Node *y;
-            if (this->root == end_)
-            {
-                root = new Node(key);
-                end_->left = root;
-                size_++;
-                return;
-            }
-            x = root;
-            y = NULL;
-            node = new Node(key);
-            while (x != NULL)
-            {
-                y = x;
-                if (node->item < x->item)
-                    x = x->left;
-                else
-                    x = x->right;
-            }
-            node->parents = y;
-            if (y == NULL)
-                this->root = node;
-            else if (node->item < y->item)
-                y->left = node;
-            else
-                y->right = node;
-            size_++;
-        }
         t_Node *get_minimum(t_Node *root_)
         {
             // t_Node *tmp;
@@ -398,6 +367,42 @@ namespace ft
             // return (iterator_map(root->rightMost()/*, this*/));
             // std::cout << "im in end" << std::endl;
             return (iterator_map(end_, this));
+        }
+
+        pair<iterator_map ,bool> insert(T key)
+        {
+            pair<iterator_map , bool> mypair;
+            
+            Node *node;
+            Node *x;
+            Node *y;
+            if (this->root == end_)
+            {
+                root = new Node(key);
+                end_->left = root;
+                size_++;
+                return mypair;
+            }
+            x = root;
+            y = NULL;
+            node = new Node(key);
+            while (x != NULL)
+            {
+                y = x;
+                if (node->item < x->item)
+                    x = x->left;
+                else
+                    x = x->right;
+            }
+            node->parents = y;
+            if (y == NULL)
+                this->root = node;
+            else if (node->item < y->item)
+                y->left = node;
+            else
+                y->right = node;
+            size_++;
+            return mypair;
         }
         size_type size()
         {

@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/13 22:10:15 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 15:38:36 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ namespace ft
         // Modifiers:
         pair<iterator, bool> insert(const value_type &val)
         {
-            mymap.insert(val.second);
+            return mymap.insert(val.second);
         }
         // iterator insert (iterator position, const value_type& val)
         // {
