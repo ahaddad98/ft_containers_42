@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 15:45:02 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 16:40:50 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -676,7 +676,7 @@ int main()
     // it = mymap.end();
     for (it = mymap.begin(); it != mymap.end(); it++)
     {
-        std::cout << *it << std::endl;
+        std::cout << it->first << std::endl;
     }
     
 }

@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 15:38:56 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 16:49:41 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ namespace ft
                 right = NULL;
                 parents = NULL;
             }
-            Node(T val)
+            Node(T val) : item(val)
             {
                 // rt = new t_Node;
-                item = val;
+                // item = val;
                 Color = RED;
                 left = NULL;
                 right = NULL;
@@ -166,7 +166,7 @@ namespace ft
         typedef size_t size_type;
         Red_Blacl_Tree(/* args */)
         {
-            end_ = new Node(0);
+            end_ = new Node();
             size_ = 0;
             root = end_;
         }
@@ -312,6 +312,10 @@ namespace ft
             {
                 return _ptr->item;
             }
+            pointer operator->()
+            {
+                return &operator*();
+            }
             iterator_map operator++()
             {
                 _ptr = _ptr->getNext();
@@ -389,7 +393,7 @@ namespace ft
             while (x != NULL)
             {
                 y = x;
-                if (node->item < x->item)
+                if (node->item.first < x->item.first)
                     x = x->left;
                 else
                     x = x->right;

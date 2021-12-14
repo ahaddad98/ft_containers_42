@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 15:38:36 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 16:39:01 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ namespace ft
         typedef value_type *pointer;
         typedef const value_type *const_pointer;
         // miss iterator here
-        typedef typename ft::Red_Blacl_Tree<T ,Compare>::iterator_map iterator;
+        typedef typename ft::Red_Blacl_Tree<value_type ,Compare>::iterator_map iterator;
         typedef std::ptrdiff_t difference_type;
         typedef size_t size_type;
         // constructor
@@ -109,7 +109,7 @@ namespace ft
         // Modifiers:
         pair<iterator, bool> insert(const value_type &val)
         {
-            return mymap.insert(val.second);
+            return mymap.insert(val);
         }
         // iterator insert (iterator position, const value_type& val)
         // {
@@ -179,7 +179,7 @@ namespace ft
         allocator_type alloc;
         value_type cc;
         size_type size_;
-        ft::Red_Blacl_Tree< T ,Compare> mymap;
+        ft::Red_Blacl_Tree<value_type ,Compare> mymap;
     };
 
 }
