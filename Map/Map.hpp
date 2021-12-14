@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 20:27:45 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 23:02:13 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,20 @@ namespace ft
         typedef pair<const Key, T> value_type;
         typedef Compare key_compare;
         // typedef Comp value_compare;
-        typedef Alloc allocator_type;
+        typedef typename  Alloc::template rebind<typename ft::Red_Blacl_Tree<value_type , Alloc,Compare>::Node>::other allocator_type;
         typedef value_type &reference;
         typedef const value_type &const_reference;
         typedef value_type *pointer;
         typedef const value_type *const_pointer;
         // miss iterator here
-        typedef typename ft::Red_Blacl_Tree<value_type ,Compare>::iterator_map iterator;
+        typedef typename ft::Red_Blacl_Tree<value_type, allocator_type ,Compare>::iterator_map iterator;
         typedef std::ptrdiff_t difference_type;
         typedef size_t size_type;
         // constructor
         explicit map(const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type())
         {
+            this->alloc = alloc;
+            this->size_ = mymap.size(); 
             // ft::Red_Blacl_Tree<Key, T ,Compare> *test = new ft::Red_Blacl_Tree<Key, T ,Compare>;
             // mymap = new ft::Red_Blacl_Tree<Key, T ,Compare>;
 
@@ -54,6 +56,8 @@ namespace ft
             const key_compare &comp = key_compare(),
             const allocator_type &alloc = allocator_type())
         {
+            this->alloc = alloc;
+            this->size_ = mymap.size(); 
         }
         map(const map &x)
         {
@@ -64,7 +68,6 @@ namespace ft
         map &operator=(const map &x)
         {
         }
-        
 
         // iterators;
         iterator begin()
@@ -106,7 +109,9 @@ namespace ft
         {
         }
         // Element access:
-        mapped_type &operator[](const key_type &k) {}
+        mapped_type &operator[](const key_type &k) 
+        {
+        }
         // Modifiers:
         pair<iterator, bool> insert(const value_type &val)
         {
@@ -180,7 +185,7 @@ namespace ft
         allocator_type alloc;
         value_type cc;
         size_type size_;
-        ft::Red_Blacl_Tree<value_type ,Compare> mymap;
+        ft::Red_Blacl_Tree<value_type , allocator_type,Compare> mymap;
     };
 
 }

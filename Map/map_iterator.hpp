@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 20:28:35 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 23:21:06 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ namespace ft
         BLACK
     };
 
-    template <typename T, class Compare = std::less<T> >
+    template <typename T, class alloc, class Compare = std::less<T> >
     class Red_Blacl_Tree
     {
         typedef struct s_Node

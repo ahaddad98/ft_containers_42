@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 20:28:57 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/14 21:08:26 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -666,10 +666,10 @@ int main()
     ft::map<int , int> mymap;
     mymap.insert(pair<int,int>(1,2));
     mymap.insert(pair<int,int>(1,20));
-    // mymap.insert(pair<int,int>(12,2));
-    // mymap.insert(pair<int,int>(13,2));
-    // mymap.insert(pair<int,int>(14,2));
-    // mymap.insert(pair<int,int>(15,2));
+    mymap.insert(pair<int,int>(12,2));
+    mymap.insert(pair<int,int>(13,2));
+    mymap.insert(pair<int,int>(14,2));
+    mymap.insert(pair<int,int>(15,2));
     // mymap->insert(15);
     // mymap->insert(25);
     // mymap->insert(85);
