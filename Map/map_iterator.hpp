@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 23:21:06 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/15 16:19:00 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,10 @@ namespace ft
         BLACK
     };
 
-    template <typename T, class alloc, class Compare = std::less<T> >
+    template <typename T, class allocator_type, class Compare = std::less<T> >
     class Red_Blacl_Tree
     {
-        typedef struct s_Node
-        {
-            T item;
-            colors Color;
-            s_Node *left;
-            s_Node *right;
-            s_Node *parents;
-        } t_Node;
-
     public:
-        t_Node *create_NODE(T key)
-        {
-
-            // std::allocator alloc<t_Node>;
-            t_Node *ret = new t_Node;
-            ret->item = key;
-            ret->Color = RED;
-            ret->left = NULL;
-            ret->right = NULL;
-            ret->parents = NULL;
-
-            return ret;
-        }
         class Node
         {
         private:
@@ -61,8 +39,6 @@ namespace ft
             // t_Node *rt;
             Node()
             {
-                // rt = new t_Node;
-                // item = val;
                 Color = RED;
                 left = NULL;
                 right = NULL;
@@ -70,8 +46,6 @@ namespace ft
             }
             Node(T val) : item(val)
             {
-                // rt = new t_Node;
-                // item = val;
                 Color = RED;
                 left = NULL;
                 right = NULL;
@@ -164,75 +138,17 @@ namespace ft
             }
         };
         typedef size_t size_type;
+        typedef typename allocator_type::template rebind<Node>::other _allocator_type;
         Red_Blacl_Tree(/* args */)
         {
-            end_ = new Node();
+            end_ = this->alloc.allocate(1);
+            // end_ = new Node();
             size_ = 0;
             root = end_;
         }
         ~Red_Blacl_Tree()
         {
         }
-
-        t_Node *get_minimum(t_Node *root_)
-        {
-            // t_Node *tmp;
-            // tmp = root_;
-            // while (tmp->left)
-            // {
-            //     // std::cout << "im in getsec ==> " << root_->item << std::endl;
-            //     // std::cout << "im in getmin ==> " << std::endl;
-            //     tmp = tmp->left;
-            // }
-            // return tmp;
-        }
-        t_Node *get_maximum(t_Node *root_)
-        {
-            // t_Node *tmp;
-            // // tmp = root_;
-            // while (root_->right)
-            //     root_ = root_->right;
-            // return root_;
-        }
-        t_Node *getSuccessor(t_Node *root_ = NULL)
-        {
-            // if (root_ == NULL)
-            //     root_ = this->root;
-            // t_Node *tmp;
-            // tmp = root_;
-            // // if (!tmp->right)
-            // // std::cout << "im in getsucc ==> " << std::endl;
-            // if (tmp->right)
-            // {
-            //     tmp = get_minimum(tmp->right);
-            //     // std::cout << "im in getsucc ==> " << tmp->item << std::endl;
-            // }
-            // t_Node *y;
-            // y = tmp->parents;
-            // while (y != NULL && tmp == y->right)
-            // {
-            //     tmp = y;
-            //     y = y->parents;
-            // }
-            // return tmp;
-        }
-        // t_Node *getpredecessor(t_Node *root_ = NULL)
-        // {
-        //     if (root_ == NULL)
-        //         root_ = this->root;
-        //     // t_Node *tmp;
-        //     // tmp = root_;
-        //     if (root_->left)
-        //         root_ = get_maximum(root_->left);
-        //     t_Node *y;
-        //     y = root_->parents;
-        //     while (y != NULL && root_ == y->left)
-        //     {
-        //         root_ = y;
-        //         y = y->parents;
-        //     }
-        //     return root_;
-        // }
         Node *getroot()
         {
             return root;
@@ -240,20 +156,6 @@ namespace ft
         void print_tree_in_ordre_travers(Node *root1)
         {
             Node *tmp;
-            // tmp = root;
-            // if (tmp != NULL)
-            // {
-            //     tmp = most_left(tmp);
-            //     while (tmp)
-            //     {
-            //         std::cout << tmp->item << std::endl;
-            //         tmp = tmp->parents;
-            //         tmp = tmp->right;
-
-            //         if (!tmp)
-            //             std::cout << "tmp->str" << std::endl;
-            //         // tmp = most_left(tmp);
-            //     }
             tmp = root1;
             if (tmp && tmp != end_)
             {
@@ -261,7 +163,6 @@ namespace ft
                 std::cout << tmp->item << std::endl;
                 print_tree_in_ordre_travers(tmp->right);
             }
-            // }
         }
         
         class iterator_map : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
@@ -366,7 +267,9 @@ namespace ft
             Node *y;
             if (this->root == end_)
             {
-                root = new Node(key);
+                root = this->alloc.allocate(1);
+                this->alloc.construct(root, key);
+                // root = new Node(key);
                 end_->left = root;
                 size_++;
                 return make_pair(this->begin(), true);
@@ -376,7 +279,9 @@ namespace ft
             {
                 x = root;
                 y = NULL;
-                node = new Node(key);
+                node = this->alloc.allocate(1);
+                this->alloc.construct(node, key);
+                // node = new Node(key);
                 while (x != NULL)
                 {
                     y = x;
@@ -406,6 +311,7 @@ namespace ft
         Node *root;
         Node *end_;
         size_type size_;
+        _allocator_type alloc; 
     };
 }
 #endif

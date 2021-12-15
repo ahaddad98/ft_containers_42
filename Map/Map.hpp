@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 23:32:28 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/15 16:21:59 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ namespace ft
         typedef pair<const Key, T> value_type;
         typedef Compare key_compare;
         // typedef Comp value_compare;
-        typedef typename  Alloc::template rebind<typename ft::Red_Blacl_Tree<value_type ,Compare>::Node>::other allocator_type;
+        typedef Alloc allocator_type;
+        // typedef typename  Alloc::template rebind<typename ft::Red_Blacl_Tree<value_type , Alloc,Compare>::Node>::other allocator_type;
         typedef value_type &reference;
         typedef const value_type &const_reference;
         typedef value_type *pointer;
@@ -180,6 +181,7 @@ namespace ft
         // Allocator:
         allocator_type get_allocator() const
         {
+            
         }
     private:
         allocator_type alloc;
