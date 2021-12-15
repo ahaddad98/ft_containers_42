@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/15 17:04:24 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/15 17:23:50 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,6 @@ namespace ft
         {
             this->alloc = alloc;
             this->size_ = mymap.size(); 
-            // ft::Red_Blacl_Tree<Key, T ,Compare> *test = new ft::Red_Blacl_Tree<Key, T ,Compare>;
-            // mymap = new ft::Red_Blacl_Tree<Key, T ,Compare>;
-
-            // mymap.print_tree_in_ordre_travers(mymap.getroot());
         }
         template <class InputIterator>
         map(InputIterator first, InputIterator last,
@@ -62,12 +58,15 @@ namespace ft
         }
         map(const map &x)
         {
+            *this = x;
         }
         ~map()
         {
         }
         map &operator=(const map &x)
         {
+            this->mymap = x.mymap;
+            return *this;
         }
 
         // iterators;
@@ -108,6 +107,7 @@ namespace ft
         }
         size_type max_size() const
         {
+            
         }
         // Element access:
         mapped_type &operator[](const key_type &k) 
