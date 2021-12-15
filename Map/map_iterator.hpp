@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/15 16:19:00 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/15 17:03:59 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,10 +139,9 @@ namespace ft
         };
         typedef size_t size_type;
         typedef typename allocator_type::template rebind<Node>::other _allocator_type;
-        Red_Blacl_Tree(/* args */)
+        Red_Blacl_Tree()
         {
             end_ = this->alloc.allocate(1);
-            // end_ = new Node();
             size_ = 0;
             root = end_;
         }
@@ -269,7 +268,6 @@ namespace ft
             {
                 root = this->alloc.allocate(1);
                 this->alloc.construct(root, key);
-                // root = new Node(key);
                 end_->left = root;
                 size_++;
                 return make_pair(this->begin(), true);
@@ -281,7 +279,6 @@ namespace ft
                 y = NULL;
                 node = this->alloc.allocate(1);
                 this->alloc.construct(node, key);
-                // node = new Node(key);
                 while (x != NULL)
                 {
                     y = x;
@@ -306,6 +303,10 @@ namespace ft
         size_type size() const
         {
             return (size_);
+        }
+        _allocator_type get_alloc()
+        {
+            return this->alloc;
         }
     private:
         Node *root;

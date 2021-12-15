@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/15 16:21:59 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/15 17:04:24 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ namespace ft
         // Allocator:
         allocator_type get_allocator() const
         {
-            
+            return mymap.get_alloc();
         }
     private:
         allocator_type alloc;
