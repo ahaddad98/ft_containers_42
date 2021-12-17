@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/15 17:03:59 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/17 16:10:09 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,42 @@ namespace ft
         Node *getroot()
         {
             return root;
+        }
+        void Left_Rotate(Node *x)
+        {
+            Node y;
+            y = x;
+            x->right = y->left;
+            if (y->left)
+            {
+                y->left->parents  = x->parents;
+            }
+            if (!x->parents)
+                this->root = y;
+            else if ( x == x->parents->left)
+                 x->parents->left = y;
+            else
+                 x->parents->right = y;
+            y->left = x;
+            x->parents = y;
+        }
+        void Right_Rotate(Node *x)
+        {
+            Node y;
+            y = x;
+            x->left = y->right;
+            if (y->right)
+            {
+                y->right->parents  = x->parents;
+            }
+            if (!x->parents)
+                this->root = y;
+            else if ( x == x->parents->right)
+                 x->parents->right = y;
+            else
+                 x->parents->left = y;
+            y->right = x;
+            x->parents = y;
         }
         void print_tree_in_ordre_travers(Node *root1)
         {
