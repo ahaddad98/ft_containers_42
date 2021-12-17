@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/17 16:10:09 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/17 17:48:58 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,6 +305,7 @@ namespace ft
                 root = this->alloc.allocate(1);
                 this->alloc.construct(root, key);
                 end_->left = root;
+                root->Color = BLACK;
                 size_++;
                 return make_pair(this->begin(), true);
             }
