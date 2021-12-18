@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/17 17:48:58 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/18 13:55:26 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ namespace ft
         }
         void Left_Rotate(Node *x)
         {
-            Node y;
+            Node *y;
             y = x;
             x->right = y->left;
             if (y->left)
@@ -172,7 +172,7 @@ namespace ft
         }
         void Right_Rotate(Node *x)
         {
-            Node y;
+            Node *y;
             y = x;
             x->left = y->right;
             if (y->right)
@@ -280,6 +280,58 @@ namespace ft
         {
             return (iterator_map(end_, this));
         }
+        void maintain_RB_tree(Node *x)
+        {
+            Node *y;
+            while  ((x != this->root) && (x->parents->Color == RED))
+            {
+                if (x->parents == x->parents->parents->left)
+                {
+                    y = x->parents->parents->right;
+                    if (y->Color == RED)
+                    {
+                        x->parents->Color = BLACK;
+                        y->Color = BLACK;
+                        x->parents->parents->Color = RED;
+                        x = x->parents->parents;
+                    }
+                    else
+                    {
+                        if (x == x->parents->right)
+                        {
+                            x = x->parents;
+                            Left_Rotate(x);
+                        }
+                        x->parents->Color = BLACK;
+                        x->parents->parents->Color = RED;
+                        Right_Rotate(x->parents->parents);
+                    }
+                }
+                else
+                {
+                    y = x->parents->parents->left;
+                    if (y->Color == RED)
+                    {
+                        x->parents->Color = BLACK;
+                        y->Color = BLACK;
+                        x->parents->parents->Color = RED;
+                        x = x->parents->parents;
+                    }
+                    else
+                    {
+                        if (x == x->parents->left)
+                        {
+                            x = x->parents;
+                            Right_Rotate(x);
+                        }
+                        x->parents->Color = BLACK;
+                        x->parents->parents->Color = RED;
+                        Left_Rotate(x->parents->parents);
+                    }   
+                }
+            }
+            this->root->Color = BLACK;
+        }
         iterator_map search_tree_in_ordre_travers(T root1)
         {
             iterator_map it;
@@ -333,6 +385,7 @@ namespace ft
                     y->right = node;
                 size_++;
                 it = this->search_tree_in_ordre_travers(key);
+                maintain_RB_tree(node);
                 return make_pair(it , true);
             }
             return make_pair(it ,false);
