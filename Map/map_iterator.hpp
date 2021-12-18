@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/18 15:03:03 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/18 22:18:42 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,25 @@ namespace ft
                 right = NULL;
                 parents = NULL;
             }
-            Node(T val) : item(val)
+            Node(T val) : item(val), Color(RED)
             {
-                Color = RED;
                 left = NULL;
                 right = NULL;
                 parents = NULL;
             }
             Node(Node &other)
             {
-                this = other;
+                std::cout << "im here in copy constructor" << std::endl;
+                this->T = other.T;
+                this->Color = other.Color;
+                this->left = other.left;
+                this->right = other.right;
+                this->parents = other.parents;
+                // *this = other;
             }
             Node &operator=(Node &other)
             {
+                std::cout << "im here in assign operator" << std::endl;
                 this->T = other.T;
                 this->Color = other.Color;
                 this->left = other.left;
@@ -155,36 +161,44 @@ namespace ft
         void Left_Rotate(Node *x)
         {
             Node *y;
-            y = x;
+            y = x->right;
             x->right = y->left;
             if (y->left)
             {
-                y->left->parents  = x->parents;
+                y->left->parents = x;
             }
+            y->parents = x->parents;
             if (!x->parents)
                 this->root = y;
-            else if ( x == x->parents->left)
-                 x->parents->left = y;
             else
-                 x->parents->right = y;
+            {
+                if (x == x->parents->left)
+                    x->parents->left = y;
+                else
+                    x->parents->right = y;
+            }
             y->left = x;
             x->parents = y;
         }
         void Right_Rotate(Node *x)
         {
             Node *y;
-            y = x;
+            y = x->left;
             x->left = y->right;
             if (y->right)
             {
-                y->right->parents  = x->parents;
+                y->right->parents = x;
             }
+            y->parents = x->parents;
             if (!x->parents)
                 this->root = y;
-            else if ( x == x->parents->right)
-                 x->parents->right = y;
             else
-                 x->parents->left = y;
+            {
+                if (x == x->parents->right)
+                    x->parents->right = y;
+                else
+                    x->parents->left = y;
+            }
             y->right = x;
             x->parents = y;
         }
@@ -199,7 +213,7 @@ namespace ft
                 print_tree_in_ordre_travers(tmp->right);
             }
         }
-        
+
         class iterator_map : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
         {
         public:
@@ -283,7 +297,7 @@ namespace ft
         void maintain_RB_tree(Node *x)
         {
             Node *y;
-            while  ((x != this->root) && (x->parents->Color == RED))
+            while ((x != this->root) && (x->parents->Color == RED))
             {
                 std::cout << "here 5" << std::endl;
                 if (x->parents == x->parents->parents->left)
@@ -313,7 +327,7 @@ namespace ft
                 {
                     y = x->parents->parents->left;
                     std::cout << "here 22" << std::endl;
-                    if (!y)
+                    if (y->Color)
                     {
                         y->Color = RED;
                         std::cout << "here 2" << std::endl;
@@ -337,7 +351,7 @@ namespace ft
                         x->parents->Color = BLACK;
                         x->parents->parents->Color = RED;
                         Right_Rotate(x->parents->parents);
-                    }   
+                    }
                     std::cout << "here 4" << std::endl;
                 }
             }
@@ -346,19 +360,81 @@ namespace ft
         iterator_map search_tree_in_ordre_travers(T root1)
         {
             iterator_map it;
-            for ( it = this->begin(); it != this->end(); it++)
+            for (it = this->begin(); it != this->end(); it++)
             {
+                // std::cout << "it++";
                 if (root1.first == it->first)
                 {
+                    // std::cout << "hello" << "\n";
+                    // std::cout << "found: " << root1.first << "\n";
                     return it;
                 }
             }
+            // std::cout << "not found: " << root1.first << "\n";
             return it;
-            
         }
-        pair<iterator_map ,bool> insert(T key)
+        void insertFix(Node *k)
         {
-            pair<iterator_map , bool> mypair;
+            Node *u;
+            while (k->parents->Color == RED)
+            {
+                if (k->parents == k->parents->parents->right)
+                {
+                    u = k->parents->parents->left;
+                    if (u && u->Color == RED)
+                    {
+                        // std::cout << "im here in if" << std::endl;
+                        u->Color = BLACK;
+                        k->parents->Color = BLACK;
+                        k->parents->parents->Color = RED;
+                        k = k->parents->parents;
+                    }
+                    else
+                    {
+                        // std::cout << "im here in end" << std::endl;
+                        if (k == k->parents->left)
+                        {
+                            k = k->parents;
+                            Right_Rotate(k);
+                        }
+                        k->parents->Color = BLACK;
+                        k->parents->parents->Color = RED;
+                        Left_Rotate(k->parents->parents);
+                    }
+                }
+                else
+                {
+                    u = k->parents->parents->right;
+                    if (u && u->Color == RED)
+                    {
+                        k->parents->Color = BLACK;
+                        u->Color = BLACK;
+                        k->parents->parents->Color = RED;
+                        k = k->parents->parents;
+                    }
+                    else
+                    {
+                        if (k == k->parents->right)
+                        {
+                            k = k->parents;
+                            Left_Rotate(k);
+                        }
+                        k->parents->Color = BLACK;
+                        k->parents->parents->Color = RED;
+                        Right_Rotate(k->parents->parents);
+                    }
+                }
+                if (k == this->root)
+                {
+                    break;
+                }
+            }
+            root->Color = BLACK;
+        }
+
+        pair<iterator_map, bool> insert(T key)
+        {
+            pair<iterator_map, bool> mypair;
             iterator_map it;
             Node *node;
             Node *x;
@@ -372,7 +448,9 @@ namespace ft
                 size_++;
                 return make_pair(this->begin(), true);
             }
+            // std::cout << "1 search\n";
             it = this->search_tree_in_ordre_travers(key);
+
             if (it == end())
             {
                 x = root;
@@ -395,11 +473,24 @@ namespace ft
                 else
                     y->right = node;
                 size_++;
+                if (node->parents == NULL)
+                {
+                    node->Color = BLACK;
+                    return make_pair(it, false);
+                }
+                if (node->parents->parents == NULL)
+                {
+                    return make_pair(it, false);
+                }
+
+                // std::cout << "2 search\n";
                 it = this->search_tree_in_ordre_travers(key);
-                maintain_RB_tree(node);
-                return make_pair(it , true);
+                // maintain_RB_tree(node);
+                insertFix(node);
+
+                return make_pair(it, true);
             }
-            return make_pair(it ,false);
+            return make_pair(it, false);
         }
         size_type size() const
         {
@@ -409,11 +500,12 @@ namespace ft
         {
             return this->alloc;
         }
+
     private:
         Node *root;
         Node *end_;
         size_type size_;
-        _allocator_type alloc; 
+        _allocator_type alloc;
     };
 }
 #endif
