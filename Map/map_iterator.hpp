@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/18 13:55:26 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/18 15:03:03 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,8 +285,10 @@ namespace ft
             Node *y;
             while  ((x != this->root) && (x->parents->Color == RED))
             {
+                std::cout << "here 5" << std::endl;
                 if (x->parents == x->parents->parents->left)
                 {
+                    std::cout << "here 1" << std::endl;
                     y = x->parents->parents->right;
                     if (y->Color == RED)
                     {
@@ -300,18 +302,25 @@ namespace ft
                         if (x == x->parents->right)
                         {
                             x = x->parents;
-                            Left_Rotate(x);
+                            Right_Rotate(x);
                         }
                         x->parents->Color = BLACK;
                         x->parents->parents->Color = RED;
-                        Right_Rotate(x->parents->parents);
+                        Left_Rotate(x->parents->parents);
                     }
                 }
-                else
+                else if (x->parents == x->parents->parents->right)
                 {
                     y = x->parents->parents->left;
+                    std::cout << "here 22" << std::endl;
+                    if (!y)
+                    {
+                        y->Color = RED;
+                        std::cout << "here 2" << std::endl;
+                    }
                     if (y->Color == RED)
                     {
+                        std::cout << "here 7" << std::endl;
                         x->parents->Color = BLACK;
                         y->Color = BLACK;
                         x->parents->parents->Color = RED;
@@ -319,15 +328,17 @@ namespace ft
                     }
                     else
                     {
+                        std::cout << "here 3" << std::endl;
                         if (x == x->parents->left)
                         {
                             x = x->parents;
-                            Right_Rotate(x);
+                            Left_Rotate(x);
                         }
                         x->parents->Color = BLACK;
                         x->parents->parents->Color = RED;
-                        Left_Rotate(x->parents->parents);
+                        Right_Rotate(x->parents->parents);
                     }   
+                    std::cout << "here 4" << std::endl;
                 }
             }
             this->root->Color = BLACK;

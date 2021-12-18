@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/15 16:19:59 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/18 14:42:33 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -668,8 +668,8 @@ int main()
     mymap.insert(pair<int,int>(1,20));
     mymap.insert(pair<int,int>(12,2));
     mymap.insert(pair<int,int>(13,2));
-    mymap.insert(pair<int,int>(14,2));
-    mymap.insert(pair<int,int>(15,2));
+    // mymap.insert(pair<int,int>(14,2));
+    // mymap.insert(pair<int,int>(15,2));
     // mymap->insert(15);
     // mymap->insert(25);
     // mymap->insert(85);
