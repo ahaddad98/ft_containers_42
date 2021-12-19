@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/19 20:55:30 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/19 23:24:08 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ namespace ft
             }
             Node(Node &other)
             {
-                std::cout << "im here in copy constructor" << std::endl;
                 this->T = other.T;
                 this->Color = other.Color;
                 this->left = other.left;
@@ -64,7 +63,6 @@ namespace ft
             }
             Node &operator=(Node &other)
             {
-                std::cout << "im here in assign operator" << std::endl;
                 this->T = other.T;
                 this->Color = other.Color;
                 this->left = other.left;
@@ -147,6 +145,7 @@ namespace ft
         };
         typedef size_t size_type;
         typedef typename allocator_type::template rebind<Node>::other _allocator_type;
+        typedef Compare value_compare;
         Red_Blacl_Tree()
         {
             end_ = this->alloc.allocate(1);
@@ -299,97 +298,18 @@ namespace ft
         {
             return (iterator_map(end_, this));
         }
-        void maintain_RB_tree(Node *x)
-        {
-            Node *y;
-            while ((x != this->root) && (x->parents->Color == RED))
-            {
-                std::cout << "here 5" << std::endl;
-                if (x->parents == x->parents->parents->left)
-                {
-                    std::cout << "here 1" << std::endl;
-                    y = x->parents->parents->right;
-                    if (y->Color == RED)
-                    {
-                        x->parents->Color = BLACK;
-                        y->Color = BLACK;
-                        x->parents->parents->Color = RED;
-                        x = x->parents->parents;
-                    }
-                    else
-                    {
-                        if (x == x->parents->right)
-                        {
-                            x = x->parents;
-                            Right_Rotate(x);
-                        }
-                        x->parents->Color = BLACK;
-                        x->parents->parents->Color = RED;
-                        Left_Rotate(x->parents->parents);
-                    }
-                }
-                else if (x->parents == x->parents->parents->right)
-                {
-                    y = x->parents->parents->left;
-                    std::cout << "here 22" << std::endl;
-                    if (y->Color)
-                    {
-                        y->Color = RED;
-                        std::cout << "here 2" << std::endl;
-                    }
-                    if (y->Color == RED)
-                    {
-                        std::cout << "here 7" << std::endl;
-                        x->parents->Color = BLACK;
-                        y->Color = BLACK;
-                        x->parents->parents->Color = RED;
-                        x = x->parents->parents;
-                    }
-                    else
-                    {
-                        std::cout << "here 3" << std::endl;
-                        if (x == x->parents->left)
-                        {
-                            x = x->parents;
-                            Left_Rotate(x);
-                        }
-                        x->parents->Color = BLACK;
-                        x->parents->parents->Color = RED;
-                        Right_Rotate(x->parents->parents);
-                    }
-                    std::cout << "here 4" << std::endl;
-                }
-            }
-            this->root->Color = BLACK;
-        }
-        // iterator_map search_tree_in_ordre_travers(T root1)
-        // {
-        //     iterator_map it;
-        //     for (it = this->begin(); it != this->end(); it++)
-        //     {
-        //         // std::cout << "it++";
-        //         if (root1.first == it->first)
-        //         {
-        //             // std::cout << "hello" << "\n";
-        //             // std::cout << "found: " << root1.first << "\n";
-        //             return it;
-        //         }
-        //     }
-        //     // std::cout << "not found: " << root1.first << "\n";
-        //     return it;
-        // }
         Node* search_tree_in_ordre_travers(T root1)
         {
             Node *tmp;
             tmp = this->root;
             while (tmp != NULL)
             {
-                if (root1.first < tmp->item.first)
+                if (comp(root1.first , tmp->item.first))
                     tmp = tmp->left;
-                else if (root1.first > tmp->item.first)
-                    tmp = tmp->right;
-                else
+                else if (root1.first == tmp->item.first)
                     return tmp;
+                else
+                    tmp = tmp->right;
             }
             return NULL;
         }
@@ -479,7 +399,7 @@ namespace ft
                 while (x != NULL)
                 {
                     y = x;
-                    if (node->item.first < x->item.first)
+                    if (comp(node->item.first , x->item.first))
                         x = x->left;
                     else
                         x = x->right;
@@ -487,7 +407,7 @@ namespace ft
                 node->parents = y;
                 if (y == NULL)
                     this->root = node;
-                else if (node->item < y->item)
+                else if (comp(node->item.first , y->item.first))
                     y->left = node;
                 else
                     y->right = node;
@@ -520,6 +440,7 @@ namespace ft
         Node *end_;
         size_type size_;
         _allocator_type alloc;
+        value_compare comp;
     };
 }
 #endif
