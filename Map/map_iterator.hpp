@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/18 22:18:42 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/19 14:03:09 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_ITERATOR_HPP
 #define MAP_ITERATOR_HPP
 #include <iostream>
+#include <ext/new_allocator.h>
+#include <bits/c++allocator.h>
 #include "../Vector/iterator_traits.hpp"
 #include "pair.hpp"
 namespace ft
@@ -435,28 +437,31 @@ namespace ft
         pair<iterator_map, bool> insert(T key)
         {
             pair<iterator_map, bool> mypair;
-            iterator_map it;
+            iterator_map it = end();
             Node *node;
             Node *x;
             Node *y;
             if (this->root == end_)
             {
-                root = this->alloc.allocate(1);
-                this->alloc.construct(root, key);
+                root = new Node(key);
+                
+                // root = this->alloc.allocate(1);
+                // this->alloc.construct(root, key);
                 end_->left = root;
                 root->Color = BLACK;
                 size_++;
                 return make_pair(this->begin(), true);
             }
             // std::cout << "1 search\n";
-            it = this->search_tree_in_ordre_travers(key);
+            // it = this->search_tree_in_ordre_travers(key);
 
             if (it == end())
             {
                 x = root;
                 y = NULL;
-                node = this->alloc.allocate(1);
-                this->alloc.construct(node, key);
+                node = new Node(key);
+                // node = this->alloc.allocate(1);
+                // this->alloc.construct(node, key);
                 while (x != NULL)
                 {
                     y = x;
@@ -484,7 +489,7 @@ namespace ft
                 }
 
                 // std::cout << "2 search\n";
-                it = this->search_tree_in_ordre_travers(key);
+                // it = this->search_tree_in_ordre_travers(key);
                 // maintain_RB_tree(node);
                 insertFix(node);
 
