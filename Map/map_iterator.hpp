@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/19 14:03:09 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/19 20:42:06 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,9 @@ namespace ft
             {
                 _ptr = NULL;
             };
+            iterator_map(Node *p) : _ptr(p)
+            {
+            };
 
             iterator_map(const iterator_map &it)
             {
@@ -359,21 +362,36 @@ namespace ft
             }
             this->root->Color = BLACK;
         }
-        iterator_map search_tree_in_ordre_travers(T root1)
+        // iterator_map search_tree_in_ordre_travers(T root1)
+        // {
+        //     iterator_map it;
+        //     for (it = this->begin(); it != this->end(); it++)
+        //     {
+        //         // std::cout << "it++";
+        //         if (root1.first == it->first)
+        //         {
+        //             // std::cout << "hello" << "\n";
+        //             // std::cout << "found: " << root1.first << "\n";
+        //             return it;
+        //         }
+        //     }
+        //     // std::cout << "not found: " << root1.first << "\n";
+        //     return it;
+        // }
+        Node* search_tree_in_ordre_travers(T root1)
         {
-            iterator_map it;
-            for (it = this->begin(); it != this->end(); it++)
+            Node *tmp;
+            tmp = this->root;
+            while (tmp != NULL)
             {
-                // std::cout << "it++";
-                if (root1.first == it->first)
-                {
-                    // std::cout << "hello" << "\n";
-                    // std::cout << "found: " << root1.first << "\n";
-                    return it;
-                }
+                if (root1.first < tmp->item.first)
+                    tmp = tmp->left;
+                else if (root1.first > tmp->item.first)
+                    tmp = tmp->right;
+                else
+                    return tmp;
             }
-            // std::cout << "not found: " << root1.first << "\n";
-            return it;
+            return NULL;
         }
         void insertFix(Node *k)
         {
@@ -436,7 +454,8 @@ namespace ft
 
         pair<iterator_map, bool> insert(T key)
         {
-            pair<iterator_map, bool> mypair;
+        // void insert(T   key)
+            // pair<iterator_map, bool> mypair;
             iterator_map it = end();
             Node *node;
             Node *x;
@@ -449,13 +468,13 @@ namespace ft
                 // this->alloc.construct(root, key);
                 end_->left = root;
                 root->Color = BLACK;
-                size_++;
-                return make_pair(this->begin(), true);
+                return make_pair(iterator_map(root), true);
             }
             // std::cout << "1 search\n";
+            Node *test = this->search_tree_in_ordre_travers(key);
             // it = this->search_tree_in_ordre_travers(key);
 
-            if (it == end())
+            if (test == NULL)
             {
                 x = root;
                 y = NULL;
@@ -481,21 +500,20 @@ namespace ft
                 if (node->parents == NULL)
                 {
                     node->Color = BLACK;
-                    return make_pair(it, false);
+                    return make_pair(node, false);
                 }
                 if (node->parents->parents == NULL)
                 {
-                    return make_pair(it, false);
+                    return make_pair(node, false);
                 }
 
                 // std::cout << "2 search\n";
                 // it = this->search_tree_in_ordre_travers(key);
                 // maintain_RB_tree(node);
                 insertFix(node);
-
-                return make_pair(it, true);
+                return make_pair(node, true);
             }
-            return make_pair(it, false);
+            return make_pair(node, false);
         }
         size_type size() const
         {
