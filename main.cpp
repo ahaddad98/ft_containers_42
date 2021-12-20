@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/19 21:16:02 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/20 15:01:29 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -674,8 +674,9 @@ int main()
     // mymap.insert(pair<int,int>(14,2));
     // // std::cout << "14 inserted\n"; 
     // mymap.insert(pair<int,int>(15,2));
-    for(int i = 0; i < 1000000; i++)
-        mymap.insert(pair<int,int>(i,i + 100));
+    // srand(time(NULL));
+    for(int i = 0; i < 10; i++)
+        mymap.insert(pair<int,int>(i, 125));
     
     // std::cout << "15 inserted\n"; 
     // mymap->insert(15);
@@ -693,7 +694,7 @@ int main()
         std::cout << it->first  << " ==> "  << it->second << std::endl;
 
     }
-    std::cout << mymap.size() << std::endl;
+    // std::cout << mymap.size() << std::endl;
     // std::map<int , int> map;
     // map.insert(std::pair<int , int>(1,1));
     // map.insert(std::pair<int , int>(1,12));

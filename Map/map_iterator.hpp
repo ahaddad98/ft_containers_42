@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/19 23:24:08 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/20 16:07:52 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_ITERATOR_HPP
 #define MAP_ITERATOR_HPP
 #include <iostream>
-#include <ext/new_allocator.h>
-#include <bits/c++allocator.h>
 #include "../Vector/iterator_traits.hpp"
 #include "pair.hpp"
 namespace ft
@@ -52,18 +50,21 @@ namespace ft
                 right = NULL;
                 parents = NULL;
             }
-            Node(Node &other)
+            Node(const Node &other)
             {
-                this->T = other.T;
-                this->Color = other.Color;
-                this->left = other.left;
-                this->right = other.right;
-                this->parents = other.parents;
-                // *this = other;
+                // this->item = other.item;
+                // this->Color = other.Color;
+                // this->left = other.left;
+                // this->right = other.right;
+                // this->parents = other.parents;
+                *this = other;
             }
-            Node &operator=(Node &other)
+            Node &operator=(const Node &other)
             {
-                this->T = other.T;
+                // const_cast<typename T::first_type&>(this->item.first) = other.item.first;
+                // this->item = make_pair(other.item.first, other.item.second);
+                new (&(this->item)) pair<typename T::first_type, typename T::second_type>(other.item);
+                // this->item.setfirst(other.item.first);
                 this->Color = other.Color;
                 this->left = other.left;
                 this->right = other.right;
@@ -304,12 +305,12 @@ namespace ft
             tmp = this->root;
             while (tmp != NULL)
             {
-                if (comp(root1.first , tmp->item.first))
+                if (comp(root1.first, tmp->item.first))
                     tmp = tmp->left;
-                else if (root1.first == tmp->item.first)
-                    return tmp;
-                else
+                else if (comp(tmp->item.first, root1.first))
                     tmp = tmp->right;
+                else
+                    return tmp;
             }
             return NULL;
         }
@@ -380,10 +381,10 @@ namespace ft
             Node *y;
             if (this->root == end_)
             {
-                root = new Node(key);
+                // root = new Node(key);
                 
-                // root = this->alloc.allocate(1);
-                // this->alloc.construct(root, key);
+                root = this->alloc.allocate(1);
+                this->alloc.construct(root, Node(key));
                 end_->left = root;
                 root->Color = BLACK;
                 return make_pair(iterator_map(root), true);
@@ -393,9 +394,9 @@ namespace ft
             {
                 x = root;
                 y = NULL;
-                node = new Node(key);
-                // node = this->alloc.allocate(1);
-                // this->alloc.construct(node, key);
+                // node = new Node(key);
+                node = this->alloc.allocate(1);
+                this->alloc.construct(node, Node(key));
                 while (x != NULL)
                 {
                     y = x;

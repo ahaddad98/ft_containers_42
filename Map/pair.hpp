@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:21:05 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/14 20:18:08 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/20 16:08:00 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,16 @@ template <class T1, class T2>
         }
         pair& operator= (const pair& pr)
         {
+            // new (&(this->first)) first_type(pr.first);
             this->first = pr.first;
+            // setfirst(pr.first);
             this->second = pr.second;
             return *this;
         }
+        // void setfirst(const first_type& ss)
+        // {
+        //     const_cast<first_type&>(this->first) = ss;
+        // }
     };
     template <class T1,class T2>
     pair<T1,T2> make_pair (T1 x, T2 y)
