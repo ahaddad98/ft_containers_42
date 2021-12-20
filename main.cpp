@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/20 15:01:29 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/20 17:04:36 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -675,7 +675,7 @@ int main()
     // // std::cout << "14 inserted\n"; 
     // mymap.insert(pair<int,int>(15,2));
     // srand(time(NULL));
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < 1000; i++)
         mymap.insert(pair<int,int>(i, 125));
     
     // std::cout << "15 inserted\n"; 

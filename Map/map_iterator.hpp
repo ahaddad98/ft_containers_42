@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/20 16:07:52 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/20 16:48:39 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ namespace ft
             {
                 // const_cast<typename T::first_type&>(this->item.first) = other.item.first;
                 // this->item = make_pair(other.item.first, other.item.second);
-                new (&(this->item)) pair<typename T::first_type, typename T::second_type>(other.item);
+                // new (&(this->item)) pair<typename T::first_type, typename T::second_type>(other.item);
                 // this->item.setfirst(other.item.first);
+                this->item = other.item;
                 this->Color = other.Color;
                 this->left = other.left;
                 this->right = other.right;
