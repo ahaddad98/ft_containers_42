@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/20 17:04:36 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/20 18:48:15 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -674,11 +674,33 @@ int main()
     // mymap.insert(pair<int,int>(14,2));
     // // std::cout << "14 inserted\n"; 
     // mymap.insert(pair<int,int>(15,2));
-    // srand(time(NULL));
-    for(int i = 0; i < 1000; i++)
+    for(int i = 0; i < 10; i++)
         mymap.insert(pair<int,int>(i, 125));
+    // srand(time(NULL));
+    for(int i = 0; i < 10; i++)
+        mymap.insert(pair<int,int>(i, 125));
+    mymap.delete_(pair<int , int>(9, 125));
+    std::cout << "delete last node 9, 125" << std::endl; 
+    for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
+    {
+        std::cout << it->first  << " ==> "  << it->second << std::endl;
+
+    }
+    // mymap.delete_(pair<int , int>(9, 125));
+    // std::cout << "delete last node 9, 125" << std::endl; 
+    // for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
+    // {
+    //     std::cout << it->first  << " ==> "  << it->second << std::endl;
+
+    // }
+    // mymap.delete_(pair<int , int>(8, 125));
+    // std::cout << "delete last node 8, 125" << std::endl; 
+    // for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
+    // {
+    //     std::cout << it->first  << " ==> "  << it->second << std::endl;
+
+    // }
     
-    // std::cout << "15 inserted\n"; 
     // mymap->insert(15);
     // mymap->insert(25);
     // mymap->insert(85);
@@ -689,11 +711,6 @@ int main()
     
     // it = mymap.end();
 
-    for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
-    {
-        std::cout << it->first  << " ==> "  << it->second << std::endl;
-
-    }
     // std::cout << mymap.size() << std::endl;
     // std::map<int , int> map;
     // map.insert(std::pair<int , int>(1,1));

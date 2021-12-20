@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/20 16:48:39 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/20 19:13:15 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,6 +314,33 @@ namespace ft
                     return tmp;
             }
             return NULL;
+        }
+        void swap_node(Node *n1, Node *n2)
+        {
+            T tmp;
+            tmp = n1->item;
+            n1->item = n2->item;
+            n2->item = tmp;
+        }
+        void delete_(T to_delete)
+        {
+            Node *tmp = search_tree_in_ordre_travers(to_delete);
+            if (tmp == NULL)
+                return ;
+            if ((tmp->left == NULL) && (tmp->right == NULL))
+            {
+                tmp->parents->right = NULL;
+                this->alloc.deallocate(tmp,1);
+                this->size_--;
+                return ;
+            }
+            if (tmp->left && (tmp->right == NULL))
+            {
+                swap_node(tmp, tmp->left);
+                this->alloc.deallocate(tmp->left,1);
+                this->size_--;
+                return ;
+            }
         }
         void insertFix(Node *k)
         {
