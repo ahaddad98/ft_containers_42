@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/20 19:13:15 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/20 20:20:11 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -325,22 +325,44 @@ namespace ft
         void delete_(T to_delete)
         {
             Node *tmp = search_tree_in_ordre_travers(to_delete);
+            // std::cout << "amine" << std::endl;
             if (tmp == NULL)
+            {
+                std::cout << "amine haddad" << std::endl;
                 return ;
+            }
             if ((tmp->left == NULL) && (tmp->right == NULL))
             {
+                std::cout << "amine 0" << std::endl;
                 tmp->parents->right = NULL;
                 this->alloc.deallocate(tmp,1);
                 this->size_--;
                 return ;
             }
-            if (tmp->left && (tmp->right == NULL))
+            if ((tmp->right != NULL) && (tmp->left == NULL))
             {
-                swap_node(tmp, tmp->left);
-                this->alloc.deallocate(tmp->left,1);
+                std::cout << "amine 1" << std::endl;
+                tmp->parents->left = NULL;
+                // swap_node(tmp, tmp->left);
+                // this->alloc.deallocate(tmp->left,1);
                 this->size_--;
                 return ;
             }
+            if ((tmp->left != NULL) && (tmp->right == NULL))
+            {
+                std::cout << "amine 2" << std::endl;
+                swap_node(tmp, tmp->left);
+                this->alloc.deallocate(tmp->left,1);
+                tmp->parents->left = NULL;
+                this->size_--;
+                return ;
+            }
+            else if ((tmp->left != NULL) && (tmp->right != NULL))
+            {
+                std::cout << "amine 3" << std::endl;
+            }
+            else
+                std::cout << "root = " << root->item.first << std::endl;
         }
         void insertFix(Node *k)
         {
