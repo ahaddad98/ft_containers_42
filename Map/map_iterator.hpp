@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/21 21:44:15 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/21 21:53:48 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,7 +330,7 @@ namespace ft
         }
         void rbTransplant(Node *u, Node *v) 
         {
-            if (u && u->parents == nullptr) 
+            if (u && u->parents == NULL) 
             {
                 root = v;
             } 
