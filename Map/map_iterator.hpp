@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/21 16:44:36 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/21 21:44:15 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ namespace ft
             Node *leftMost()
             {
                 Node *tmp = this;
-
-                while (tmp->left)
+                while (tmp && (tmp->left != NULL))
                 {
                     tmp = tmp->left;
                 }
@@ -114,6 +113,7 @@ namespace ft
                     else
                         previous = NULL;
                 }
+                
                 return (previous);
             }
 
@@ -142,6 +142,7 @@ namespace ft
                         next = NULL;
                     }
                 }
+                // std::cout << "heeee" << std::endl;
                 return (next);
             }
         };
@@ -253,7 +254,7 @@ namespace ft
             }
 
             reference operator*()
-            {
+            {  
                 return _ptr->item;
             }
             pointer operator->()
@@ -294,8 +295,12 @@ namespace ft
         };
         iterator_map begin()
         {
-            if (root == end_)
+            if (size_ == 0)
+            {   
                 return (iterator_map(end_, this));
+            }
+            std::cout << size_ << std::endl;
+            // std::cout << "here" << std::endl;
             return (iterator_map(root->leftMost(), this));
         }
         iterator_map end()
@@ -321,58 +326,165 @@ namespace ft
         }
         void swap_node(Node *n1, Node *n2)
         {
-            // Node *tmp;
-            // tmp = n1;
             n1->item = n2->item;
-            // n2 = n1;
-            // T tmp;
-            // // tmp = n1->item;
-            // // n1->item = n2->item;
-            // // n2->item = tmp;
         }
+        void rbTransplant(Node *u, Node *v) 
+        {
+            if (u && u->parents == nullptr) 
+            {
+                root = v;
+            } 
+            else if (u && u == u->parents->left) 
+            {
+                    u->parents->left = v;
+            } 
+            else 
+            {
+                u->parents->right = v;
+            }
+            if (v)
+            {
+                v->parents = u->parents;
+            }
+        }
+
         void delete_(T to_delete)
         {
-            Node *tmp = search_tree_in_ordre_travers(to_delete);
-            if (tmp == NULL)
-                return ;
-            if ((tmp->left == NULL) && (tmp->right == NULL))
+            Node *z = search_tree_in_ordre_travers(to_delete);
+            Node *y;
+            Node *x;
+            colors y_color = y->Color;
+            y = z;
+            if (z->left == NULL) 
             {
-                if (tmp ==  tmp->parents->left)
+                x = z->right;
+                rbTransplant(z, z->right);
+            } 
+            else if (z->right == NULL) 
+            {
+                x = z->left;
+                rbTransplant(z, z->left);
+            } 
+            else 
+            {
+                y = (z->right)->getPrevious();
+                y_color = y->Color;
+                x = y->right;
+                if (y->parents == z) 
                 {
-                    tmp->parents->left = NULL;
-                    this->alloc.deallocate(tmp,1);
-                }
-                else
+                    x->parents = y;
+                } 
+                else 
                 {
-                    tmp->parents->right = NULL;
-                    this->alloc.deallocate(tmp,1);
+                    rbTransplant(y, y->right);
+                    y->right = z->right;
+                    y->right->parents = y;
                 }
-                this->size_--;
-                return ;
+                rbTransplant(z, y);
+                y->left = z->left;
+                y->left->parents = y;
+                y->Color = z->Color;
             }
-            if ((tmp->right != NULL) && (tmp->left == NULL))
-            {
-                std::cout << "amine 2" << std::endl;
-                tmp->parents->left = NULL;
-                // swap_node(tmp, tmp->left);
-                this->alloc.deallocate(tmp->left,1);
-                this->size_--;
-                return ;
-            }
-            if ((tmp->left != NULL) && (tmp->right == NULL))
-            {
-                swap_node(tmp, tmp->left);
-                tmp->left = NULL;
-                this->alloc.deallocate(tmp->left,1);
-                this->size_--;
-                return ;
-            }
-            else if ((tmp->left != NULL) && (tmp->right != NULL))
-            {
-                std::cout << "amine 3" << std::endl;
-            }
-            else
-                std::cout << "root = " << root->item.first << std::endl;
+            size_--;
+            this->alloc.deallocate(z, 1);
+            // Node *x;
+            // Node *y;
+            // y = z;
+            // colors y_color = y->Color;
+            // if (z == root)
+            // {
+            //     size_--;
+            //     root = NULL;
+            //     this->alloc.deallocate(root , 1);
+            //     return ;
+            // }
+            // if (z && z->left == NULL)
+            // {
+            //     // std::cout << "-- 1 --" <<std::endl;
+            //     x = z->right;
+            //     rbTransplant(z, z->right);
+            //     size_--;
+            //     // std::cout << "-- 1,5 --" <<std::endl;
+            // }
+            // else if (z->right == NULL)
+            // {
+            //     size_--;
+            //     // std::cout << "-- 2 --" <<std::endl;
+            //     x = z->left;
+            //     rbTransplant(z, z->left);
+            // }
+            // else
+            // {
+            //     size_--;
+            //     // std::cout << "-- 3 --" <<std::endl;
+            //     y = (z->right)->getPrevious();
+            //     y_color = y->Color;
+            //     x = y->right;
+            //     if (y->parents == z)
+            //         x->parents = z;
+            //     else
+            //     {
+            //         rbTransplant(y , y->right);
+            //         y->right = z->right;
+            //         y->right->parents = y;
+            //         y->Color = z->Color;
+            //     }
+            // }
+            // if (tmp->left == NULL) 
+            // {
+            //     x = tmp->right;
+            //     rbTransplant(tmp, tmp->right);
+            // } 
+            // if (tmp == NULL)
+            //     return ;
+            // if ((tmp->left == NULL) && (tmp->right == NULL))
+            // {
+            //     if (tmp == root)
+            //     {
+            //         std::cout << "here 1" << std::endl;
+            //         end_->left = NULL;
+            //         end_->left = NULL;
+            //         this->alloc.deallocate(root,1);
+            //     }
+            //     else if (tmp && tmp ==  tmp->parents->left)
+            //     {
+            //         tmp->parents->left = NULL;
+            //         this->alloc.deallocate(tmp,1);
+            //     }
+            //     else
+            //     {
+            //         if ( tmp && tmp->parents->right != NULL)
+            //         {   
+            //             tmp->parents->right = NULL;
+            //             this->alloc.deallocate(tmp,1);
+            //         }
+            //     }
+            //     this->size_--;
+            //     return ;
+            // }
+            // if ((tmp->right != NULL) && (tmp->left == NULL))
+            // {
+            //     std::cout << "amine 2" << std::endl;
+            //     tmp->parents->left = NULL;
+            //     // swap_node(tmp, tmp->left);
+            //     this->alloc.deallocate(tmp->left,1);
+            //     this->size_--;
+            //     return ;
+            // }
+            // if ((tmp->left != NULL) && (tmp->right == NULL))
+            // {
+            //     swap_node(tmp, tmp->left);
+            //     tmp->left = NULL;
+            //     this->alloc.deallocate(tmp->left,1);
+            //     this->size_--;
+            //     return ;
+            // }
+            // else if ((tmp->left != NULL) && (tmp->right != NULL))
+            // {
+            //     std::cout << "amine 3" << std::endl;
+            // }
+            // else
+            //     std::cout << "root = " << root->item.first << std::endl;
         }
         void insertFix(Node *k)
         {
@@ -446,6 +558,8 @@ namespace ft
                 root = this->alloc.allocate(1);
                 this->alloc.construct(root, Node(key));
                 end_->left = root;
+                size_++;
+                // root->parents = end_->left;
                 root->Color = BLACK;
                 return make_pair(iterator_map(root), true);
             }
@@ -505,3 +619,33 @@ namespace ft
     };
 }
 #endif
+
+    //      if (z->left == TNULL) 
+            // {
+    //          x = z->right;
+    //          rbTransplant(z, z->right);
+    //      } 
+            // else if (z->right == TNULL) 
+            // {
+    //      x = z->left;
+    //      rbTransplant(z, z->left);
+    //      } 
+    //      else 
+            // {
+    //      y = minimum(z->right);
+    //      y_original_color = y->color;
+    //   x = y->right;
+    //   if (y->parent == z) {
+    //     x->parent = y;
+    //   } else {
+    //     rbTransplant(y, y->right);
+    //     y->right = z->right;
+    //     y->right->parent = y;
+    //   }
+
+    //   rbTransplant(z, y);
+    //   y->left = z->left;
+    //   y->left->parent = y;
+    //   y->color = z->color;
+    // }
+    // delete z;
