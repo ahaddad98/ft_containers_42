@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/20 20:29:27 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/21 16:25:29 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -669,17 +669,20 @@ int main()
     // // std::cout << "1 inserted\n"; 
     // mymap.insert(pair<int,int>(12,2));
     // // std::cout << "12 inserted\n"; 
-    mymap.insert(pair<int,int>(10,2));
-    mymap.insert(pair<int,int>(0,2));
-    mymap.insert(pair<int,int>(20,2));
-    mymap.insert(pair<int,int>(15,2));
+    // mymap.insert(std::pair<int,int>(10,2));
+    // mymap.insert(std::pair<int,int>(0,2));
+    // mymap.insert(std::pair<int,int>(15,2));
+    // mymap.insert(std::pair<int,int>(12,2));
     // // std::cout << "13 inserted\n"; 
     // mymap.insert(pair<int,int>(14,2));
     // // std::cout << "14 inserted\n"; 
     // mymap.insert(pair<int,int>(15,2));
     // for(int i = 0; i < 11; i++)
     //     mymap.insert(pair<int,int>(i, 125));
-    mymap.delete_(pair<int , int>(20, 125));
+    // mymap.delete_(pair<int , int>(15, 125));
+    // mymap.delete_(pair<int , int>(12, 125));
+    // mymap.delete_(pair<int , int>(10, 125));
+    // mymap.delete_(pair<int , int>(0, 125));
     // std::cout << "delete last node 9, 125" << std::endl; 
     for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
     {

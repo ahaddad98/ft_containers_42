@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/20 20:20:11 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/21 16:44:36 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,6 +294,8 @@ namespace ft
         };
         iterator_map begin()
         {
+            if (root == end_)
+                return (iterator_map(end_, this));
             return (iterator_map(root->leftMost(), this));
         }
         iterator_map end()
@@ -304,6 +306,8 @@ namespace ft
         {
             Node *tmp;
             tmp = this->root;
+            if (root == end_)
+                return NULL;
             while (tmp != NULL)
             {
                 if (comp(root1.first, tmp->item.first))
@@ -317,43 +321,49 @@ namespace ft
         }
         void swap_node(Node *n1, Node *n2)
         {
-            T tmp;
-            tmp = n1->item;
+            // Node *tmp;
+            // tmp = n1;
             n1->item = n2->item;
-            n2->item = tmp;
+            // n2 = n1;
+            // T tmp;
+            // // tmp = n1->item;
+            // // n1->item = n2->item;
+            // // n2->item = tmp;
         }
         void delete_(T to_delete)
         {
             Node *tmp = search_tree_in_ordre_travers(to_delete);
-            // std::cout << "amine" << std::endl;
             if (tmp == NULL)
-            {
-                std::cout << "amine haddad" << std::endl;
                 return ;
-            }
             if ((tmp->left == NULL) && (tmp->right == NULL))
             {
-                std::cout << "amine 0" << std::endl;
-                tmp->parents->right = NULL;
-                this->alloc.deallocate(tmp,1);
+                if (tmp ==  tmp->parents->left)
+                {
+                    tmp->parents->left = NULL;
+                    this->alloc.deallocate(tmp,1);
+                }
+                else
+                {
+                    tmp->parents->right = NULL;
+                    this->alloc.deallocate(tmp,1);
+                }
                 this->size_--;
                 return ;
             }
             if ((tmp->right != NULL) && (tmp->left == NULL))
             {
-                std::cout << "amine 1" << std::endl;
+                std::cout << "amine 2" << std::endl;
                 tmp->parents->left = NULL;
                 // swap_node(tmp, tmp->left);
-                // this->alloc.deallocate(tmp->left,1);
+                this->alloc.deallocate(tmp->left,1);
                 this->size_--;
                 return ;
             }
             if ((tmp->left != NULL) && (tmp->right == NULL))
             {
-                std::cout << "amine 2" << std::endl;
                 swap_node(tmp, tmp->left);
+                tmp->left = NULL;
                 this->alloc.deallocate(tmp->left,1);
-                tmp->parents->left = NULL;
                 this->size_--;
                 return ;
             }
