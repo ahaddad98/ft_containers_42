@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 03:15:29 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 03:26:49 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -664,6 +664,7 @@ int main()
     // it = vect.begin();
     // std::cout << *it << std::endl;
     ft::map<int , int> mymap;
+    ft::map<int , int> mymap1;
     // mymap.insert(pair<int,int>(1,2));
     // mymap.insert(pair<int,int>(1,20));
     // // std::cout << "1 inserted\n"; 
@@ -673,6 +674,10 @@ int main()
     mymap.insert(pair<int,int>(0,2));
     mymap.insert(pair<int,int>(15,2));
     mymap.insert(pair<int,int>(12,2));
+    mymap1.insert(pair<int,int>(-10,2));
+    mymap1.insert(pair<int,int>(0,2));
+    mymap1.insert(pair<int,int>(-15,2));
+    mymap1.insert(pair<int,int>(-12,2));
     // ft::map<int , int>::iterator it = mymap.find(10);
     // std::cout << it->first << std::endl;
     // // std::cout << "13 inserted\n"; 
@@ -695,11 +700,15 @@ int main()
         std::cout << it->first  << " ==> "  << it->second << std::endl;
     }
     std::cout << "after insert" << std::endl;
-    mymap.insert(mymap.begin(), pair<int,int>(5,2));
+    mymap.insert(mymap1.begin(), mymap1.end());
     for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
     {
         std::cout << it->first  << " ==> "  << it->second << std::endl;
     }
+    // for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
+    // {
+    //     std::cout << it->first  << " ==> "  << it->second << std::endl;
+    // }
     // mymap.delete_(pair<int , int>(9, 125));
     // std::cout << "delete last node 9, 125" << std::endl; 
     // for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)

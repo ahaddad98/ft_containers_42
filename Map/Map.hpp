@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 03:17:34 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 03:26:18 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,10 +152,15 @@ namespace ft
             return (this->find(val.first));
             // return (mymap.iterator(search_tree_in_ordre_travers()))
         }
-        // template <class InputIterator>
-        // void insert(InputIterator first, InputIterator last)
-        // {
-        // }
+        template <class InputIterator>
+        void insert(InputIterator first, InputIterator last)
+        {
+            InputIterator it;
+            for (it = first; it != last; it++)
+            {
+                insert(*it);
+            }
+        }
         // void erase(iterator position)
         // {
         // }
