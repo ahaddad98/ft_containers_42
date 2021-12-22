@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 02:19:16 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 03:15:29 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -673,6 +673,8 @@ int main()
     mymap.insert(pair<int,int>(0,2));
     mymap.insert(pair<int,int>(15,2));
     mymap.insert(pair<int,int>(12,2));
+    // ft::map<int , int>::iterator it = mymap.find(10);
+    // std::cout << it->first << std::endl;
     // // std::cout << "13 inserted\n"; 
     // mymap.insert(pair<int,int>(14,2));
     // // std::cout << "14 inserted\n"; 
@@ -688,11 +690,16 @@ int main()
     // mymap.delete_(pair<int , int>(12, 125));
     // mymap.delete_(pair<int , int>(0, 125));
     // std::cout << "asa" << std::endl;
-    for (ft::map<int , int>::reverse_iterator it = mymap.rbegin(); it != mymap.rend(); it++)
+    for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
     {
         std::cout << it->first  << " ==> "  << it->second << std::endl;
     }
-    std::cout << mymap.max_size();
+    std::cout << "after insert" << std::endl;
+    mymap.insert(mymap.begin(), pair<int,int>(5,2));
+    for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
+    {
+        std::cout << it->first  << " ==> "  << it->second << std::endl;
+    }
     // mymap.delete_(pair<int , int>(9, 125));
     // std::cout << "delete last node 9, 125" << std::endl; 
     // for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)

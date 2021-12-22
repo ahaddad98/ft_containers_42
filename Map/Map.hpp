@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 02:19:05 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 03:17:34 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ namespace ft
         // Capacity:
         bool empty() const
         {
+            return (mymap.size() == 0);
         }
         size_type size() const
         {
@@ -144,9 +145,13 @@ namespace ft
         {
             return mymap.insert(val);
         }
-        // iterator insert (iterator position, const value_type& val)
-        // {
-        // }
+        iterator insert (iterator position, const value_type& val)
+        {
+            // if (position != mymap.end())
+            mymap.insert(val);
+            return (this->find(val.first));
+            // return (mymap.iterator(search_tree_in_ordre_travers()))
+        }
         // template <class InputIterator>
         // void insert(InputIterator first, InputIterator last)
         // {
@@ -173,6 +178,7 @@ namespace ft
         // Observers:
         key_compare key_comp() const
         {
+            return mymap.getcompare();
         }
         // value compare ??
         // value_compare value_comp() const
@@ -180,9 +186,16 @@ namespace ft
         // }
 
         // operations
-        // iterator find (const key_type& k)
-        // {
-        // }
+        iterator find (const key_type& k)
+        {
+            iterator it;
+            for (it = begin(); it != end(); it++)
+            {
+                if (it->first == k)
+                    return it;
+            }
+            return end();
+        }
         // const_iterator find (const key_type& k) const
         // {
         // }
