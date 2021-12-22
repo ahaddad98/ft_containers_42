@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 01:39:53 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 01:51:37 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -508,6 +508,114 @@ namespace ft
             Node *_ptr;
             Red_Blacl_Tree *_parent;
         };
+        class const_reverse_iterator_map : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
+        {
+        public:
+            typedef const_reverse_iterator_map self_type;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::value_type value_type;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::pointer pointer;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::reference reference;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::difference_type difference_type;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::iterator_categorie iterator_category;
+
+            const_reverse_iterator_map()
+            {
+                _ptr = NULL;
+            };
+            const_reverse_iterator_map(Node *p) : _ptr(p)
+            {
+            };
+
+            const_reverse_iterator_map(const const_reverse_iterator_map &it)
+            {
+                *this = it;
+            };
+            ~const_reverse_iterator_map()
+            {
+            };
+
+            const_reverse_iterator_map(Node *ptr, Red_Blacl_Tree *parent)
+            {
+                _ptr = ptr;
+                _parent = parent;
+            }
+            const_reverse_iterator_map &operator=(const_reverse_iterator_map const &other)
+            {
+                _ptr = other._ptr;
+                _parent = other._parent;
+                return (*this);
+            }
+
+            reference operator*()
+            {  
+                return _ptr->item;
+            }
+            pointer operator->()
+            {
+                return &operator*();
+            }
+            const_reverse_iterator_map operator++()
+            {
+                // _ptr = _ptr->getNext();
+                // return (*this);
+                if (!_ptr->getPrevious())
+                    _ptr = NULL;
+                else
+                    _ptr = _ptr->getPrevious();
+                return (*this);
+            }
+            const_reverse_iterator_map operator++(int n)
+            {
+                // if (!_ptr->getNext())
+                //     _ptr = _parent->end_;
+                // else
+                //     _ptr = _ptr->getNext();
+                // return (*this);
+                if (!_ptr->getPrevious())
+                    _ptr = NULL;
+                else
+                    _ptr = _ptr->getPrevious();
+                return (*this);
+            }
+            const_reverse_iterator_map operator--()
+            {
+                if (!_ptr->getNext())
+                    _ptr = _parent->end_;
+                else
+                    _ptr = _ptr->getNext();
+                return (*this);
+                // if (!_ptr->getPrevious())
+                //     _ptr = NULL;
+                // else
+                //     _ptr = _ptr->getPrevious();
+                // return (*this);
+            }
+            const_reverse_iterator_map operator--(int n)
+            {
+                if (!_ptr->getNext())
+                    _ptr = _parent->end_;
+                else
+                    _ptr = _ptr->getNext();
+                return (*this);
+                // if (!_ptr->getPrevious())
+                //     _ptr = NULL;
+                // else
+                //     _ptr = _ptr->getPrevious();        
+                // return (*this);
+            }
+            bool operator==(const_reverse_iterator_map const &other)
+            {
+                return (_ptr == other._ptr);
+            }
+            bool operator!=(const_reverse_iterator_map const &other)
+            {
+                return (_ptr != other._ptr);
+            }
+
+        protected:
+            Node *_ptr;
+            Red_Blacl_Tree *_parent;
+        };
         iterator_map begin()
         {
             if (size_ == 0)
@@ -544,6 +652,26 @@ namespace ft
             return (reverse_iterator_map(root->rightMost(), this));
         }
         reverse_iterator_map rend()
+        {
+            if (size_ == 0)
+            {   
+                // std::cout << size_ << std::endl;
+                return (reverse_iterator_map(end_, this));
+            }
+            // std::cout << "size_" << std::endl;
+            return (reverse_iterator_map(root->leftMost()->left, this));
+            // return 
+        }
+        reverse_iterator_map rbegin() const
+        {
+            if (size_ == 0)
+            {   
+                // std::cout << size_ << std::endl;
+                return (reverse_iterator_map(end_, this));
+            }
+            return (reverse_iterator_map(root->rightMost(), this));
+        }
+        reverse_iterator_map rend() const
         {
             if (size_ == 0)
             {   

@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 01:08:22 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 01:52:04 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ namespace ft
         typedef typename ft::Red_Blacl_Tree<value_type, allocator_type, Compare>::iterator_map iterator;
         typedef typename ft::Red_Blacl_Tree<value_type, allocator_type, Compare>::const_iterator_map const_iterator;
         typedef typename ft::Red_Blacl_Tree<value_type, allocator_type, Compare>::reverse_iterator_map reverse_iterator;
+        typedef typename ft::Red_Blacl_Tree<value_type, allocator_type, Compare>::const_reverse_iterator_map const_reverse_iterator;
         typedef std::ptrdiff_t difference_type;
         typedef size_t size_type;
         // compare class
@@ -109,16 +110,18 @@ namespace ft
         {
             return mymap.rbegin();
         }
-        // const_reverse_iterator rbegin() const
-        // {
-        // }
+        const_reverse_iterator rbegin() const
+        {
+            return mymap.rbegin();
+        }
         reverse_iterator rend()
         {
             return mymap.rend();
         }
-        // const_reverse_iterator rend() const
-        // {
-        // }
+        const_reverse_iterator rend() const
+        {
+            return mymap.rend();
+        }
 
         // Capacity:
         bool empty() const
