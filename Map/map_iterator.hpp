@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 04:16:38 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 20:21:09 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ namespace ft
         BLACK
     };
 
-    template <typename T, class allocator_type, class Compare = std::less<T> >
+    template <class key_type ,typename T, class allocator_type, class Compare = std::less<T> >
     class Red_Blacl_Tree
     {
     public:
@@ -682,7 +682,7 @@ namespace ft
             return (reverse_iterator_map(root->leftMost()->left, this));
             // return 
         }
-        Node* search_tree_in_ordre_travers(T root1)
+        Node* search_tree_in_ordre_travers(T root1) 
         {
             Node *tmp;
             tmp = this->root;
@@ -698,6 +698,63 @@ namespace ft
                     return tmp;
             }
             return NULL;
+        }
+        Node* search_tree_with_key(const key_type &k) const
+        {
+            Node *tmp;
+            tmp = this->root;
+            if (root == end_)
+                return NULL;
+            while (tmp != NULL)
+            {
+                if (comp(k, tmp->item.first))
+                    tmp = tmp->left;
+                else if (comp(tmp->item.first, k))
+                    tmp = tmp->right;
+                else
+                    return tmp;
+            }
+            return NULL;
+        }
+        iterator_map lower_bound(const key_type& k)
+        {
+            Node *tmp = search_tree_with_key(k);
+            if (tmp == NULL)
+                return this->end();
+            Node *tmp1 = tmp->getPrevious();
+            if (tmp1 == NULL)
+                return iterator_map(tmp, this);
+            return iterator_map(tmp1, this);
+        }
+        const_iterator_map lower_bound(const key_type& k) const
+        {
+            Node *tmp = search_tree_with_key(k);
+            if (tmp == NULL)
+                return this->end();
+            Node *tmp1 = tmp->getPrevious();
+            if (tmp1 == NULL)
+                return const_iterator_map(tmp, this);
+            return const_iterator_map(tmp1, this);
+        }
+        iterator_map upper_bound(const key_type& k)
+        {
+            Node *tmp = search_tree_with_key(k);
+            if (tmp == NULL)
+                return this->end();
+            Node *tmp1 = tmp->getNext();
+            if (tmp1 == NULL)
+                return end();
+            return iterator_map(tmp1, this);
+        }
+        const_iterator_map upper_bound(const key_type& k) const
+        {
+            Node *tmp = search_tree_with_key(k);
+            if (tmp == NULL)
+                return this->end();
+            Node *tmp1 = tmp->getNext();
+            if (tmp1 == NULL)
+                return end();
+            return const_iterator_map(tmp1, this);
         }
         void swap_node(Node *n1, Node *n2)
         {
@@ -881,6 +938,13 @@ namespace ft
         _allocator_type get_alloc()
         {
             return this->alloc;
+        }
+        size_type count(const key_type &k) const
+        {
+            Node *tmp = search_tree_with_key(k);
+            if (tmp == NULL)
+                return 0;
+            return 1;
         }
         value_compare getcompare()
         {

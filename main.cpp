@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+// /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 04:19:44 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 20:27:44 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -695,16 +695,30 @@ int main()
     // mymap.delete_(pair<int , int>(12, 125));
     // mymap.delete_(pair<int , int>(0, 125));
     // std::cout << "asa" << std::endl;
-    for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
+    for (ft::map<int , int>::const_iterator it = mymap.begin(); it != mymap.end(); it++)
     {
         std::cout << it->first  << " ==> "  << it->second << std::endl;
     }
-    std::cout << "after erase" << std::endl;
-    mymap.erase(mymap.begin(), mymap.end());
-    for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
-    {
-        std::cout << it->first  << " ==> "  << it->second << std::endl;
-    }
+    // lowerbound
+    // ft::map<int , int>::iterator it = mymap.lower_bound(15);
+    // std::cout << it->first  << " ==> "  << it->second << std::endl;
+    // lowerbound
+    // std::cout << "upper bound test" << std::endl;
+    // ft::map<int , int>::const_iterator it;
+    // it = mymap.upper_bound(0);
+    // if (it != mymap.end())
+    //     std::cout << it->first  << " ==> "  << it->second << std::endl;
+    // std::cout << it->first << std::endl;
+    // if (mymap.count(245465) == 0)
+    //     std::cout << "element not found" << std::endl;
+    // else
+    //     std::cout << "element found" << std::endl;
+    // std::cout << "after erase" << std::endl;
+    // mymap.erase(mymap.begin(), mymap.end());
+    // for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
+    // {
+    //     std::cout << it->first  << " ==> "  << it->second << std::endl;
+    // }
     // for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
     // {
     //     std::cout << it->first  << " ==> "  << it->second << std::endl;

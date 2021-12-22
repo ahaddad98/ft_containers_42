@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 04:18:19 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 20:20:40 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ namespace ft
         typedef value_type *pointer;
         typedef const value_type *const_pointer;
         // miss iterator here
-        typedef typename ft::Red_Blacl_Tree<value_type, allocator_type, Compare>::iterator_map iterator;
-        typedef typename ft::Red_Blacl_Tree<value_type, allocator_type, Compare>::const_iterator_map const_iterator;
-        typedef typename ft::Red_Blacl_Tree<value_type, allocator_type, Compare>::reverse_iterator_map reverse_iterator;
-        typedef typename ft::Red_Blacl_Tree<value_type, allocator_type, Compare>::const_reverse_iterator_map const_reverse_iterator;
+        typedef typename ft::Red_Blacl_Tree<key_type,value_type, allocator_type, Compare>::iterator_map iterator;
+        typedef typename ft::Red_Blacl_Tree<key_type,value_type, allocator_type, Compare>::const_iterator_map const_iterator;
+        typedef typename ft::Red_Blacl_Tree<key_type,value_type, allocator_type, Compare>::reverse_iterator_map reverse_iterator;
+        typedef typename ft::Red_Blacl_Tree<key_type,value_type, allocator_type, Compare>::const_reverse_iterator_map const_reverse_iterator;
         typedef std::ptrdiff_t difference_type;
         typedef size_t size_type;
         // compare class
@@ -214,30 +214,42 @@ namespace ft
             }
             return end();
         }
-        // const_iterator find (const key_type& k) const
-        // {
-        // }
+        const_iterator find (const key_type& k) const
+        {
+            const_iterator it;
+            for (it = begin(); it != end(); it++)
+            {
+                if (it->first == k)
+                    return it;
+            }
+            return end();
+        }
         size_type count(const key_type &k) const
         {
+            return this->mymap.count(k);
         }
-        // iterator lower_bound (const key_type& k)
-        // {
-        // }
-        // const_iterator lower_bound (const key_type& k) const
-        // {
-        // }
-        // iterator upper_bound (const key_type& k)
-        // {
-        // }
-        // const_iterator upper_bound (const key_type& k) const
-        // {
-        // }
-        // pair<const_iterator,const_iterator> equal_range (const key_type& k) const
-        // {
-        // }
-        // pair<iterator,iterator>             equal_range (const key_type& k)
-        // {
-        // }
+        iterator lower_bound (const key_type& k)
+        {
+            return this->mymap.lower_bound(k);
+        }
+        const_iterator lower_bound (const key_type& k) const
+        {
+            return this->mymap.const_lower_bound(k);
+        }
+        iterator upper_bound (const key_type& k)
+        {
+            return this->mymap.upper_bound(k);
+        }
+        const_iterator upper_bound (const key_type& k) const
+        {
+            return this->mymap.upper_bound(k);
+        }
+        pair<const_iterator,const_iterator> equal_range (const key_type& k) const
+        {
+        }
+        pair<iterator,iterator>             equal_range (const key_type& k)
+        {
+        }
 
         // Allocator:
         allocator_type get_allocator() const
@@ -249,7 +261,7 @@ namespace ft
         allocator_type alloc;
         value_type cc;
         size_type size_;
-        ft::Red_Blacl_Tree<value_type, allocator_type, Compare> mymap;
+        ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare> mymap;
     };
 
 }
