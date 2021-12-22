@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 03:26:49 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 04:15:52 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -699,8 +699,8 @@ int main()
     {
         std::cout << it->first  << " ==> "  << it->second << std::endl;
     }
-    std::cout << "after insert" << std::endl;
-    mymap.insert(mymap1.begin(), mymap1.end());
+    std::cout << "after erase" << std::endl;
+    mymap.erase(mymap.begin(), mymap.end());
     for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
     {
         std::cout << it->first  << " ==> "  << it->second << std::endl;

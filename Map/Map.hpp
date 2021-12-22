@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 03:26:18 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 04:15:07 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,10 +147,8 @@ namespace ft
         }
         iterator insert (iterator position, const value_type& val)
         {
-            // if (position != mymap.end())
             mymap.insert(val);
             return (this->find(val.first));
-            // return (mymap.iterator(search_tree_in_ordre_travers()))
         }
         template <class InputIterator>
         void insert(InputIterator first, InputIterator last)
@@ -161,15 +159,32 @@ namespace ft
                 insert(*it);
             }
         }
-        // void erase(iterator position)
-        // {
-        // }
-        // size_type erase(const key_type &k)
-        // {
-        // }
-        // void erase(iterator first, iterator last)
-        // {
-        // }
+        void erase(iterator position)
+        {
+            iterator it;
+            for (it = begin(); it != end(); it++)
+            {
+                if (it == position)
+                    this->mymap.delete_(*it);
+            }
+        }
+        size_type erase(const key_type &k)
+        {
+            iterator it;
+            it = find(k);
+            if (it == end())
+                return 0;
+            this->mymap.delete_(*it);
+            return 1;
+        }
+        void erase(iterator first, iterator last)
+        {
+            iterator it;
+            for (it = first ; it != end(); it++)
+            {
+                this->mymap.delete_(*it);
+            }
+        }
         void swap(map &x)
         {
         }
