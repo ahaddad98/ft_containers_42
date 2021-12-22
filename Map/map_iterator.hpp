@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 20:21:09 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 20:41:05 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -662,16 +662,15 @@ namespace ft
             return (reverse_iterator_map(root->leftMost()->left, this));
             // return 
         }
-        reverse_iterator_map rbegin() const
+        const_reverse_iterator_map rbegin() const
         {
             if (size_ == 0)
             {   
-                // std::cout << size_ << std::endl;
-                return (reverse_iterator_map(end_, this));
+                return (const_reverse_iterator_map(end_, this));
             }
-            return (reverse_iterator_map(root->rightMost(), this));
+            return (const_reverse_iterator_map(root->rightMost(), this));
         }
-        reverse_iterator_map rend() const
+        const_reverse_iterator_map rend() const
         {
             if (size_ == 0)
             {   
