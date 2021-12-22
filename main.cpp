@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/21 21:43:25 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 01:40:00 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -683,16 +683,14 @@ int main()
     // mymap.delete_(pair<int , int>(12, 125));
     // mymap.delete_(pair<int , int>(10, 125));
     // mymap.delete_(pair<int , int>(0, 125));
-    mymap.delete_(pair<int , int>(10, 125));
-    mymap.delete_(pair<int , int>(15, 125));
-    mymap.delete_(pair<int , int>(12, 125));
-    mymap.delete_(pair<int , int>(0, 125));
+    // mymap.delete_(pair<int , int>(10, 125));
+    // mymap.delete_(pair<int , int>(15, 125));
+    // mymap.delete_(pair<int , int>(12, 125));
+    // mymap.delete_(pair<int , int>(0, 125));
     // std::cout << "asa" << std::endl;
-    for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)
+    for (ft::map<int , int>::reverse_iterator it = mymap.rbegin(); it != mymap.rend(); it++)
     {
-        // std::cout << "asa1" << std::endl;
         std::cout << it->first  << " ==> "  << it->second << std::endl;
-
     }
     // mymap.delete_(pair<int , int>(9, 125));
     // std::cout << "delete last node 9, 125" << std::endl; 

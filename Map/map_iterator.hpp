@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/21 21:53:48 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 01:39:53 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,9 @@ namespace ft
             {
                 *this = it;
             };
+            ~iterator_map()
+            {
+            };
 
             iterator_map(Node *ptr, Red_Blacl_Tree *parent)
             {
@@ -263,7 +266,10 @@ namespace ft
             }
             iterator_map operator++()
             {
-                _ptr = _ptr->getNext();
+                if (!_ptr->getNext())
+                    _ptr = _parent->end_;
+                else
+                    _ptr = _ptr->getNext();
                 return (*this);
             }
             iterator_map operator++(int n)
@@ -276,8 +282,18 @@ namespace ft
             }
             iterator_map operator--()
             {
-                if ((_ptr = _ptr->getPrevious()))
-                    std::cout << "im in -- " << std::endl;
+                if (!_ptr->getPrevious())
+                    _ptr = NULL;
+                else
+                    _ptr = _ptr->getPrevious();
+                return (*this);
+            }
+            iterator_map operator--(int n)
+            {
+                if (!_ptr->getPrevious())
+                    _ptr = NULL;
+                else
+                    _ptr = _ptr->getPrevious();        
                 return (*this);
             }
             bool operator==(iterator_map const &other)
@@ -293,6 +309,205 @@ namespace ft
             Node *_ptr;
             Red_Blacl_Tree *_parent;
         };
+        class const_iterator_map : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
+        {
+        public:
+            typedef const_iterator_map self_type;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::value_type value_type;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::pointer pointer;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::reference reference;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::difference_type difference_type;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::iterator_categorie iterator_category;
+
+            const_iterator_map()
+            {
+                _ptr = NULL;
+            };
+            const_iterator_map(Node *p) : _ptr(p)
+            {
+            };
+
+            const_iterator_map(const const_iterator_map &it)
+            {
+                *this = it;
+            };
+            ~const_iterator_map()
+            {
+            };
+
+            const_iterator_map(Node *ptr, Red_Blacl_Tree *parent)
+            {
+                _ptr = ptr;
+                _parent = parent;
+            }
+            const_iterator_map &operator=(const_iterator_map const &other)
+            {
+                _ptr = other._ptr;
+                _parent = other._parent;
+                return (*this);
+            }
+
+            reference operator*()
+            {  
+                return _ptr->item;
+            }
+            pointer operator->()
+            {
+                return &operator*();
+            }
+            const_iterator_map operator++()
+            {
+                if (!_ptr->getNext())
+                    _ptr = _parent->end_;
+                else
+                    _ptr = _ptr->getNext();
+                return (*this);
+            }
+            const_iterator_map operator++(int n)
+            {
+                if (!_ptr->getNext())
+                    _ptr = _parent->end_;
+                else
+                    _ptr = _ptr->getNext();
+                return (*this);
+            }
+            const_iterator_map operator--()
+            {
+                if (!_ptr->getPrevious())
+                    _ptr = NULL;
+                else
+                    _ptr = _ptr->getPrevious();
+                return (*this);
+            }
+            const_iterator_map operator--(int n)
+            {
+                if (!_ptr->getPrevious())
+                    _ptr = NULL;
+                else
+                    _ptr = _ptr->getPrevious();        
+                return (*this);
+            }
+            bool operator==(const_iterator_map const &other)
+            {
+                return (_ptr == other._ptr);
+            }
+            bool operator!=(const_iterator_map const &other)
+            {
+                return (_ptr != other._ptr);
+            }
+
+        protected:
+            Node *_ptr;
+            Red_Blacl_Tree *_parent;
+        };
+        class reverse_iterator_map : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
+        {
+        public:
+            typedef reverse_iterator_map self_type;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::value_type value_type;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::pointer pointer;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::reference reference;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::difference_type difference_type;
+            typedef typename ft::Iterator_Traits<std::bidirectional_iterator_tag, T>::iterator_categorie iterator_category;
+
+            reverse_iterator_map()
+            {
+                _ptr = NULL;
+            };
+            reverse_iterator_map(Node *p) : _ptr(p)
+            {
+            };
+
+            reverse_iterator_map(const reverse_iterator_map &it)
+            {
+                *this = it;
+            };
+            ~reverse_iterator_map()
+            {
+            };
+
+            reverse_iterator_map(Node *ptr, Red_Blacl_Tree *parent)
+            {
+                _ptr = ptr;
+                _parent = parent;
+            }
+            reverse_iterator_map &operator=(reverse_iterator_map const &other)
+            {
+                _ptr = other._ptr;
+                _parent = other._parent;
+                return (*this);
+            }
+
+            reference operator*()
+            {  
+                return _ptr->item;
+            }
+            pointer operator->()
+            {
+                return &operator*();
+            }
+            reverse_iterator_map operator++()
+            {
+                // _ptr = _ptr->getNext();
+                // return (*this);
+                if (!_ptr->getPrevious())
+                    _ptr = NULL;
+                else
+                    _ptr = _ptr->getPrevious();
+                return (*this);
+            }
+            reverse_iterator_map operator++(int n)
+            {
+                // if (!_ptr->getNext())
+                //     _ptr = _parent->end_;
+                // else
+                //     _ptr = _ptr->getNext();
+                // return (*this);
+                if (!_ptr->getPrevious())
+                    _ptr = NULL;
+                else
+                    _ptr = _ptr->getPrevious();
+                return (*this);
+            }
+            reverse_iterator_map operator--()
+            {
+                if (!_ptr->getNext())
+                    _ptr = _parent->end_;
+                else
+                    _ptr = _ptr->getNext();
+                return (*this);
+                // if (!_ptr->getPrevious())
+                //     _ptr = NULL;
+                // else
+                //     _ptr = _ptr->getPrevious();
+                // return (*this);
+            }
+            reverse_iterator_map operator--(int n)
+            {
+                if (!_ptr->getNext())
+                    _ptr = _parent->end_;
+                else
+                    _ptr = _ptr->getNext();
+                return (*this);
+                // if (!_ptr->getPrevious())
+                //     _ptr = NULL;
+                // else
+                //     _ptr = _ptr->getPrevious();        
+                // return (*this);
+            }
+            bool operator==(reverse_iterator_map const &other)
+            {
+                return (_ptr == other._ptr);
+            }
+            bool operator!=(reverse_iterator_map const &other)
+            {
+                return (_ptr != other._ptr);
+            }
+
+        protected:
+            Node *_ptr;
+            Red_Blacl_Tree *_parent;
+        };
         iterator_map begin()
         {
             if (size_ == 0)
@@ -300,12 +515,44 @@ namespace ft
                 return (iterator_map(end_, this));
             }
             std::cout << size_ << std::endl;
-            // std::cout << "here" << std::endl;
             return (iterator_map(root->leftMost(), this));
         }
         iterator_map end()
         {
             return (iterator_map(end_, this));
+        }
+        const_iterator_map begin() const
+        {
+            if (size_ == 0)
+            {   
+                return (const_iterator_map(end_, this));
+            }
+            std::cout << size_ << std::endl;
+            return (const_iterator_map(root->leftMost(), this));
+        }
+        const_iterator_map end() const
+        {
+            return (const_iterator_map(end_, this));
+        }
+        reverse_iterator_map rbegin()
+        {
+            if (size_ == 0)
+            {   
+                // std::cout << size_ << std::endl;
+                return (reverse_iterator_map(end_, this));
+            }
+            return (reverse_iterator_map(root->rightMost(), this));
+        }
+        reverse_iterator_map rend()
+        {
+            if (size_ == 0)
+            {   
+                // std::cout << size_ << std::endl;
+                return (reverse_iterator_map(end_, this));
+            }
+            // std::cout << "size_" << std::endl;
+            return (reverse_iterator_map(root->leftMost()->left, this));
+            // return 
         }
         Node* search_tree_in_ordre_travers(T root1)
         {
@@ -553,13 +800,10 @@ namespace ft
             Node *y;
             if (this->root == end_)
             {
-                // root = new Node(key);
-                
                 root = this->alloc.allocate(1);
                 this->alloc.construct(root, Node(key));
                 end_->left = root;
                 size_++;
-                // root->parents = end_->left;
                 root->Color = BLACK;
                 return make_pair(iterator_map(root), true);
             }
@@ -568,7 +812,6 @@ namespace ft
             {
                 x = root;
                 y = NULL;
-                // node = new Node(key);
                 node = this->alloc.allocate(1);
                 this->alloc.construct(node, Node(key));
                 while (x != NULL)
@@ -609,7 +852,10 @@ namespace ft
         {
             return this->alloc;
         }
-
+        value_compare getcompare()
+        {
+            return this->comp;
+        }
     private:
         Node *root;
         Node *end_;
@@ -619,33 +865,3 @@ namespace ft
     };
 }
 #endif
-
-    //      if (z->left == TNULL) 
-            // {
-    //          x = z->right;
-    //          rbTransplant(z, z->right);
-    //      } 
-            // else if (z->right == TNULL) 
-            // {
-    //      x = z->left;
-    //      rbTransplant(z, z->left);
-    //      } 
-    //      else 
-            // {
-    //      y = minimum(z->right);
-    //      y_original_color = y->color;
-    //   x = y->right;
-    //   if (y->parent == z) {
-    //     x->parent = y;
-    //   } else {
-    //     rbTransplant(y, y->right);
-    //     y->right = z->right;
-    //     y->right->parent = y;
-    //   }
-
-    //   rbTransplant(z, y);
-    //   y->left = z->left;
-    //   y->left->parent = y;
-    //   y->color = z->color;
-    // }
-    // delete z;
