@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 04:15:52 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 04:19:44 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -663,7 +663,7 @@ int main()
     // std::vector<int>::iterator it;
     // it = vect.begin();
     // std::cout << *it << std::endl;
-    ft::map<int , int> mymap;
+    ft::map<int , int> mymap ;
     ft::map<int , int> mymap1;
     // mymap.insert(pair<int,int>(1,2));
     // mymap.insert(pair<int,int>(1,20));

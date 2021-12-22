@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 04:15:07 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 04:18:19 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,10 +190,7 @@ namespace ft
         }
         void clear()
         {
-        }
-        void delete_(const value_type &val)
-        {
-            this->mymap.delete_(val);
+            this->erase(begin(), end());
         }
         // Observers:
         key_compare key_comp() const
@@ -201,9 +198,10 @@ namespace ft
             return mymap.getcompare();
         }
         // value compare ??
-        // value_compare value_comp() const
-        // {
-        // }
+        value_compare value_comp() const
+        {
+            return this->mymap.getcompare();
+        }
 
         // operations
         iterator find (const key_type& k)
