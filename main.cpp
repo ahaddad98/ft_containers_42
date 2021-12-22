@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:46:32 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 01:40:00 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 02:19:16 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -692,6 +692,7 @@ int main()
     {
         std::cout << it->first  << " ==> "  << it->second << std::endl;
     }
+    std::cout << mymap.max_size();
     // mymap.delete_(pair<int , int>(9, 125));
     // std::cout << "delete last node 9, 125" << std::endl; 
     // for (ft::map<int , int>::iterator it = mymap.begin(); it != mymap.end(); it++)

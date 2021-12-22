@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 01:52:04 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 02:19:05 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ namespace ft
         }
         size_type max_size() const
         {
+            return this->alloc.max_size();
         }
         // Element access:
         mapped_type &operator[](const key_type &k)

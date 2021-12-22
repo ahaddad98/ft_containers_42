@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 01:51:37 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/22 01:55:48 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -762,104 +762,6 @@ namespace ft
             }
             size_--;
             this->alloc.deallocate(z, 1);
-            // Node *x;
-            // Node *y;
-            // y = z;
-            // colors y_color = y->Color;
-            // if (z == root)
-            // {
-            //     size_--;
-            //     root = NULL;
-            //     this->alloc.deallocate(root , 1);
-            //     return ;
-            // }
-            // if (z && z->left == NULL)
-            // {
-            //     // std::cout << "-- 1 --" <<std::endl;
-            //     x = z->right;
-            //     rbTransplant(z, z->right);
-            //     size_--;
-            //     // std::cout << "-- 1,5 --" <<std::endl;
-            // }
-            // else if (z->right == NULL)
-            // {
-            //     size_--;
-            //     // std::cout << "-- 2 --" <<std::endl;
-            //     x = z->left;
-            //     rbTransplant(z, z->left);
-            // }
-            // else
-            // {
-            //     size_--;
-            //     // std::cout << "-- 3 --" <<std::endl;
-            //     y = (z->right)->getPrevious();
-            //     y_color = y->Color;
-            //     x = y->right;
-            //     if (y->parents == z)
-            //         x->parents = z;
-            //     else
-            //     {
-            //         rbTransplant(y , y->right);
-            //         y->right = z->right;
-            //         y->right->parents = y;
-            //         y->Color = z->Color;
-            //     }
-            // }
-            // if (tmp->left == NULL) 
-            // {
-            //     x = tmp->right;
-            //     rbTransplant(tmp, tmp->right);
-            // } 
-            // if (tmp == NULL)
-            //     return ;
-            // if ((tmp->left == NULL) && (tmp->right == NULL))
-            // {
-            //     if (tmp == root)
-            //     {
-            //         std::cout << "here 1" << std::endl;
-            //         end_->left = NULL;
-            //         end_->left = NULL;
-            //         this->alloc.deallocate(root,1);
-            //     }
-            //     else if (tmp && tmp ==  tmp->parents->left)
-            //     {
-            //         tmp->parents->left = NULL;
-            //         this->alloc.deallocate(tmp,1);
-            //     }
-            //     else
-            //     {
-            //         if ( tmp && tmp->parents->right != NULL)
-            //         {   
-            //             tmp->parents->right = NULL;
-            //             this->alloc.deallocate(tmp,1);
-            //         }
-            //     }
-            //     this->size_--;
-            //     return ;
-            // }
-            // if ((tmp->right != NULL) && (tmp->left == NULL))
-            // {
-            //     std::cout << "amine 2" << std::endl;
-            //     tmp->parents->left = NULL;
-            //     // swap_node(tmp, tmp->left);
-            //     this->alloc.deallocate(tmp->left,1);
-            //     this->size_--;
-            //     return ;
-            // }
-            // if ((tmp->left != NULL) && (tmp->right == NULL))
-            // {
-            //     swap_node(tmp, tmp->left);
-            //     tmp->left = NULL;
-            //     this->alloc.deallocate(tmp->left,1);
-            //     this->size_--;
-            //     return ;
-            // }
-            // else if ((tmp->left != NULL) && (tmp->right != NULL))
-            // {
-            //     std::cout << "amine 3" << std::endl;
-            // }
-            // else
-            //     std::cout << "root = " << root->item.first << std::endl;
         }
         void insertFix(Node *k)
         {
