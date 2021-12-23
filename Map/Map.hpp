@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 20:20:40 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/23 16:01:34 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,9 +246,11 @@ namespace ft
         }
         pair<const_iterator,const_iterator> equal_range (const key_type& k) const
         {
+            return make_pair(lower_bound(k), upper_bound(k));
         }
-        pair<iterator,iterator>             equal_range (const key_type& k)
+        pair<iterator,iterator> equal_range (const key_type& k)
         {
+            return make_pair(lower_bound(k), upper_bound(k));
         }
 
         // Allocator:

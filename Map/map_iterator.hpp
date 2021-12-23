@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/22 20:41:05 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/23 16:00:18 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,7 +335,7 @@ namespace ft
             {
             };
 
-            const_iterator_map(Node *ptr, Red_Blacl_Tree *parent)
+            const_iterator_map(const Node *ptr, const Red_Blacl_Tree *parent)
             {
                 _ptr = ptr;
                 _parent = parent;
@@ -397,8 +397,8 @@ namespace ft
             }
 
         protected:
-            Node *_ptr;
-            Red_Blacl_Tree *_parent;
+            const Node *_ptr;
+            const Red_Blacl_Tree *_parent;
         };
         class reverse_iterator_map : public ft::Iterator_Traits<std::bidirectional_iterator_tag, T>
         {
@@ -720,10 +720,10 @@ namespace ft
             Node *tmp = search_tree_with_key(k);
             if (tmp == NULL)
                 return this->end();
-            Node *tmp1 = tmp->getPrevious();
-            if (tmp1 == NULL)
-                return iterator_map(tmp, this);
-            return iterator_map(tmp1, this);
+            // Node *tmp1 = tmp->getPrevious();
+            // if (tmp1 == NULL)
+            //     return iterator_map(tmp, this);
+            return iterator_map(tmp, this);
         }
         const_iterator_map lower_bound(const key_type& k) const
         {
