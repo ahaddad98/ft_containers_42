@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/20 15:44:40 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/23 20:46:12 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,14 @@ namespace ft
         // empty container constructor (default constructor)
         explicit vector(const alloc_type &alloc = alloc_type()) : size_(0), capacity_(0)
         {
+            std::cout << "in this constructor 1" << std::endl;
             this->alloc = alloc;
         }
         // (2) fill constructor
         explicit vector(size_type n, const value_type &val = value_type(), const alloc_type &alloc = alloc_type())
         {
+            std::cout << "in this constructor 2" << std::endl;
+
             insert(begin(), val, n);
             this->alloc = alloc;
         }
@@ -79,6 +82,11 @@ namespace ft
         template <class InputIterator>
         vector(InputIterator first, InputIterator last, const alloc_type &alloc = alloc_type())
         {
+            capacity_ = 0;
+            size_ = 0;
+            this->alloc = alloc;
+            // insert(begin(), val, n);
+            // std::cout << "in this constructor 3" << std::endl;
         }
         vector(const vector &x)
         {
@@ -86,8 +94,11 @@ namespace ft
         // destructor
         ~vector()
         {
-            if (size_ > 0)
-                this->alloc.deallocate(m_Data, size_);
+            std::cout << "capacity = " <<  capacity_ << std::endl;
+            std::cout << "size = " <<  size_ << std::endl;
+
+            if (capacity_ > 0)
+                this->alloc.deallocate(m_Data, capacity_);
         }
 
         // Iterators:
@@ -502,8 +513,8 @@ namespace ft
     template <class T, class Alloc>
     bool operator<=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
     {
-        // if (lhs.begin() <= rhs.begin())
-        //     return true;
+        if (lhs.begin() <= rhs.begin())
+            return true;
         return false;
     }
 

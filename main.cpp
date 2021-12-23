@@ -21,6 +21,21 @@
 
 int main()
 {
+    ft::vector<int> foo(3, 100); // three ints with a value of 100
+    // ft::vector<int> bar(2, 200); // two ints with a value of 200
+
+    // if (foo == bar)
+    //     std::cout << "foo and bar are equal\n";
+    // if (foo != bar)
+    //     std::cout << "foo and bar are not equal\n";
+    // if (foo < bar)
+    //     std::cout << "foo is less than bar\n";
+    // if (foo > bar)
+    //     std::cout << "foo is greater than bar\n";
+    // if (foo <= bar)
+    //     std::cout << "foo is less than or equal to bar\n";
+    // if (foo >= bar)
+    //     std::cout << "foo is greater than or equal to bar\n";
     // ft::vector<int> vect;
     // vect.push_back(10);
     // vect.push_back(20);
@@ -664,7 +679,7 @@ int main()
     // it = vect.begin();
     // std::cout << *it << std::endl;
     // ft::map<int, int> mymap;
-    ft::map<int, int> mymap1;
+    // ft::map<int, int> mymap1;
     // mymap.insert(pair<int,int>(1,2));
     // mymap.insert(pair<int,int>(1,20));
     // // std::cout << "1 inserted\n";
@@ -684,9 +699,9 @@ int main()
     // mymap.insert(pair<int,int>(14,2));
     // // std::cout << "14 inserted\n";
     // mymap.insert(pair<int,int>(15,2));
-    for(int i = 0; i < 10000000; i++)
-        mymap1.insert(pair<int,int>(i, 125));
-    mymap1.clear();
+    // for(int i = 0; i < 10000000; i++)
+    //     mymap1.insert(pair<int,int>(i, 125));
+    // mymap1.clear();
     // mymap.delete_(pair<int , int>(15, 125));
     // mymap.delete_(pair<int , int>(12, 125));
     // mymap.delete_(pair<int , int>(10, 125));
@@ -710,7 +725,7 @@ int main()
 
     // std::cout << "upper bound points to: ";
     // std::cout << pr.second->first << " => " << pr.second->second << '\n';
-    
+
     // std::pair<std::map<int, int>::iterator, std::map<int, int>::iterator> pr1;
     // // pair<int, int> pr;
     // std::map<int, int>::iterator iit;
@@ -722,7 +737,7 @@ int main()
 
     // std::cout << "std upper bound points to: ";
     // std::cout << pr1.second->first << " => " << pr1.second->second << '\n';
-    
+
     // lowerbound
     // ft::map<int , int>::iterator it = mymap.lower_bound(15);
     // std::cout << it->first  << " ==> "  << it->second << std::endl;
