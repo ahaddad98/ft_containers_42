@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/23 20:46:12 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/23 23:16:18 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,12 @@
 #include <stdio.h>
 #include "iterator.hpp"
 #include "iterator_traits.hpp"
+#include "enable_if.hpp"
 
 class iterator;
 
 namespace ft
 {
-
-
-
-// template <class T> struct is_integral{ static const bool value = false; };
-// template <> struct is_integral<bool> { static const bool value = true; };
-// template <> struct is_integral<char> { static const bool value = true; };
-// template <> struct is_integral<wchar_t> { static const bool value = true; };
-// template <> struct is_integral<signed char> { static const bool value = true; };
-// template <> struct is_integral<short int> { static const bool value = true; };
-// template <> struct is_integral<int> { static const bool value = true; };
-// template <> struct is_integral<long int> { static const bool value = true; };
-// template <> struct is_integral<long long int> { static const bool value = true; };
-// template <> struct is_integral<unsigned char> { static const bool value = true; };
-// template <> struct is_integral<unsigned short int> { static const bool value = true; };
-// template <> struct is_integral<unsigned int> { static const bool value = true; };
-// template <> struct is_integral<unsigned long int> { static const bool value = true; };
-// template <> struct is_integral<unsigned long long int> { static const bool value = true; };
-
-
     template <class T, class Alloc = std::allocator<T> >
     class vector
     {
@@ -65,23 +47,24 @@ namespace ft
 
         // constructors
         // empty container constructor (default constructor)
-        explicit vector(const alloc_type &alloc = alloc_type()) : size_(0), capacity_(0)
+        explicit vector(const alloc_type &alloc = alloc_type()) : size_(0), capacity_(1)
         {
             std::cout << "in this constructor 1" << std::endl;
             this->alloc = alloc;
         }
         // (2) fill constructor
-        explicit vector(size_type n, const value_type &val = value_type(), const alloc_type &alloc = alloc_type())
+        explicit vector(size_type n, const value_type &val = value_type(), const alloc_type &alloc = alloc_type()): size_(0), capacity_(0)
         {
             std::cout << "in this constructor 2" << std::endl;
-
-            insert(begin(), val, n);
             this->alloc = alloc;
+            insert(begin(), val, n);
         }
         // (3) range constructor
         template <class InputIterator>
-        vector(InputIterator first, InputIterator last, const alloc_type &alloc = alloc_type())
+        vector(InputIterator first, InputIterator last, const alloc_type &alloc = alloc_type(),
+               typename ft::enable_if<!ft::is_integral<InputIterator>::value, T>::type * = 0)
         {
+            std::cout << "in this contrsuctor 3" << std::endl;
             capacity_ = 0;
             size_ = 0;
             this->alloc = alloc;
@@ -90,15 +73,18 @@ namespace ft
         }
         vector(const vector &x)
         {
+            // this->capacity_ = x.capacity_;
+            // this->size_ = x.size_;
+            // this->
         }
         // destructor
         ~vector()
         {
-            std::cout << "capacity = " <<  capacity_ << std::endl;
-            std::cout << "size = " <<  size_ << std::endl;
+            std::cout << "capacity = " << capacity_ << std::endl;
+            std::cout << "size = " << size_ << std::endl;
 
-            if (capacity_ > 0)
-                this->alloc.deallocate(m_Data, capacity_);
+            // if (capacity_ > 0)
+            //     this->alloc.deallocate(m_Data, capacity_);
         }
 
         // Iterators:
@@ -119,7 +105,7 @@ namespace ft
 
         const_iterator end() const
         {
-            return cosnt_iterator(m_Data + size_);
+            return const_iterator(m_Data + size_);
         }
         reverse_iterator rbegin()
         {
@@ -243,10 +229,9 @@ namespace ft
 
         // Modifiers:
         template <class InputIterator>
-        void assign(InputIterator first, InputIterator last
-        //  typename __gnu_cxx::__enable_if<!is_integral<InputIterator>::value, T>::type* = 0
-        //  typename std::enable_if<!std::is_integral<InputIterator>::value, T>::type* = 0
-        )
+        void assign(InputIterator first, InputIterator last,
+                    // typename __gnu_cxx::__enable_if<!is_integral<InputIterator>::value, T>::type* = 0
+                    typename ft::enable_if<!ft::is_integral<InputIterator>::value, T>::type * = 0)
         {
             InputIterator it = first;
             int i = 0;
@@ -282,9 +267,8 @@ namespace ft
                 }
             }
         }
-    
-        void assign(size_type n, const value_type &val
-        )
+
+        void assign(size_type n, const value_type &val)
         {
             if (n > capacity_)
             {
@@ -311,10 +295,11 @@ namespace ft
         }
         void push_back(const value_type &val)
         {
-            (void)val;
+            // (void)val;
             if (this->size_ >= this->capacity_)
                 my_realloc();
             this->alloc.construct(&(this->m_Data[this->size_]), val);
+            std::cout << "im in push back" << std::endl;
             this->size_ = this->size_ + 1;
         }
         void pop_back()
@@ -340,6 +325,7 @@ namespace ft
                     index_to_add++;
                 }
                 push_back(val);
+                std::cout << "im in insert" << std::endl;
                 int tmp = m_Data[size_ - 1];
                 int i = size_ - 1;
                 while (i > index_to_add)
@@ -369,7 +355,8 @@ namespace ft
             }
         }
         template <class InputIterator>
-        void insert(iterator position, InputIterator first, InputIterator last)
+        void insert(iterator position, InputIterator first, InputIterator last,
+                    typename ft::enable_if<!ft::is_integral<InputIterator>::value, T>::type * = 0)
         {
             int i = 0;
             while (i < this->size() && &(*position) != &(this->m_Data[i]))
@@ -455,7 +442,6 @@ namespace ft
             return this->alloc;
         }
 
-
         // utils
         void my_realloc()
         {
@@ -476,60 +462,65 @@ namespace ft
     public:
         size_type capacity_;
     };
-    // Non-member function overloads
-    template <class T, class Alloc>
-    bool operator==(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
+    template <class InputIterator1, class InputIterator2>
+    bool equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2)
     {
-        if (lhs.size() != rhs.size())
-            return false;
-        if (lhs.capacity() != rhs.capacity())
-            return false;
-        int i = 0;
-        while (i < lhs.size())
+        while (first1 != last1)
         {
-            if (lhs[i] != rhs[i])
+            if (!(*first1 == *first2)) // or: if (!pred(*first1,*first2)), for version 2
                 return false;
-            i++;
+            ++first1;
+            ++first2;
         }
         return true;
     }
-
+    template <class InputIterator1, class InputIterator2>
+    bool lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
+                                 InputIterator2 first2, InputIterator2 last2)
+    {
+        while (first1 != last1)
+        {
+            if (first2 == last2 || *first2 < *first1)
+                return false;
+            else if (*first1 < *first2)
+                return true;
+            ++first1;
+            ++first2;
+        }
+        return (first2 != last2);
+    }
+    template <class T, class Alloc>
+    bool operator==(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
+    {
+        return equal(lhs.begin(), lhs.end(), rhs.begin());
+    }
     template <class T, class Alloc>
     bool operator!=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
     {
-        if(lhs == rhs)
-            return false;
-        return true;
+        return (!(equal(lhs.begin(), lhs.end(), rhs.begin())));
     }
 
     template <class T, class Alloc>
     bool operator<(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
     {
-        if (lhs.begin() < rhs.begin())
-            return true;
-        return false;
+        return lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+    }
+    template <class T, class Alloc>
+    bool operator>(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
+    {
+        return lexicographical_compare(rhs.begin(), rhs.end(), lhs.begin(), lhs.end());
     }
 
     template <class T, class Alloc>
     bool operator<=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
     {
-        if (lhs.begin() <= rhs.begin())
-            return true;
-        return false;
-    }
-
-    template <class T, class Alloc>
-    bool operator>(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
-    {
-        return (lhs.begin() > rhs.begin());
+        return (!(lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end())));
     }
 
     template <class T, class Alloc>
     bool operator>=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
     {
-        if (lhs.begin() >= rhs.begin())
-            return true;
-        return false;
+        return (!(lexicographical_compare(rhs.begin(), rhs.end(), lhs.begin(), lhs.end())));
     }
 
     template <class T, class Alloc>

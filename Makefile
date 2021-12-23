@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+         #
+#    By: amine <amine@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 16:13:12 by ahaddad           #+#    #+#              #
-#    Updated: 2021/12/13 19:53:28 by ahaddad          ###   ########.fr        #
+#    Updated: 2021/12/23 22:59:55 by amine            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ HDRS = Vector/Vector.hpp \
 		Map/pair.hpp \
 		Vector/iterator.hpp \
 		Vector/iterator_traits.hpp \
+		Vector/enable_if.hpp \
+		
 		
 
 OBJS = $(SRCS:.cpp=.o)
