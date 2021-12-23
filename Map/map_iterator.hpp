@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/23 16:00:18 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/23 16:29:12 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ namespace ft
         }
         ~Red_Blacl_Tree()
         {
+            this->alloc.deallocate(end_, 1);
         }
         Node *getroot()
         {
