@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/23 23:30:21 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 00:18:16 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ namespace ft
         explicit vector(size_type n, const value_type &val = value_type(), const alloc_type &alloc = alloc_type()): size_(0), capacity_(0)
         {
             this->alloc = alloc;
-            insert(begin(), val, n);
+            insert(begin(), n, val);
         }
         // (3) range constructor
         template <class InputIterator>
@@ -69,13 +69,21 @@ namespace ft
         }
         vector(const vector &x)
         {
-            // this->capacity_ = x.capacity_;
-            // this->size_ = x.size_;
-            // this->
+            *this = x;
         }
-        vector &operator=(const vector &rsc)
+        vector &operator=(const vector &src)
         {
-            
+            if (capacity_ > 0)
+                this->alloc.deallocate(m_Data, capacity_);
+            size_ = 0;
+            capacity_ = 0;
+            int i  = 0;
+            while (i < src.size())
+            {
+                this->push_back(src[i]);
+                i++;
+            }
+            return *this;
         }
         // destructor
         ~vector()
