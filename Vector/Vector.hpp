@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/23 23:16:18 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/23 23:30:21 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,11 @@ namespace ft
         // empty container constructor (default constructor)
         explicit vector(const alloc_type &alloc = alloc_type()) : size_(0), capacity_(1)
         {
-            std::cout << "in this constructor 1" << std::endl;
             this->alloc = alloc;
         }
         // (2) fill constructor
         explicit vector(size_type n, const value_type &val = value_type(), const alloc_type &alloc = alloc_type()): size_(0), capacity_(0)
         {
-            std::cout << "in this constructor 2" << std::endl;
             this->alloc = alloc;
             insert(begin(), val, n);
         }
@@ -64,12 +62,10 @@ namespace ft
         vector(InputIterator first, InputIterator last, const alloc_type &alloc = alloc_type(),
                typename ft::enable_if<!ft::is_integral<InputIterator>::value, T>::type * = 0)
         {
-            std::cout << "in this contrsuctor 3" << std::endl;
             capacity_ = 0;
             size_ = 0;
             this->alloc = alloc;
             // insert(begin(), val, n);
-            // std::cout << "in this constructor 3" << std::endl;
         }
         vector(const vector &x)
         {
@@ -77,14 +73,15 @@ namespace ft
             // this->size_ = x.size_;
             // this->
         }
+        vector &operator=(const vector &rsc)
+        {
+            
+        }
         // destructor
         ~vector()
         {
-            std::cout << "capacity = " << capacity_ << std::endl;
-            std::cout << "size = " << size_ << std::endl;
-
-            // if (capacity_ > 0)
-            //     this->alloc.deallocate(m_Data, capacity_);
+            if (capacity_ > 0)
+                this->alloc.deallocate(m_Data, capacity_);
         }
 
         // Iterators:
@@ -299,7 +296,6 @@ namespace ft
             if (this->size_ >= this->capacity_)
                 my_realloc();
             this->alloc.construct(&(this->m_Data[this->size_]), val);
-            std::cout << "im in push back" << std::endl;
             this->size_ = this->size_ + 1;
         }
         void pop_back()
@@ -325,7 +321,6 @@ namespace ft
                     index_to_add++;
                 }
                 push_back(val);
-                std::cout << "im in insert" << std::endl;
                 int tmp = m_Data[size_ - 1];
                 int i = size_ - 1;
                 while (i > index_to_add)
