@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/23 16:29:12 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/23 18:55:39 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ namespace ft
         BLACK
     };
 
-    template <class key_type ,typename T, class allocator_type, class Compare = std::less<T> >
+    template <class key_type, typename T, class allocator_type, class Compare = std::less<T> >
     class Red_Blacl_Tree
     {
     public:
@@ -113,7 +113,7 @@ namespace ft
                     else
                         previous = NULL;
                 }
-                
+
                 return (previous);
             }
 
@@ -233,17 +233,13 @@ namespace ft
             {
                 _ptr = NULL;
             };
-            iterator_map(Node *p) : _ptr(p)
-            {
-            };
+            iterator_map(Node *p) : _ptr(p){};
 
             iterator_map(const iterator_map &it)
             {
                 *this = it;
             };
-            ~iterator_map()
-            {
-            };
+            ~iterator_map(){};
 
             iterator_map(Node *ptr, Red_Blacl_Tree *parent)
             {
@@ -258,7 +254,7 @@ namespace ft
             }
 
             reference operator*()
-            {  
+            {
                 return _ptr->item;
             }
             pointer operator->()
@@ -294,7 +290,7 @@ namespace ft
                 if (!_ptr->getPrevious())
                     _ptr = NULL;
                 else
-                    _ptr = _ptr->getPrevious();        
+                    _ptr = _ptr->getPrevious();
                 return (*this);
             }
             bool operator==(iterator_map const &other)
@@ -324,17 +320,13 @@ namespace ft
             {
                 _ptr = NULL;
             };
-            const_iterator_map(Node *p) : _ptr(p)
-            {
-            };
+            const_iterator_map(Node *p) : _ptr(p){};
 
             const_iterator_map(const const_iterator_map &it)
             {
                 *this = it;
             };
-            ~const_iterator_map()
-            {
-            };
+            ~const_iterator_map(){};
 
             const_iterator_map(const Node *ptr, const Red_Blacl_Tree *parent)
             {
@@ -349,7 +341,7 @@ namespace ft
             }
 
             reference operator*()
-            {  
+            {
                 return _ptr->item;
             }
             pointer operator->()
@@ -385,7 +377,7 @@ namespace ft
                 if (!_ptr->getPrevious())
                     _ptr = NULL;
                 else
-                    _ptr = _ptr->getPrevious();        
+                    _ptr = _ptr->getPrevious();
                 return (*this);
             }
             bool operator==(const_iterator_map const &other)
@@ -415,17 +407,13 @@ namespace ft
             {
                 _ptr = NULL;
             };
-            reverse_iterator_map(Node *p) : _ptr(p)
-            {
-            };
+            reverse_iterator_map(Node *p) : _ptr(p){};
 
             reverse_iterator_map(const reverse_iterator_map &it)
             {
                 *this = it;
             };
-            ~reverse_iterator_map()
-            {
-            };
+            ~reverse_iterator_map(){};
 
             reverse_iterator_map(Node *ptr, Red_Blacl_Tree *parent)
             {
@@ -440,7 +428,7 @@ namespace ft
             }
 
             reference operator*()
-            {  
+            {
                 return _ptr->item;
             }
             pointer operator->()
@@ -493,7 +481,7 @@ namespace ft
                 // if (!_ptr->getPrevious())
                 //     _ptr = NULL;
                 // else
-                //     _ptr = _ptr->getPrevious();        
+                //     _ptr = _ptr->getPrevious();
                 // return (*this);
             }
             bool operator==(reverse_iterator_map const &other)
@@ -523,17 +511,13 @@ namespace ft
             {
                 _ptr = NULL;
             };
-            const_reverse_iterator_map(Node *p) : _ptr(p)
-            {
-            };
+            const_reverse_iterator_map(Node *p) : _ptr(p){};
 
             const_reverse_iterator_map(const const_reverse_iterator_map &it)
             {
                 *this = it;
             };
-            ~const_reverse_iterator_map()
-            {
-            };
+            ~const_reverse_iterator_map(){};
 
             const_reverse_iterator_map(Node *ptr, Red_Blacl_Tree *parent)
             {
@@ -548,7 +532,7 @@ namespace ft
             }
 
             reference operator*()
-            {  
+            {
                 return _ptr->item;
             }
             pointer operator->()
@@ -601,7 +585,7 @@ namespace ft
                 // if (!_ptr->getPrevious())
                 //     _ptr = NULL;
                 // else
-                //     _ptr = _ptr->getPrevious();        
+                //     _ptr = _ptr->getPrevious();
                 // return (*this);
             }
             bool operator==(const_reverse_iterator_map const &other)
@@ -620,7 +604,7 @@ namespace ft
         iterator_map begin()
         {
             if (size_ == 0)
-            {   
+            {
                 return (iterator_map(end_, this));
             }
             // std::cout << size_ << std::endl;
@@ -633,7 +617,7 @@ namespace ft
         const_iterator_map begin() const
         {
             if (size_ == 0)
-            {   
+            {
                 return (const_iterator_map(end_, this));
             }
             // std::cout << size_ << std::endl;
@@ -646,7 +630,7 @@ namespace ft
         reverse_iterator_map rbegin()
         {
             if (size_ == 0)
-            {   
+            {
                 // std::cout << size_ << std::endl;
                 return (reverse_iterator_map(end_, this));
             }
@@ -655,18 +639,18 @@ namespace ft
         reverse_iterator_map rend()
         {
             if (size_ == 0)
-            {   
+            {
                 // std::cout << size_ << std::endl;
                 return (reverse_iterator_map(end_, this));
             }
             // std::cout << "size_" << std::endl;
             return (reverse_iterator_map(root->leftMost()->left, this));
-            // return 
+            // return
         }
         const_reverse_iterator_map rbegin() const
         {
             if (size_ == 0)
-            {   
+            {
                 return (const_reverse_iterator_map(end_, this));
             }
             return (const_reverse_iterator_map(root->rightMost(), this));
@@ -674,15 +658,15 @@ namespace ft
         const_reverse_iterator_map rend() const
         {
             if (size_ == 0)
-            {   
+            {
                 // std::cout << size_ << std::endl;
                 return (reverse_iterator_map(end_, this));
             }
             // std::cout << "size_" << std::endl;
             return (reverse_iterator_map(root->leftMost()->left, this));
-            // return 
+            // return
         }
-        Node* search_tree_in_ordre_travers(T root1) 
+        Node *search_tree_in_ordre_travers(T root1)
         {
             Node *tmp;
             tmp = this->root;
@@ -699,7 +683,7 @@ namespace ft
             }
             return NULL;
         }
-        Node* search_tree_with_key(const key_type &k) const
+        Node *search_tree_with_key(const key_type &k) const
         {
             Node *tmp;
             tmp = this->root;
@@ -716,7 +700,7 @@ namespace ft
             }
             return NULL;
         }
-        iterator_map lower_bound(const key_type& k)
+        iterator_map lower_bound(const key_type &k)
         {
             Node *tmp = search_tree_with_key(k);
             if (tmp == NULL)
@@ -726,7 +710,7 @@ namespace ft
             //     return iterator_map(tmp, this);
             return iterator_map(tmp, this);
         }
-        const_iterator_map lower_bound(const key_type& k) const
+        const_iterator_map lower_bound(const key_type &k) const
         {
             Node *tmp = search_tree_with_key(k);
             if (tmp == NULL)
@@ -736,7 +720,7 @@ namespace ft
                 return const_iterator_map(tmp, this);
             return const_iterator_map(tmp1, this);
         }
-        iterator_map upper_bound(const key_type& k)
+        iterator_map upper_bound(const key_type &k)
         {
             Node *tmp = search_tree_with_key(k);
             if (tmp == NULL)
@@ -746,7 +730,7 @@ namespace ft
                 return end();
             return iterator_map(tmp1, this);
         }
-        const_iterator_map upper_bound(const key_type& k) const
+        const_iterator_map upper_bound(const key_type &k) const
         {
             Node *tmp = search_tree_with_key(k);
             if (tmp == NULL)
@@ -760,17 +744,17 @@ namespace ft
         {
             n1->item = n2->item;
         }
-        void rbTransplant(Node *u, Node *v) 
+        void rbTransplant(Node *u, Node *v)
         {
-            if (u && u->parents == NULL) 
+            if (u && u->parents == NULL)
             {
                 root = v;
-            } 
-            else if (u && u == u->parents->left) 
+            }
+            else if (u && u == u->parents->left)
             {
-                    u->parents->left = v;
-            } 
-            else 
+                u->parents->left = v;
+            }
+            else
             {
                 u->parents->right = v;
             }
@@ -778,6 +762,80 @@ namespace ft
             {
                 v->parents = u->parents;
             }
+        }
+        void deleteFix(Node *x)
+        {
+            Node *s;
+            while (x && x != root && x->Color == BLACK)
+            {
+                if (x == x->parents->left)
+                {
+                    s = x->parents->right;
+                    if (s && s->Color == RED)
+                    {
+                        s->Color = BLACK;
+                        x->parents->Color = RED;
+                        Left_Rotate(x->parents);
+                        s = x->parents->right;
+                    }
+
+                    if (s && s->left->Color == BLACK && s->right->Color == BLACK)
+                    {
+                        s->Color = RED;
+                        x = x->parents;
+                    }
+                    else
+                    {
+                        if (s && s->right->Color == BLACK)
+                        {
+                            s->left->Color = BLACK;
+                            s->Color = RED;
+                            Right_Rotate(s);
+                            s = x->parents->right;
+                        }
+
+                        s->Color = x->parents->Color;
+                        x->parents->Color = BLACK;
+                        s->right->Color = BLACK;
+                        Left_Rotate(x->parents);
+                        x = root;
+                    }
+                }
+                else
+                {
+                    s = x->parents->left;
+                    if (s && s->Color == RED)
+                    {
+                        s->Color = BLACK;
+                        x->parents->Color = RED;
+                        Right_Rotate(x->parents);
+                        s = x->parents->left;
+                    }
+
+                    if (s && s->right->Color == BLACK && s->right->Color == BLACK)
+                    {
+                        s->Color = RED;
+                        x = x->parents;
+                    }
+                    else
+                    {
+                        if (s && s->left->Color == BLACK)
+                        {
+                            s->right->Color = BLACK;
+                            s->Color = RED;
+                            Left_Rotate(s);
+                            s = x->parents->left;
+                        }
+
+                        s->Color = x->parents->Color;
+                        x->parents->Color = BLACK;
+                        s->left->Color = BLACK;
+                        Right_Rotate(x->parents);
+                        x = root;
+                    }
+                }
+            }
+            x->Color = BLACK;
         }
 
         void delete_(T to_delete)
@@ -787,26 +845,26 @@ namespace ft
             Node *x;
             colors y_color = y->Color;
             y = z;
-            if (z->left == NULL) 
+            if (z->left == NULL)
             {
                 x = z->right;
                 rbTransplant(z, z->right);
-            } 
-            else if (z->right == NULL) 
+            }
+            else if (z->right == NULL)
             {
                 x = z->left;
                 rbTransplant(z, z->left);
-            } 
-            else 
+            }
+            else
             {
                 y = (z->right)->getPrevious();
                 y_color = y->Color;
                 x = y->right;
-                if (y->parents == z) 
+                if (y->parents == z)
                 {
                     x->parents = y;
-                } 
-                else 
+                }
+                else
                 {
                     rbTransplant(y, y->right);
                     y->right = z->right;
@@ -819,6 +877,10 @@ namespace ft
             }
             size_--;
             this->alloc.deallocate(z, 1);
+            if ( y && y_color == BLACK)
+            {
+                deleteFix(x);
+            }
         }
         void insertFix(Node *k)
         {
@@ -904,7 +966,7 @@ namespace ft
                 while (x != NULL)
                 {
                     y = x;
-                    if (comp(node->item.first , x->item.first))
+                    if (comp(node->item.first, x->item.first))
                         x = x->left;
                     else
                         x = x->right;
@@ -912,7 +974,7 @@ namespace ft
                 node->parents = y;
                 if (y == NULL)
                     this->root = node;
-                else if (comp(node->item.first , y->item.first))
+                else if (comp(node->item.first, y->item.first))
                     y->left = node;
                 else
                     y->right = node;
@@ -950,6 +1012,7 @@ namespace ft
         {
             return this->comp;
         }
+
     private:
         Node *root;
         Node *end_;
