@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 04:32:36 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 04:43:54 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,36 @@ namespace ft
     private:
         pointer ptr_;
     };
+    template <class Iterator>
+    bool operator== (const iterator<Iterator>& lhs, const iterator<Iterator>& rhs)
+    {
+        return (lhs.base() == rhs.base());
+    }
+    template <class Iterator>
+    bool operator!= (const iterator<Iterator>& lhs, const iterator<Iterator>& rhs)
+    {
+        return (lhs.base() != rhs.base());
+    }
+    template <class Iterator>
+    bool operator<  (const iterator<Iterator>& lhs, const iterator<Iterator>& rhs)
+    {
+        return (lhs.base() < rhs.base());
+    }
+    template <class Iterator>
+    bool operator<= (const iterator<Iterator>& lhs,const iterator<Iterator>& rhs)
+    {
+        return (lhs.base() <= rhs.base());
+    }
+    template <class Iterator>
+    bool operator>  (const iterator<Iterator>& lhs, const iterator<Iterator>& rhs)
+    {
+        return (lhs.base() > rhs.base());
+    }
+    template <class Iterator>
+    bool operator>= (const iterator<Iterator>& lhs, const iterator<Iterator>& rhs)
+    {
+        return (lhs.base() >= rhs.base());
+    }
     template <typename T>
     class const_iterator : public ft::Iterator_Traits<std::random_access_iterator_tag, T>
     {

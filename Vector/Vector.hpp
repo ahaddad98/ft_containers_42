@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 04:36:09 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 04:46:03 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ namespace ft
         typedef T &const_reference;
         typedef T *pointer;
         typedef std::forward_iterator_tag iterator_category;
-        typedef int difference_type;
+        typedef size_t difference_type;
         typedef Alloc alloc_type;
         // call of iterator class
 
         typedef ft::iterator<value_type> iterator;
-        typedef ft::const_iterator<value_type> const_iterator;
+        typedef ft::iterator<value_type> const_iterator;
         typedef ft::reverse_iterat<value_type> reverse_iterator;
-        typedef ft::const_reverse_iterat<value_type> const_reverse_iterator;
+        typedef ft::reverse_iterat<value_type> const_reverse_iterator;
 
         // constructors
         // empty container constructor (default constructor)
@@ -84,7 +84,7 @@ namespace ft
                 std::cout << src.size_ << std::endl;
                 size_ = 0;
                 capacity_ = 0;
-                int i  = 0;
+                size_t i  = 0;
                 while (i < src.size())
                 {
                     this->push_back(src[i]);
@@ -247,7 +247,7 @@ namespace ft
                     typename ft::enable_if<!ft::is_integral<InputIterator>::value, T>::type * = 0)
         {
             InputIterator it = first;
-            int i = 0;
+            size_t i = 0;
             while (it != last)
             {
                 it++;
@@ -258,7 +258,7 @@ namespace ft
             if (i > capacity_)
             {
                 reserve(i);
-                int j = 0;
+                size_t j = 0;
                 while (it != last)
                 {
                     m_Data[j] = *it;
@@ -271,7 +271,7 @@ namespace ft
             else
             {
                 size_ = i;
-                int j = 0;
+                size_t j = 0;
                 while (it != last)
                 {
                     m_Data[j] = *it;
@@ -286,7 +286,7 @@ namespace ft
             if (n > capacity_)
             {
                 reserve(n);
-                int i = 0;
+                size_t i = 0;
                 while (i < n)
                 {
                     m_Data[i] = val;
@@ -298,7 +298,7 @@ namespace ft
             else
             {
                 size_ = n;
-                int i = 0;
+                size_t i = 0;
                 while (i < n)
                 {
                     m_Data[i] = val;
@@ -329,7 +329,7 @@ namespace ft
             }
             else
             {
-                int index_to_add = 0;
+                size_t index_to_add = 0;
                 for (iterator it = begin(); it != end(); it++)
                 {
                     if (position == it)
@@ -337,8 +337,8 @@ namespace ft
                     index_to_add++;
                 }
                 push_back(val);
-                int tmp = m_Data[size_ - 1];
-                int i = size_ - 1;
+                size_t tmp = m_Data[size_ - 1];
+                size_t i = size_ - 1;
                 while (i > index_to_add)
                 {
                     m_Data[i] = m_Data[i - 1];
@@ -354,7 +354,7 @@ namespace ft
             size_type i = 0;
             while (i < this->size() && &(*position) != &(this->m_Data[i]))
                 i++;
-            int tmp = i;
+            size_t tmp = i;
             position = begin() + tmp;
             i = 0;
             while (i < n)
@@ -369,10 +369,10 @@ namespace ft
         void insert(iterator position, InputIterator first, InputIterator last,
                     typename ft::enable_if<!ft::is_integral<InputIterator>::value, T>::type * = 0)
         {
-            int i = 0;
+            size_t i = 0;
             while (i < this->size() && &(*position) != &(this->m_Data[i]))
                 i++;
-            int tmp = i;
+            size_t tmp = i;
             position = begin() + tmp;
             i = 0;
             for (InputIterator it = first; it != last; ++it)
@@ -386,10 +386,10 @@ namespace ft
         }
         iterator erase(iterator position)
         {
-            int j;
+            size_t j;
             if (capacity_ > 0)
             {
-                int i = 0;
+                size_t i = 0;
                 for (iterator it = begin(); it != end(); it++)
                 {
                     if (position == it)
@@ -411,8 +411,8 @@ namespace ft
         iterator erase(iterator first, iterator last)
         {
             iterator it = begin();
-            int i = 0;
-            int j = 0;
+            size_t i = 0;
+            size_t j = 0;
             for (it = begin(); it != end() + 1; it++)
             {
                 if (it >= first && it < last)
