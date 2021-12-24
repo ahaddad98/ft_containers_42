@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/23 18:55:39 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/24 01:34:06 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,33 @@ namespace ft
                         next = NULL;
                     }
                 }
-                // std::cout << "heeee" << std::endl;
+                return (next);
+            }
+            Node *getNext() const
+            {
+                Node *next;
+                next = const_cast<Node*>(this);
+                if (this->right != NULL)
+                {
+                    next = right->leftMost();
+                }
+                else
+                {
+                    Node *tmp = this->parents;
+                    while (tmp && tmp->right == next)
+                    {
+                        next = tmp;
+                        tmp = tmp->parents;
+                    }
+                    if (tmp)
+                    {
+                        next = tmp;
+                    }
+                    else
+                    {
+                        next = NULL;
+                    }
+                }
                 return (next);
             }
         };
@@ -154,6 +180,20 @@ namespace ft
             end_ = this->alloc.allocate(1);
             size_ = 0;
             root = end_;
+        }
+        Red_Blacl_Tree(const Red_Blacl_Tree &src)
+        {
+            *this =src;
+        }
+        Red_Blacl_Tree &operator=(const Red_Blacl_Tree &src)
+        {
+            // Node *tmp = src.root;
+            const_iterator_map it = src.begin();
+            for (it = src.begin(); it != src.end(); it++)
+            {
+                this->insert(*it);
+            }
+            return *this;
         }
         ~Red_Blacl_Tree()
         {
@@ -340,9 +380,13 @@ namespace ft
                 return (*this);
             }
 
-            reference operator*()
+            // reference operator*()
+            // {
+            //     return _ptr->item;
+            // }
+            reference operator*() const
             {
-                return _ptr->item;
+                return const_cast<reference>(_ptr->item);
             }
             pointer operator->()
             {
@@ -640,12 +684,9 @@ namespace ft
         {
             if (size_ == 0)
             {
-                // std::cout << size_ << std::endl;
                 return (reverse_iterator_map(end_, this));
             }
-            // std::cout << "size_" << std::endl;
             return (reverse_iterator_map(root->leftMost()->left, this));
-            // return
         }
         const_reverse_iterator_map rbegin() const
         {

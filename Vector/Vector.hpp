@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 00:18:16 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 00:41:52 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,7 +235,6 @@ namespace ft
         // Modifiers:
         template <class InputIterator>
         void assign(InputIterator first, InputIterator last,
-                    // typename __gnu_cxx::__enable_if<!is_integral<InputIterator>::value, T>::type* = 0
                     typename ft::enable_if<!ft::is_integral<InputIterator>::value, T>::type * = 0)
         {
             InputIterator it = first;

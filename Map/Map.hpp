@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/23 16:27:47 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/24 01:34:27 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ namespace ft
         }
         map &operator=(const map &x)
         {
+            this->clear();
             this->mymap = x.mymap;
             return *this;
         }
@@ -153,6 +154,15 @@ namespace ft
         }
         template <class InputIterator>
         void insert(InputIterator first, InputIterator last)
+        {
+            InputIterator it;
+            for (it = first; it != last; it++)
+            {
+                insert(*it);
+            }
+        }
+        template <class InputIterator>
+        void insert(InputIterator first, InputIterator last) const
         {
             InputIterator it;
             for (it = first; it != last; it++)

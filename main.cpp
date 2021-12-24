@@ -22,12 +22,13 @@
 int main()
 {
     // test operators overloaded 
-    ft::vector<int> foo(3, 100); // three ints with a value of 100
-    ft::vector<int> bar(foo); // two ints with a value of 200
-    for (ft::vector<int>::iterator it = bar.begin(); it != bar.end(); it++)
-    {
-        std::cout << *it << std::endl;
-    }
+    // test operator = and copy constructor
+    // ft::vector<int> foo(3, 100); // three ints with a value of 100
+    // ft::vector<int> bar(foo); // two ints with a value of 200
+    // for (ft::vector<int>::iterator it = bar.begin(); it != bar.end(); it++)
+    // {
+    //     std::cout << *it << std::endl;
+    // }
     // foo.erase(foo.begin() , foo.end()-1);
     // std::cout << "---------------- after erase --------------- " << foo.size() << std::endl; 
     // for (ft::vector<int>::iterator it = foo.begin(); it != foo.end(); it++)
@@ -812,6 +813,16 @@ int main()
     // {
     //     std::cout << it1->first << " ==> " << it1->second <<std::endl;
     // }
+    ft::map<int , int> mymap;
+    mymap.insert(pair<int , int>(10, 10));
+    mymap.insert(pair<int , int>(20, 10));
+    mymap.insert(pair<int , int>(30, 10));
+    mymap.insert(pair<int , int>(0, 10));
+    ft::map<int , int> mymap1(mymap);
+    for (ft::map<int , int>::iterator it = mymap1.begin(); it != mymap1.end(); it++)
+    {
+        std::cout << it->first  << " ==> "  << it->second << std::endl;
+    }
 }
 
 // to test our stack
