@@ -21,6 +21,31 @@
 
 int main()
 {
+    std::cout << "\ninsert()" << std::endl;
+	std::cout << "=======================================" << std::endl;
+	ft::vector<int> myvect;
+	ft::vector<int>::iterator ite;
+	// set some initial values:
+	for (int i = 1; i <= 5; ++i)
+	{
+		myvect.push_back(i);
+	}
+	ite = myvect.begin();
+	++ite;
+	myvect.insert(ite++, 10);
+	std::cout << "=======================================" << std::endl;
+    ite = myvect.begin();
+	ite += 2;
+	myvect.insert(ite, 2, 20);
+	for (ft::vector<int>::iterator it = myvect.begin(); it != myvect.end(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
+	// ite = myvect.begin();
+	// ite += 2;
+	// myvect.insert(ite, 2, 20);
+	// print_vector(myvect, "myvect");
+
     // ft::stack<int, ft::vector<int> > stk;
     // stk.push(10);
     // ft::stack<int, ft::vector<int> > stk1;
@@ -827,16 +852,16 @@ int main()
     // {
     //     std::cout << it1->first << " ==> " << it1->second <<std::endl;
     // }
-    ft::map<int , int> mymap;
-    mymap.insert(ft::pair<int , int>(10, 10));
-    mymap.insert(ft::pair<int , int>(20, 10));
-    mymap.insert(ft::pair<int , int>(30, 10));
-    mymap.insert(ft::pair<int , int>(0, 10));
-    ft::map<int , int> mymap1(mymap);
-    for (ft::map<int , int>::iterator it = mymap1.begin(); it != mymap1.end(); it++)
-    {
-        std::cout << it->first  << " ==> "  << it->second << std::endl;
-    }
+    // ft::map<int , int> mymap;
+    // mymap.insert(ft::pair<int , int>(10, 10));
+    // mymap.insert(ft::pair<int , int>(20, 10));
+    // mymap.insert(ft::pair<int , int>(30, 10));
+    // mymap.insert(ft::pair<int , int>(0, 10));
+    // ft::map<int , int> mymap1(mymap);
+    // for (ft::map<int , int>::iterator it = mymap1.begin(); it != mymap1.end(); it++)
+    // {
+    //     std::cout << it->first  << " ==> "  << it->second << std::endl;
+    // }
 }
 
 // to test our stack

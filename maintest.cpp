@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 03:44:27 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 16:19:50 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 17:37:50 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,36 +236,36 @@ int main(void)
 	}
 
 	// insert()
-	// {
-	// 	std::cout << "\ninsert()" << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// 	NS::vector<int> myvect;
-	// 	NS::vector<int>::iterator ite;
+	{
+		std::cout << "\ninsert()" << std::endl;
+		std::cout << "=======================================" << std::endl;
+		NS::vector<int> myvect;
+		NS::vector<int>::iterator ite;
 
-	// 	// set some initial values:
-	// 	for (int i = 1; i <= 5; ++i)
-	// 	{
-	// 		myvect.push_back(i);
-	// 	}
-	// 	ite = myvect.begin();
-	// 	++ite;
+		// set some initial values:
+		for (int i = 1; i <= 5; ++i)
+		{
+			myvect.push_back(i);
+		}
+		ite = myvect.begin();
+		++ite;
 
-	// 	myvect.insert(ite++, 10);
+		myvect.insert(ite++, 10);
 
-	// 	ite = myvect.begin();
-	// 	ite += 2;
-	// 	myvect.insert(ite, 2, 20);
-	// 	print_vector(myvect, "myvect");
+		ite = myvect.begin();
+		ite += 2;
+		myvect.insert(ite, 2, 20);
+		print_vector(myvect, "myvect");
 
-	// 	NS::vector<int> mytmp(2, 30);
-	// 	print_vector(mytmp, "mytmp");
+		// NS::vector<int> mytmp(2, 30);
+		// print_vector(mytmp, "mytmp");
 
-	// 	ite = myvect.begin();
-	// 	myvect.insert(ite, mytmp.begin(), mytmp.end());
+		// ite = myvect.begin();
+		// myvect.insert(ite, mytmp.begin(), mytmp.end());
 
-	// 	print_vector(myvect, "myvect");
-	// 	std::cout << "=======================================" << std::endl;
-	// }
+		// print_vector(myvect, "myvect");
+		// std::cout << "=======================================" << std::endl;
+	}
 
 	// erase()
 	// {

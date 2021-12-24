@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 15:44:51 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 19:16:34 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ namespace ft
         self_type operator++(int junk)
         {
             (void)junk;
-            ptr_++;
+            ptr_ ++;
             return *this;
         }
         self_type operator--(int junk)
@@ -139,10 +139,7 @@ namespace ft
         {
             return ptr_[index];
         }
-        pointer base() const
-        {
-            return ptr_;
-        }
+        
     private:
         pointer ptr_;
     };

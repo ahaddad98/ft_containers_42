@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 16:41:07 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 19:54:34 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,6 +321,7 @@ namespace ft
         }
         iterator insert(iterator position, const value_type &val)
         {
+            iterator it1 = begin();
             if (size_ == 0)
             {
                 if (position == begin())
@@ -329,28 +330,30 @@ namespace ft
             else
             {
                 reserve(size_ + 1);
-                // size_t index_to_add = 0;
-                // for (iterator it = begin(); it != end(); it++)
-                // {
-                //     if (position == it)
-                //         break;
-                //     index_to_add++;
-                // }
-                // push_back(val);
-                // size_t tmp = m_Data[size_ - 1];
-                // size_t i = size_ - 1;
-                // while (i > index_to_add)
-                // {
-                //     m_Data[i] = m_Data[i - 1];
-                //     i--;
-                // }
-                // m_Data[i] = tmp;
+                size_t index_to_add = 0;
+                for (iterator it = begin(); it != end(); it++)
+                {
+                    if (position == it)
+                        break;
+                    index_to_add++;
+                    it1++;
+                }
+                push_back(val);
+                size_t tmp = m_Data[size_ - 1];
+                size_t i = size_ - 1;
+                while (i > index_to_add -1)
+                {
+                    m_Data[i] = m_Data[i - 1];
+                    i--;
+                }
+                m_Data[i] = tmp;
             }
-            return begin();
+            return it1;
         }
         // fill
         void insert(iterator position, size_type n, const value_type &val)
         {
+            
             size_type i = 0;
             while (i < this->size() && &(*position) != &(this->m_Data[i]))
                 i++;
@@ -375,7 +378,7 @@ namespace ft
             size_t tmp = i;
             position = begin() + tmp;
             i = 0;
-            size_t len = 0;
+            // size_t len = 0;
             for (InputIterator it = first; it != last; ++it)
             {
                 insert(position, *it);
