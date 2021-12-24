@@ -21,6 +21,20 @@
 
 int main()
 {
+    ft::stack<int, ft::vector<int> > stk;
+    stk.push(10);
+    ft::stack<int, ft::vector<int> > stk1;
+    stk1.push(11);
+    ft::stack<int, ft::vector<int> > stk2;
+    stk2.push(10);
+    if (stk == stk1)
+        std::cout << "stk = stk1" << std::endl;
+    if (stk == stk2)
+        std::cout << "stk = stk2" << std::endl;
+    if (stk != stk1)
+        std::cout << "stk != stk1" << std::endl;
+    if (stk != stk1)
+        std::cout << "stk != stk1" << std::endl;
     // test operators overloaded 
     // test operator = and copy constructor
     // ft::vector<int> foo(3, 100); // three ints with a value of 100
@@ -813,16 +827,16 @@ int main()
     // {
     //     std::cout << it1->first << " ==> " << it1->second <<std::endl;
     // }
-    ft::map<int , int> mymap;
-    mymap.insert(pair<int , int>(10, 10));
-    mymap.insert(pair<int , int>(20, 10));
-    mymap.insert(pair<int , int>(30, 10));
-    mymap.insert(pair<int , int>(0, 10));
-    ft::map<int , int> mymap1(mymap);
-    for (ft::map<int , int>::iterator it = mymap1.begin(); it != mymap1.end(); it++)
-    {
-        std::cout << it->first  << " ==> "  << it->second << std::endl;
-    }
+    // ft::map<int , int> mymap;
+    // mymap.insert(pair<int , int>(10, 10));
+    // mymap.insert(pair<int , int>(20, 10));
+    // mymap.insert(pair<int , int>(30, 10));
+    // mymap.insert(pair<int , int>(0, 10));
+    // ft::map<int , int> mymap1(mymap);
+    // for (ft::map<int , int>::iterator it = mymap1.begin(); it != mymap1.end(); it++)
+    // {
+    //     std::cout << it->first  << " ==> "  << it->second << std::endl;
+    // }
 }
 
 // to test our stack

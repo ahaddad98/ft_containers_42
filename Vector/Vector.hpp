@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 00:41:52 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 03:32:07 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ namespace ft
 
         // constructors
         // empty container constructor (default constructor)
-        explicit vector(const alloc_type &alloc = alloc_type()) : size_(0), capacity_(1)
+        explicit vector(const alloc_type &alloc = alloc_type()) : size_(0), capacity_(0)
         {
             this->alloc = alloc;
         }
@@ -69,19 +69,25 @@ namespace ft
         }
         vector(const vector &x)
         {
+            std::cout << "haha" << std::endl;
             *this = x;
         }
         vector &operator=(const vector &src)
         {
-            if (capacity_ > 0)
-                this->alloc.deallocate(m_Data, capacity_);
-            size_ = 0;
-            capacity_ = 0;
-            int i  = 0;
-            while (i < src.size())
+            if (src.size() > 0)
             {
-                this->push_back(src[i]);
-                i++;
+                if (capacity_ > 0)
+                    this->alloc.deallocate(m_Data, capacity_);
+                std::cout << src.size_ << std::endl;
+                size_ = 0;
+                capacity_ = 0;
+                int i  = 0;
+                while (i < src.size())
+                {
+                    this->push_back(src[i]);
+                    i++;
+                }
+                std::cout << "im here" << std::endl;
             }
             return *this;
         }
