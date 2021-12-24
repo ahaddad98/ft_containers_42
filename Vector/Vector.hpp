@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 04:46:03 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 16:41:07 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ namespace ft
         typedef T &const_reference;
         typedef T *pointer;
         typedef std::forward_iterator_tag iterator_category;
-        typedef size_t difference_type;
+        typedef ptrdiff_t difference_type;
         typedef Alloc alloc_type;
         // call of iterator class
 
@@ -55,7 +55,8 @@ namespace ft
         explicit vector(size_type n, const value_type &val = value_type(), const alloc_type &alloc = alloc_type()): size_(0), capacity_(0)
         {
             this->alloc = alloc;
-            insert(begin(), n, val);
+            this->assign(n ,val);
+            // insert(begin(), n, val);
         }
         // (3) range constructor
         template <class InputIterator>
@@ -67,12 +68,11 @@ namespace ft
             this->alloc = alloc;
             for (InputIterator it = first; it != last; it++)
             {
-                insert(*it);
+                this->push_back(*it);
             }
         }
         vector(const vector &x)
         {
-            std::cout << "haha" << std::endl;
             *this = x;
         }
         vector &operator=(const vector &src)
@@ -90,7 +90,6 @@ namespace ft
                     this->push_back(src[i]);
                     i++;
                 }
-                std::cout << "im here" << std::endl;
             }
             return *this;
         }
@@ -145,7 +144,7 @@ namespace ft
         }
         size_type max_size() const
         {
-            return this->alloc.maxsize();
+            return this->alloc.max_size();
         }
         void resize(size_type n, value_type val = value_type())
         {
@@ -293,7 +292,7 @@ namespace ft
                     i++;
                 }
                 size_ = n;
-                capacity_ *= 2;
+                capacity_ = n;
             }
             else
             {
@@ -329,22 +328,23 @@ namespace ft
             }
             else
             {
-                size_t index_to_add = 0;
-                for (iterator it = begin(); it != end(); it++)
-                {
-                    if (position == it)
-                        break;
-                    index_to_add++;
-                }
-                push_back(val);
-                size_t tmp = m_Data[size_ - 1];
-                size_t i = size_ - 1;
-                while (i > index_to_add)
-                {
-                    m_Data[i] = m_Data[i - 1];
-                    i--;
-                }
-                m_Data[i] = tmp;
+                reserve(size_ + 1);
+                // size_t index_to_add = 0;
+                // for (iterator it = begin(); it != end(); it++)
+                // {
+                //     if (position == it)
+                //         break;
+                //     index_to_add++;
+                // }
+                // push_back(val);
+                // size_t tmp = m_Data[size_ - 1];
+                // size_t i = size_ - 1;
+                // while (i > index_to_add)
+                // {
+                //     m_Data[i] = m_Data[i - 1];
+                //     i--;
+                // }
+                // m_Data[i] = tmp;
             }
             return begin();
         }
@@ -375,9 +375,9 @@ namespace ft
             size_t tmp = i;
             position = begin() + tmp;
             i = 0;
+            size_t len = 0;
             for (InputIterator it = first; it != last; ++it)
             {
-                // std::cout << "amine " << std::endl;
                 insert(position, *it);
                 position = begin() + tmp;
                 tmp++;
@@ -386,7 +386,7 @@ namespace ft
         }
         iterator erase(iterator position)
         {
-            size_t j;
+            size_t j = 0;
             if (capacity_ > 0)
             {
                 size_t i = 0;
@@ -462,7 +462,8 @@ namespace ft
                 this->capacity_ = 1;
                 return;
             }
-            this->reserve(this->capacity_ * 2);
+            else
+                this->reserve(this->capacity_ * 2);
         }
 
     private:

@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 04:43:54 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 15:44:51 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ namespace ft
             ptr_ += i;
             return *this;
         }
+        // difference_type operator-(difference_type i)
+        // {
+        //     ptr_ -= i;
+        //     return *this;
+        // }
         self_type operator+=(int i)
         {
             ptr_ += i;
@@ -96,6 +101,11 @@ namespace ft
             ptr_ -= i;
             return *this;
         }
+        // self_type operator-(difference_type i)
+        // {
+        //     ptr_ -= i;
+        //     return *this;
+        // }
         self_type operator++(int junk)
         {
             (void)junk;
@@ -108,7 +118,7 @@ namespace ft
             ptr_--;
             return *this;
         }
-       
+        
         bool operator>=(const self_type &rhs)
         {
             return (ptr_ >= rhs.ptr_);
@@ -129,9 +139,18 @@ namespace ft
         {
             return ptr_[index];
         }
+        pointer base() const
+        {
+            return ptr_;
+        }
     private:
         pointer ptr_;
     };
+    template <class Iterator>
+    Iterator operator-(const iterator<Iterator>& lhs, const iterator<Iterator>& rhs)
+    {
+        return (lhs.base() - rhs.base());
+    }
     template <class Iterator>
     bool operator== (const iterator<Iterator>& lhs, const iterator<Iterator>& rhs)
     {

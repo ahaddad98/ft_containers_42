@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 03:44:27 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 04:29:18 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 16:19:50 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,7 @@ int main(void)
 		std::cout << "\ncapacity()" << std::endl;
 		std::cout << "=======================================" << std::endl;
 		NS::vector<size_t> vec(50, 500);
-		NS::vector<size_t> myvect(4, 100);
+		NS::vector<size_t> myvect(7, 100);
 		std::cout << "myvect.capacity() is: " << myvect.capacity() << '\n';
 		std::cout << "myvect.size() is: " << myvect.size() << '\n';
 
@@ -236,233 +236,233 @@ int main(void)
 	}
 
 	// insert()
-	{
-		std::cout << "\ninsert()" << std::endl;
-		std::cout << "=======================================" << std::endl;
-		NS::vector<int> myvect;
-		NS::vector<int>::iterator ite;
+	// {
+	// 	std::cout << "\ninsert()" << std::endl;
+	// 	std::cout << "=======================================" << std::endl;
+	// 	NS::vector<int> myvect;
+	// 	NS::vector<int>::iterator ite;
 
-		// set some initial values:
-		for (int i = 1; i <= 5; ++i)
-		{
-			myvect.push_back(i);
-		}
-		ite = myvect.begin();
-		++ite;
+	// 	// set some initial values:
+	// 	for (int i = 1; i <= 5; ++i)
+	// 	{
+	// 		myvect.push_back(i);
+	// 	}
+	// 	ite = myvect.begin();
+	// 	++ite;
 
-		myvect.insert(ite++, 10);
+	// 	myvect.insert(ite++, 10);
 
-		ite = myvect.begin();
-		ite += 2;
-		myvect.insert(ite, 2, 20);
-		print_vector(myvect, "myvect");
+	// 	ite = myvect.begin();
+	// 	ite += 2;
+	// 	myvect.insert(ite, 2, 20);
+	// 	print_vector(myvect, "myvect");
 
-		NS::vector<int> mytmp(2, 30);
-		print_vector(mytmp, "mytmp");
+	// 	NS::vector<int> mytmp(2, 30);
+	// 	print_vector(mytmp, "mytmp");
 
-		ite = myvect.begin();
-		myvect.insert(ite, mytmp.begin(), mytmp.end());
+	// 	ite = myvect.begin();
+	// 	myvect.insert(ite, mytmp.begin(), mytmp.end());
 
-		print_vector(myvect, "myvect");
-		std::cout << "=======================================" << std::endl;
-	}
+	// 	print_vector(myvect, "myvect");
+	// 	std::cout << "=======================================" << std::endl;
+	// }
 
 	// erase()
-	{
-		std::cout << "\nerase()" << std::endl;
-		std::cout << "=======================================" << std::endl;
+	// {
+	// 	std::cout << "\nerase()" << std::endl;
+	// 	std::cout << "=======================================" << std::endl;
 
-		NS::vector<int> myvect;
-		NS::vector<int>::iterator it1, it2;
+	// 	NS::vector<int> myvect;
+	// 	NS::vector<int>::iterator it1, it2;
 
-		// set some values:
-		for (int i = 1; i < 10; ++i)
-			myvect.push_back(i * 10);
+	// 	// set some values:
+	// 	for (int i = 1; i < 10; ++i)
+	// 		myvect.push_back(i * 10);
 
-		print_vector(myvect, "myvect");
+	// 	print_vector(myvect, "myvect");
 
-		// 10 20 30 40 50 60 70 80 90
-		it1 = it2 = myvect.begin(); // ^^
-		for (size_t i = 0; i < 6; i++, it2++)
-			;  // ^                 ^
-		++it1; //    ^              ^
-		--it2;
-		it1 = myvect.erase(it1); // 10 30 40 50 60 70 80 90
-								 //    ^              ^
+	// 	// 10 20 30 40 50 60 70 80 90
+	// 	it1 = it2 = myvect.begin(); // ^^
+	// 	for (size_t i = 0; i < 6; i++, it2++)
+	// 		;  // ^                 ^
+	// 	++it1; //    ^              ^
+	// 	--it2;
+	// 	it1 = myvect.erase(it1); // 10 30 40 50 60 70 80 90
+	// 							 //    ^              ^
 
-		print_vector(myvect, "myvect");
-		std::cout << "*it1 = " << *it1 << std::endl;
-		std::cout << "*it1 = " << *it2 << std::endl;
+	// 	print_vector(myvect, "myvect");
+	// 	std::cout << "*it1 = " << *it1 << std::endl;
+	// 	std::cout << "*it1 = " << *it2 << std::endl;
 
-		it2 = myvect.erase(it2); // 10 30 40 50 60 80 90
-								 //    ^           ^
-		print_vector(myvect, "myvect");
-		std::cout << "*it1 = " << *it1 << std::endl;
-		std::cout << "*it1 = " << *it2 << std::endl;
-		// 10 30 40 50 60 80 90
-		++it1; //    ^           ^
-		--it2; //       ^     ^
-		std::cout << "*it1 = " << *it1 << std::endl;
-		std::cout << "*it1 = " << *it2 << std::endl;
-		// it1 = myvect.begin();
-		it2 = myvect.end();
-		myvect.erase(it1, it2); // 10 30 60 80 90
-								//        ^
+	// 	it2 = myvect.erase(it2); // 10 30 40 50 60 80 90
+	// 							 //    ^           ^
+	// 	print_vector(myvect, "myvect");
+	// 	std::cout << "*it1 = " << *it1 << std::endl;
+	// 	std::cout << "*it1 = " << *it2 << std::endl;
+	// 	// 10 30 40 50 60 80 90
+	// 	++it1; //    ^           ^
+	// 	--it2; //       ^     ^
+	// 	std::cout << "*it1 = " << *it1 << std::endl;
+	// 	std::cout << "*it1 = " << *it2 << std::endl;
+	// 	// it1 = myvect.begin();
+	// 	it2 = myvect.end();
+	// 	myvect.erase(it1, it2); // 10 30 60 80 90
+	// 							//        ^
 
-		print_vector(myvect, "myvect");
+	// 	print_vector(myvect, "myvect");
 
-		std::cout << "=======================================" << std::endl;
-	}
+	// 	std::cout << "=======================================" << std::endl;
+	// }
 
 	// swap()
-	{
-		std::cout << "\nswap()" << std::endl;
-		std::cout << "=======================================" << std::endl;
-		// ft::vector
-		NS::vector<int> first(3, 100);	// three ints with a value of 100
-		NS::vector<int> second(5, 200); // five ints with a value of 200
+	// {
+	// 	std::cout << "\nswap()" << std::endl;
+	// 	std::cout << "=======================================" << std::endl;
+	// 	// ft::vector
+	// 	NS::vector<int> first(3, 100);	// three ints with a value of 100
+	// 	NS::vector<int> second(5, 200); // five ints with a value of 200
 
-		print_vector(first, "first");
-		print_vector(second, "second");
+	// 	print_vector(first, "first");
+	// 	print_vector(second, "second");
 
-		first.swap(second);
+	// 	first.swap(second);
 
-		print_vector(first, "first");
-		print_vector(second, "second");
+	// 	print_vector(first, "first");
+	// 	print_vector(second, "second");
 
-		std::cout << "=======================================" << std::endl;
-	}
+	// 	std::cout << "=======================================" << std::endl;
+	// }
 
 	// resize()
-	{
-		std::cout << "\nresize()" << std::endl;
-		std::cout << "=======================================" << std::endl;
+	// {
+	// 	std::cout << "\nresize()" << std::endl;
+	// 	std::cout << "=======================================" << std::endl;
 
-		NS::vector<int> myvect;
+	// 	NS::vector<int> myvect;
 
-		// set some initial content:
-		for (int i = 1; i < 10; ++i)
-			myvect.push_back(i);
+	// 	// set some initial content:
+	// 	for (int i = 1; i < 10; ++i)
+	// 		myvect.push_back(i);
 
-		print_vector(myvect, "myvect");
-		myvect.resize(5);
-		print_vector(myvect, "myvect");
-		myvect.resize(8, 100);
-		print_vector(myvect, "myvect");
-		myvect.resize(12);
-		print_vector(myvect, "myvect");
+	// 	print_vector(myvect, "myvect");
+	// 	myvect.resize(5);
+	// 	print_vector(myvect, "myvect");
+	// 	myvect.resize(8, 100);
+	// 	print_vector(myvect, "myvect");
+	// 	myvect.resize(12);
+	// 	print_vector(myvect, "myvect");
 
-		std::cout << "=======================================" << std::endl;
-	}
+	// 	std::cout << "=======================================" << std::endl;
+	// }
 
 	// relational operators()
-	{
-		std::cout << "\nrelational operators" << std::endl;
-		std::cout << "=======================================" << std::endl;
+	// {
+	// 	std::cout << "\nrelational operators" << std::endl;
+	// 	std::cout << "=======================================" << std::endl;
 
-		NS::vector<int> a;
-		a.push_back(10);
-		a.push_back(20);
-		a.push_back(30);
-		print_vector(a, "a");
-		NS::vector<int> b = a;
-		// b = a;
+	// 	NS::vector<int> a;
+	// 	a.push_back(10);
+	// 	a.push_back(20);
+	// 	a.push_back(30);
+	// 	print_vector(a, "a");
+	// 	NS::vector<int> b = a;
+	// 	// b = a;
 
-		print_vector(b, "b");
+	// 	print_vector(b, "b");
 
-		NS::vector<int> c;
-		c.push_back(30);
-		c.push_back(20);
-		c.push_back(10);
-		print_vector(c, "c");
+	// 	NS::vector<int> c;
+	// 	c.push_back(30);
+	// 	c.push_back(20);
+	// 	c.push_back(10);
+	// 	print_vector(c, "c");
 
-		if (a == b)
-			std::cout << "\na and b are equal\n";
-		if (b != c)
-			std::cout << "b and c are not equal\n";
-		if (b < c)
-			std::cout << "b is less than c\n";
-		if (c > b)
-			std::cout << "c is greater than b\n";
-		if (a <= b)
-			std::cout << "a is less than or equal to b\n";
-		if (a >= b)
-			std::cout << "a is greater than or equal to b\n";
-		std::cout << "=======================================" << std::endl;
-	}
+	// 	if (a == b)
+	// 		std::cout << "\na and b are equal\n";
+	// 	if (b != c)
+	// 		std::cout << "b and c are not equal\n";
+	// 	if (b < c)
+	// 		std::cout << "b is less than c\n";
+	// 	if (c > b)
+	// 		std::cout << "c is greater than b\n";
+	// 	if (a <= b)
+	// 		std::cout << "a is less than or equal to b\n";
+	// 	if (a >= b)
+	// 		std::cout << "a is greater than or equal to b\n";
+	// 	std::cout << "=======================================" << std::endl;
+	// }
 
 	// non-member swap()
-	{
-		std::cout << "\nnon-member swap()" << std::endl;
-		std::cout << "=======================================" << std::endl;
+	// {
+	// 	std::cout << "\nnon-member swap()" << std::endl;
+	// 	std::cout << "=======================================" << std::endl;
 
-		NS::vector<int> foo(3, 100); // three ints with a value of 100
-		NS::vector<int> bar(5, 200); // five ints with a value of 200
+	// 	NS::vector<int> foo(3, 100); // three ints with a value of 100
+	// 	NS::vector<int> bar(5, 200); // five ints with a value of 200
 
-		print_vector(foo, "foo");
-		print_vector(bar, "bar");
-		NS::swap(foo, bar);
-		print_vector(foo, "foo");
-		print_vector(bar, "bar");
+	// 	print_vector(foo, "foo");
+	// 	print_vector(bar, "bar");
+	// 	NS::swap(foo, bar);
+	// 	print_vector(foo, "foo");
+	// 	print_vector(bar, "bar");
 
-		std::cout << "=======================================" << std::endl;
-	}
+	// 	std::cout << "=======================================" << std::endl;
+	// }
 
 	// reverse iterators
-	{
-		std::cout << "\nreverse iterators" << std::endl;
-		std::cout << "=======================================" << std::endl;
-		NS::vector<int> l;
-		l.push_back(1);
-		l.insert(l.end(), 4, 100);
-		l.push_back(2);
-		NS::vector<int>::reverse_iterator ite = l.rbegin();
-		NS::vector<int>::reverse_iterator it = l.rend();
-		for (int i = 0; it != ite; ite++, i++)
-		{
-			std::cout << "[" << *ite << "]  ";
-		}
-		std::cout << "\n=======================================" << std::endl;
-	}
+	// {
+	// 	std::cout << "\nreverse iterators" << std::endl;
+	// 	std::cout << "=======================================" << std::endl;
+	// 	NS::vector<int> l;
+	// 	l.push_back(1);
+	// 	l.insert(l.end(), 4, 100);
+	// 	l.push_back(2);
+	// 	NS::vector<int>::reverse_iterator ite = l.rbegin();
+	// 	NS::vector<int>::reverse_iterator it = l.rend();
+	// 	for (int i = 0; it != ite; ite++, i++)
+	// 	{
+	// 		std::cout << "[" << *ite << "]  ";
+	// 	}
+	// 	std::cout << "\n=======================================" << std::endl;
+	// }
 	// const_iterator
-	{
-		std::cout << "\nconst iterators" << std::endl;
-		std::cout << "=======================================" << std::endl;
-		NS::vector<int> l;
-		l.push_back(1);
-		l.push_back(2);
-		l.push_back(3);
-		l.push_back(4);
-		l.push_back(5);
-		NS::vector<int>::const_iterator ite = l.begin();
-		NS::vector<int>::const_iterator it = l.end();
-		for (; it != ite; ite++)
-		{
-			std::cout << "[" << *ite << "]  ";
-		}
-		std::cout << "\n=======================================" << std::endl;
-	}
+	// {
+	// 	std::cout << "\nconst iterators" << std::endl;
+	// 	std::cout << "=======================================" << std::endl;
+	// 	NS::vector<int> l;
+	// 	l.push_back(1);
+	// 	l.push_back(2);
+	// 	l.push_back(3);
+	// 	l.push_back(4);
+	// 	l.push_back(5);
+	// 	NS::vector<int>::const_iterator ite = l.begin();
+	// 	NS::vector<int>::const_iterator it = l.end();
+	// 	for (; it != ite; ite++)
+	// 	{
+	// 		std::cout << "[" << *ite << "]  ";
+	// 	}
+	// 	std::cout << "\n=======================================" << std::endl;
+	// }
 
 	// iterator relational operators
-	{
-		std::cout << "\nrelational operators for iterator" << std::endl;
-		std::cout << "=======================================" << std::endl;
-		NS::vector<int> l;
-		l.push_back(1);
-		l.push_back(2);
-		l.push_back(3);
-		l.push_back(4);
-		l.push_back(5);
-		NS::vector<int>::const_iterator ite = l.begin();
-		NS::vector<int>::const_iterator it = l.begin() + 2;
-		std::cout << "first=" << *ite << std::endl;
-		std::cout << "third=" << *it << std::endl;
-		std::cout << "difference=" << it - ite << std::endl;
+	// {
+	// 	std::cout << "\nrelational operators for iterator" << std::endl;
+	// 	std::cout << "=======================================" << std::endl;
+	// 	NS::vector<int> l;
+	// 	l.push_back(1);
+	// 	l.push_back(2);
+	// 	l.push_back(3);
+	// 	l.push_back(4);
+	// 	l.push_back(5);
+	// 	NS::vector<int>::const_iterator ite = l.begin();
+	// 	NS::vector<int>::const_iterator it = l.begin() + 2;
+	// 	std::cout << "first=" << *ite << std::endl;
+	// 	std::cout << "third=" << *it << std::endl;
+	// 	std::cout << "difference=" << it - ite << std::endl;
 
-		std::cout << "\n=======================================" << std::endl;
-	}
-	std::cout << "\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of vector tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-			  << std::endl;
+	// 	std::cout << "\n=======================================" << std::endl;
+	// }
+	// std::cout << "\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of vector tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	// 		  << std::endl;
 	// end of vector tests
 
 	// stack tests
