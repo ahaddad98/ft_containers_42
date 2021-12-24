@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 01:34:06 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 03:58:55 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -311,6 +311,7 @@ namespace ft
             }
             iterator_map operator++(int n)
             {
+                (void)n;
                 if (!_ptr->getNext())
                     _ptr = _parent->end_;
                 else
@@ -327,6 +328,7 @@ namespace ft
             }
             iterator_map operator--(int n)
             {
+                (void)n;
                 if (!_ptr->getPrevious())
                     _ptr = NULL;
                 else
@@ -402,6 +404,8 @@ namespace ft
             }
             const_iterator_map operator++(int n)
             {
+                (void)n;
+
                 if (!_ptr->getNext())
                     _ptr = _parent->end_;
                 else
@@ -418,6 +422,8 @@ namespace ft
             }
             const_iterator_map operator--(int n)
             {
+                (void)n;
+
                 if (!_ptr->getPrevious())
                     _ptr = NULL;
                 else
@@ -496,6 +502,8 @@ namespace ft
                 // else
                 //     _ptr = _ptr->getNext();
                 // return (*this);
+                (void)n;
+
                 if (!_ptr->getPrevious())
                     _ptr = NULL;
                 else
@@ -517,6 +525,8 @@ namespace ft
             }
             reverse_iterator_map operator--(int n)
             {
+                (void)n;
+
                 if (!_ptr->getNext())
                     _ptr = _parent->end_;
                 else
@@ -600,6 +610,8 @@ namespace ft
                 // else
                 //     _ptr = _ptr->getNext();
                 // return (*this);
+                (void)n;
+
                 if (!_ptr->getPrevious())
                     _ptr = NULL;
                 else
@@ -621,6 +633,7 @@ namespace ft
             }
             const_reverse_iterator_map operator--(int n)
             {
+                (void)n;
                 if (!_ptr->getNext())
                     _ptr = _parent->end_;
                 else

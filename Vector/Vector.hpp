@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 03:32:07 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 04:36:09 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ namespace ft
             capacity_ = 0;
             size_ = 0;
             this->alloc = alloc;
-            // insert(begin(), val, n);
+            for (InputIterator it = first; it != last; it++)
+            {
+                insert(*it);
+            }
         }
         vector(const vector &x)
         {
@@ -103,16 +106,16 @@ namespace ft
         {
             return iterator(m_Data);
         }
+        const_iterator begin() const
+        {
+            return const_iterator(m_Data);
+        }
 
         iterator end()
         {
             return iterator(m_Data + size_);
         }
 
-        const_iterator begin() const
-        {
-            return const_iterator(m_Data);
-        }
 
         const_iterator end() const
         {

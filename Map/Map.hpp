@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 03:34:25 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 04:08:24 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ namespace ft
         // constructor
         explicit map(const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type())
         {
+            cmp = comp;
             this->alloc = alloc;
             this->size_ = mymap.size();
         }
@@ -73,8 +74,13 @@ namespace ft
             const key_compare &comp = key_compare(),
             const allocator_type &alloc = allocator_type())
         {
+            cmp = comp;
             this->alloc = alloc;
             this->size_ = mymap.size();
+            for (InputIterator it = first; it != last ; it++)
+            {
+                this->insert(*it);
+            }
         }
         map(const map &x)
         {
@@ -139,9 +145,9 @@ namespace ft
             return this->alloc.max_size();
         }
         // Element access:
-        mapped_type &operator[](const key_type &k)
-        {
-        }
+        // mapped_type &operator[](const key_type &k)
+        // {
+        // }
         // Modifiers:
         ft::pair<iterator, bool> insert(const value_type &val)
         {
@@ -149,6 +155,7 @@ namespace ft
         }
         iterator insert (iterator position, const value_type& val)
         {
+            (void)position;
             mymap.insert(val);
             return (this->find(val.first));
         }
@@ -191,13 +198,18 @@ namespace ft
         void erase(iterator first, iterator last)
         {
             iterator it;
-            for (it = first ; it != end(); it++)
+            for (it = first ; it != last; it++)
             {
                 this->mymap.delete_(*it);
             }
         }
         void swap(map &x)
         {
+            map tmp;
+
+            tmp = x;
+            x = *this;
+            *this = x;
         }
         void clear()
         {
@@ -274,6 +286,7 @@ namespace ft
         allocator_type alloc;
         value_type cc;
         size_type size_;
+        Compare cmp;
         ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare> mymap;
     };
 

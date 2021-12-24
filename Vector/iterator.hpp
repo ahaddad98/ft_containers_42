@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 03:55:20 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 04:32:36 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ namespace ft
             ptr_ += i;
             return *this;
         }
+        self_type operator+=(int i)
+        {
+            ptr_ += i;
+            return *this;
+        }
         self_type operator-(int i)
         {
             ptr_ -= i;
@@ -137,30 +142,26 @@ namespace ft
         typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::reference reference;
         typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::difference_type difference_type;
         typedef typename ft::Iterator_Traits<std::random_access_iterator_tag, T>::iterator_categorie iterator_category;
+        const_iterator() : ptr_(NULL)
+        {
+        }
         const_iterator(pointer ptr) : ptr_(ptr)
         {
         }
-        self_type operator++()
+        const_iterator(const const_iterator &it)
         {
-            self_type i = *this;
-            ptr_++;
-            return i;
+            *this = it;
         }
-        self_type operator++(int junk)
+        const_iterator &operator=(const const_iterator & src)
         {
-            (void)junk;
-            ptr_++;
+            //  const_cast<pointer>(this->ptr_) = src.ptr_;
+            this->ptr_ = src.ptr_;
             return *this;
         }
-        reference operator*()
+        ~const_iterator()
         {
-            return *ptr_;
         }
-        const pointer operator->()
-        {
-            return ptr_;
-        }
-        bool operator==(const self_type &rhs)
+        bool operator==(const self_type &rhs) const
         {
             return ptr_ == rhs.ptr_;
         }
@@ -168,6 +169,107 @@ namespace ft
         {
             return ptr_ != rhs.ptr_;
         }
+        reference operator*()
+        {
+            return *ptr_;
+        }
+        pointer operator->()
+        {
+            return ptr_;
+        }
+        
+        reference operator*(pointer src)
+        {
+            return *ptr_ = src;
+        }
+        self_type operator++()
+        {
+            self_type i = *this;
+            ptr_++;
+            return i;
+        }
+        self_type operator--()
+        {
+            self_type i = *this;
+            ptr_--;
+            return i;
+        }
+        self_type operator+(int i)
+        {
+            ptr_ += i;
+            return *this;
+        }
+        self_type operator+=(int i)
+        {
+            ptr_ += i;
+            return *this;
+        }
+        self_type operator-(int i)
+        {
+            ptr_ -= i;
+            return *this;
+        }
+        self_type operator++(int junk)
+        {
+            (void)junk;
+            ptr_++;
+            return *this;
+        }
+        self_type operator--(int junk)
+        {
+            (void)junk;
+            ptr_--;
+            return *this;
+        }
+       
+        bool operator>=(const self_type &rhs)
+        {
+            return (ptr_ >= rhs.ptr_);
+        }
+        bool operator<=(const self_type &rhs)
+        {
+            return (ptr_ <= rhs.ptr_);
+        }
+        bool operator>(const self_type &rhs)
+        {
+            return (ptr_ > rhs.ptr_);
+        }
+        bool operator<(const self_type &rhs)
+        {
+            return (ptr_ < rhs.ptr_);
+        }
+        T &operator[](size_type index)
+        {
+            return ptr_[index];
+        }
+        // self_type operator++()
+        // {
+        //     self_type i = *this;
+        //     ptr_++;
+        //     return i;
+        // }
+        // self_type operator++(int junk)
+        // {
+        //     (void)junk;
+        //     ptr_++;
+        //     return *this;
+        // }
+        // reference operator*()
+        // {
+        //     return *ptr_;
+        // }
+        // const pointer operator->()
+        // {
+        //     return ptr_;
+        // }
+        // bool operator==(const self_type &rhs)
+        // {
+        //     return ptr_ == rhs.ptr_;
+        // }
+        // bool operator!=(const self_type &rhs)
+        // {
+        //     return ptr_ != rhs.ptr_;
+        // }
 
     private:
         pointer ptr_;
