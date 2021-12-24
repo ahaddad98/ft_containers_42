@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:21:05 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/20 18:08:57 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 03:33:28 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include <string>
 
 
-template <class T1, class T2>
-// namespace ft
-// {
+namespace ft
+{
     
 
+    template <class T1, class T2>
     class pair
     {
         public:
@@ -98,5 +98,5 @@ template <class T1, class T2>
         return !(lhs<rhs); 
     }
     
-// } // namespace ft
+} // namespace ft
 #endif

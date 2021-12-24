@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 01:34:27 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 03:34:25 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ namespace ft
     template <class Key,                                       // map::key_type
               class T,                                         // map::mapped_type
               class Compare = std::less<Key>,                  // map::key_compare
-              class Alloc = std::allocator<pair<const Key, T> > // map::allocator_type
+              class Alloc = std::allocator<ft::pair<const Key, T> > // map::allocator_type
               >
 
     class map
@@ -29,7 +29,7 @@ namespace ft
     public:
         typedef Key key_type;
         typedef T mapped_type;
-        typedef pair<const Key, T> value_type;
+        typedef ft::pair<const Key, T> value_type;
         typedef Compare key_compare;
         // typedef Comp value_compare;
         typedef Alloc allocator_type;
@@ -143,7 +143,7 @@ namespace ft
         {
         }
         // Modifiers:
-        pair<iterator, bool> insert(const value_type &val)
+        ft::pair<iterator, bool> insert(const value_type &val)
         {
             return mymap.insert(val);
         }
@@ -255,11 +255,11 @@ namespace ft
         {
             return this->mymap.upper_bound(k);
         }
-        pair<const_iterator,const_iterator> equal_range (const key_type& k) const
+        ft::pair<const_iterator,const_iterator> equal_range (const key_type& k) const
         {
             return make_pair(lower_bound(k), upper_bound(k));
         }
-        pair<iterator,iterator> equal_range (const key_type& k)
+        ft::pair<iterator,iterator> equal_range (const key_type& k)
         {
             return make_pair(lower_bound(k), upper_bound(k));
         }
