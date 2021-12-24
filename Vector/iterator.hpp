@@ -6,7 +6,7 @@
 /*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/11/19 17:29:51 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/24 03:55:20 by ahaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,13 @@ namespace ft
         }
         self_type operator++(int junk)
         {
+            (void)junk;
             ptr_++;
             return *this;
         }
         self_type operator--(int junk)
         {
+            (void)junk;
             ptr_--;
             return *this;
         }
@@ -146,15 +148,14 @@ namespace ft
         }
         self_type operator++(int junk)
         {
+            (void)junk;
             ptr_++;
             return *this;
         }
         reference operator*()
         {
-            // std::cout << "amine123" << std::endl;
             return *ptr_;
         }
-        // const reference operator*() { return *ptr_; }
         const pointer operator->()
         {
             return ptr_;
@@ -187,12 +188,12 @@ namespace ft
         }
         explicit reverse_iterat (iterator_category it)
         {
-            
+            (void)it;
         }
         template <class Iter>
         reverse_iterat (const reverse_iterat<Iter>& rev_it)
         {
-            
+            (void)rev_it;
         }
         reference operator*()
         {
@@ -211,6 +212,7 @@ namespace ft
         }
         self_type operator++(int junk)
         {
+            (void)junk;
             ptr_--;
             return *this;
         }
@@ -232,6 +234,7 @@ namespace ft
         }
         self_type operator--(int junk)
         {
+            (void)junk;
             ptr_++;
             return *this;
         }
@@ -276,12 +279,12 @@ namespace ft
         }
         explicit const_reverse_iterat (iterator_category it)
         {
-            
+            (void)it;
         }
         template <class Iter>
         const_reverse_iterat (const const_reverse_iterat<Iter>& rev_it)
         {
-            
+            (void)rev_it;
         }
         reference operator*()
         {
@@ -300,6 +303,7 @@ namespace ft
         }
         self_type operator++(int junk)
         {
+            (void)junk;
             ptr_--;
             return *this;
         }
@@ -321,6 +325,7 @@ namespace ft
         }
         self_type operator--(int junk)
         {
+            (void)junk;
             ptr_++;
             return *this;
         }
