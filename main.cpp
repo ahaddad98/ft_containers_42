@@ -18,6 +18,8 @@
 #include <stack>
 #include <map>
 #include "Map/pair.hpp"
+#include "set/set.hpp"
+
 
 template <typename T, typename U>
 void print_map(ft::map<T, U> &mp, char const *label)
@@ -1013,21 +1015,21 @@ int main()
 		// std::cout << "map1.upper_bound(20): " << (*it).first << std::endl;
 		// std::cout << "=======================================" << std::endl;
 	// }
-        std::cout << "\nupper_bound()" << std::endl;
-		std::cout << "=======================================" << std::endl;
-		ft::map<int, int> map1;
-		map1.insert(ft::make_pair(5, 1));
-		map1.insert(ft::make_pair(2, 2));
-		map1.insert(ft::make_pair(10, 3));
-		map1.insert(ft::make_pair(4, 4));
-		print_map(map1, "map1");
-		ft::map<int, int>::iterator it = map1.upper_bound(3);
-		std::cout << "map1.upper_bound(3): " << (*it).first << std::endl;
-		it = map1.upper_bound(5);
-		std::cout << "map1.upper_bound(5): " << (*it).first << std::endl;
-		it = map1.upper_bound(6);
-		std::cout << "map1.upper_bound(6): " << (*it).first << std::endl;
-		std::cout << "=======================================" << std::endl;
+        // std::cout << "\nupper_bound()" << std::endl;
+		// std::cout << "=======================================" << std::endl;
+		// ft::map<int, int> map1;
+		// map1.insert(ft::make_pair(5, 1));
+		// map1.insert(ft::make_pair(2, 2));
+		// map1.insert(ft::make_pair(10, 3));
+		// map1.insert(ft::make_pair(4, 4));
+		// print_map(map1, "map1");
+		// ft::map<int, int>::iterator it = map1.upper_bound(3);
+		// std::cout << "map1.upper_bound(3): " << (*it).first << std::endl;
+		// it = map1.upper_bound(5);
+		// std::cout << "map1.upper_bound(5): " << (*it).first << std::endl;
+		// it = map1.upper_bound(6);
+		// std::cout << "map1.upper_bound(6): " << (*it).first << std::endl;
+		// std::cout << "=======================================" << std::endl;
 }
 
 // to test our stack
