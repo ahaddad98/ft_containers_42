@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/25 14:40:26 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/25 14:48:09 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ namespace ft
         typedef const value_type *const_pointer;
         // miss iterator here
         typedef typename ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare>::iterator_map iterator;
-        typedef typename ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare>::const_iterator_map const_iterator;
+        typedef typename ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare>::iterator_map const_iterator;
         typedef typename ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare>::reverse_iterator_map reverse_iterator;
         typedef typename ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare>::const_reverse_iterator_map const_reverse_iterator;
         typedef std::ptrdiff_t difference_type;

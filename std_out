@@ -1,0 +1,521 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< vector tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+front() & back()
+=======================================
+
+vector Size: 5
+vector [myvect2] contains:  [ 1 ]  [ 2 ]  [ 3 ]  [ 4 ]  [ 5 ]
+
+vector Size: 2
+vector [myvect] contains:  [ 77 ]  [ 22 ]
+myvect.front() is now 55
+=======================================
+
+max_size()
+=======================================
+myvect.max_size() is: 1152921504606846975
+=======================================
+
+capacity()
+=======================================
+myvect.capacity() is: 7
+myvect.size() is: 7
+myvect.capacity() is: 14
+myvect.size() is: 8
+myvect.capacity() is: 58
+myvect.size() is: 58
+myvect.capacity() is: 116
+myvect.size() is: 59
+=======================================
+
+assign()
+=======================================
+
+vector Size: 7
+vector [first] contains:  [ 100 ]  [ 100 ]  [ 100 ]  [ 100 ]  [ 100 ]  [ 100 ]  [ 100 ]
+
+vector Size: 7
+vector [second] contains:  [ 100 ]  [ 100 ]  [ 100 ]  [ 100 ]  [ 100 ]  [ 100 ]  [ 100 ]
+
+vector Size: 3
+vector [first] contains:  [ 0 ]  [ 0 ]  [ 0 ]
+Size of first: 3
+Size of second: 7
+=======================================
+
+insert()
+=======================================
+
+vector Size: 8
+vector [myvect] contains:  [ 1 ]  [ 10 ]  [ 20 ]  [ 20 ]  [ 2 ]  [ 3 ]  [ 4 ]  [ 5 ]
+
+vector Size: 2
+vector [mytmp] contains:  [ 30 ]  [ 30 ]
+
+vector Size: 10
+vector [myvect] contains:  [ 30 ]  [ 30 ]  [ 1 ]  [ 10 ]  [ 20 ]  [ 20 ]  [ 2 ]  [ 3 ]  [ 4 ]  [ 5 ]
+=======================================
+
+erase()
+=======================================
+
+vector Size: 9
+vector [myvect] contains:  [ 10 ]  [ 20 ]  [ 30 ]  [ 40 ]  [ 50 ]  [ 60 ]  [ 70 ]  [ 80 ]  [ 90 ]
+
+vector Size: 8
+vector [myvect] contains:  [ 10 ]  [ 30 ]  [ 40 ]  [ 50 ]  [ 60 ]  [ 70 ]  [ 80 ]  [ 90 ]
+*it1 = 30
+*it1 = 70
+
+vector Size: 7
+vector [myvect] contains:  [ 10 ]  [ 30 ]  [ 40 ]  [ 50 ]  [ 60 ]  [ 80 ]  [ 90 ]
+*it1 = 30
+*it1 = 80
+*it1 = 40
+*it1 = 60
+
+vector Size: 2
+vector [myvect] contains:  [ 10 ]  [ 30 ]
+=======================================
+
+swap()
+=======================================
+
+vector Size: 3
+vector [first] contains:  [ 100 ]  [ 100 ]  [ 100 ]
+
+vector Size: 5
+vector [second] contains:  [ 200 ]  [ 200 ]  [ 200 ]  [ 200 ]  [ 200 ]
+
+vector Size: 5
+vector [first] contains:  [ 200 ]  [ 200 ]  [ 200 ]  [ 200 ]  [ 200 ]
+
+vector Size: 3
+vector [second] contains:  [ 100 ]  [ 100 ]  [ 100 ]
+=======================================
+
+resize()
+=======================================
+
+vector Size: 9
+vector [myvect] contains:  [ 1 ]  [ 2 ]  [ 3 ]  [ 4 ]  [ 5 ]  [ 6 ]  [ 7 ]  [ 8 ]  [ 9 ]
+
+vector Size: 5
+vector [myvect] contains:  [ 1 ]  [ 2 ]  [ 3 ]  [ 4 ]  [ 5 ]
+
+vector Size: 8
+vector [myvect] contains:  [ 1 ]  [ 2 ]  [ 3 ]  [ 4 ]  [ 5 ]  [ 100 ]  [ 100 ]  [ 100 ]
+
+vector Size: 12
+vector [myvect] contains:  [ 1 ]  [ 2 ]  [ 3 ]  [ 4 ]  [ 5 ]  [ 100 ]  [ 100 ]  [ 100 ]  [ 0 ]  [ 0 ]  [ 0 ]  [ 0 ]
+=======================================
+
+relational operators
+=======================================
+
+vector Size: 3
+vector [a] contains:  [ 10 ]  [ 20 ]  [ 30 ]
+
+vector Size: 3
+vector [b] contains:  [ 10 ]  [ 20 ]  [ 30 ]
+
+vector Size: 3
+vector [c] contains:  [ 30 ]  [ 20 ]  [ 10 ]
+
+a and b are equal
+b and c are not equal
+b is less than c
+c is greater than b
+a is less than or equal to b
+a is greater than or equal to b
+=======================================
+
+non-member swap()
+=======================================
+
+vector Size: 3
+vector [foo] contains:  [ 100 ]  [ 100 ]  [ 100 ]
+
+vector Size: 5
+vector [bar] contains:  [ 200 ]  [ 200 ]  [ 200 ]  [ 200 ]  [ 200 ]
+
+vector Size: 5
+vector [foo] contains:  [ 200 ]  [ 200 ]  [ 200 ]  [ 200 ]  [ 200 ]
+
+vector Size: 3
+vector [bar] contains:  [ 100 ]  [ 100 ]  [ 100 ]
+=======================================
+
+reverse iterators
+=======================================
+[2]  [100]  [100]  [100]  [100]  [1]  
+=======================================
+
+const iterators
+=======================================
+[1]  [2]  [3]  [4]  [5]  
+=======================================
+
+relational operators for iterator
+=======================================
+first=1
+third=3
+difference=2
+
+=======================================
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of vector tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< stack tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+front() & back()
+=======================================
+mystack is empty
+
+stack Size: 2
+stack [mystack] contains: 
+ [ 77 ] 
+ [ 22 ]
+mystack.top() is now 77
+=======================================
+
+max_size()
+=======================================
+
+stack Size: 6
+stack [mystack] contains: 
+ [ 22 ] 
+ [ 78 ] 
+ [ 65 ] 
+ [ 69 ] 
+ [ 65 ] 
+ [ 77 ]
+mystack.size() is: 6
+=======================================
+
+relational operators
+=======================================
+
+stack Size: 3
+stack [a] contains: 
+ [ 30 ] 
+ [ 20 ] 
+ [ 10 ]
+
+stack Size: 3
+stack [b] contains: 
+ [ 30 ] 
+ [ 20 ] 
+ [ 10 ]
+
+stack Size: 3
+stack [c] contains: 
+ [ 10 ] 
+ [ 20 ] 
+ [ 30 ]
+
+a and b are equal
+b and c are not equal
+b is less than c
+c is greater than b
+a is less than or equal to b
+a is greater than or equal to b
+=======================================
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of stack tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< map tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+begin() & end() 
+=======================================
+
+map Size: 4
+map [map1] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+map1.begin(): 2
+=======================================
+
+assign operator=()
+=======================================
+
+map Size: 4
+map [map1] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+before assigning map1 to map2
+
+map Size: 0
+map [map2] contains: nothing
+after assigning map1 to map2
+
+map Size: 4
+map [map2] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+=======================================
+
+clear()
+=======================================
+
+map Size: 4
+map [map1] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+after clearing map1
+
+map Size: 0
+map [map1] contains: nothing
+=======================================
+
+count()
+=======================================
+
+map Size: 4
+map [map1] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+map1.count(5): 1
+map1.count(6): 0
+=======================================
+
+empty()
+=======================================
+
+map Size: 4
+map [map1] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+map1.empty(): 0
+after clearing map1
+
+map Size: 0
+map [map1] contains: nothing
+map1.empty(): 1
+=======================================
+
+find()
+=======================================
+
+map Size: 3
+map [map1] contains: 
+
+[2] = 2
+[5] = 1
+[10] = 3
+
+5 has been found and its second is = 1
+6 has not been found
+=======================================
+
+insert()
+=======================================
+
+map Size: 3
+map [map1] contains: 
+
+[2] = 2
+[5] = 1
+[10] = 3
+
+
+map Size: 4
+map [map1] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+inserted 4, 4 at 4
+
+map Size: 4
+map [map2] contains: 
+
+[0] = 20
+[2] = 30
+[3] = 40
+[4] = 50
+
+=======================================
+
+map constructors
+=======================================
+
+map Size: 4
+map [map1] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+
+map Size: 4
+map [map2] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+
+map Size: 4
+map [map3] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+=======================================
+
+erase()
+=======================================
+
+map Size: 6
+map [map1] contains: 
+
+[0] = 1
+[1] = 110
+[2] = 2
+[3] = 300
+[4] = 4
+[10] = 3
+
+map1.erase(0): 1
+
+map Size: 3
+map [map1] contains: 
+
+[3] = 300
+[4] = 4
+[10] = 3
+
+
+map Size: 2
+map [map1] contains: 
+
+[4] = 4
+[10] = 3
+
+=======================================
+
+max_size()
+=======================================
+map1.max_size(): 230584300921369395
+=======================================
+
+swap()
+=======================================
+
+map Size: 4
+map [map1] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+
+map Size: 4
+map [map2] contains: 
+
+[0] = 1
+[2] = 2
+[4] = 4
+[10] = 3
+
+
+map Size: 4
+map [map1] contains: 
+
+[0] = 1
+[2] = 2
+[4] = 4
+[10] = 3
+
+
+map Size: 4
+map [map2] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+=======================================
+
+get_allocator()
+=======================================
+
+map Size: 0
+map [map1] contains: nothing
+alloc max size: 1152921504606846975
+=======================================
+
+const iterators
+=======================================
+
+map Size: 4
+map [map1] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+map1.begin(): 2
+map1.end(): 10
+=======================================
+
+reverse iterators
+=======================================
+
+map Size: 4
+map [map1] contains: 
+
+[2] = 2
+[4] = 4
+[5] = 1
+[10] = 3
+
+[10] = 3
+[5] = 1
+[4] = 4
+[2] = 2
+=======================================
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of map tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+end of program

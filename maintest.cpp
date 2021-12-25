@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 03:44:27 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/25 14:41:44 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/25 14:49:03 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -820,22 +820,22 @@ int main(void)
 	}
 
 	// // const iterators
-	// {
-	// 	std::cout << "\nconst iterators" << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// 	NS::map<int, int> map1;
-	// 	map1.insert(NS::make_pair(5, 1));
-	// 	map1.insert(NS::make_pair(2, 2));
-	// 	map1.insert(NS::make_pair(10, 3));
-	// 	map1.insert(NS::make_pair(4, 4));
-	// 	print_map(map1, "map1");
-	// 	NS::map<int, int>::const_iterator it = map1.begin();
-	// 	std::cout << "map1.begin(): " << (*it).first << std::endl;
-	// 	it = map1.end();
-	// 	--it;
-	// 	std::cout << "map1.end(): " << (*it).first << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// }
+	{
+		std::cout << "\nconst iterators" << std::endl;
+		std::cout << "=======================================" << std::endl;
+		NS::map<int, int> map1;
+		map1.insert(NS::make_pair(5, 1));
+		map1.insert(NS::make_pair(2, 2));
+		map1.insert(NS::make_pair(10, 3));
+		map1.insert(NS::make_pair(4, 4));
+		print_map(map1, "map1");
+		NS::map<int, int>::const_iterator it = map1.begin();
+		std::cout << "map1.begin(): " << (*it).first << std::endl;
+		it = map1.end();
+		--it;
+		std::cout << "map1.end(): " << (*it).first << std::endl;
+		std::cout << "=======================================" << std::endl;
+	}
 
 	// // reverse iterators
 	{
