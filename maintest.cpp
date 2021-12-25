@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 03:44:27 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/25 11:14:05 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/25 11:16:09 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -466,85 +466,85 @@ int main(void)
 	// end of vector tests
 
 	// stack tests
-	// std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< stack tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-	// 		  << std::endl;
-	// NS::stack<int> stackGolbal;
-	// print_namespace(stackGolbal);
-	// // top() and empty()
-	// {
-	// 	std::cout << "\nfront() & back()" << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// 	NS::stack<int> mystack;
+	std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< stack tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+			  << std::endl;
+	NS::stack<int> stackGolbal;
+	print_namespace(stackGolbal);
+	// top() and empty()
+	{
+		std::cout << "\nfront() & back()" << std::endl;
+		std::cout << "=======================================" << std::endl;
+		NS::stack<int> mystack;
 
-	// 	if (mystack.empty())
-	// 		std::cout << "mystack is empty" << std::endl;
+		if (mystack.empty())
+			std::cout << "mystack is empty" << std::endl;
 
-	// 	mystack.push(22);
-	// 	mystack.push(77);
+		mystack.push(22);
+		mystack.push(77);
 
-	// 	print_stack(mystack, "mystack");
+		print_stack(mystack, "mystack");
 
-	// 	// now top equals 77
-	// 	std::cout << "mystack.top() is now " << mystack.top() << '\n';
-	// 	std::cout << "=======================================" << std::endl;
-	// }
+		// now top equals 77
+		std::cout << "mystack.top() is now " << mystack.top() << '\n';
+		std::cout << "=======================================" << std::endl;
+	}
 
 	// // size()
-	// {
-	// 	std::cout << "\nmax_size()" << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// 	NS::stack<size_t> mystack;
+	{
+		std::cout << "\nmax_size()" << std::endl;
+		std::cout << "=======================================" << std::endl;
+		NS::stack<size_t> mystack;
 
-	// 	mystack.push(77);
-	// 	mystack.push(65);
-	// 	mystack.push(69);
-	// 	mystack.push(65);
-	// 	mystack.push(78);
-	// 	mystack.push(22);
+		mystack.push(77);
+		mystack.push(65);
+		mystack.push(69);
+		mystack.push(65);
+		mystack.push(78);
+		mystack.push(22);
 
-	// 	print_stack(mystack, "mystack");
+		print_stack(mystack, "mystack");
 
-	// 	std::cout << "mystack.size() is: " << mystack.size() << '\n';
-	// 	std::cout << "=======================================" << std::endl;
-	// }
+		std::cout << "mystack.size() is: " << mystack.size() << '\n';
+		std::cout << "=======================================" << std::endl;
+	}
 
 	// // relational operators()
-	// {
-	// 	std::cout << "\nrelational operators" << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
+	{
+		std::cout << "\nrelational operators" << std::endl;
+		std::cout << "=======================================" << std::endl;
 
-	// 	NS::stack<int> a;
-	// 	a.push(10);
-	// 	a.push(20);
-	// 	a.push(30);
-	// 	print_stack(a, "a");
-	// 	NS::stack<int> b = a;
-	// 	// b = a;
+		NS::stack<int> a;
+		a.push(10);
+		a.push(20);
+		a.push(30);
+		print_stack(a, "a");
+		NS::stack<int> b = a;
+		// b = a;
 
-	// 	print_stack(b, "b");
+		print_stack(b, "b");
 
-	// 	NS::stack<int> c;
-	// 	c.push(30);
-	// 	c.push(20);
-	// 	c.push(10);
-	// 	print_stack(c, "c");
+		NS::stack<int> c;
+		c.push(30);
+		c.push(20);
+		c.push(10);
+		print_stack(c, "c");
 
-	// 	if (a == b)
-	// 		std::cout << "\na and b are equal\n";
-	// 	if (b != c)
-	// 		std::cout << "b and c are not equal\n";
-	// 	if (b < c)
-	// 		std::cout << "b is less than c\n";
-	// 	if (c > b)
-	// 		std::cout << "c is greater than b\n";
-	// 	if (a <= b)
-	// 		std::cout << "a is less than or equal to b\n";
-	// 	if (a >= b)
-	// 		std::cout << "a is greater than or equal to b\n";
-	// 	std::cout << "=======================================" << std::endl;
-	// }
-	// std::cout << "\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of stack tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-	// 		  << std::endl;
+		if (a == b)
+			std::cout << "\na and b are equal\n";
+		if (b != c)
+			std::cout << "b and c are not equal\n";
+		if (b < c)
+			std::cout << "b is less than c\n";
+		if (c > b)
+			std::cout << "c is greater than b\n";
+		if (a <= b)
+			std::cout << "a is less than or equal to b\n";
+		if (a >= b)
+			std::cout << "a is greater than or equal to b\n";
+		std::cout << "=======================================" << std::endl;
+	}
+	std::cout << "\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end of stack tests >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+			  << std::endl;
 	// // end of stack tests
 
 	// // map tests
