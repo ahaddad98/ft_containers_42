@@ -978,20 +978,56 @@ int main()
     //     // std::cout << "map1.begin(): " << (*it).first << std::endl;
     //     std::cout << "=======================================" << std::endl;
     // }
-    {
-        std::cout << "\nclear()" << std::endl;
-        std::cout << "=======================================" << std::endl;
-        ft::map<int, int> map1;
-        map1.insert(ft::make_pair(5, 1));
-        map1.insert(ft::make_pair(2, 2));
-        map1.insert(ft::make_pair(10, 3));
-        map1.insert(ft::make_pair(4, 4));
-        print_map(map1, "map1");
-        map1.clear();
-        std::cout << "after clearing map1" << std::endl;
-        print_map(map1, "map1");
-        std::cout << "=======================================" << std::endl;
-    }
+    // {
+    //     std::cout << "\nclear()" << std::endl;
+    //     std::cout << "=======================================" << std::endl;
+    //     ft::map<int, int> map1;
+    //     map1.insert(ft::make_pair(5, 1));
+    //     map1.insert(ft::make_pair(2, 2));
+    //     map1.insert(ft::make_pair(10, 3));
+    //     map1.insert(ft::make_pair(4, 4));
+    //     print_map(map1, "map1");
+    //     map1.clear();
+    //     std::cout << "after clearing map1" << std::endl;
+    //     print_map(map1, "map1");
+    //     std::cout << "=======================================" << std::endl;
+    // }
+    // {
+		// std::cout << "\nlower_bound()" << std::endl;
+		// std::cout << "=======================================" << std::endl;
+		// ft::map<int, int> map1;
+		// map1.insert(ft::make_pair(5, 1));
+		// map1.insert(ft::make_pair(2, 2));
+		// map1.insert(ft::make_pair(10, 3));
+		// map1.insert(ft::make_pair(4, 4));
+		// print_map(map1, "map1");
+		// ft::map<int, int>::iterator it = map1.lower_bound(3);
+		// std::cout << "map1.lower_bound(3): " << (*it).first << std::endl;
+		// it = map1.lower_bound(5);
+		// std::cout << "map1.lower_bound(5): " << (*it).first << std::endl;
+		// it = map1.lower_bound(6);
+		// std::cout << "map1.lower_bound(6): " << (*it).first << std::endl;
+        // it = map1.upper_bound(10);
+		// std::cout << "map1.upper_bound(10): " << (*it).first << std::endl;
+		// it = map1.upper_bound(20);
+		// std::cout << "map1.upper_bound(20): " << (*it).first << std::endl;
+		// std::cout << "=======================================" << std::endl;
+	// }
+        std::cout << "\nupper_bound()" << std::endl;
+		std::cout << "=======================================" << std::endl;
+		ft::map<int, int> map1;
+		map1.insert(ft::make_pair(5, 1));
+		map1.insert(ft::make_pair(2, 2));
+		map1.insert(ft::make_pair(10, 3));
+		map1.insert(ft::make_pair(4, 4));
+		print_map(map1, "map1");
+		ft::map<int, int>::iterator it = map1.upper_bound(3);
+		std::cout << "map1.upper_bound(3): " << (*it).first << std::endl;
+		it = map1.upper_bound(5);
+		std::cout << "map1.upper_bound(5): " << (*it).first << std::endl;
+		it = map1.upper_bound(6);
+		std::cout << "map1.upper_bound(6): " << (*it).first << std::endl;
+		std::cout << "=======================================" << std::endl;
 }
 
 // to test our stack

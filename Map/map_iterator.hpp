@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/25 14:40:43 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/25 23:15:28 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -754,45 +754,107 @@ namespace ft
             }
             return NULL;
         }
+        Node *search_tree_with_key_to_use_lower(const key_type &k) const
+        {
+            Node *tmp;
+            tmp = this->root;
+            if (root == end_)
+                return NULL;
+            while (tmp != NULL)
+            {
+                if (comp(k, tmp->item.first))
+                {
+                    if (tmp->left == NULL)
+                        return tmp;
+                    tmp = tmp->left;
+                }
+                else if (comp(tmp->item.first, k))
+                {
+                    if (tmp->right == NULL)
+                        return tmp;    
+                    tmp = tmp->right;
+                }
+                else
+                    return tmp;
+            }
+            return NULL;
+        }
+        Node *search_tree_with_key_to_use_upper(const key_type &k) const
+        {
+            Node *tmp;
+            tmp = this->root;
+            if (root == end_)
+                return NULL;
+            while (tmp != NULL)
+            {
+                if (comp(k, tmp->item.first))
+                {
+                    if (tmp->left == NULL)
+                    {
+                        if (tmp->getNext() == NULL && tmp->getNext() == end_)
+                            return end_;    
+                        return tmp;
+                    }
+                    tmp = tmp->left;
+                }
+                else if (comp(tmp->item.first, k))
+                {
+                    if (tmp->right == NULL)
+                    {
+                        if (tmp->getNext() == NULL && tmp->getNext() == end_)
+                            return end_;    
+                        return tmp;
+                    }
+                    tmp = tmp->right;
+                }
+                else
+                {
+                    if (tmp->getNext() == NULL && tmp->getNext() == end_)
+                            return end_;    
+                    return tmp->getNext();
+                }
+            }
+            return NULL;
+        }
         iterator_map lower_bound(const key_type &k)
         {
-            Node *tmp = search_tree_with_key(k);
-            if (tmp == NULL)
-                return this->end();
-            // Node *tmp1 = tmp->getPrevious();
-            // if (tmp1 == NULL)
-            //     return iterator_map(tmp, this);
+            Node *tmp = search_tree_with_key_to_use_lower(k);
             return iterator_map(tmp, this);
         }
         const_iterator_map lower_bound(const key_type &k) const
         {
-            Node *tmp = search_tree_with_key(k);
-            if (tmp == NULL)
-                return this->end();
-            Node *tmp1 = tmp->getPrevious();
-            if (tmp1 == NULL)
-                return const_iterator_map(tmp, this);
-            return const_iterator_map(tmp1, this);
+            Node *tmp = search_tree_with_key_to_use_lower(k);
+            return iterator_map(tmp, this);
         }
         iterator_map upper_bound(const key_type &k)
         {
-            Node *tmp = search_tree_with_key(k);
-            if (tmp == NULL)
-                return this->end();
-            Node *tmp1 = tmp->getNext();
-            if (tmp1 == NULL)
-                return end();
-            return iterator_map(tmp1, this);
+            Node *tmp = search_tree_with_key_to_use_upper(k);
+            // std::cout << "---------------------------" << std::endl;
+            // if (tmp == NULL)
+            // Node *tmp1 = tmp->getNext();
+            // if (tmp1 == NULL)
+            //     return end();
+            // if (tmp->getNext() == NULL)
+                // return this->end();
+            return iterator_map(tmp, this);
         }
         const_iterator_map upper_bound(const key_type &k) const
         {
-            Node *tmp = search_tree_with_key(k);
-            if (tmp == NULL)
-                return this->end();
-            Node *tmp1 = tmp->getNext();
-            if (tmp1 == NULL)
-                return end();
-            return const_iterator_map(tmp1, this);
+            Node *tmp = search_tree_with_key_to_use_upper(k);
+            // if (tmp == NULL)
+            // Node *tmp1 = tmp->getNext();
+            // if (tmp1 == NULL)
+            //     return end();
+            // if (tmp->getNext() == NULL)
+            //     return this->end();
+            return iterator_map(tmp, this);
+            // Node *tmp = search_tree_with_key(k);
+            // if (tmp == NULL)
+            //     return this->end();
+            // Node *tmp1 = tmp->getNext();
+            // if (tmp1 == NULL)
+            //     return end();
+            // return const_iterator_map(tmp1, this);
         }
         void swap_node(Node *n1, Node *n2)
         {
@@ -1057,7 +1119,7 @@ namespace ft
         {
             return this->alloc.max_size();
         }
-        _allocator_type get_alloc() const
+        _allocator_type get_alloc() const 
         {
             return this->alloc;
         }

@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 03:44:27 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/25 14:49:03 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/25 23:15:45 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -749,61 +749,61 @@ int main(void)
 	}
 
 	// // lower_bound()
-	// {
-	// 	std::cout << "\nlower_bound()" << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// 	NS::map<int, int> map1;
-	// 	map1.insert(NS::make_pair(5, 1));
-	// 	map1.insert(NS::make_pair(2, 2));
-	// 	map1.insert(NS::make_pair(10, 3));
-	// 	map1.insert(NS::make_pair(4, 4));
-	// 	print_map(map1, "map1");
-	// 	NS::map<int, int>::iterator it = map1.lower_bound(3);
-	// 	std::cout << "map1.lower_bound(3): " << (*it).first << std::endl;
-	// 	it = map1.lower_bound(5);
-	// 	std::cout << "map1.lower_bound(5): " << (*it).first << std::endl;
-	// 	it = map1.lower_bound(6);
-	// 	std::cout << "map1.lower_bound(6): " << (*it).first << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// }
+	{
+		std::cout << "\nlower_bound()" << std::endl;
+		std::cout << "=======================================" << std::endl;
+		NS::map<int, int> map1;
+		map1.insert(NS::make_pair(5, 1));
+		map1.insert(NS::make_pair(2, 2));
+		map1.insert(NS::make_pair(10, 3));
+		map1.insert(NS::make_pair(4, 4));
+		print_map(map1, "map1");
+		NS::map<int, int>::iterator it = map1.lower_bound(3);
+		std::cout << "map1.lower_bound(3): " << (*it).first << std::endl;
+		it = map1.lower_bound(5);
+		std::cout << "map1.lower_bound(5): " << (*it).first << std::endl;
+		it = map1.lower_bound(6);
+		std::cout << "map1.lower_bound(6): " << (*it).first << std::endl;
+		std::cout << "=======================================" << std::endl;
+	}
 
 	// // upper_bound()
-	// {
-	// 	std::cout << "\nupper_bound()" << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// 	NS::map<int, int> map1;
-	// 	map1.insert(NS::make_pair(5, 1));
-	// 	map1.insert(NS::make_pair(2, 2));
-	// 	map1.insert(NS::make_pair(10, 3));
-	// 	map1.insert(NS::make_pair(4, 4));
-	// 	print_map(map1, "map1");
-	// 	NS::map<int, int>::iterator it = map1.upper_bound(3);
-	// 	std::cout << "map1.upper_bound(3): " << (*it).first << std::endl;
-	// 	it = map1.upper_bound(5);
-	// 	std::cout << "map1.upper_bound(5): " << (*it).first << std::endl;
-	// 	it = map1.upper_bound(6);
-	// 	std::cout << "map1.upper_bound(6): " << (*it).first << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// }
+	{
+		std::cout << "\nupper_bound()" << std::endl;
+		std::cout << "=======================================" << std::endl;
+		NS::map<int, int> map1;
+		map1.insert(NS::make_pair(5, 1));
+		map1.insert(NS::make_pair(2, 2));
+		map1.insert(NS::make_pair(10, 3));
+		map1.insert(NS::make_pair(4, 4));
+		print_map(map1, "map1");
+		NS::map<int, int>::iterator it = map1.upper_bound(3);
+		std::cout << "map1.upper_bound(3): " << (*it).first << std::endl;
+		it = map1.upper_bound(5);
+		std::cout << "map1.upper_bound(5): " << (*it).first << std::endl;
+		it = map1.upper_bound(6);
+		std::cout << "map1.upper_bound(6): " << (*it).first << std::endl;
+		std::cout << "=======================================" << std::endl;
+	}
 
 	// // equal_range()
-	// {
-	// 	std::cout << "\nequal_range()" << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// 	NS::map<int, int> map1;
-	// 	map1.insert(NS::make_pair(5, 1));
-	// 	map1.insert(NS::make_pair(2, 2));
-	// 	map1.insert(NS::make_pair(10, 3));
-	// 	map1.insert(NS::make_pair(4, 4));
-	// 	print_map(map1, "map1");
-	// 	NS::pair<NS::map<int, int>::iterator, NS::map<int, int>::iterator> range = map1.equal_range(3);
-	// 	std::cout << "map1.equal_range(3): " << (*range.first).first << " " << (*range.second).first << std::endl;
-	// 	range = map1.equal_range(5);
-	// 	std::cout << "map1.equal_range(5): " << (*range.first).first << " " << (*range.second).first << std::endl;
-	// 	range = map1.equal_range(6);
-	// 	std::cout << "map1.equal_range(6): " << (*range.first).first << " " << (*range.second).first << std::endl;
-	// 	std::cout << "=======================================" << std::endl;
-	// }
+	{
+		std::cout << "\nequal_range()" << std::endl;
+		std::cout << "=======================================" << std::endl;
+		NS::map<int, int> map1;
+		map1.insert(NS::make_pair(5, 1));
+		map1.insert(NS::make_pair(2, 2));
+		map1.insert(NS::make_pair(10, 3));
+		map1.insert(NS::make_pair(4, 4));
+		print_map(map1, "map1");
+		NS::pair<NS::map<int, int>::iterator, NS::map<int, int>::iterator> range = map1.equal_range(3);
+		std::cout << "map1.equal_range(3): " << (*range.first).first << " " << (*range.second).first << std::endl;
+		range = map1.equal_range(5);
+		std::cout << "map1.equal_range(5): " << (*range.first).first << " " << (*range.second).first << std::endl;
+		range = map1.equal_range(6);
+		std::cout << "map1.equal_range(6): " << (*range.first).first << " " << (*range.second).first << std::endl;
+		std::cout << "=======================================" << std::endl;
+	}
 
 	// // get_allocator()
 	{
