@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 04:08:24 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/25 14:40:26 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 namespace ft
 {
 
-    template <class Key,                                       // map::key_type
-              class T,                                         // map::mapped_type
-              class Compare = std::less<Key>,                  // map::key_compare
+    template <class Key,                                           // map::key_type
+              class T,                                             // map::mapped_type
+              class Compare = std::less<Key>,                      // map::key_compare
               class Alloc = std::allocator<ft::pair<const Key, T> > // map::allocator_type
               >
 
@@ -39,20 +39,21 @@ namespace ft
         typedef value_type *pointer;
         typedef const value_type *const_pointer;
         // miss iterator here
-        typedef typename ft::Red_Blacl_Tree<key_type,value_type, allocator_type, Compare>::iterator_map iterator;
-        typedef typename ft::Red_Blacl_Tree<key_type,value_type, allocator_type, Compare>::const_iterator_map const_iterator;
-        typedef typename ft::Red_Blacl_Tree<key_type,value_type, allocator_type, Compare>::reverse_iterator_map reverse_iterator;
-        typedef typename ft::Red_Blacl_Tree<key_type,value_type, allocator_type, Compare>::const_reverse_iterator_map const_reverse_iterator;
+        typedef typename ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare>::iterator_map iterator;
+        typedef typename ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare>::const_iterator_map const_iterator;
+        typedef typename ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare>::reverse_iterator_map reverse_iterator;
+        typedef typename ft::Red_Blacl_Tree<key_type, value_type, allocator_type, Compare>::const_reverse_iterator_map const_reverse_iterator;
         typedef std::ptrdiff_t difference_type;
         typedef size_t size_type;
         // compare class
-        class value_compare : std::binary_function<value_type,value_type,bool>
-        { 
+        class value_compare : std::binary_function<value_type, value_type, bool>
+        {
             friend class map;
 
         protected:
             Compare comp;
             value_compare(Compare c) : comp(c) {}
+
         public:
             typedef bool result_type;
             typedef value_type first_argument_type;
@@ -77,7 +78,7 @@ namespace ft
             cmp = comp;
             this->alloc = alloc;
             this->size_ = mymap.size();
-            for (InputIterator it = first; it != last ; it++)
+            for (InputIterator it = first; it != last; it++)
             {
                 this->insert(*it);
             }
@@ -142,18 +143,22 @@ namespace ft
         }
         size_type max_size() const
         {
-            return this->alloc.max_size();
+            return this->mymap.max__size();
         }
         // Element access:
-        // mapped_type &operator[](const key_type &k)
-        // {
-        // }
+        mapped_type &operator[](const key_type &k)
+        {
+            if (this->count(k) == 0)
+                this->insert(ft::pair<int, int>(k, mapped_type()));
+            iterator it = this->find(k);
+            return ((*it).second);
+        }
         // Modifiers:
         ft::pair<iterator, bool> insert(const value_type &val)
         {
             return mymap.insert(val);
         }
-        iterator insert (iterator position, const value_type& val)
+        iterator insert(iterator position, const value_type &val)
         {
             (void)position;
             mymap.insert(val);
@@ -198,18 +203,15 @@ namespace ft
         void erase(iterator first, iterator last)
         {
             iterator it;
-            for (it = first ; it != last; it++)
+            for (it = first; it != last; it++)
             {
+                // std::cout << "asd" << std::endl;
                 this->mymap.delete_(*it);
             }
         }
         void swap(map &x)
         {
-            map tmp;
-
-            tmp = x;
-            x = *this;
-            *this = x;
+            this->mymap.swap(x.mymap);
         }
         void clear()
         {
@@ -227,7 +229,7 @@ namespace ft
         }
 
         // operations
-        iterator find (const key_type& k)
+        iterator find(const key_type &k)
         {
             iterator it;
             for (it = begin(); it != end(); it++)
@@ -237,7 +239,7 @@ namespace ft
             }
             return end();
         }
-        const_iterator find (const key_type& k) const
+        const_iterator find(const key_type &k) const
         {
             const_iterator it;
             for (it = begin(); it != end(); it++)
@@ -251,27 +253,27 @@ namespace ft
         {
             return this->mymap.count(k);
         }
-        iterator lower_bound (const key_type& k)
+        iterator lower_bound(const key_type &k)
         {
             return this->mymap.lower_bound(k);
         }
-        const_iterator lower_bound (const key_type& k) const
+        const_iterator lower_bound(const key_type &k) const
         {
             return this->mymap.const_lower_bound(k);
         }
-        iterator upper_bound (const key_type& k)
+        iterator upper_bound(const key_type &k)
         {
             return this->mymap.upper_bound(k);
         }
-        const_iterator upper_bound (const key_type& k) const
+        const_iterator upper_bound(const key_type &k) const
         {
             return this->mymap.upper_bound(k);
         }
-        ft::pair<const_iterator,const_iterator> equal_range (const key_type& k) const
+        ft::pair<const_iterator, const_iterator> equal_range(const key_type &k) const
         {
             return make_pair(lower_bound(k), upper_bound(k));
         }
-        ft::pair<iterator,iterator> equal_range (const key_type& k)
+        ft::pair<iterator, iterator> equal_range(const key_type &k)
         {
             return make_pair(lower_bound(k), upper_bound(k));
         }

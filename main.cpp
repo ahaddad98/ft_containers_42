@@ -19,6 +19,23 @@
 #include <map>
 #include "Map/pair.hpp"
 
+template <typename T, typename U>
+void print_map(ft::map<T, U> &mp, char const *label)
+{
+    std::cout << "\nmap Size: " << mp.size();
+    std::cout << "\nmap [" << label << "] contains: ";
+    if (!mp.size())
+        std::cout << "nothing";
+    else
+        std::cout << "\n\n";
+    for (typename ft::map<T, U>::iterator it = mp.begin(); it != mp.end(); ++it)
+    {
+        std::cout << "[" << it->first << "]"
+                  << " = " << it->second << std::endl;
+    }
+    std::cout << std::endl;
+}
+
 void print_vector(ft::vector<int> &vect, char const *label)
 {
     std::cout << "\nvector Size: " << vect.size();
@@ -34,15 +51,15 @@ void print_vector(ft::vector<int> &vect, char const *label)
 
 int main()
 {
-    std::cout << "\nrelational operators" << std::endl;
-    std::cout << "=======================================" << std::endl;
+    // std::cout << "\nrelational operators" << std::endl;
+    // std::cout << "=======================================" << std::endl;
 
-    ft::vector<int> a;
-    a.push_back(10);
-    a.push_back(20);
-    a.push_back(30);
-    print_vector(a, "a");
-    ft::vector<int> b = a;
+    // ft::vector<int> a;
+    // a.push_back(10);
+    // a.push_back(20);
+    // a.push_back(30);
+    // print_vector(a, "a");
+    // ft::vector<int> b = a;
     // std::cout << "here" << std::endl;
     // b = a;
 
@@ -948,6 +965,33 @@ int main()
     // {
     //     std::cout << it->first  << " ==> "  << it->second << std::endl;
     // }
+    // {
+    //     std::cout << "\nbegin() & end() " << std::endl;
+    //     std::cout << "=======================================" << std::endl;
+    //     ft::map<int, int> map1;
+    //     map1.insert(ft::make_pair(5, 1));
+    //     // map1.insert(ft::make_pair(10, 3));
+    //     // map1.insert(ft::make_pair(4, 4));
+    //     // map1.insert(ft::make_pair(2, 2));
+    //     // ft::map<int, int>::iterator it = map1.begin();
+    //     // print_map(map1, "map1");
+    //     // std::cout << "map1.begin(): " << (*it).first << std::endl;
+    //     std::cout << "=======================================" << std::endl;
+    // }
+    {
+        std::cout << "\nclear()" << std::endl;
+        std::cout << "=======================================" << std::endl;
+        ft::map<int, int> map1;
+        map1.insert(ft::make_pair(5, 1));
+        map1.insert(ft::make_pair(2, 2));
+        map1.insert(ft::make_pair(10, 3));
+        map1.insert(ft::make_pair(4, 4));
+        print_map(map1, "map1");
+        map1.clear();
+        std::cout << "after clearing map1" << std::endl;
+        print_map(map1, "map1");
+        std::cout << "=======================================" << std::endl;
+    }
 }
 
 // to test our stack

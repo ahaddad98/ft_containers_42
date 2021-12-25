@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 03:58:55 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/25 14:40:43 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ namespace ft
             Node *getNext() const
             {
                 Node *next;
-                next = const_cast<Node*>(this);
+                next = const_cast<Node *>(this);
                 if (this->right != NULL)
                 {
                     next = right->leftMost();
@@ -183,7 +183,7 @@ namespace ft
         }
         Red_Blacl_Tree(const Red_Blacl_Tree &src)
         {
-            *this =src;
+            *this = src;
         }
         Red_Blacl_Tree &operator=(const Red_Blacl_Tree &src)
         {
@@ -208,7 +208,7 @@ namespace ft
             Node *y;
             y = x->right;
             x->right = y->left;
-            if (y->left)
+            if (y && y->left)
             {
                 y->left->parents = x;
             }
@@ -217,7 +217,7 @@ namespace ft
                 this->root = y;
             else
             {
-                if (x == x->parents->left)
+                if (x && x == x->parents->left)
                     x->parents->left = y;
                 else
                     x->parents->right = y;
@@ -230,7 +230,7 @@ namespace ft
             Node *y;
             y = x->left;
             x->left = y->right;
-            if (y->right)
+            if (y && y->right)
             {
                 y->right->parents = x;
             }
@@ -239,7 +239,7 @@ namespace ft
                 this->root = y;
             else
             {
-                if (x == x->parents->right)
+                if (x && x == x->parents->right)
                     x->parents->right = y;
                 else
                     x->parents->left = y;
@@ -822,7 +822,7 @@ namespace ft
             Node *s;
             while (x && x != root && x->Color == BLACK)
             {
-                if (x == x->parents->left)
+                if (x && x == x->parents->left)
                 {
                     s = x->parents->right;
                     if (s && s->Color == RED)
@@ -832,7 +832,6 @@ namespace ft
                         Left_Rotate(x->parents);
                         s = x->parents->right;
                     }
-
                     if (s && s->left->Color == BLACK && s->right->Color == BLACK)
                     {
                         s->Color = RED;
@@ -847,7 +846,6 @@ namespace ft
                             Right_Rotate(s);
                             s = x->parents->right;
                         }
-
                         s->Color = x->parents->Color;
                         x->parents->Color = BLACK;
                         s->right->Color = BLACK;
@@ -889,7 +887,9 @@ namespace ft
                     }
                 }
             }
-            x->Color = BLACK;
+            if (x)
+                x->Color = BLACK;
+            // std::cout << "im herein delete fix" << std::endl;
         }
 
         void delete_(T to_delete)
@@ -897,14 +897,14 @@ namespace ft
             Node *z = search_tree_in_ordre_travers(to_delete);
             Node *y;
             Node *x;
-            colors y_color = y->Color;
             y = z;
-            if (z->left == NULL)
+            colors y_color = y->Color;
+            if (z && z->left == NULL)
             {
                 x = z->right;
                 rbTransplant(z, z->right);
             }
-            else if (z->right == NULL)
+            else if (z && z->right == NULL)
             {
                 x = z->left;
                 rbTransplant(z, z->left);
@@ -914,7 +914,7 @@ namespace ft
                 y = (z->right)->getPrevious();
                 y_color = y->Color;
                 x = y->right;
-                if (y->parents == z)
+                if (y && y->parents == z)
                 {
                     x->parents = y;
                 }
@@ -931,10 +931,11 @@ namespace ft
             }
             size_--;
             this->alloc.deallocate(z, 1);
-            if ( y && y_color == BLACK)
+            if (y && y_color == BLACK)
             {
                 deleteFix(x);
             }
+            // std::cout << "in delete" << std::endl;
         }
         void insertFix(Node *k)
         {
@@ -1008,7 +1009,8 @@ namespace ft
                 end_->left = root;
                 size_++;
                 root->Color = BLACK;
-                return make_pair(iterator_map(root), true);
+                // std::cout << "in insert" << std::endl;
+                return make_pair(root, true);
             }
             Node *test = this->search_tree_in_ordre_travers(key);
             if (test == NULL)
@@ -1045,13 +1047,17 @@ namespace ft
                 insertFix(node);
                 return make_pair(node, true);
             }
-            return make_pair(node, false);
+            return make_pair(test, false);
         }
         size_type size() const
         {
             return (size_);
         }
-        _allocator_type get_alloc()
+        size_type max__size() const
+        {
+            return this->alloc.max_size();
+        }
+        _allocator_type get_alloc() const
         {
             return this->alloc;
         }
@@ -1065,6 +1071,18 @@ namespace ft
         value_compare getcompare()
         {
             return this->comp;
+        }
+        void swap(Red_Blacl_Tree &x)
+        {
+            Node *tmp_root = x.root;
+            Node *tmp_end = x.end_;
+            size_t tmp_size = x.size_;
+            x.root = this->root;
+            x.end_ = this->end_;
+            x.size_ = this->size_;
+            root = tmp_root;
+            end_ = tmp_end;
+            size_ = tmp_size;
         }
 
     private:
