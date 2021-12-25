@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaddad <ahaddad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:45:39 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/24 19:54:34 by ahaddad          ###   ########.fr       */
+/*   Updated: 2021/12/25 11:13:06 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ namespace ft
             this->alloc = alloc;
         }
         // (2) fill constructor
-        explicit vector(size_type n, const value_type &val = value_type(), const alloc_type &alloc = alloc_type()): size_(0), capacity_(0)
+        explicit vector(size_type n, const value_type &val = value_type(), const alloc_type &alloc = alloc_type()) : size_(0), capacity_(0)
         {
             this->alloc = alloc;
-            this->assign(n ,val);
+            this->assign(n, val);
             // insert(begin(), n, val);
         }
         // (3) range constructor
@@ -77,14 +77,17 @@ namespace ft
         }
         vector &operator=(const vector &src)
         {
+            // this->assign(src.begin(), src.end());
+				// return (*this);
             if (src.size() > 0)
             {
+                capacity_ = 0;
                 if (capacity_ > 0)
                     this->alloc.deallocate(m_Data, capacity_);
-                std::cout << src.size_ << std::endl;
+                // std::cout << src.size_ << std::endl;
                 size_ = 0;
                 capacity_ = 0;
-                size_t i  = 0;
+                size_t i = 0;
                 while (i < src.size())
                 {
                     this->push_back(src[i]);
@@ -114,7 +117,6 @@ namespace ft
         {
             return iterator(m_Data + size_);
         }
-
 
         const_iterator end() const
         {
@@ -321,71 +323,142 @@ namespace ft
         }
         iterator insert(iterator position, const value_type &val)
         {
-            iterator it1 = begin();
-            if (size_ == 0)
+            iterator it_begin = position;
+            iterator it_end = this->end();
+            value_type value = val;
+            value_type next_value;
+
+            iterator it = position;
+            size_t i = 0;
+            while (i < this->size() && &(*it) != &(this->m_Data[i]))
+                i++;
+            while (it_begin != it_end)
             {
-                if (position == begin())
-                    push_back(val);
+                next_value = *it_begin;
+                *it_begin = value;
+                value = next_value;
+                it_begin++;
             }
-            else
-            {
-                reserve(size_ + 1);
-                size_t index_to_add = 0;
-                for (iterator it = begin(); it != end(); it++)
-                {
-                    if (position == it)
-                        break;
-                    index_to_add++;
-                    it1++;
-                }
-                push_back(val);
-                size_t tmp = m_Data[size_ - 1];
-                size_t i = size_ - 1;
-                while (i > index_to_add -1)
-                {
-                    m_Data[i] = m_Data[i - 1];
-                    i--;
-                }
-                m_Data[i] = tmp;
-            }
-            return it1;
+            this->push_back(value);
+            return iterator(this->m_Data, i);
+            // return (iterator(this->m_Data[i]));
+            // iterator it1 = begin();
+            // if (size_ == 0)
+            // {
+            //     if (position == begin())
+            //         push_back(val);
+            // }
+            // else
+            // {
+            //     reserve(size_ + 1);
+            //     size_t index_to_add = 0;
+            //     for (iterator it = begin(); it != end(); it++)
+            //     {
+            //         if (position == it)
+            //             break;
+            //         index_to_add++;
+            //         it1++;
+            //     }
+            //     push_back(val);
+            //     size_t tmp = m_Data[size_ - 1];
+            //     size_t i = size_ - 1;
+            //     while (i > index_to_add -1)
+            //     {
+            //         m_Data[i] = m_Data[i - 1];
+            //         i--;
+            //     }
+            //     m_Data[i] = tmp;
+            // }
+            // return it1;
         }
         // fill
         void insert(iterator position, size_type n, const value_type &val)
         {
-            
             size_type i = 0;
             while (i < this->size() && &(*position) != &(this->m_Data[i]))
                 i++;
-            size_t tmp = i;
-            position = begin() + tmp;
+            if (this->capacity() < this->size() + n)
+            {
+                if (this->size() * 2 >= this->size() + n)
+                    this->reserve(this->size() * 2);
+                else
+                    this->reserve(this->size() + n);
+            }
+            position = iterator(this->m_Data, i);
             i = 0;
             while (i < n)
             {
                 position = this->insert(position, val);
-                position = begin() + tmp;
-                tmp++;
+                position++;
                 i++;
             }
+            // size_type i = 0;
+            // while (i < this->size() && &(*position) != &(this->m_Data[i]))
+            //     i++;
+            // size_t tmp = i;
+            // position = begin() + tmp;
+            // i = 0;
+            // if (size_ + n > capacity_)
+            //     capacity_ = size_ + n;
+            // while (i < n)
+            // {
+            //     position = this->insert(position, val);
+            //     position = begin() + tmp;
+            //     tmp++;
+            //     i++;
+            // }
         }
         template <class InputIterator>
         void insert(iterator position, InputIterator first, InputIterator last,
                     typename ft::enable_if<!ft::is_integral<InputIterator>::value, T>::type * = 0)
         {
-            size_t i = 0;
+            size_type i = 0;
             while (i < this->size() && &(*position) != &(this->m_Data[i]))
                 i++;
-            size_t tmp = i;
-            position = begin() + tmp;
-            i = 0;
-            // size_t len = 0;
-            for (InputIterator it = first; it != last; ++it)
+            if (this->capacity() < this->size() + (last - first))
             {
-                insert(position, *it);
-                position = begin() + tmp;
-                tmp++;
-                position++;
+                if (this->size() * 2 >= this->size() + (last - first))
+                    this->reserve(this->size() * 2);
+                else
+                    this->reserve(this->size() + (last - first));
             }
+            position = iterator(this->m_Data, i);
+            while (first != last)
+            {
+                position = this->insert(position, *first);
+                position++;
+                first++;
+            }
+            // size_t i = 0;
+            // while (i < this->size() && &(*position) != &(this->m_Data[i]))
+            //     i++;
+            // size_t tmp = i;
+            // position = begin() + tmp;
+            // i = 0;
+            // size_t len = 0;
+            // for (InputIterator it = first; it != last; ++it)
+            // {
+            //     len++;
+            //     // insert(position, *it);
+            //     // position = begin() + tmp;
+            //     // tmp++;
+            //     // position++;
+            // }
+            // if (this->capacity() < this->size() + len)
+            // {
+            //     if (this->size() * 2 >= this->size() + len)
+            //         this->reserve(this->size() * 2);
+            //     else
+            //         this->reserve(this->size() + len);
+            // }
+            // for (InputIterator it = first; it != last; ++it)
+            // {
+            //     // len++;
+            //     insert(position, *it);
+            //     position = begin() + tmp;
+            //     tmp++;
+            //     position++;
+            // }
         }
         iterator erase(iterator position)
         {
@@ -395,10 +468,11 @@ namespace ft
                 size_t i = 0;
                 for (iterator it = begin(); it != end(); it++)
                 {
+                    // std::cout << "erase" << std::endl;
                     if (position == it)
                         break;
                     i++;
-                    *it++;
+                    // *it++;
                 }
                 j = i;
                 while (i < size_)

@@ -19,32 +19,118 @@
 #include <map>
 #include "Map/pair.hpp"
 
+void print_vector(ft::vector<int> &vect, char const *label)
+{
+    std::cout << "\nvector Size: " << vect.size();
+    std::cout << "\nvector [" << label << "] contains:";
+    if (!vect.size())
+        std::cout << "\tnothing";
+    for (ft::vector<int>::iterator it = vect.begin(); it != vect.end(); ++it)
+    {
+        std::cout << "  [ " << *it << " ]";
+    }
+    std::cout << std::endl;
+}
+
 int main()
 {
-    std::cout << "\ninsert()" << std::endl;
-	std::cout << "=======================================" << std::endl;
-	ft::vector<int> myvect;
-	ft::vector<int>::iterator ite;
-	// set some initial values:
-	for (int i = 1; i <= 5; ++i)
-	{
-		myvect.push_back(i);
-	}
-	ite = myvect.begin();
-	++ite;
-	myvect.insert(ite++, 10);
-	std::cout << "=======================================" << std::endl;
-    ite = myvect.begin();
-	ite += 2;
-	myvect.insert(ite, 2, 20);
-	for (ft::vector<int>::iterator it = myvect.begin(); it != myvect.end(); it++)
-    {
-        std::cout << *it << std::endl;
-    }
-	// ite = myvect.begin();
-	// ite += 2;
-	// myvect.insert(ite, 2, 20);
-	// print_vector(myvect, "myvect");
+    std::cout << "\nrelational operators" << std::endl;
+    std::cout << "=======================================" << std::endl;
+
+    ft::vector<int> a;
+    a.push_back(10);
+    a.push_back(20);
+    a.push_back(30);
+    print_vector(a, "a");
+    ft::vector<int> b = a;
+    // std::cout << "here" << std::endl;
+    // b = a;
+
+    // print_vector(b, "b");
+
+    // ft::vector<int> c;
+    // c.push_back(30);
+    // c.push_back(20);
+    // c.push_back(10);
+    // print_vector(c, "c");
+
+    // if (a == b)
+    //     std::cout << "\na and b are equal\n";
+    // if (b != c)
+    //     std::cout << "b and c are not equal\n";
+    // if (b < c)
+    //     std::cout << "b is less than c\n";
+    // if (c > b)
+    //     std::cout << "c is greater than b\n";
+    // if (a <= b)
+    //     std::cout << "a is less than or equal to b\n";
+    // if (a >= b)
+    //     std::cout << "a is greater than or equal to b\n";
+    // std::cout << "=======================================" << std::endl;
+    // std::cout << "\nerase()" << std::endl;
+    // std::cout << "=======================================" << std::endl;
+
+    // ft::vector<int> myvect;
+    // ft::vector<int>::iterator it1, it2;
+
+    // // set some values:
+    // for (int i = 1; i < 10; ++i)
+    //     myvect.push_back(i * 10);
+
+    // print_vector(myvect, "myvect");
+
+    // // 10 20 30 40 50 60 70 80 90
+    // it1 = it2 = myvect.begin(); // ^^
+    // for (size_t i = 0; i < 6; i++, it2++)
+    //     ;  // ^                 ^
+    // ++it1; //    ^              ^
+    // --it2;
+    // it1 = myvect.erase(it1); // 10 30 40 5
+    // {
+    //     std::cout << "\ncapacity()" << std::endl;
+    //     std::cout << "=======================================" << std::endl;
+    //     ft::vector<size_t> vec(50, 500);
+    //     ft::vector<size_t> myvect(7, 100);
+    //     std::cout << "myvect.capacity() is: " << myvect.capacity() << '\n';
+    //     std::cout << "myvect.size() is: " << myvect.size() << '\n';
+
+    //     myvect.push_back(200);
+    //     std::cout << "myvect.capacity() is: " << myvect.capacity() << '\n';
+    //     std::cout << "myvect.size() is: " << myvect.size() << '\n';
+    //     myvect.insert(myvect.begin(), vec.begin(), vec.end());
+
+    //     std::cout << "myvect.capacity() is: " << myvect.capacity() << '\n';
+    //     std::cout << "myvect.size() is: " << myvect.size() << '\n';
+
+    //     myvect.push_back(200);
+    //     std::cout << "myvect.capacity() is: " << myvect.capacity() << '\n';
+    //     std::cout << "myvect.size() is: " << myvect.size() << '\n';
+    //     std::cout << "=======================================" << std::endl;
+    // }
+    // std::cout << "\ninsert()" << std::endl;
+    // std::cout << "=======================================" << std::endl;
+    // ft::vector<int> myvect;
+    // ft::vector<int>::iterator ite;
+    // // set some initial values:
+    // for (int i = 1; i <= 5; ++i)
+    // {
+    // 	myvect.push_back(i);
+    // }
+    // ite = myvect.begin();
+    // ++ite;
+    // myvect.insert(ite++, 10);
+    // std::cout << "=======================================" << std::endl;
+    // ite = myvect.begin();
+    // ite += 2;
+    // myvect.insert(ite, 2, 20);
+    // for (ft::vector<int>::iterator it = myvect.begin(); it != myvect.end(); it++)
+    // {
+    //     std::cout << *it << std::endl;
+    // }
+    // ite = myvect.begin();
+    // ite += 2;
+    // myvect.insert(ite, 2, 20);
+    // print_vector(myvect, "myvect");
 
     // ft::stack<int, ft::vector<int> > stk;
     // stk.push(10);
@@ -60,7 +146,7 @@ int main()
     //     std::cout << "stk != stk1" << std::endl;
     // if (stk != stk1)
     //     std::cout << "stk != stk1" << std::endl;
-    // test operators overloaded 
+    // test operators overloaded
     // test operator = and copy constructor
     // ft::vector<int> foo(3, 100); // three ints with a value of 100
     // ft::vector<int> bar(foo); // two ints with a value of 200
@@ -69,7 +155,7 @@ int main()
     //     std::cout << *it << std::endl;
     // }
     // foo.erase(foo.begin() , foo.end()-1);
-    // std::cout << "---------------- after erase --------------- " << foo.size() << std::endl; 
+    // std::cout << "---------------- after erase --------------- " << foo.size() << std::endl;
     // for (ft::vector<int>::iterator it = foo.begin(); it != foo.end(); it++)
     // {
     //     std::cout << *it << std::endl;
