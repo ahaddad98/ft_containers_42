@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 11:43:44 by amine             #+#    #+#             */
-/*   Updated: 2021/12/26 14:29:58 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/26 19:26:08 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 #include <iostream>
 #include "../Vector/iterator_traits.hpp"
 #include "../Map/pair.hpp"
-// #include "../Map/pair.hpp"
 
-// namespace ft
-// {
 enum colors
 {
     RED,
@@ -38,7 +35,6 @@ public:
         Node *left;
         Node *right;
         Node *parents;
-        // t_Node *rt;
         Node()
         {
             Color = RED;
@@ -54,20 +50,10 @@ public:
         }
         Node(const Node &other)
         {
-            // this->item = other.item;
-            // this->Color = other.Color;
-            // this->left = other.left;
-            // this->right = other.right;
-            // this->parents = other.parents;
             *this = other;
         }
         Node &operator=(const Node &other)
         {
-            // const_cast<typename T::first_type&>(this->item) = other.item;
-            // this->item = make_pair(other.item, other.item);
-            // new (&(this->item)) pair<typename T::first_type, typename T::second_type>(other.item);
-            // this->item.setfirst(other.item);
-            // std::cout << "here" << std::endl;
             this->item = other.item;
             this->Color = other.Color;
             this->left = other.left;
@@ -190,7 +176,6 @@ public:
     }
     Red_Blacl_Tree_set &operator=(const Red_Blacl_Tree_set &src)
     {
-        // Node *tmp = src.root;
         const_iterator_set it = src.begin();
         for (it = src.begin(); it != src.end(); it++)
         {
@@ -385,11 +370,6 @@ public:
             _parent = other._parent;
             return (*this);
         }
-
-        // reference operator*()
-        // {
-        //     return _ptr->item;
-        // }
         reference operator*() const
         {
             return const_cast<reference>(_ptr->item);
@@ -491,8 +471,6 @@ public:
         }
         reverse_iterator_set operator++()
         {
-            // _ptr = _ptr->getNext();
-            // return (*this);
             if (!_ptr->getPrevious())
                 _ptr = NULL;
             else
@@ -501,11 +479,6 @@ public:
         }
         reverse_iterator_set operator++(int n)
         {
-            // if (!_ptr->getNext())
-            //     _ptr = _parent->end_;
-            // else
-            //     _ptr = _ptr->getNext();
-            // return (*this);
             (void)n;
 
             if (!_ptr->getPrevious())
@@ -521,11 +494,6 @@ public:
             else
                 _ptr = _ptr->getNext();
             return (*this);
-            // if (!_ptr->getPrevious())
-            //     _ptr = NULL;
-            // else
-            //     _ptr = _ptr->getPrevious();
-            // return (*this);
         }
         reverse_iterator_set operator--(int n)
         {
@@ -536,11 +504,6 @@ public:
             else
                 _ptr = _ptr->getNext();
             return (*this);
-            // if (!_ptr->getPrevious())
-            //     _ptr = NULL;
-            // else
-            //     _ptr = _ptr->getPrevious();
-            // return (*this);
         }
         bool operator==(reverse_iterator_set const &other)
         {
@@ -599,8 +562,6 @@ public:
         }
         const_reverse_iterator_set operator++()
         {
-            // _ptr = _ptr->getNext();
-            // return (*this);
             if (!_ptr->getPrevious())
                 _ptr = NULL;
             else
@@ -609,11 +570,6 @@ public:
         }
         const_reverse_iterator_set operator++(int n)
         {
-            // if (!_ptr->getNext())
-            //     _ptr = _parent->end_;
-            // else
-            //     _ptr = _ptr->getNext();
-            // return (*this);
             (void)n;
 
             if (!_ptr->getPrevious())
@@ -629,11 +585,6 @@ public:
             else
                 _ptr = _ptr->getNext();
             return (*this);
-            // if (!_ptr->getPrevious())
-            //     _ptr = NULL;
-            // else
-            //     _ptr = _ptr->getPrevious();
-            // return (*this);
         }
         const_reverse_iterator_set operator--(int n)
         {
@@ -643,11 +594,6 @@ public:
             else
                 _ptr = _ptr->getNext();
             return (*this);
-            // if (!_ptr->getPrevious())
-            //     _ptr = NULL;
-            // else
-            //     _ptr = _ptr->getPrevious();
-            // return (*this);
         }
         bool operator==(const_reverse_iterator_set const &other)
         {
@@ -668,7 +614,6 @@ public:
         {
             return (iterator_set(end_, this));
         }
-        // std::cout << size_ << std::endl;
         return (iterator_set(root->leftMost(), this));
     }
     iterator_set end()
@@ -681,7 +626,6 @@ public:
         {
             return (const_iterator_set(end_, this));
         }
-        // std::cout << size_ << std::endl;
         return (const_iterator_set(root->leftMost(), this));
     }
     const_iterator_set end() const
@@ -692,7 +636,6 @@ public:
     {
         if (size_ == 0)
         {
-            // std::cout << size_ << std::endl;
             return (reverse_iterator_set(end_, this));
         }
         return (reverse_iterator_set(root->rightMost(), this));
@@ -717,12 +660,9 @@ public:
     {
         if (size_ == 0)
         {
-            // std::cout << size_ << std::endl;
             return (reverse_iterator_set(end_, this));
         }
-        // std::cout << "size_" << std::endl;
         return (reverse_iterator_set(root->leftMost()->left, this));
-        // return
     }
     Node *search_tree_in_ordre_travers(T root1)
     {
@@ -833,32 +773,12 @@ public:
     iterator_set upper_bound(const key_type &k)
     {
         Node *tmp = search_tree_with_key_to_use_upper(k);
-        // std::cout << "---------------------------" << std::endl;
-        // if (tmp == NULL)
-        // Node *tmp1 = tmp->getNext();
-        // if (tmp1 == NULL)
-        //     return end();
-        // if (tmp->getNext() == NULL)
-        // return this->end();
         return iterator_set(tmp, this);
     }
     const_iterator_set upper_bound(const key_type &k) const
     {
         Node *tmp = search_tree_with_key_to_use_upper(k);
-        // if (tmp == NULL)
-        // Node *tmp1 = tmp->getNext();
-        // if (tmp1 == NULL)
-        //     return end();
-        // if (tmp->getNext() == NULL)
-        //     return this->end();
         return iterator_set(tmp, this);
-        // Node *tmp = search_tree_with_key(k);
-        // if (tmp == NULL)
-        //     return this->end();
-        // Node *tmp1 = tmp->getNext();
-        // if (tmp1 == NULL)
-        //     return end();
-        // return const_iterator_set(tmp1, this);
     }
     void swap_node(Node *n1, Node *n2)
     {
@@ -1002,7 +922,6 @@ public:
         {
             deleteFix(x);
         }
-        // std::cout << "in delete" << std::endl;
     }
     void insertFix(Node *k)
     {
@@ -1014,7 +933,6 @@ public:
                 u = k->parents->parents->left;
                 if (u && u->Color == RED)
                 {
-                    // std::cout << "im here in if" << std::endl;
                     u->Color = BLACK;
                     k->parents->Color = BLACK;
                     k->parents->parents->Color = RED;
@@ -1022,7 +940,6 @@ public:
                 }
                 else
                 {
-                    // std::cout << "im here in end" << std::endl;
                     if (k == k->parents->left)
                     {
                         k = k->parents;
@@ -1076,7 +993,6 @@ public:
             end_->left = root;
             size_++;
             root->Color = BLACK;
-            // std::cout << "in insert" << std::endl;
             return ft::make_pair(root, true);
         }
         Node *test = this->search_tree_in_ordre_travers(key);
@@ -1159,5 +1075,4 @@ private:
     _allocator_type alloc;
     value_compare comp;
 };
-// }
 #endif

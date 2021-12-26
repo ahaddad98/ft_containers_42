@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:40:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/25 20:50:45 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/26 19:21:26 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,18 +255,6 @@ namespace ft
         }
         iterator lower_bound(const key_type &k)
         {
-            // for (iterator it = begin(); it != end(); ++it)
-			// {
-			// 	if (cmp(k, it.first))
-			// 	{
-			// 		if (it != begin())
-			// 			return --it;
-			// 		return it;
-			// 	}
-			// 	else if (k == *it).first)
-			// 		return it;
-			// }
-			// return this->end();
             return this->mymap.lower_bound(k);
         }
         const_iterator lower_bound(const key_type &k) const

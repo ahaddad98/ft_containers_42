@@ -6,19 +6,13 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 15:37:46 by amine             #+#    #+#             */
-/*   Updated: 2021/12/26 15:50:19 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/26 19:19:51 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <cmath>
-
-#include <vector>
-#include <stack>
 #include <map>
 
-#include "Vector/Vector.hpp"
-#include "Stack/Stack.hpp"
 #include "Map/Map.hpp"
 
 #ifndef NS

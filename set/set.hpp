@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 23:17:44 by amine             #+#    #+#             */
-/*   Updated: 2021/12/26 14:29:17 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/26 19:26:46 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,6 @@ namespace ft
         typedef typename Red_Blacl_Tree_set<key_type, value_type, allocator_type, Compare>::const_reverse_iterator_set const_reverse_iterator;
         typedef std::ptrdiff_t difference_type;
         typedef size_t size_type;
-        // compare class
-        // class value_compare : std::binary_function<value_type, value_type, bool>
-        // {
-        //     friend class set;
-
-        // protected:
-        //     Compare comp;
-        //     value_compare(Compare c) : comp(c) {}
-
-        // public:
-        //     typedef bool result_type;
-        //     typedef value_type first_argument_type;
-        //     typedef value_type second_argument_type;
-        //     bool operator()(const value_type &x, const value_type &y) const
-        //     {
-        //         return comp(x.first, y.first);
-        //     }
-        // };
         // constructor
         explicit set(const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type())
         {
@@ -151,14 +133,6 @@ namespace ft
         {
             return this->myset.max__size();
         }
-        // Element access:
-        // value_type &operator[](const key_type &k)
-        // {
-        //     if (this->count(k) == 0)
-        //         this->insert(ft::pair<int, int>(k, setped_type()));
-        //     iterator it = this->find(k);
-        //     return ((*it).second);
-        // }
         // Modifiers:
         ft::pair<iterator, bool> insert(const value_type &val)
         {
@@ -261,18 +235,6 @@ namespace ft
         }
         iterator lower_bound(const key_type &k)
         {
-            // for (iterator it = begin(); it != end(); ++it)
-            // {
-            // 	if (cmp(k, it.first))
-            // 	{
-            // 		if (it != begin())
-            // 			return --it;
-            // 		return it;
-            // 	}
-            // 	else if (k == *it).first)
-            // 		return it;
-            // }
-            // return this->end();
             return this->myset.lower_bound(k);
         }
         const_iterator lower_bound(const key_type &k) const

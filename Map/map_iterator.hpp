@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/26 12:25:58 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/26 19:23:25 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ namespace ft
             }
             Node(const Node &other)
             {
-                // this->item = other.item;
-                // this->Color = other.Color;
-                // this->left = other.left;
-                // this->right = other.right;
-                // this->parents = other.parents;
                 *this = other;
             }
             Node &operator=(const Node &other)
@@ -381,11 +376,6 @@ namespace ft
                 _parent = other._parent;
                 return (*this);
             }
-
-            // reference operator*()
-            // {
-            //     return _ptr->item;
-            // }
             reference operator*() const
             {
                 return const_cast<reference>(_ptr->item);
@@ -497,11 +487,6 @@ namespace ft
             }
             reverse_iterator_map operator++(int n)
             {
-                // if (!_ptr->getNext())
-                //     _ptr = _parent->end_;
-                // else
-                //     _ptr = _ptr->getNext();
-                // return (*this);
                 (void)n;
 
                 if (!_ptr->getPrevious())
@@ -517,11 +502,6 @@ namespace ft
                 else
                     _ptr = _ptr->getNext();
                 return (*this);
-                // if (!_ptr->getPrevious())
-                //     _ptr = NULL;
-                // else
-                //     _ptr = _ptr->getPrevious();
-                // return (*this);
             }
             reverse_iterator_map operator--(int n)
             {
@@ -532,11 +512,6 @@ namespace ft
                 else
                     _ptr = _ptr->getNext();
                 return (*this);
-                // if (!_ptr->getPrevious())
-                //     _ptr = NULL;
-                // else
-                //     _ptr = _ptr->getPrevious();
-                // return (*this);
             }
             bool operator==(reverse_iterator_map const &other)
             {
@@ -605,11 +580,6 @@ namespace ft
             }
             const_reverse_iterator_map operator++(int n)
             {
-                // if (!_ptr->getNext())
-                //     _ptr = _parent->end_;
-                // else
-                //     _ptr = _ptr->getNext();
-                // return (*this);
                 (void)n;
 
                 if (!_ptr->getPrevious())
@@ -625,11 +595,6 @@ namespace ft
                 else
                     _ptr = _ptr->getNext();
                 return (*this);
-                // if (!_ptr->getPrevious())
-                //     _ptr = NULL;
-                // else
-                //     _ptr = _ptr->getPrevious();
-                // return (*this);
             }
             const_reverse_iterator_map operator--(int n)
             {
@@ -639,11 +604,6 @@ namespace ft
                 else
                     _ptr = _ptr->getNext();
                 return (*this);
-                // if (!_ptr->getPrevious())
-                //     _ptr = NULL;
-                // else
-                //     _ptr = _ptr->getPrevious();
-                // return (*this);
             }
             bool operator==(const_reverse_iterator_map const &other)
             {
@@ -664,7 +624,6 @@ namespace ft
             {
                 return (iterator_map(end_, this));
             }
-            // std::cout << size_ << std::endl;
             return (iterator_map(root->leftMost(), this));
         }
         iterator_map end()
@@ -677,7 +636,6 @@ namespace ft
             {
                 return (const_iterator_map(end_, this));
             }
-            // std::cout << size_ << std::endl;
             return (const_iterator_map(root->leftMost(), this));
         }
         const_iterator_map end() const
@@ -688,7 +646,6 @@ namespace ft
         {
             if (size_ == 0)
             {
-                // std::cout << size_ << std::endl;
                 return (reverse_iterator_map(end_, this));
             }
             return (reverse_iterator_map(root->rightMost(), this));
@@ -713,12 +670,9 @@ namespace ft
         {
             if (size_ == 0)
             {
-                // std::cout << size_ << std::endl;
                 return (reverse_iterator_map(end_, this));
             }
-            // std::cout << "size_" << std::endl;
             return (reverse_iterator_map(root->leftMost()->left, this));
-            // return
         }
         Node *search_tree_in_ordre_travers(T root1)
         {
@@ -829,32 +783,12 @@ namespace ft
         iterator_map upper_bound(const key_type &k)
         {
             Node *tmp = search_tree_with_key_to_use_upper(k);
-            // std::cout << "---------------------------" << std::endl;
-            // if (tmp == NULL)
-            // Node *tmp1 = tmp->getNext();
-            // if (tmp1 == NULL)
-            //     return end();
-            // if (tmp->getNext() == NULL)
-                // return this->end();
             return iterator_map(tmp, this);
         }
         const_iterator_map upper_bound(const key_type &k) const
         {
             Node *tmp = search_tree_with_key_to_use_upper(k);
-            // if (tmp == NULL)
-            // Node *tmp1 = tmp->getNext();
-            // if (tmp1 == NULL)
-            //     return end();
-            // if (tmp->getNext() == NULL)
-            //     return this->end();
             return iterator_map(tmp, this);
-            // Node *tmp = search_tree_with_key(k);
-            // if (tmp == NULL)
-            //     return this->end();
-            // Node *tmp1 = tmp->getNext();
-            // if (tmp1 == NULL)
-            //     return end();
-            // return const_iterator_map(tmp1, this);
         }
         void swap_node(Node *n1, Node *n2)
         {
@@ -951,7 +885,6 @@ namespace ft
             }
             if (x)
                 x->Color = BLACK;
-            // std::cout << "im herein delete fix" << std::endl;
         }
 
         void delete_(T to_delete)
@@ -997,7 +930,6 @@ namespace ft
             {
                 deleteFix(x);
             }
-            // std::cout << "in delete" << std::endl;
         }
         void insertFix(Node *k)
         {
@@ -1009,7 +941,6 @@ namespace ft
                     u = k->parents->parents->left;
                     if (u && u->Color == RED)
                     {
-                        // std::cout << "im here in if" << std::endl;
                         u->Color = BLACK;
                         k->parents->Color = BLACK;
                         k->parents->parents->Color = RED;
@@ -1017,7 +948,6 @@ namespace ft
                     }
                     else
                     {
-                        // std::cout << "im here in end" << std::endl;
                         if (k == k->parents->left)
                         {
                             k = k->parents;
@@ -1071,7 +1001,6 @@ namespace ft
                 end_->left = root;
                 size_++;
                 root->Color = BLACK;
-                // std::cout << "in insert" << std::endl;
                 return make_pair(root, true);
             }
             Node *test = this->search_tree_in_ordre_travers(key);

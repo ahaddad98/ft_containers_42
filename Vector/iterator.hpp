@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:40:06 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/25 10:09:12 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/26 19:28:03 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,118 +167,6 @@ namespace ft
     private:
         pointer p;
         int crement;
-        //     iterator()
-        //     {
-        //     }
-        //     iterator(pointer ptr) : ptr_(ptr)
-        //     {
-        //     }
-        //     iterator(const iterator &it)
-        //     {
-        //         *this = it;
-        //     }
-        //     iterator &operator=(const iterator & src)
-        //     {
-        //         this->ptr_ = src.ptr_;
-        //         return *this;
-        //     }
-        //     ~iterator()
-        //     {
-        //     }
-        //     bool operator==(const self_type &rhs)
-        //     {
-        //         return ptr_ == rhs.ptr_;
-        //     }
-        //     bool operator!=(const self_type &rhs)
-        //     {
-        //         return ptr_ != rhs.ptr_;
-        //     }
-        //     reference operator*()
-        //     {
-        //         return *ptr_;
-        //     }
-        //     pointer operator->()
-        //     {
-        //         return ptr_;
-        //     }
-
-        //     reference operator*(pointer src)
-        //     {
-        //         return *ptr_ = src;
-        //     }
-        //     self_type operator++()
-        //     {
-        //         self_type i = *this;
-        //         ptr_++;
-        //         return i;
-        //     }
-        //     self_type operator--()
-        //     {
-        //         self_type i = *this;
-        //         ptr_--;
-        //         return i;
-        //     }
-        //     self_type operator+(int i)
-        //     {
-        //         ptr_ += i;
-        //         return *this;
-        //     }
-        //     // difference_type operator-(difference_type i)
-        //     // {
-        //     //     ptr_ -= i;
-        //     //     return *this;
-        //     // }
-        //     self_type operator+=(int i)
-        //     {
-        //         ptr_ += i;
-        //         return *this;
-        //     }
-        //     self_type operator-(int i)
-        //     {
-        //         ptr_ -= i;
-        //         return *this;
-        //     }
-        //     // self_type operator-(difference_type i)
-        //     // {
-        //     //     ptr_ -= i;
-        //     //     return *this;
-        //     // }
-        //     self_type operator++(int junk)
-        //     {
-        //         (void)junk;
-        //         ptr_ ++;
-        //         return *this;
-        //     }
-        //     self_type operator--(int junk)
-        //     {
-        //         (void)junk;
-        //         ptr_--;
-        //         return *this;
-        //     }
-
-        //     bool operator>=(const self_type &rhs)
-        //     {
-        //         return (ptr_ >= rhs.ptr_);
-        //     }
-        //     bool operator<=(const self_type &rhs)
-        //     {
-        //         return (ptr_ <= rhs.ptr_);
-        //     }
-        //     bool operator>(const self_type &rhs)
-        //     {
-        //         return (ptr_ > rhs.ptr_);
-        //     }
-        //     bool operator<(const self_type &rhs)
-        //     {
-        //         return (ptr_ < rhs.ptr_);
-        //     }
-        //     T &operator[](size_type index)
-        //     {
-        //         return ptr_[index];
-        //     }
-
-        // private:
-        //     pointer ptr_;
     };
     template <class Iterator>
     Iterator operator-(const iterator<Iterator> &lhs, const iterator<Iterator> &rhs)
@@ -425,35 +313,6 @@ namespace ft
         {
             return ptr_[index];
         }
-        // self_type operator++()
-        // {
-        //     self_type i = *this;
-        //     ptr_++;
-        //     return i;
-        // }
-        // self_type operator++(int junk)
-        // {
-        //     (void)junk;
-        //     ptr_++;
-        //     return *this;
-        // }
-        // reference operator*()
-        // {
-        //     return *ptr_;
-        // }
-        // const pointer operator->()
-        // {
-        //     return ptr_;
-        // }
-        // bool operator==(const self_type &rhs)
-        // {
-        //     return ptr_ == rhs.ptr_;
-        // }
-        // bool operator!=(const self_type &rhs)
-        // {
-        //     return ptr_ != rhs.ptr_;
-        // }
-
     private:
         pointer ptr_;
         size_t size_;

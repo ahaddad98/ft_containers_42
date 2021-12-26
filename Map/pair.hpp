@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:21:05 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/25 11:34:38 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/26 19:23:45 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,8 @@ namespace ft
         pair& operator= (const pair& pr)
         {
             new (this) pair<first_type, second_type>(pr);
-            // new (&(this)->first) T1(pr.first);
-            // setfirst(pr.first);
-            // this->first = pr.first;
-            // setfirst(pr.first);
-            // this->second = pr.second;
             return *this;
         }
-        // void setfirst(const first_type ss)
-        // {
-            // (const_cast<first_type&>(this->first)) = ss;
-            // memcpy((void *)(&(this->first)), (void *)(&ss), sizeof(first_type));
-            // first_type &tmp = (const_cast<first_type&>(this->first));
-            // tmp = ss;
-        // }
     };
     template <class T1,class T2>
     pair<T1,T2> make_pair (T1 x, T2 y)
