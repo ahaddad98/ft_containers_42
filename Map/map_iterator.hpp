@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:13:33 by ahaddad           #+#    #+#             */
-/*   Updated: 2021/12/26 19:23:25 by amine            ###   ########.fr       */
+/*   Updated: 2021/12/26 23:43:17 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ namespace ft
             Node *left;
             Node *right;
             Node *parents;
-            // t_Node *rt;
             Node()
             {
                 Color = RED;
@@ -56,10 +55,6 @@ namespace ft
             }
             Node &operator=(const Node &other)
             {
-                // const_cast<typename T::first_type&>(this->item.first) = other.item.first;
-                // this->item = make_pair(other.item.first, other.item.second);
-                // new (&(this->item)) pair<typename T::first_type, typename T::second_type>(other.item);
-                // this->item.setfirst(other.item.first);
                 this->item = other.item;
                 this->Color = other.Color;
                 this->left = other.left;
@@ -794,7 +789,7 @@ namespace ft
         {
             n1->item = n2->item;
         }
-        void rbTransplant(Node *u, Node *v)
+        void replace(Node *u, Node *v)
         {
             if (u && u->parents == NULL)
             {
@@ -897,12 +892,12 @@ namespace ft
             if (z && z->left == NULL)
             {
                 x = z->right;
-                rbTransplant(z, z->right);
+                replace(z, z->right);
             }
             else if (z && z->right == NULL)
             {
                 x = z->left;
-                rbTransplant(z, z->left);
+                replace(z, z->left);
             }
             else
             {
@@ -915,11 +910,11 @@ namespace ft
                 }
                 else
                 {
-                    rbTransplant(y, y->right);
+                    replace(y, y->right);
                     y->right = z->right;
                     y->right->parents = y;
                 }
-                rbTransplant(z, y);
+                replace(z, y);
                 y->left = z->left;
                 y->left->parents = y;
                 y->Color = z->Color;
