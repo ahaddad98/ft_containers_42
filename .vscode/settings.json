@@ -71,6 +71,7 @@
     "numeric": "cpp",
     "random": "cpp",
     "fstream": "cpp",
-    "__functional_03": "cpp"
+    "__functional_03": "cpp",
+    "set": "cpp"
   }
 }

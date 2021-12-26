@@ -6,7 +6,7 @@
 #    By: amine <amine@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 16:13:12 by ahaddad           #+#    #+#              #
-#    Updated: 2021/12/25 23:20:55 by amine            ###   ########.fr        #
+#    Updated: 2021/12/26 12:04:19 by amine            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ HDRS = Vector/Vector.hpp \
 		Map/Map.hpp \
 		Map/pair.hpp \
 		set/set.hpp \
+		set/set_iterator.hpp \
 		Vector/iterator.hpp \
 		Vector/iterator_traits.hpp \
 		Vector/enable_if.hpp \
